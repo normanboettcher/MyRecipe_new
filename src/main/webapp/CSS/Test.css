@@ -1,0 +1,10 @@
+/* -- @author Thomas Mook -- */
+@charset "UTF-8";
+body {
+	margin: 0px;
+	padding: 0px;
+	background: url("../IMG/Hintergrund_Startseite.jpeg");
+	background-size: cover;
+	font-family: sans-serif;
+}
+

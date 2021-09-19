@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name = "GroceryComparator" default = "release" basedir = ".">
+
+	<!-- Set source, build and release dir -->
+	<property name = "appname" value = "MyRecipe"></property>
+	<property name = "source.dir" value = "src"></property>
+	<property name = "testsource.dir" value = "test"></property>
+	<property name = "build.dir" value = "build"></property>
+	<property name = "release.dir" value = "release"></property>
+	<property name = "report.dir" value = "generated-reports"></property>
+	<property name = "doc.dir" value = "doc"></property>
+	
+	<path id = "project.classpath">
+		<fileset dir = "src/main/webapp/WEB-INF/lib" includes = "**/*.jar"></fileset>
+	</path>
+
+	<!-- Creating new release -->
+	<target name = "release" depends = "executeTests, compile, prepare, documentation">
+		<!-- create jar file -->
+		<jar destfile = "${release.dir}/${appname}.jar">
+			<fileset dir = "${build.dir}/src"></fileset>
+		</jar>
+		
+		<war destfile = "${release.dir}/${appname}.war" needxmlfile = "false">
+			<classes dir = "${build.dir}"></classes>
+
+			<fileset dir = "src/main/webapp"></fileset>
+			<fileset dir = "${source.dir}"></fileset>
+			<fileset dir = "${testsource.dir}"></fileset>
+			<lib dir = "src/main/webapp/WEB-INF/lib"></lib>
+		</war>
+		
+		<!--Make a zip folder for the release update-->
+		<zip destfile="${release.dir}.zip" basedir = "${release.dir}"></zip>
+		
+		<!-- Copy lib dir to release lib dir -->
+		<copy todir = "${release.dir}/lib">
+			<fileset dir = "src/main/webapp/WEB-INF/lib"></fileset>
+		</copy>
+		
+		<echo message = "release of ${appname}.jar and ${appname}.war"></echo>
+	</target>
+	
+	<target name = "prepare" depends = "clean">
+		<echo message = "creating build dir: ${build.dir}"></echo>
+		<mkdir dir = "${build.dir}"></mkdir>
+		<mkdir dir = "${build.dir}/src"></mkdir>
+		<mkdir dir = "${build.dir}/test"></mkdir>
+		
+		<echo message = "creating release dir: ${release.dir}"></echo>
+		<mkdir dir = "${release.dir}"></mkdir>
+		
+		<echo message = "creating documentation folder"></echo>
+		<mkdir dir = "${doc.dir}/src"></mkdir>
+	</target>
+	
+	<!-- Cleaning directories -->
+	<target name = "clean">
+		<echo message = "deleting build dir: ${build.dir}"></echo>
+		<delete dir = "${build.dir}"></delete>
+		
+		<echo message = "deleting release dir: ${build.dir}"></echo>
+		<delete dir = "${release.dir}"></delete>
+		
+		<echo message = "deleting documentation folder"></echo>
+		<delete dir = "${doc.dir}/src"></delete>
+	</target>
+	
+	<!-- Compile all sources and tests -->
+	<target name = "compile" depends = "prepare">
+		<echo message = "compile"></echo>
+		<antcall target = "-compileSrc"></antcall>
+		
+		<available file = "${testsource.dir}" type = "dir" property = "testsource.dir.present"></available>
+		<antcall target = "-compileTests"></antcall>
+	</target>
+	
+	<!-- Erstellen der JavaDoc -->
+	<target name = "documentation" depends = "compile, executeTests">
+		<echo message = "creating documentation for sourcefiles"></echo>
+		<javadoc sourcepath = "${source.dir}" destdir = "${doc.dir}/src">
+			<fileset dir = "${source.dir}"></fileset>
+				<classpath>
+					<path refid = "project.classpath"></path>
+				</classpath>
+		</javadoc>
+	</target>
+	
+	<!-- Compile src -->
+	<target name = "-compileSrc">
+		<echo message = "compile sources to ${source.dir}"></echo>
+		<javac srcdir = "${source.dir}" destdir = "${build.dir}/src" includeantruntime = "false">
+			<classpath>
+				<path refid = "project.classpath"></path>
+			</classpath>	
+		</javac>
+	</target>
+	
+	<!-- Compile tests -->
+	<target name = "-compileTests">
+		<echo message = "compile testsources to ${testsource.dir}"></echo>
+		<javac srcdir = "${testsource.dir}" destdir = "${build.dir}/test" includeantruntime = "true">
+			<classpath>
+				<path refid = "project.classpath"></path>
+				<path location = "${build.dir}/src"></path>
+			</classpath>	
+		</javac>
+	</target>
+	
+	<!-- Execute Tests -->
+	<target name = "executeTests" depends = "compile" if = "testsource.dir.present">
+		<echo message = "preparing junit reports dir: ${report.dir}/junit"></echo>
+		<delete dir = "${report.dir}/junit"></delete>
+		<mkdir dir = "${report.dir}/junit"></mkdir>
+		
+		<junit printsummary = "on" fork = "true" haltonfailure = "false"
+			failureproperty = "tests.failed" filtertrace = "yes" showoutput = "true">
+			
+			<classpath>
+				<pathelement location = "${build.dir}/test"></pathelement>
+				<pathelement location = "${build.dir}/src"></pathelement>
+				<path refid = "project.classpath"></path>
+			</classpath>
+			
+			<formatter type = "brief" usefile = "true"></formatter>
+			<formatter type = "xml" usefile = "true"></formatter>
+			
+			<batchtest todir = "${report.dir}/junit">
+				<fileset dir = "${testsource.dir}">
+					<include name = "**/*Test.java"></include>
+				</fileset>
+			</batchtest>
+		</junit>
+		
+		<junitreport todir = "${report.dir}/junit">
+			<fileset dir = "${testsource.dir}">
+				<include name = "TEST-*.xml"></include>
+			</fileset>
+			<report format = "frames" todir = "${report.dir}/junit"></report>
+		</junitreport>
+		
+		<!-- 
+		<fail if = "tests.failed"></fail>
+		 -->
+	</target>	
+</project>

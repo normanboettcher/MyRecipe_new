@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"main.java.database.transfer"},{"l":"main.java.databaseConnection"},{"l":"main.java.general"},{"l":"main.java.general.foods"},{"l":"main.java.general.supermarkets"},{"l":"main.java.managers"},{"l":"main.java.servlet"},{"l":"main.java.servlet.user"}];updateSearchResults();

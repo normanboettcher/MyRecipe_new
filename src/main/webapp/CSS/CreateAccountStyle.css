@@ -1,0 +1,198 @@
+/* -- @author Thomas Mook -- */
+@charset "UTF-8";
+* {
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Poppins', sans-serif;
+	background: url("../IMG/Hintergrund_CreateAccount.jpeg");
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: sans-serif;
+}
+.regform {
+	margin-top:40px;
+	width: 800px;
+	background-color: rgb(0,0,0,0.6);
+	margin:auto;
+	color: #FFFFFF;
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	border-radius: 15px 15px 0px 0px;
+}
+.main {
+	background-color: rgb(0,0,0,0.5);
+	width: 800px;
+	margin: auto;
+}
+form {
+	padding:10px;
+}
+.abschnitt {
+	margin-left: 25px;
+	margin-top:30px;
+	width: 125px;
+	color:white;
+	font-size: 18px;
+	font-weight: 700;
+}
+.vorname {
+	position: relative;
+	left: 200px;
+	top: -37px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.nachname {
+	position: relative;
+	left: 240px;
+	top: -37px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.geburtstag {
+	position: relative;
+	left: 200px;
+	top: -25px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.strasse {
+	position: relative;
+	left: 200px;
+	top: -37px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.nr {
+	position: relative;
+	left: 240px;
+	top: -37px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.plz {
+	position: relative;
+	left: 200px;
+	top: -25px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+
+.stadt {
+	position: relative;
+	left: 240px;
+	top: -25px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.email {
+	position: relative;
+	left: 200px;
+	top: -37px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.passwort {
+	position: relative;
+	left: 200px;
+	top: -25px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.passwort2 {
+	position: relative;
+	left: 240px;
+	top: -25px;
+	line-height: 40px;
+	padding: 0 22;
+	font-size: 16px;
+	border: 2px solid white;
+	border-radius: 24px;
+	background: none;
+	color: white;
+	text-align: center;
+}
+.regButton {
+	position: relative;
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid white;
+	padding: 14px 40px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	curser: pointer;
+}
+.main input[type = "text"]:focus,.main input[type = "password"]:focus {
+	border-color: #575757;	
+}
+.main button[type = "submit"]:hover {
+	background:#575757;
+	
+}
+.main a {
+	text-decoration:none;
+}
