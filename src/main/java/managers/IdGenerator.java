@@ -38,6 +38,25 @@ public class IdGenerator {
 		return id + 1;
 	}
 	
+	public static int generiereBildID() {
+		int id = 0;
+		Connection con = DBConnection.getConnection();
+		
+		try {
+			PreparedStatement stmt = con.prepareStatement("select max(id) as max from images");
+			ResultSet r = stmt.executeQuery();
+			
+			while(r.next()) {
+				id = r.getInt("max");
+			}
+			stmt.close();
+			r.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return id + 1;
+	}
+	
 	public static void main(String[] args) {
 		System.out.print(generiereUserID());
 	}

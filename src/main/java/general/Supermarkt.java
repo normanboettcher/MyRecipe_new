@@ -10,15 +10,21 @@ public abstract class Supermarkt {
 	
 	private HashMap<Integer, Food> sortiment, angebote;
 	
-	protected Supermarkt(HashMap<Integer, Food> sortiment, HashMap<Integer, Food> angebote) {
-		this.sortiment = sortiment;
-		this.angebote = angebote;
+	protected Supermarkt() {	
+		this.sortiment = new HashMap<Integer, Food>();
+		this.angebote = new HashMap<Integer, Food>();
 	}
 	
 	protected abstract void setBezeichnung();
 	
+	protected abstract void initSortiment();
+	
 	public HashMap<Integer, Food> getAngebote() {
 		return angebote;
+	}
+	
+	public String getBezeichnung() {
+		return bez;
 	}
 	
 	public Food getAngebotByKey(int key) {
@@ -39,10 +45,6 @@ public abstract class Supermarkt {
 	
 	public Food getSortimentByKey(int key) {
 		return sortiment.get(key);
-	}
-	
-	public void addSortiment(int key, Food f) {
-		sortiment.put(key, f);
 	}
 	
 	public void removeSortimentByKey(int key) {

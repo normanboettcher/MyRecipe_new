@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import databaseConnection.DBConnection;
-import general.Adress;
+import general.Adresse;
 import managers.PasswortManager;
 import general.User;
 import database.transfer.SpeicherInDatenbank;
@@ -76,7 +76,7 @@ public class RegisterServlet extends HttpServlet {
 			req.getRequestDispatcher("JSP/registerFail.jsp").forward(req, res);
 			
 		} else {
-			User usr = new User(vorname, nachname, email, new Adress(strasse, hausnummer, plz, ort), passwort);
+			User usr = new User(vorname, nachname, email, new Adresse(strasse, hausnummer, plz, ort), passwort);
 
 			SpeicherInDatenbank.speicherUserInDatenbank(usr);
 			

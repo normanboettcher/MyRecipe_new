@@ -46,7 +46,7 @@
 	</nav> </header>
 
 	<!-- Login Bereich-->
-	<form class="box" action="LoginServlet" method="post">
+	<form class="box" action="../LoginServlet" method="post">
 		<h1>Login</h1>
 		<input type="text" name="username" placeholder="Username"> 
 		<input

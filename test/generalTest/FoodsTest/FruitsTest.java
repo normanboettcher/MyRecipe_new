@@ -6,15 +6,15 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import general.foods.Fruit;
+import general.Food;
 
 public class FruitsTest {
 	
-	private Fruit banana;
+	private Food banana;
 	
 	@Before
 	public void initFruitObjects() {
-		banana = new Fruit("Banane", 1.99, "Chiquita");
+		banana = new Food("Banane", 1.99, "Chiquita", "", 1, 1, 1, 1);
 	}
 	
 	@Test
