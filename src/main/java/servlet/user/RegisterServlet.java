@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import databaseConnection.DBConnection;
 import general.Adresse;
 import managers.PasswortManager;
+import managers.RegExManager;
 import general.User;
 import database.transfer.SpeicherInDatenbank;
 
@@ -38,9 +39,23 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	
+		String passwort = null;
+		String passwort2 = null;
+		
+		try {
+			passwort = PasswortManager.generateHash(req.getParameter("passwort"));
+			passwort2 = PasswortManager.generateHash(req.getParameter("passwort2"));
+		} catch (NoSuchAlgorithmException e1) {
+			e1.printStackTrace();
+		}
+		
+		checkEingaben(passwort, passwort2, req, res);	
+	}
+	
+	private void checkEingaben(String passwort, String passwort2, HttpServletRequest req, HttpServletResponse res) 
+			throws ServletException, IOException {
 		boolean fehler_aufgetreten = false;
-		String fehlermeldung_email = "";
-		String fehlermeldung_passwort = "";
 		
 		String email = req.getParameter("email");
 		String vorname = req.getParameter("vor_name");
@@ -49,31 +64,57 @@ public class RegisterServlet extends HttpServlet {
 		String hausnummer = req.getParameter("nr");
 		String plz = req.getParameter("plz");
 		String ort = req.getParameter("stadt");
-		String passwort = null;
-		String passwort2 = null;
-		try {
-			passwort = PasswortManager.generateHash(req.getParameter("passwort"));
-			passwort2 = PasswortManager.generateHash(req.getParameter("passwort2"));
-		} catch (NoSuchAlgorithmException e1) {
-			e1.printStackTrace();
-		}
 		
 		if(pruefeObEmailVorhanden(email)) {
-			fehlermeldung_email = "Die Email-Adresse: '"+ email +"' ist bereits vergeben.";
 			fehler_aufgetreten = true;
+			boolean email_vorhanden = true;
+			req.setAttribute("fehlermeldung_email", email_vorhanden);
 		}
 		
 		if(!(passwort.equals(passwort2))) {
-			fehlermeldung_passwort = "Die Passw�rter stimmen nicht �berein";
+			boolean passwort_nicht_identisch = true;
 			fehler_aufgetreten = true;
+			req.setAttribute("fehlermeldung_passwort", passwort_nicht_identisch);
 		}
 		
+		if(!(RegExManager.pruefeEmail(email))) {
+			fehler_aufgetreten = true;
+			boolean email_falsch = true;
+			req.setAttribute("email_falsch", email_falsch);
+		}
+		
+		if (!(RegExManager.pruefeHausnummer(hausnummer))) {
+			fehler_aufgetreten = true;
+			boolean hn_falsch = true;
+			req.setAttribute("hn_falsch", hn_falsch);
+		}
+		
+		if(!(RegExManager.pruefePasswort(passwort))) {
+			fehler_aufgetreten = true;
+			boolean pw_falsch = true;
+			req.setAttribute("pw_falsch", pw_falsch);
+		}
+		
+		if(!(RegExManager.pruefePLZ(plz))) {
+			fehler_aufgetreten = true;
+			boolean plz_falsch = true;
+			req.setAttribute("plz_falsch", plz_falsch);
+		}
+		
+		if(!(RegExManager.pruefeStadt(ort))) {
+			fehler_aufgetreten = true;
+			boolean city_falsch = true;
+			req.setAttribute("city_falsch", city_falsch);
+		}
+		
+		if(!(RegExManager.pruefeStrasse(strasse))) {
+			fehler_aufgetreten = true;
+			boolean str_falsch = true;
+			req.setAttribute("str_falsch", str_falsch);
+		}
 		
 		if(fehler_aufgetreten) {
-			req.setAttribute("fehlermeldung_email", fehlermeldung_email);
-			req.setAttribute("fehlermeldung_passwort", fehlermeldung_passwort);
-			
-			req.getRequestDispatcher("JSP/registerFail.jsp").forward(req, res);
+			req.getRequestDispatcher("JSP/register.jsp").forward(req, res);
 			
 		} else {
 			User usr = new User(vorname, nachname, email, new Adresse(strasse, hausnummer, plz, ort), passwort);

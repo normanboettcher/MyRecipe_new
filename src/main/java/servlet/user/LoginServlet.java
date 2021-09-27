@@ -67,7 +67,7 @@ public class LoginServlet extends HttpServlet {
 			 */
 			if(!(userIstAdmin(username))) {
 				session.setAttribute("user", holeEingeloggtenUser(username));
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				request.getRequestDispatcher("JSP/index.jsp").forward(request, response);
 			} else {
 				session.setAttribute("admin", holeEingeloggtenAdmin(username));
 				request.getRequestDispatcher("JSP/index.jsp").forward(request, response);
@@ -152,6 +152,8 @@ public class LoginServlet extends HttpServlet {
 						new Adresse(r.getString("strasse"), r.getString("hausnummer"), r.getString("plz"), r.getString("ort")), 
 						r.getString("passwort"));
 			}
+			stmt.close();
+			r.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} 
@@ -178,6 +180,8 @@ public class LoginServlet extends HttpServlet {
 						new Adresse(r.getString("strasse"), r.getString("hausnummer"), r.getString("plz"), r.getString("ort")), 
 								r.getString("passwort"));
 			}
+			r.close();
+			stmt.close();
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} 

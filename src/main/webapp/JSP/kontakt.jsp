@@ -38,7 +38,7 @@
 				<li><a class="nav-link" href="#"><i
 						class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
 
-				<li><a class="nav-link" href="Login.jsp"><i class="fa fa-user"></i>
+				<li><a class="nav-link" href="login.jsp"><i class="fa fa-user"></i>
 						Mein Konto</a></li>
 			</ul>
 		</div>
