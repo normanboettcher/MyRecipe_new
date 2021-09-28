@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Sortiment von ${supermarkt.getBezeichnung()}</title>
 </head>
 <body>
 <p>Sortiment von ${supermarkt.getBezeichnung()}</p>
