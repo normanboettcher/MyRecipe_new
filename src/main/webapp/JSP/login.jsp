@@ -62,6 +62,7 @@
 		<input type="text" name="username" placeholder="Username"> 
 		<input
 			type="password" name="pw" placeholder="Password"> 
+			
 		<input
 			type="submit" name="" value="Login"> <a href="kontakt.jsp">Lost
 			your password?</a><br> 
