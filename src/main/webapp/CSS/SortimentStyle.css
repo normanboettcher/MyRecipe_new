@@ -1,0 +1,31 @@
+@charset "UTF-8";
+body {
+	background:gray;
+	margin: 0px;
+	padding: 0px;
+	font-family: sans-serif;
+}
+.regform {
+	margin-top:40px;
+	width: 1000px;
+	background-color: rgb(0,0,0,0.6);
+	margin:auto;
+	color: #FFFFFF;
+	padding: 10px 0px 10px 0px;
+	text-align: center;
+	border-radius: 15px 15px 0px 0px;
+}
+.main {
+	background-color: rgb(0,0,0,0.5);
+	width: 1000px;
+	margin: auto;
+}
+form {
+	padding:10px;
+}
+.table td,.table th {
+	border: 2px white solid;
+	color: white;
+	border-collapse: separate;
+}
+.table tr:hover {background-color: black;}

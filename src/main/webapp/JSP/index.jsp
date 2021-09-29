@@ -6,7 +6,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="icon" href="<%= request.getContextPath() %>/IMG/logo.png">
+<link rel="icon" href="<%=request.getContextPath()%>/IMG/logo.png">
 <script src="https://kit.fontawesome.com/e7e1f4a24e.js"
 	crossorigin="anonymous"></script>
 <link
@@ -35,8 +35,9 @@
 <!-- Sticky Navbar with Logo --> <nav
 	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
-	<a class="navbar-brand" href="index.jsp"><img src="<%= request.getContextPath() %>/IMG/logo.png"
-		alt="" width="50" height="45"> MyRecipe</a>
+	<a class="navbar-brand" href="index.jsp"><img
+		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
+		height="45"> MyRecipe</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 		data-bs-target="#navbarNav" aria-controls="navbarNav"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -55,13 +56,30 @@
 					class="fas fa-store-alt"></i> Händler
 			</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<li><button class="dropdown-item" href="#">Lidl</button></li>
+					<li><form action="../ZeigeSortimentServlet" method="get">
+							<button name="supermarkt" value="lidl"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i> Lidl
+							</button>
+						</form></li>
 					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Penny</a></li>
+					<li><form action="../ZeigeSortimentServlet" method="get">
+							<button name="supermarkt" value="lidl"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i> Penny
+							</button>
+						</form></li>
 					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Rewe</a></li>
-					
+					<li><form action="../ZeigeSortimentServlet" method="get">
+							<button name="supermarkt" value="lidl"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i> Rewe
+							</button>
+						</form></li>
+
 				</ul></li>
+			</form>
+			</li>
 			<li><a class="nav-link" href="test.jsp"><i
 					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
 
@@ -145,7 +163,18 @@
 			</table>
 		</div>
 	</form>
-
+	<div class="popup" id="popup-1">
+		<div class="overlay"></div>
+		<div class="content">
+			<div class="close-btn" onclick="togglePopup()">&times;</div>
+		</div>
+	</div>
+	<button onclick="togglePopup()" style="border:none; background:none; align:left; margin-top:600px;">:)</button>
+	<script type="text/javascript">
+		function togglePopup() {
+			document.getElementById("popup-1").classList.toggle("active");
+		}
+	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
