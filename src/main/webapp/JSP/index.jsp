@@ -20,17 +20,8 @@
 </head>
 <header>
 
-<div class="objektPruefung">
-	<c:if test="${user != null }">
-		<p>Willkommen zurück, ${user.getFullName()}</p>
-		<li><a href="LogoutServlet" class="men"><i
-				class="fa fa-unlock-alt"></i> Logout</a></li>
-	</c:if>
-	<c:if test="${admin != null }">
-		<p>Willkommen zurück, ${admin.getFullName()}</p>
-		<li><a href="LogoutServlet" class="men"><i
-				class="fa fa-unlock-alt"></i> Logout</a></li>
-	</c:if>
+
+	
 </div>
 <!-- Sticky Navbar with Logo --> <nav
 	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -82,9 +73,16 @@
 			</li>
 			<li><a class="nav-link" href="test.jsp"><i
 					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
-
 			<li><a class="nav-link" href="login.jsp"><i
 					class="fa fa-user"></i> Mein Konto</a></li>
+					<c:if test="${user != null }">
+		<li><a class="nav-link" href="LogoutServlet"><i
+				class="fa fa-unlock-alt"></i> Logout</a></li>
+					</c:if>
+					<c:if test="${admin != null }">
+		<li><a class="nav-link" href="LogoutServlet"><i
+				class="fa fa-unlock-alt"></i> Logout</a></li>
+	             </c:if>
 		</ul>
 	</div>
 </div>
