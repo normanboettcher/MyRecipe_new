@@ -18,32 +18,43 @@
 </head>
 <body>
 	<header> <!-- Sticky Navbar with Logo --> <nav
-		class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-	<div class="container-fluid">
-		<a class="navbar-brand" href="JSP/index.jsp"><img
-			src="<%= request.getContextPath() %>/IMG/logo.png" alt="" width="50" height="45"> MyRecipe</a>
-		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-			data-bs-target="#navbarNav" aria-controls="navbarNav"
-			aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-		<div class="collapse navbar-collapse" id="navbarNav">
-			<ul class="navbar-nav">
-				<li><a class="nav-link" href="#"><i class="fas fa-utensils"></i>
-						Rezepte</a></li>
+	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+	<a class="navbar-brand" href="index.jsp"><img src="../IMG/logo.png"
+		alt="" width="50" height="45"> MyRecipe</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+		data-bs-target="#navbarNav" aria-controls="navbarNav"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-				<li><a class="nav-link" href="#"><i
-						class="fas fa-apple-alt"></i> Produkte</a></li>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<li><a class="nav-link" href="#"><i class="fas fa-utensils"></i>
+					Rezepte</a></li>
 
-				<li><a class="nav-link" href="#"><i
-						class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
 
-				<li><a class="nav-link" href="login.jsp"><i
-						class="fa fa-user"></i> Mein Konto</a></li>
-			</ul>
-		</div>
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
+					class="fas fa-store-alt"></i> Händler
+			</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="#">Lidl</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="#">Penny</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="#">Rewe</a></li>
+				</ul></li>
+			<li><a class="nav-link" href="test.jsp"><i
+					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
+
+			<li><a class="nav-link" href="login.jsp"><i
+					class="fa fa-user"></i> Mein Konto</a></li>
+		</ul>
 	</div>
-	</nav> </header>
+</div>
+</nav> </header>
 
 	<!-- Login Bereich-->
 	<form class="box" action="../LoginServlet" method="post">
@@ -51,6 +62,7 @@
 		<input type="text" name="username" placeholder="Username"> 
 		<input
 			type="password" name="pw" placeholder="Password"> 
+			
 		<input
 			type="submit" name="" value="Login"> <a href="kontakt.jsp">Lost
 			your password?</a><br> 

@@ -14,22 +14,23 @@
 	rel="stylesheet"
 	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/indexStyle.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/CSS/indexStyle.css">
 <title>MyRecipe</title>
 </head>
-<header> 
+<header>
 
-<div class = "objektPruefung">
+<div class="objektPruefung">
 	<c:if test="${user != null }">
-		 <p>Willkommen zurück, ${user.getFullName()}</p>
-	 		<li><a href="LogoutServlet" class="men"><i
+		<p>Willkommen zurück, ${user.getFullName()}</p>
+		<li><a href="LogoutServlet" class="men"><i
 				class="fa fa-unlock-alt"></i> Logout</a></li>
-	</c:if> 
-	 <c:if test="${admin != null }">
-		 <p>Willkommen zurück, ${admin.getFullName()}</p>
-			<li><a href="LogoutServlet" class="men"><i
-					class="fa fa-unlock-alt"></i> Logout</a></li>
-	</c:if> 
+	</c:if>
+	<c:if test="${admin != null }">
+		<p>Willkommen zurück, ${admin.getFullName()}</p>
+		<li><a href="LogoutServlet" class="men"><i
+				class="fa fa-unlock-alt"></i> Logout</a></li>
+	</c:if>
 </div>
 <!-- Sticky Navbar with Logo --> <nav
 	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -41,19 +42,25 @@
 		aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-	
+
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
 			<li><a class="nav-link" href="#"><i class="fas fa-utensils"></i>
 					Rezepte</a></li>
 
-			<li>
-			<form class="nav-link" action ="../ZeigeSortimentServlet" method = "get">
-				<i class="fas fa-apple-alt"></i>
-					<button name= "supermarkt" value = "lidl">Lidl</button>
-			</form>
-			</li>
-			
+
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
+					class="fas fa-store-alt"></i> Händler
+			</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<li><a class="dropdown-item" href="#">Lidl</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="#">Penny</a></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><a class="dropdown-item" href="#">Rewe</a></li>
+				</ul></li>
 			<li><a class="nav-link" href="test.jsp"><i
 					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
 
