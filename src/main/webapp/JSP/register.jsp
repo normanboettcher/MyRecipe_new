@@ -6,7 +6,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="icon" href="src/main/webapp/IMG/logo.png">
+<link rel="icon" href="<%=request.getContextPath()%>/IMG/logo.png">
 <script src="https://kit.fontawesome.com/e7e1f4a24e.js"
 	crossorigin="anonymous"></script>
 <link

@@ -1,0 +1,89 @@
+artikelnr,artikelbez,artikelpreis,hersteller,kategorie,vegan,vegetarisch,lokal,bio,image_id
+2,ja! Margarine,,ja!,Margarine,1,1,0,0,59
+3,Margarine bio,,Fettwerk,Margarine,1,1,0,1,59
+4,Wildlachsfilet,,Ozean Sea Msc,Fisch,0,0,0,0,54
+5,Kerrygold extra,,Kerrygold,Margarine,1,1,0,0,55
+6,Buitoni Pasta,,Buitoni,Nudeln,1,1,0,0,72
+7,Ja! Nudeln,,ja!,Nudeln,1,1,0,0,98
+8,Ja ! Reis,,ja!,Reis,1,1,0,0,94
+9,ja! Spaghetti,,ja!,Nudeln,1,1,0,0,104
+10,Basmati Reis,,Thailand,Reis,1,1,0,0,1
+11,Eier Bodenhaltung ja!,,ja!,Eier,0,1,0,0,93
+12,Eier Freiland ,,Bauernhof,Eier,0,1,0,1,5
+13,Eier Bauernhof,,Bauer Bertram,Eier,0,1,1,1,70
+14,ja! Hackfleisch,,ja!,Fleisch,0,0,0,0,106
+15,Hackfleisch Bio,,Biohof Pferdekuh,Fleisch,0,0,0,1,10
+16,Hackfleisch Bauernhof,,Bauer Bernd,Fleisch,0,0,1,1,56
+17,ja! Steak ,,ja!,Fleisch,0,0,0,0,99
+18,Steak Bio,,Biohof Schweinegulasch,Fleisch,0,0,0,1,69
+19,Steak vom Land,,Land der Schweine,Fleisch,0,0,1,1,49
+20,Rispentomaten,,ja!,Gemüse,1,1,0,0,78
+21,Cherrytomaten,,ja!,Gemüse,1,1,0,0,91
+22,Rispentomaten Bio,,Tomatenacker,Gemüse,1,1,0,1,15
+23,Cherrytomaten Bio,,Tomatenacker,Gemüse,1,1,0,1,76
+24,Salatgurke,,ja!,Gemüse,1,1,0,0,57
+25,Salatgurke bio,,Gurkenpalast,Gemüse,1,1,0,1,4
+26,Bananen,,ja!,Obst,1,1,0,0,47
+27,Bananen,,Chiquita,Obst,1,1,0,0,17
+28,Bananen Bio,,Bio Banana,Obst,1,1,0,1,22
+29,Apfel Bio,,Apfeljockel,Obst,1,1,0,1,36
+30,Apfel ,,ja!,Obst,1,1,0,0,67
+31,Apfel ,,Apfeldream,Obst,1,1,1,1,85
+32,Kiwi,,Neuseeland,Obst,1,1,0,0,18
+33,Kiwi Gold,,Neuseeland,Obst,1,1,0,0,53
+34,Weintrauben Bio,,Traubenhorst,Obst,1,1,0,0,52
+35,Weintrauben ,,ja!,Obst,1,1,0,0,31
+36,Garnelen,,Ostsee,Meeresfrüchte,0,0,0,0,39
+37,Garnelen Bio,,Ostsee Legende,Meeresfrüchte,0,0,0,0,2
+38,Krabben,,Nordsee,Meeresfrüchte,0,0,0,0,87
+39,Krabben Bio,,Nordsee,Meeresfrüchte,0,0,0,0,63
+40,Forelle,,Wellensegler,Fisch,0,0,0,0,66
+41,ja! Thunfisch,,ja!,Fisch,0,0,0,0,105
+42,Thunfisch,,Saupiquet,Fisch,0,0,0,0,90
+43,Champignons,,Pilzfarm,Pilze,1,1,0,0,12
+44,ja! Champignons ,,ja!,Pilze,1,1,0,1,12
+45,Tomatenmark,,ja!,sonstiges,1,1,0,0,107
+46,Tomatenmark ,,oro,sonstiges,1,1,0,0,23
+47,Tortellini Mozarella,,ja!,Nudeln,1,1,0,0,27
+48,Tortellini Rindfleisch,,ja!,Nudeln,1,1,0,0,34
+49,Speisekartoffeln,,Biohof,Kartoffeln,1,1,0,1,19
+50,Speisekartoffeln,,ja!,Kartoffeln,1,1,0,0,82
+51,Speisekartoffeln,,Kartoffeluniversum,Kartoffeln,1,1,1,1,86
+52,Zwiebeln,,ja!,Gemüse,1,1,0,0,32
+53,Zwiebeln bio,,Zwiebelhannes,Gemüse,1,1,0,1,32
+54,Süßkartoffeln,,toffel koffel,Kartoffeln,1,1,0,0,16
+55,Bockwurst,,ja!,Fleisch,0,0,0,0,103
+56,Bockwurst,,Meica,Fleisch,0,0,0,0,33
+57,Rocula,,ja!,Gemüse,1,1,0,0,41
+58,Milch,,ja!,Milchprodukte,0,1,0,0,97
+59,Milch Bio,,Kuhdorf,Milchprodukte,0,1,0,1,81
+60,Milch lokal,,Milch Michel,Milchprodukte,0,1,1,1,58
+61,Bacon,,ja!,Fleisch,0,0,0,0,96
+62,Bacon Bio,,Bauer Bertram,Fleisch,0,0,0,0,61
+63,Mandelmilch,,Vegan Vertan,Milchprodukte,0,1,0,1,92
+64,Haferflocken zart,,ja!,sonstiges,1,1,0,0,46
+65,Haferflcoken kernig,,ja!,sonstiges,1,1,0,0,78
+66,Haferflocken zart,,Koelln,sonstiges,1,1,0,0,35
+67,Haferflocken kernig,,Koelln,sonstiges,1,1,0,0,42
+68,Knoblauch ,,ja!,Gemüse,1,1,0,0,88
+69,Knoblauch Bio,,Knoblauch Kalle,Gemüse,1,1,0,1,88
+70,Kopfsalat,,ja!,Gemüse,1,1,0,0,75
+71,Salz,,ja!,sonstiges,1,1,0,0,95
+72,Salz Bio,,Salzgrube,sonstiges,1,1,0,1,48
+73,Brokkoli ,,ja!,Gemüse,1,1,0,0,20
+74,Brokkoli Bio,,ja! Bio,Gemüse,1,1,0,1,20
+75,Paprika rot,,ja!,Gemüse,1,1,0,0,79
+76,Paprika rot Bio,,ja ! Bio,Gemüse,1,1,0,1,83
+77,Paprika gelb,,ja!,Gemüse,1,1,0,0,89
+78,Paprika gelb Bio,,ja! Bio,Gemüse,1,1,0,1,89
+79,Paprika grün,,ja!,Gemüse,1,1,0,0,37
+80,Paprika grün Bio,,ja! Bio,Gemüse,1,1,0,1,26
+81,Olivenöl ,,ja!,Öl,1,1,0,0,102
+82,Olivenöl Bio,,ja! Bio,Öl,1,1,0,1,60
+83,Rapsöl,,ja!,Öl,1,1,0,0,101
+84,Rapsöl Bio,,ja! Bio,Öl,1,1,0,1,21
+85,Joghurt Natur,,ja!,Milchprodukte,0,1,0,0,100
+86,Joghurt Natur,,Milram,Milchprodukte,0,1,0,1,64
+87,Curry,,ja!,Gewürze,1,1,0,0,44
+88,Zuchhini,,ja!,Gemüse,1,1,0,0,74
+89,Zucchini,,ja! Bio,Gemüse,1,1,0,1,68

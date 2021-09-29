@@ -55,11 +55,12 @@
 					class="fas fa-store-alt"></i> Händler
 			</a>
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="#">Lidl</a></li>
+					<li><button class="dropdown-item" href="#">Lidl</button></li>
 					<li><hr class="dropdown-divider"></li>
 					<li><a class="dropdown-item" href="#">Penny</a></li>
 					<li><hr class="dropdown-divider"></li>
 					<li><a class="dropdown-item" href="#">Rewe</a></li>
+					
 				</ul></li>
 			<li><a class="nav-link" href="test.jsp"><i
 					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
