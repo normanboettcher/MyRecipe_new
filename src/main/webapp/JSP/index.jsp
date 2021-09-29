@@ -6,7 +6,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link rel="icon" href="src/main/webapp/IMG/logo.png">
+<link rel="icon" href="<%= request.getContextPath() %>/IMG/logo.png">
 <script src="https://kit.fontawesome.com/e7e1f4a24e.js"
 	crossorigin="anonymous"></script>
 <link
@@ -34,7 +34,7 @@
 <!-- Sticky Navbar with Logo --> <nav
 	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
-	<a class="navbar-brand" href="index.jsp"><img src="../IMG/logo.png"
+	<a class="navbar-brand" href="index.jsp"><img src="<%= request.getContextPath() %>/IMG/logo.png"
 		alt="" width="50" height="45"> MyRecipe</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 		data-bs-target="#navbarNav" aria-controls="navbarNav"
