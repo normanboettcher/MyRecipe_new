@@ -55,16 +55,23 @@
 						</form></li>
 					<li><hr class="dropdown-divider"></li>
 					<li><form action="../ZeigeSortimentServlet" method="get">
-							<button name="supermarkt" value="lidl"
+							<button name="supermarkt" value="penny"
 								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
 								</i> Penny
 							</button>
 						</form></li>
 					<li><hr class="dropdown-divider"></li>
 					<li><form action="../ZeigeSortimentServlet" method="get">
-							<button name="supermarkt" value="lidl"
+							<button name="supermarkt" value="rewe"
 								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
 								</i> Rewe
+							</button>
+						</form></li>
+						
+						<li><form action="../ZeigeSortimentServlet" method="get">
+							<button name="supermarkt" value="netto"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i> Netto
 							</button>
 						</form></li>
 
@@ -76,11 +83,11 @@
 			<li><a class="nav-link" href="login.jsp"><i
 					class="fa fa-user"></i> Mein Konto</a></li>
 					<c:if test="${user != null }">
-		<li><a class="nav-link" href="LogoutServlet"><i
+		<li><a class="nav-link" href="../LogoutServlet"><i
 				class="fa fa-unlock-alt"></i> Logout</a></li>
 					</c:if>
 					<c:if test="${admin != null }">
-		<li><a class="nav-link" href="LogoutServlet"><i
+		<li><a class="nav-link" href="../LogoutServlet"><i
 				class="fa fa-unlock-alt"></i> Logout</a></li>
 	             </c:if>
 		</ul>
