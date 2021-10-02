@@ -137,6 +137,32 @@
 				<tr>
 					<td
 						style="text-align: center; padding-top: 25px; padding-bottom: 10px;"
+						colspan="3"><p id="weitereEigenschaften">Ihre gewünschte Speiseart:</p></td>
+				</tr>
+				<tr>
+					<td style="width: 33%; position: absolut;"><input
+						type="checkbox" id="bio"><label for="bio"><p
+								style="color: white; white-space: nowrap;">Nudelgericht</p></label></td>
+					<td style="width: 33%; position: absolut;"><input
+						type="checkbox" id="bio"><label for="bio"><p
+								style="color: white; white-space: nowrap;">Reisgericht</p></label></td>
+					<td style="width: 33%; position: absolut;"><input
+						type="checkbox" id="bio"><label for="bio"><p
+								style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>			
+				<tr>
+				<tr>
+					<td style="width: 33%; position: absolut;"><input
+						type="checkbox" id="bio"><label for="bio"><p
+								style="color: white; white-space: nowrap;">Fast-Food</p></label></td>
+					<td style="width: 33%; position: absolut;"><input
+						type="checkbox" id="bio"><label for="bio"><p
+								style="color: white; white-space: nowrap;">Suppe</p></label></td>
+					<td style="width: 33%; position: absolut;"><input
+						type="checkbox" id="bio"><label for="bio"><p
+								style="color: white; white-space: nowrap;">Salat</p></label></td>			
+				<tr>
+					<td
+						style="text-align: center; padding-top: 25px; padding-bottom: 10px;"
 						colspan="3"><p id="weitereEigenschaften">Eigenschaften
 							die Ihr Gericht haben soll:</p></td>
 				</tr>
@@ -151,20 +177,8 @@
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="regional"> <label for="regional"><p
-								style="color: white; white-space: nowrap;">Reisgericht</p></label></td>
+								style="color: white; white-space: nowrap;">Fleischgericht</p></label></td>
 				</tr>
-				<tr>
-					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Nudelgericht</p></label></td>
-					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="horns"> <label for="horns"><p
-								style="color: white; white-space: nowrap;">Suppe</p></label></td>
-					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="regional"> <label for="regional"><p
-								style="color: white; white-space: nowrap;">Fast Food</p></label></td>
-				</tr>
-
 			</table>
 		</div>
 	</form>
