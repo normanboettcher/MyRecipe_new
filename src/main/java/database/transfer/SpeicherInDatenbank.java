@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import databaseConnection.DBConnection;
+import general.Food;
 import general.User;
 import managers.IdGenerator;
 
@@ -37,10 +38,10 @@ public class SpeicherInDatenbank {
 			schreibeUserInDatenbank.setString(3, usr.getPasswort());
 			schreibeUserInDatenbank.setString(4, usr.getVorname());
 			schreibeUserInDatenbank.setString(5, usr.getNachname());
-			schreibeUserInDatenbank.setString(6, usr.getAdress().getStreet());
-			schreibeUserInDatenbank.setString(7, usr.getAdress().getNumber());
-			schreibeUserInDatenbank.setString(8, usr.getAdress().getPLZ());
-			schreibeUserInDatenbank.setString(9, usr.getAdress().getCity());
+			schreibeUserInDatenbank.setString(6, usr.getAdresse().getStreet());
+			schreibeUserInDatenbank.setString(7, usr.getAdresse().getNumber());
+			schreibeUserInDatenbank.setString(8, usr.getAdresse().getPLZ());
+			schreibeUserInDatenbank.setString(9, usr.getAdresse().getCity());
 			schreibeUserInDatenbank.executeUpdate();
 			schreibeUserInDatenbank.close();
 		} catch (SQLException e) {
@@ -59,9 +60,42 @@ public class SpeicherInDatenbank {
 			
 			schreibeBildInDatenbank.setInt(1, IdGenerator.generiereBildID());
 			schreibeBildInDatenbank.setString(2, "IMG/products/" 
-			+ laden + "/" +f.getName());
+			+ laden + "/" + f.getName());
 			schreibeBildInDatenbank.executeUpdate();
 			schreibeBildInDatenbank.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void speicherAngeboteInDatenbank(String laden, Food f) {
+		Connection con = DBConnection.getConnection();
+		
+		try {
+			String speicherAngebot = "insert into ?_angebote "
+					+ "values"
+					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			
+			PreparedStatement stmt = con.prepareStatement(speicherAngebot);
+			
+			stmt.setString(1, laden.toLowerCase());
+			
+			stmt.setInt(2, IdGenerator.generiereAngeboteID(laden));
+			stmt.setString(3, f.getBezeichnung());
+			stmt.setDouble(4, f.getPreis());
+			stmt.setString(5, f.getHersteller());
+			stmt.setString(6, f.getKategorie());
+			stmt.setInt(7, f.getVegan());
+			stmt.setInt(8, f.getVeggy());
+			stmt.setInt(9, f.getLokal());
+			stmt.setInt(10, f.getBio());
+			stmt.setString(11, f.getImage());
+			
+			stmt.executeUpdate();
+			stmt.close();
+			con.close();
+			
+			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}

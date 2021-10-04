@@ -36,7 +36,7 @@ public class Rewe extends Supermarkt{
 				Food f = new Food(r.getString("artikelbez"), r.getDouble("artikelpreis"),
 						r.getString("hersteller"), r.getString("pfad").substring(16), 
 						r.getInt("vegan"), r.getInt("vegetarisch"), r.getInt("lokal"),
-						r.getInt("bio"));
+						r.getInt("bio"), r.getString("hersteller"));
 				getSortiment().put(r.getInt("artikelNr"), f);
 			}
 			r.close();

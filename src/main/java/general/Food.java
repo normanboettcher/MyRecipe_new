@@ -2,52 +2,30 @@ package general;
 
 public class Food {
 	
-	private boolean vegetarian, vegan, local, bio;
+	private int vegetarisch, vegan, lokal, bio;
 	
-	private String bez, manufacturer, image;
-	private double price;
+	private String bez, hersteller, image, kategorie;
+	private double preis;
 
-	public Food(String bez, double price, String manufacturer, String image,
-			int veggy, int vegan, int local, int bio) {
+	public Food(String bez, double preis, String hersteller, String image,
+			int veggy, int vegan, int lokal, int bio, String kategorie) {
 		this.bez = bez;
-		this.price = price;
-		this.manufacturer = manufacturer;
+		this.preis = preis;
+		this.hersteller = hersteller;
 		this.image = image;
-		
-		if(veggy == 0) {
-			this.vegetarian = false;
-		} else {
-			this.vegetarian = true;
-		}
-		
-		if(vegan == 0) {
-			this.vegan = false;
-		} else {
-			this.vegan = true;
-		}
-		
-		if(local == 0) {
-			this.local = false;
-		} else {
-			this.local = true;
-		}
-		
-		if(bio == 0) {
-			this.bio = false;
-		} else {
-			this.bio = true;
-		}
+		this.kategorie = kategorie;
 	}
 	
 	
 	//-----------------Simple getters for Food-----------------
-	public double getPrice() {return price;}
+	public double getPreis() {return preis;}
 	public String getBezeichnung() {return bez;}
-	public boolean getVeggy() {return vegetarian;}
-	public boolean getVegan() {return vegan;}
-	public String getManufacturer() {return manufacturer;}
+	public int getVeggy() {return vegetarisch;}
+	public int getVegan() {return vegan;}
+	public String getHersteller() {return hersteller;}
 	public String getImage() {return image;}
-	public boolean getBio() {return bio;}
-	public boolean getLocal() {return local;}
+	public int getBio() {return bio;}
+	public int getLokal() {return lokal;}
+	public String getKategorie() {return kategorie;}
 	
 }

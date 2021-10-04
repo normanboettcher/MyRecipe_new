@@ -27,7 +27,7 @@ public class User {
 	public String getNachname() {return name;}
 	public String getFullName() {return vorname + " " + name;}
 	public String getEmail() {return email;}
-	public Adresse getAdress() {return adrs;}
+	public Adresse getAdresse() {return adrs;}
 	public String getPasswort() {return pw;}
 	public int getID() {return id;}
 }
