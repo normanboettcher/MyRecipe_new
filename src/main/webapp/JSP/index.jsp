@@ -18,12 +18,7 @@
 	href="<%=request.getContextPath()%>/CSS/indexStyle.css">
 <title>MyRecipe</title>
 </head>
-<header>
-
-
-	
-</div>
-<!-- Sticky Navbar with Logo --> <nav
+<header><!-- Sticky Navbar with Logo --> <nav
 	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
 	<a class="navbar-brand" href="index.jsp"><img
@@ -37,10 +32,8 @@
 
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<li><a class="nav-link" href="#"><i class="fas fa-utensils"></i>
+			<li><a class="nav-link" href="rezepte.jsp"><i class="fas fa-utensils"></i>
 					Rezepte</a></li>
-
-
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
@@ -50,28 +43,36 @@
 					<li><form action="../ZeigeSortimentServlet" method="get">
 							<button name="supermarkt" value="lidl"
 								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i> Lidl
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/lidl_logo.png" alt=""
+									width="30" height="25"> Lidl</a>
 							</button>
 						</form></li>
 					<li><hr class="dropdown-divider"></li>
 					<li><form action="../ZeigeSortimentServlet" method="get">
 							<button name="supermarkt" value="penny"
 								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i> Penny
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/penny_logo.png" alt=""
+									width="30" height="25"> Penny</a>
 							</button>
 						</form></li>
 					<li><hr class="dropdown-divider"></li>
 					<li><form action="../ZeigeSortimentServlet" method="get">
 							<button name="supermarkt" value="rewe"
 								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i> Rewe
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/rewe_logo.png" alt=""
+									width="30" height="25"> Rewe</a>
 							</button>
 						</form></li>
-						
-						<li><form action="../ZeigeSortimentServlet" method="get">
+					<li><hr class="dropdown-divider"></li>
+					<li><form action="../ZeigeSortimentServlet" method="get">
 							<button name="supermarkt" value="netto"
 								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i> Netto
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/netto_logo.png" alt=""
+									width="25" height="25"> Netto</a>
 							</button>
 						</form></li>
 
@@ -80,22 +81,20 @@
 			</li>
 			<li><a class="nav-link" href="test.jsp"><i
 					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
+			<c:if test="${kunde == null && admin == null }">				
 			<li><a class="nav-link" href="login.jsp"><i
-					class="fa fa-user"></i> Mein Konto</a></li>
-					<c:if test="${user != null }">
-		<li><a class="nav-link" href="../LogoutServlet"><i
-				class="fa fa-unlock-alt"></i> Logout</a></li>
-					</c:if>
-					<c:if test="${admin != null }">
-		<li><a class="nav-link" href="../LogoutServlet"><i
-				class="fa fa-unlock-alt"></i> Logout</a></li>
-	             </c:if>
+					class="fa fa-user"></i> Login</a></li>
+			</c:if>
+			<c:if test="${kunde != null || admin != null }">
+				<li><a class="nav-link" href="../LogoutServlet"><i
+						class="fa fa-unlock-alt"></i> Logout</a></li>
+			</c:if>
 		</ul>
 	</div>
 </div>
-</nav> </header>
+</nav></header>
 <body>
-
+<!-- Suche/ Rezeptauswahl --> 
 	<form class="box" action="#" method="post">
 		<div class="boxContainer">
 			<table class="elementsContainer">
@@ -137,7 +136,8 @@
 				<tr>
 					<td
 						style="text-align: center; padding-top: 25px; padding-bottom: 10px;"
-						colspan="3"><p id="weitereEigenschaften">Ihre gewünschte Speiseart:</p></td>
+						colspan="3"><p id="weitereEigenschaften">Ihre gewünschte
+							Speiseart:</p></td>
 				</tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
@@ -148,7 +148,7 @@
 								style="color: white; white-space: nowrap;">Reisgericht</p></label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="bio"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>			
+								style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>
 				<tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
@@ -159,7 +159,7 @@
 								style="color: white; white-space: nowrap;">Suppe</p></label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="bio"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Salat</p></label></td>			
+								style="color: white; white-space: nowrap;">Salat</p></label></td>
 				<tr>
 					<td
 						style="text-align: center; padding-top: 25px; padding-bottom: 10px;"
@@ -181,6 +181,7 @@
 				</tr>
 			</table>
 		</div>
+		<!-- EasterEgg --> 
 	</form>
 	<div class="popup" id="popup-1">
 		<div class="overlay"></div>
@@ -188,7 +189,8 @@
 			<div class="close-btn" onclick="togglePopup()">&times;</div>
 		</div>
 	</div>
-	<button onclick="togglePopup()" style="border:none; background:none; align:left; margin-top:600px;">:)</button>
+	<button onclick="togglePopup()"
+		style="border: none; background: none; align: left; margin-top: 600px;">:)</button>
 	<script type="text/javascript">
 		function togglePopup() {
 			document.getElementById("popup-1").classList.toggle("active");

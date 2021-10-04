@@ -1,0 +1,39 @@
+/* -- @author Thomas Mook -- */
+@charset "UTF-8";
+body {
+	margin: 0px;
+	padding: 0px;
+	background: url("../IMG/logout.jpg");
+	background-size: 1600px;
+	font-family: sans-serif;
+}
+.main {
+	margin-top: 300px;
+}
+.byeText {
+	text-align: center;
+	color: white;
+}
+.regButton {
+	position: center;
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	text-align: center;
+	border: 2px solid white;
+	padding: 14px 40px;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	curser: pointer;
+	width:240px;
+}
+.main button[type = "submit"]:hover {
+	background:#575757;
+	
+}
+.main a {
+	text-decoration:none;
+}

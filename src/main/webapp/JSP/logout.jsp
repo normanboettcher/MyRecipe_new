@@ -1,21 +1,30 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="icon" href="src/main/webapp/IMG/logo.png">
+<script src="https://kit.fontawesome.com/e7e1f4a24e.js"
+	crossorigin="anonymous"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/LogoutStyle.css">
+<title>Login</title>
 </head>
 <body>
-<p>Auf Wiedersehen, ${name} hoffentlich sehen wir uns bald wieder.</p>
-
-<div class = "goodbye_pic">
-	<img src = "IMG/goodbye.jpg" height = "500" width = "750">
+<div class="main">
+<h1 class="byeText">Auf Wiedersehen, ${name} hoffentlich sehen wir uns bald wieder.</h1>
+<!-- Button zurück zum Login-->
+		<a href="login.jsp"><button class="regButton" type="submit">Zurück
+				zum Login</button></a>
+<!-- Button zurück zur Startseite-->
+		<a href="index.jsp"><button class="regButton" type="submit">Zurück
+				zur Startseite</button></a><br>
 </div>
-
-<div>
-	<a href = "JSP/index.jsp">ZurÃ¼ck zur Startseite</a>
-</div>
-
 </body>
 </html>
