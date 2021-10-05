@@ -16,7 +16,7 @@
 	crossorigin="anonymous">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/CSS/SortimentStyle.css">
-<title>${supermarkt.getBezeichnung()} Sortiment</title>
+<title>${supermarkt.getBezeichnung()} Angebote</title>
 </head>
 <body>
 <header>
@@ -78,7 +78,7 @@
 </div>
 </nav> </header>
 	<div class="regform">
-		<h1>${supermarkt.getBezeichnung()} Sortiment</h1>
+		<h1>${supermarkt.getBezeichnung()} Angebote</h1>
 	</div>
 	<div class="main">
 	<form>
@@ -92,18 +92,22 @@
 			<th>Vegan</th>
 			<th>Lokal</th>
 			<th>Bio</th>
+			<th>Originalpreis</th>
+			<th>Rabatt</th>
 		</tr>
-		<c:forEach var="i" begin="2" end="${supermarkt.getSortiment().size()}">
+		<c:forEach var="i" begin="1" end="${supermarkt.getAngebote().size()}">
 			<tr>
-				<td><img src="${supermarkt.getSortiment().get(i).getImage()}"
+				<td><img src="${supermarkt.getAngebote().get(i).getImage()}"
 					alt="produktbild" width="125" height="125"></td>
-				<td>${supermarkt.getSortiment().get(i).getBezeichnung()}</td>
-				<td>${supermarkt.getSortiment().get(i).getPreis()}&#8364;</td>
-				<td>${supermarkt.getSortiment().get(i).getHersteller()}</td>
-				<td>${supermarkt.getSortiment().get(i).getVeggy()}</td>
-				<td>${supermarkt.getSortiment().get(i).getVegan()}</td>
-				<td>${supermarkt.getSortiment().get(i).getLokal()}</td>
-				<td>${supermarkt.getSortiment().get(i).getBio()}</td>
+				<td>${supermarkt.getAngebote().get(i).getBezeichnung()}</td>
+				<td>${supermarkt.getAngebote().get(i).getPreis()}&#8364;</td>
+				<td>${supermarkt.getAngebote().get(i).getHersteller()}</td>
+				<td>${supermarkt.getAngebote().get(i).getVeggy()}</td>
+				<td>${supermarkt.getAngebote().get(i).getVegan()}</td>
+				<td>${supermarkt.getAngebote().get(i).getLokal()}</td>
+				<td>${supermarkt.getAngebote().get(i).getBio()}</td>
+				<td>${supermarkt.getAngebote().get(i).getOriginPreis() }
+				<td>${supermarkt.getAngebote().get(i).getRabatt() * 100} Prozent</td>
 			</tr>
 		</c:forEach>
 	</table>

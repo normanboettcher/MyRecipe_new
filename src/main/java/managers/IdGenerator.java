@@ -63,8 +63,8 @@ public class IdGenerator {
 		
 
 		try {
-			PreparedStatement stmt = con.prepareStatement("select max(id) as max from ?_angebote");
-			stmt.setString(1, laden.toLowerCase());
+			PreparedStatement stmt = con.prepareStatement("select max(artikelnr) as max from " + laden +"_angebote");
+			
 			ResultSet r = stmt.executeQuery();
 			
 			while(r.next()) {

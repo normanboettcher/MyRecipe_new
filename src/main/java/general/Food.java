@@ -1,11 +1,15 @@
 package general;
 
+import managers.DoubleManager;
+
 public class Food {
 	
 	private int vegetarisch, vegan, lokal, bio;
 	
 	private String bez, hersteller, image, kategorie;
-	private double preis;
+	private double preis, originalpreis;
+	
+	private double rabatt;
 
 	public Food(String bez, double preis, String hersteller, String image,
 			int veggy, int vegan, int lokal, int bio, String kategorie) {
@@ -27,5 +31,16 @@ public class Food {
 	public int getBio() {return bio;}
 	public int getLokal() {return lokal;}
 	public String getKategorie() {return kategorie;}
+	public double getRabatt() {return rabatt;}
+	public double getOriginPreis() {return originalpreis;}
+	
+	
+	public void setRabatt(double r) {
+		this.rabatt = DoubleManager.round(r, 2);
+	}
+	
+	public void setOriginalPreis(double p) {
+		this.originalpreis = p;
+	}
 	
 }

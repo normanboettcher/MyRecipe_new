@@ -72,29 +72,26 @@ public class SpeicherInDatenbank {
 		Connection con = DBConnection.getConnection();
 		
 		try {
-			String speicherAngebot = "insert into ?_angebote "
+			String speicherAngebot = "insert into " + laden + "_angebote "
 					+ "values"
 					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement stmt = con.prepareStatement(speicherAngebot);
 			
-			stmt.setString(1, laden.toLowerCase());
 			
-			stmt.setInt(2, IdGenerator.generiereAngeboteID(laden));
-			stmt.setString(3, f.getBezeichnung());
-			stmt.setDouble(4, f.getPreis());
-			stmt.setString(5, f.getHersteller());
-			stmt.setString(6, f.getKategorie());
-			stmt.setInt(7, f.getVegan());
-			stmt.setInt(8, f.getVeggy());
-			stmt.setInt(9, f.getLokal());
-			stmt.setInt(10, f.getBio());
-			stmt.setString(11, f.getImage());
+			stmt.setInt(1, IdGenerator.generiereAngeboteID(laden));
+			stmt.setString(2, f.getBezeichnung());
+			stmt.setDouble(3, f.getPreis());
+			stmt.setString(4, f.getHersteller());
+			stmt.setString(5, f.getKategorie());
+			stmt.setInt(6, f.getVegan());
+			stmt.setInt(7, f.getVeggy());
+			stmt.setInt(8, f.getLokal());
+			stmt.setInt(9, f.getBio());
+			stmt.setString(10, f.getImage());
 			
 			stmt.executeUpdate();
 			stmt.close();
-			con.close();
-			
 			
 		} catch(SQLException e) {
 			e.printStackTrace();

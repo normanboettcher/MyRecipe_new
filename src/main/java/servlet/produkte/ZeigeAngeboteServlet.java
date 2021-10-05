@@ -14,16 +14,16 @@ import general.supermarkets.Penny;
 import general.supermarkets.Rewe;
 
 /**
- * Servlet implementation class ZeigeSortimentServlet
+ * Servlet implementation class ZeigeAngeboteServlet
  */
-@WebServlet("/ZeigeSortimentServlet")
-public class ZeigeSortimentServlet extends HttpServlet {
+@WebServlet("/ZeigeAngeboteServlet")
+public class ZeigeAngeboteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ZeigeSortimentServlet() {
+    public ZeigeAngeboteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -40,28 +40,42 @@ public class ZeigeSortimentServlet extends HttpServlet {
 		switch(supermarkt) {
 			case "lidl" : 
 				Lidl lidl = new Lidl();
-				lidl.initSortiment();
+				if(lidl.getSortiment().size() == 0) {
+					lidl.initSortiment();
+				}
+				lidl.initAngebote();
+				System.out.println(lidl.getAngebote().size());
+				System.out.println(lidl.getSortiment().size());
 				//System.out.println(lidl.getSortiment().get(3).getImage());
 				session.setAttribute("supermarkt", lidl);
-				request.getRequestDispatcher("JSP/sortiment.jsp").forward(request, response);
+				request.getRequestDispatcher("JSP/angebote.jsp").forward(request, response);
 				break;
 			case "penny":
 				Penny penny = new Penny();
-				penny.initSortiment();
+				if(penny.getSortiment().size() == 0) {
+					penny.initSortiment();
+				}
+				penny.initAngebote();
 				session.setAttribute("supermarkt", penny);
-				request.getRequestDispatcher("JSP/sortiment.jsp").forward(request, response);
+				request.getRequestDispatcher("JSP/angebote.jsp").forward(request, response);
 				break;
 			case "rewe":
 				Rewe rewe = new Rewe();
-				rewe.initSortiment();
+				if(rewe.getSortiment().size() == 0) {
+					rewe.initSortiment();
+				}
+				rewe.initAngebote();
 				session.setAttribute("supermarkt", rewe);
-				request.getRequestDispatcher("JSP/sortiment.jsp").forward(request, response);
+				request.getRequestDispatcher("JSP/angebote.jsp").forward(request, response);
 				break;
 			case "netto":
 				Netto netto = new Netto();
-				netto.initSortiment();
+				if(netto.getSortiment().size() == 0) {
+					netto.initSortiment();
+				}
+				netto.initAngebote();
 				session.setAttribute("supermarkt", netto);
-				request.getRequestDispatcher("JSP/sortiment.jsp").forward(request, response);
+				request.getRequestDispatcher("JSP/angebote.jsp").forward(request, response);
 				break;
 			default:
 				break;

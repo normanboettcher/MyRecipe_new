@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Random;
 
+import database.transfer.LoescheAusDatenbank;
+import database.transfer.SpeicherInDatenbank;
 import databaseConnection.DBConnection;
 import general.Food;
+import managers.DoubleManager;
 
 public abstract class Supermarkt {
 	
@@ -16,6 +19,9 @@ public abstract class Supermarkt {
 	
 	private HashMap<Integer, Food> sortiment, angebote;
 	
+	/**
+	 * Konsturktor der Klasse Supermarkt.
+	 */
 	protected Supermarkt() {	
 		this.sortiment = new HashMap<Integer, Food>();
 		this.angebote = new HashMap<Integer, Food>();
@@ -23,49 +29,79 @@ public abstract class Supermarkt {
 	
 	protected abstract void setBezeichnung();
 	
-	protected abstract void initSortiment();
-	
-	public void initAngebote() {
+	public void initSortiment() {
 		Connection con = DBConnection.getConnection();
-		//Mindestens 15 bis 30 Prozent des Sortiments sollen ins Angebot
-		double high = 0.3;
-		double low = 0.15;
-		int angeboteAnzahl = 0;
-		
-		do {
-			angeboteAnzahl = (int) (getSortiment().size() * (Math.random() * (high - low) + low));
-		} while(angeboteAnzahl == 0);
-		
-		PreparedStatement stmt; 
 		ResultSet r;
+		PreparedStatement stmt;
 		
-		for(int i = 0; i <= angeboteAnzahl; i++) {
-			try {
-				stmt = con.prepareStatement("select * from ?_sortiment where artikelnr = ?");
-				stmt.setString(1,getBezeichnung().toLowerCase());
-				//Zufaellig werden Produkte aus dem Sortiment gewählt.
-				stmt.setInt(2, (int)(Math.random() * (getSortiment().size() - 2) + 2));
-				
-				r = stmt.executeQuery();
-				
+		try {
+			 stmt = con.prepareStatement("select * from images "
+					+ "LEFT JOIN " + getBezeichnung().toLowerCase() + 
+					"_sortiment ON images.id = " + getBezeichnung().toLowerCase() + "_sortiment.image_id");
+			
+			//System.out.println(stmt);
+			
+			r = stmt.executeQuery();
+			
+			while(r.next()) {
 				Food f = new Food(r.getString("artikelbez"), r.getDouble("artikelpreis"),
 						r.getString("hersteller"), r.getString("pfad").substring(16), 
 						r.getInt("vegan"), r.getInt("vegetarisch"), r.getInt("lokal"),
 						r.getInt("bio"), r.getString("hersteller"));
-				r.close();
-				stmt.close();
-				
-				addAngebot(i, f);
-				
-			} catch (SQLException e) {
-				
-				e.printStackTrace();
+				getSortiment().put(r.getInt("artikelNr"), f);
 			}
-		}
-		try {
+			r.close();
+			stmt.close();
 			con.close();
 		} catch (SQLException e) {
+			
 			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Methode um den Rabatt für ein Produkt zufaellig festzulegen.
+	 * @return Eine zufaellige Zahl zwischen 0.15 und 0.5. 
+	 *  Dies entspricht einem Bereich von 15 bis 50 % Rabatt.
+	 */
+	private double getRabatt() {
+		
+		return (Math.random() * (0.5 - 0.15) + 0.15);
+	}
+	
+	/**
+	 * Diese Methode initialisiert die Angebote eines Supermarktes.
+	 * Es wird eine zufaellige Anzahl von Produkten zufaellig in das 
+	 * Angebotsortiment aufgenommen.
+	 */
+	public void initAngebote() {
+		
+		//Wenn bereits Angebote existieren, werden sie komplett durch neue ersetzt.
+		LoescheAusDatenbank.loescheTabellenInhalt(getBezeichnung().toLowerCase() + "_angebote");
+		
+		//Mindestens 15 bis 30 Prozent des Sortiments sollen in das Angebot.
+		double high = 0.3;
+		double low = 0.15;
+		int angeboteAnzahl = 0;
+		
+		
+		angeboteAnzahl = (int) (getSortiment().size() * (Math.random() * (high - low) + low));
+		
+		for(int i = 0; i < angeboteAnzahl; i++) {
+				int nr = (int)(Math.random() * (getSortiment().size() - 2) + 2);	
+				//System.out.println(nr);
+				Food object = getSortiment().get(nr);
+				Food f = new Food(object.getBezeichnung(), 
+						DoubleManager.round(object.getPreis() - (object.getPreis() * getRabatt()), 2), 
+						object.getHersteller(), object.getImage(),
+						object.getVeggy(), object.getVegan(),
+						object.getLokal(), object.getBio(),
+						object.getKategorie());
+				f.setOriginalPreis(object.getPreis());
+				f.setRabatt(getRabatt());
+				addAngebot(i, f);
+				System.out.println(f.getPreis());
+				System.out.println(DoubleManager.round(object.getPreis() - (object.getPreis() * getRabatt()), 2));
 		}
 	}
 	
@@ -83,8 +119,9 @@ public abstract class Supermarkt {
 	
 	public void addAngebot(int key, Food f) {
 		
+		SpeicherInDatenbank.speicherAngeboteInDatenbank(getBezeichnung(), f);
 		
-		angebote.put(key, f);
+		getAngebote().put(key, f);
 	}
 	
 	public void removeAngebotByKey(int key) {

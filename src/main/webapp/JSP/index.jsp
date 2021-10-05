@@ -148,8 +148,8 @@
 								style="color: white; white-space: nowrap;">Reisgericht</p></label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="bio"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>
-				<tr>
+							style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>
+				<tr>	
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="bio"><label for="bio"><p
@@ -181,6 +181,7 @@
 				</tr>
 			</table>
 		</div>
+		
 		<!-- EasterEgg --> 
 	</form>
 	<div class="popup" id="popup-1">
@@ -200,5 +201,10 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
 		crossorigin="anonymous"></script>
+		
+		<!-- VORSICHT TESTBUTTON -->
+		<form action = "../ZeigeAngeboteServlet" method = "get">
+			<button name = "supermarkt" value = "lidl">Lidl</button>
+		</form>
 </body>
 </html>
