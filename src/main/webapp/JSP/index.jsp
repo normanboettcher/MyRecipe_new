@@ -32,8 +32,8 @@
 
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<li><a class="nav-link" href="rezepte.jsp"><i class="fas fa-utensils"></i>
-					Rezepte</a></li>
+			<li><a class="nav-link" href="rezepte.jsp"><i
+					class="fas fa-utensils"></i> Rezepte</a></li>
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
@@ -77,13 +77,55 @@
 						</form></li>
 
 				</ul></li>
-			</form>
-			</li>
+<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
+					class="fas fa-piggy-bank"></i> Angebote
+			</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<li><form action="../ZeigeAngeboteServlet" method="get">
+							<button name="supermarkt" value="lidl"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/lidl_logo.png" alt=""
+									width="30" height="25"> Lidl</a>
+							</button>
+						</form></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><form action="../ZeigeAngeboteServlet" method="get">
+							<button name="supermarkt" value="penny"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/penny_logo.png" alt=""
+									width="30" height="25"> Penny</a>
+							</button>
+						</form></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><form action="../ZeigeAngeboteServlet" method="get">
+							<button name="supermarkt" value="rewe"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/rewe_logo.png" alt=""
+									width="30" height="25"> Rewe</a>
+							</button>
+						</form></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><form action="../ZeigeAngeboteServlet" method="get">
+							<button name="supermarkt" value="netto"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/netto_logo.png" alt=""
+									width="25" height="25"> Netto</a>
+							</button>
+						</form></li>
+
+				</ul></li>
+
 			<li><a class="nav-link" href="test.jsp"><i
 					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
-			<c:if test="${kunde == null && admin == null }">				
-			<li><a class="nav-link" href="login.jsp"><i
-					class="fa fa-user"></i> Login</a></li>
+			<c:if test="${kunde == null && admin == null }">
+				<li><a class="nav-link" href="login.jsp"><i
+						class="fa fa-user"></i> Login</a></li>
 			</c:if>
 			<c:if test="${kunde != null || admin != null }">
 				<li><a class="nav-link" href="../LogoutServlet"><i
@@ -94,7 +136,7 @@
 </div>
 </nav></header>
 <body>
-<!-- Suche/ Rezeptauswahl --> 
+	<!-- Suche/ Rezeptauswahl -->
 	<form class="box" action="#" method="post">
 		<div class="boxContainer">
 			<table class="elementsContainer">
@@ -148,8 +190,8 @@
 								style="color: white; white-space: nowrap;">Reisgericht</p></label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="bio"><label for="bio"><p
-							style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>
-				<tr>	
+								style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>
+				<tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="bio"><label for="bio"><p
@@ -181,8 +223,8 @@
 				</tr>
 			</table>
 		</div>
-		
-		<!-- EasterEgg --> 
+
+		<!-- EasterEgg -->
 	</form>
 	<div class="popup" id="popup-1">
 		<div class="overlay"></div>
@@ -201,10 +243,10 @@
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
 		crossorigin="anonymous"></script>
-		
-		<!-- VORSICHT TESTBUTTON -->
-		<form action = "../ZeigeAngeboteServlet" method = "get">
-			<button name = "supermarkt" value = "lidl">Lidl</button>
-		</form>
+
+	<!-- VORSICHT TESTBUTTON -->
+	<form action="../ZeigeAngeboteServlet" method="get">
+		<button name="supermarkt" value="lidl">Lidl</button>
+	</form>
 </body>
 </html>
