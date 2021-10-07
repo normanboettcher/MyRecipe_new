@@ -1,0 +1,8 @@
+Testsuite: agentsTest.AngebotAgentTest
+Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,173 sec
+
+------------- Standard Output ---------------
+19.9
+17.9
+[ 11.17] Prozent gespart
+------------- ---------------- ---------------

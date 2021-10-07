@@ -31,6 +31,11 @@ public class Einkaufsliste {
 		this.produkte.put(f.getArtikelNr(), f);
 	}
 	
+	public void loescheProduktVonListe(Food f, int anzahl) {
+		this.produkte_mit_menge.remove(f.getArtikelNr(), anzahl);
+		this.produkte.remove(f.getArtikelNr(), f);
+	}
+	
 	public void berechneGesamtpreis(HashMap<Integer, Food> produkte) {
 		double preis = 0;
 		

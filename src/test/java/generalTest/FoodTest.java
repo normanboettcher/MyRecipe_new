@@ -1,5 +1,6 @@
 package generalTest;
 
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
@@ -15,10 +16,9 @@ public class FoodTest {
 	public void setUp() throws Exception {
 		f = new Food("Apfel", 1.99, "Rewe", "", 1, 1,1, 1, "Obst");
 	}
-
+	
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void getBezeichnungTest() {
+		assertTrue(f.getBezeichnung() == "Apfel");
 	}
-
 }

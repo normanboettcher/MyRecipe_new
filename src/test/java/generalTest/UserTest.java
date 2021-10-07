@@ -11,7 +11,7 @@ import general.Adresse;
 import general.Einkaufsliste;
 import general.User;
 import general.Food;
-import managers.DatumsManagers;
+import managers.DatumsManager;
 import managers.PasswortManager;
 
 public class UserTest {
@@ -25,7 +25,7 @@ public class UserTest {
 		u = new User(22, "Max", "Test", "eine.mail@emailhaus.de", 
 				new Adresse("Am Fluss", "22","99999" , "Hannokoeln"), 
 				PasswortManager.generateHash("nichtverraten"));
-		list = new Einkaufsliste(11, DatumsManagers.aktuellesDatum());
+		list = new Einkaufsliste(11, DatumsManager.aktuellesDatum());
 		
 		for(int i = 0; i < 60; i++) {
 			f = new Food("Apfel", 1.99, "Rewe", "", 1, 1,1, 1, "Obst");

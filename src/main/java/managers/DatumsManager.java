@@ -12,7 +12,7 @@ import java.util.Calendar;
  * @author Norman Boettcher
  *
  */
-public class DatumsManagers {
+public class DatumsManager {
 	/**
 	 * Diese Methode erstellt das aktuelle Datum. Relevant fuer das erstellen einer
 	 * Einkaufsliste inkl. Datum.

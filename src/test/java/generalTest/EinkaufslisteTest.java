@@ -10,7 +10,7 @@ import general.Adresse;
 import general.Einkaufsliste;
 import general.Food;
 import general.User;
-import managers.DatumsManagers;
+import managers.DatumsManager;
 
 public class EinkaufslisteTest {
 	
@@ -21,7 +21,7 @@ public class EinkaufslisteTest {
 	@Before
 	public void setUp() throws Exception {
 		usr = new User(1, "Max", "Mustermann", "email@web.de", new Adresse("", "", "", ""), "pw");
-		liste = new Einkaufsliste(1, DatumsManagers.aktuellesDatum());
+		liste = new Einkaufsliste(1, DatumsManager.aktuellesDatum());
 		food = new Food("Banane", 2, "Biofarm", "", 1, 1, 0, 1, "Obst");
 		food.setArtikelNr(1);
 		liste.addProduktZuListe(food, 2);
@@ -44,7 +44,7 @@ public class EinkaufslisteTest {
 	
 	@Test
 	public void getEinkaufslisteDateTest() {
-		System.out.println(liste.getEinkaufslisteDate());
+		//System.out.println(liste.getEinkaufslisteDate());
 	}
 	
 	@Test
@@ -62,6 +62,13 @@ public class EinkaufslisteTest {
 	@Test
 	public void getProdukteMitMengeTest() {
 		assertTrue(liste.getProdukteMitMenge() != null);
+	}
+	
+	@Test
+	public void loescheProdukteVonListeTest() {
+		liste.loescheProduktVonListe(food, 2);
+		assertTrue(liste.getProduktliste().size() == 0);
+		assertTrue(liste.getProdukteMitMenge().size() == 0);
 	}
 
 }
