@@ -70,6 +70,16 @@ public abstract class Supermarkt {
 	}
 	
 	/**
+	 * Mit dieser Methode wird dem Originalpreis der gegebene Rabatt abgezogen.
+	 * @param rabatt der aktuelle zufaellige Rabatt.
+	 * @param originpreis der Originalpreis des Produktes.
+	 * @return double-value originalpreis abzueglich des Rabatts.
+	 */
+	private double abzugRabatt(double rabatt, double originpreis) {
+		return DoubleManager.round(originpreis - (originpreis * rabatt), 2);
+	}
+	
+	/**
 	 * Diese Methode initialisiert die Angebote eines Supermarktes.
 	 * Es wird eine zufaellige Anzahl von Produkten zufaellig in das 
 	 * Angebotsortiment aufgenommen.
@@ -84,24 +94,26 @@ public abstract class Supermarkt {
 		double low = 0.15;
 		int angeboteAnzahl = 0;
 		
-		
+		//Zufaellige Festlegung der Anzahl von Angeboten.
 		angeboteAnzahl = (int) (getSortiment().size() * (Math.random() * (high - low) + low));
 		
-		for(int i = 0; i < angeboteAnzahl; i++) {
+		//Anzahl richtet sich nach der Anzahl an angeboten.
+		for(int i = 0; i <= angeboteAnzahl; i++) {
 				int nr = (int)(Math.random() * (getSortiment().size() - 2) + 2);	
 				//System.out.println(nr);
+				double rabatt = DoubleManager.round(getRabatt(), 2);
 				Food object = getSortiment().get(nr);
+				
 				Food f = new Food(object.getBezeichnung(), 
-						DoubleManager.round(object.getPreis() - (object.getPreis() * getRabatt()), 2), 
+						abzugRabatt(rabatt, object.getPreis()), 
 						object.getHersteller(), object.getImage(),
 						object.getVeggy(), object.getVegan(),
 						object.getLokal(), object.getBio(),
 						object.getKategorie());
+				
 				f.setOriginalPreis(object.getPreis());
-				f.setRabatt(getRabatt());
-				addAngebot(i, f);
-				System.out.println(f.getPreis());
-				System.out.println(DoubleManager.round(object.getPreis() - (object.getPreis() * getRabatt()), 2));
+				f.setRabatt(rabatt);
+				addAngebot(i + 1, f);
 		}
 	}
 	

@@ -4,7 +4,7 @@ import managers.DoubleManager;
 
 public class Food {
 	
-	private int vegetarisch, vegan, lokal, bio;
+	private int vegetarisch, vegan, lokal, bio, artikelnr;
 	
 	private String bez, hersteller, image, kategorie;
 	private double preis, originalpreis;
@@ -26,19 +26,58 @@ public class Food {
 	
 	
 	//-----------------Simple getters for Food-----------------
-	public double getPreis() {return preis;}
-	public String getBezeichnung() {return bez;}
-	public int getVeggy() {return vegetarisch;}
-	public int getVegan() {return vegan;}
-	public String getHersteller() {return hersteller;}
-	public String getImage() {return image;}
-	public int getBio() {return bio;}
-	public int getLokal() {return lokal;}
-	public String getKategorie() {return kategorie;}
-	public double getRabatt() {return rabatt;}
-	public double getOriginPreis() {return originalpreis;}
+	public double getPreis() {
+		return preis;
+	}
 	
+	public String getBezeichnung() {
+		return bez;
+	}
 	
+	public int getVeggy() {
+		return vegetarisch;
+	}
+	
+	public int getVegan() {
+		return vegan;
+	}
+	
+	public String getHersteller() {
+		return hersteller;
+	}
+	
+	public String getImage() {
+		return image;
+	}
+	
+	public int getBio() {
+		return bio;
+	}
+	
+	public int getLokal() {
+		return lokal;
+	}
+	
+	public String getKategorie() {
+		return kategorie;
+	}
+	
+	public double getRabatt() {
+		return rabatt;
+	}
+	
+	public double getOriginPreis() {
+		return originalpreis;
+	}
+	
+	public void setArtikelNr(int nr) {
+		this.artikelnr = nr;
+	}
+	
+	public int getArtikelNr() {
+		return artikelnr;
+	}
+
 	public void setRabatt(double r) {
 		this.rabatt = DoubleManager.round(r, 2);
 	}

@@ -13,12 +13,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import database.transfer.SpeicherInDatenbank;
 import databaseConnection.DBConnection;
 import general.Adresse;
+import general.User;
+import managers.IdGenerator;
 import managers.PasswortManager;
 import managers.RegExManager;
-import general.User;
-import database.transfer.SpeicherInDatenbank;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -117,7 +118,8 @@ public class RegisterServlet extends HttpServlet {
 			req.getRequestDispatcher("JSP/register.jsp").forward(req, res);
 			
 		} else {
-			User usr = new User(vorname, nachname, email, new Adresse(strasse, hausnummer, plz, ort), passwort);
+			User usr = new User(IdGenerator.generiereUserID(),vorname ,nachname, email,
+					new Adresse(strasse, hausnummer, plz, ort), passwort);
 
 			SpeicherInDatenbank.speicherUserInDatenbank(usr);
 			

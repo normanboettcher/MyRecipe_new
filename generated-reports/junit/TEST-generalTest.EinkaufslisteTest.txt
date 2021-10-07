@@ -1,0 +1,6 @@
+Testsuite: generalTest.EinkaufslisteTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,119 sec
+
+------------- Standard Output ---------------
+2021-10-07
+------------- ---------------- ---------------

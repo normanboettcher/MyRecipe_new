@@ -79,6 +79,27 @@ public class IdGenerator {
 		
 	}
 	
+	public static int generiereEinkaufslistenID() {
+		int id = 0;
+		Connection con = DBConnection.getConnection();
+		
+
+		try {
+			PreparedStatement stmt = con.prepareStatement("select max(einkaufsliste_id) as max from einkauf_historie");
+			
+			ResultSet r = stmt.executeQuery();
+			
+			while(r.next()) {
+				id = r.getInt("max");
+			}
+			stmt.close();
+			r.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return id + 1;
+	}
+	
 	public static void main(String[] args) {
 		System.out.print(generiereUserID());
 	}

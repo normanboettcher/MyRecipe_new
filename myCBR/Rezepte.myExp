@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Project name="Rezepte" author="" >
+<exp obj="RezepteConcept" type="Concept" >
+  <desc>
+      </desc>
+</exp>
+<exp obj="Eigenschaft" c="RezepteConcept" type="AttributeDesc" >
+  <desc>
+      </desc>
+</exp>
+<exp obj="Titel" c="RezepteConcept" type="AttributeDesc" >
+  <desc>
+      </desc>
+</exp>
+<exp obj="Gerichteart" c="RezepteConcept" type="AttributeDesc" >
+  <desc>
+      </desc>
+</exp>
+<exp obj="K&#252;che" c="RezepteConcept" type="AttributeDesc" >
+  <desc>
+      </desc>
+</exp>
+<exp obj="Italienisch" c="RezepteConcept" desc="K&#252;che" type="SimpleAttribute" >
+  <desc>
+&#10;    </desc>
+</exp>
+</Project>

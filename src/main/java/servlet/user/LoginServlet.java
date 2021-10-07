@@ -148,7 +148,7 @@ public class LoginServlet extends HttpServlet {
 			ResultSet r = stmt.executeQuery();
 			
 			while(r.next()) {
-				usr = new User(r.getString("vorname"), r.getString("nachname"), r.getString("email"), 
+				usr = new User(r.getInt("id"),r.getString("vorname"), r.getString("nachname"), r.getString("email"), 
 						new Adresse(r.getString("strasse"), r.getString("hausnummer"), r.getString("plz"), r.getString("ort")), 
 						r.getString("passwort"));
 			}
@@ -176,7 +176,7 @@ public class LoginServlet extends HttpServlet {
 			ResultSet r = stmt.executeQuery();
 			
 			while(r.next()) {
-				a = new Administrator(r.getString("vorname"), r.getString("nachname"), r.getString("email"), 
+				a = new Administrator(r.getInt("id"), r.getString("vorname"), r.getString("nachname"), r.getString("email"), 
 						new Adresse(r.getString("strasse"), r.getString("hausnummer"), r.getString("plz"), r.getString("ort")), 
 								r.getString("passwort"));
 			}

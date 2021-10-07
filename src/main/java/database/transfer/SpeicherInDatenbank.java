@@ -9,6 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import databaseConnection.DBConnection;
+import general.Einkaufsliste;
 import general.Food;
 import general.User;
 import managers.IdGenerator;
@@ -89,6 +90,31 @@ public class SpeicherInDatenbank {
 			stmt.setInt(8, f.getLokal());
 			stmt.setInt(9, f.getBio());
 			stmt.setString(10, f.getImage());
+			
+			stmt.executeUpdate();
+			stmt.close();
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public static void speicherEinkaufslisteInDatenbank(Einkaufsliste l) {
+		Connection con = DBConnection.getConnection();
+		
+		try {
+			String speicherAngebot = "insert into ? " 
+					+ "values"
+					+ "(?, ?, ?, ?, ?)";
+			
+			PreparedStatement stmt = con.prepareStatement(speicherAngebot);
+			
+			stmt.setString(1, "einkauf_historie");
+			stmt.setInt(6, IdGenerator.generiereEinkaufslistenID());
+			stmt.setDate(2, l.getEinkaufslisteDate());
+			stmt.setString(3, l.getUser().getFullName());
+			stmt.setDouble(4, l.getGesamtPreis());
+			stmt.setInt(5, l.getUser().getID());
 			
 			stmt.executeUpdate();
 			stmt.close();

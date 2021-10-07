@@ -19,96 +19,116 @@
 <title>${supermarkt.getBezeichnung()} Sortiment</title>
 </head>
 <body>
-<header>
-<!-- Sticky Navbar with Logo --> <nav
-	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
-<div class="container-fluid">
-	<a class="navbar-brand" href="index.jsp"><img
-		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
-		height="45"> MyRecipe</a>
-	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-		data-bs-target="#navbarNav" aria-controls="navbarNav"
-		aria-expanded="false" aria-label="Toggle navigation">
-		<span class="navbar-toggler-icon"></span>
-	</button>
+	<header> <!-- Sticky Navbar with Logo --> <nav
+		class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="JSP/index.jsp"><img
+			src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
+			height="45"> MyRecipe</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+			data-bs-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
 
-	<div class="collapse navbar-collapse" id="navbarNav">
-		<ul class="navbar-nav">
-			<li><a class="nav-link" href="#"><i class="fas fa-utensils"></i>
-					Rezepte</a></li>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li><a class="nav-link" href="#"><i class="fas fa-utensils"></i>
+						Rezepte</a></li>
 
 
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
-					class="fas fa-store-alt"></i> Händler
-			</a>
-				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<li><form action="../ZeigeSortimentServlet" method="get">
-							<button name="supermarkt" value="lidl"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i> Lidl               
-							</button>
-						</form></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><form action="../ZeigeSortimentServlet" method="get">
-							<button name="supermarkt" value="lidl"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i> Penny                 
-							</button>
-						</form></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><form action="../ZeigeSortimentServlet" method="get">
-							<button name="supermarkt" value="lidl"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i> Rewe               
-							</button>
-						</form></li>
+				<li class="nav-item dropdown"><a
+					class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+					role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						<i class="fas fa-store-alt"></i> Händler
+				</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><form action="../ZeigeSortimentServlet" method="get">
+								<button name="supermarkt" value="lidl"
+									style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+									</i> Lidl
+								</button>
+							</form></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><form action="../ZeigeSortimentServlet" method="get">
+								<button name="supermarkt" value="penny"
+									style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+									</i> Penny
+								</button>
+							</form></li>
+						<li><hr class="dropdown-divider"></li>
+						<li><form action="../ZeigeSortimentServlet" method="get">
+								<button name="supermarkt" value="rewe"
+									style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+									</i> Rewe
+								</button>
+							</form></li>
 
-				</ul></li>
-			</form>
-			</li>
-			<li><a class="nav-link" href="test.jsp"><i
-					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
+					</ul></li>
+				</form>
+				</li>
+				<li><a class="nav-link" href="test.jsp"><i
+						class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
 
-			<li><a class="nav-link" href="login.jsp"><i
-					class="fa fa-user"></i> Mein Konto</a></li>
-		</ul>
+				<li><a class="nav-link" href="login.jsp"><i
+						class="fa fa-user"></i> Mein Konto</a></li>
+			</ul>
+		</div>
 	</div>
-</div>
-</nav> </header>
+	</nav> </header>
 	<div class="regform">
 		<h1>${supermarkt.getBezeichnung()} Sortiment</h1>
 	</div>
 	<div class="main">
-	<form>
-		<table class="table">
-		<tr>
-			<th></th>
-			<th>Produkt</th>
-			<th>Preis</th>
-			<th>Hersteller</th>
-			<th>Vegetarisch</th>
-			<th>Vegan</th>
-			<th>Lokal</th>
-			<th>Bio</th>
-		</tr>
-		<c:forEach var="i" begin="2" end="${supermarkt.getSortiment().size()}">
-			<tr>
-				<td><img src="${supermarkt.getSortiment().get(i).getImage()}"
-					alt="produktbild" width="125" height="125"></td>
-				<td>${supermarkt.getSortiment().get(i).getBezeichnung()}</td>
-				<td>${supermarkt.getSortiment().get(i).getPreis()}&#8364;</td>
-				<td>${supermarkt.getSortiment().get(i).getHersteller()}</td>
-				<td>${supermarkt.getSortiment().get(i).getVeggy()}</td>
-				<td>${supermarkt.getSortiment().get(i).getVegan()}</td>
-				<td>${supermarkt.getSortiment().get(i).getLokal()}</td>
-				<td>${supermarkt.getSortiment().get(i).getBio()}</td>
-			</tr>
-		</c:forEach>
-	</table>
+		<form>
+			<table class="table">
+				<tr>
+					<th></th>
+					<th>Produkt</th>
+					<th>Preis</th>
+					<th>Hersteller</th>
+					<th>Vegetarisch</th>
+					<th>Vegan</th>
+					<th>Lokal</th>
+					<th>Bio</th>
+				</tr>
+				<c:forEach var="i" begin="2"
+					end="${supermarkt.getSortiment().size()}">
+					<tr>
+						<td><img src="${supermarkt.getSortiment().get(i).getImage()}"
+							alt="produktbild" width="125" height="125"></td>
+						<td>${supermarkt.getSortiment().get(i).getBezeichnung()}</td>
+						<td>${supermarkt.getSortiment().get(i).getPreis()}&#8364;</td>
+						<td>${supermarkt.getSortiment().get(i).getHersteller()}</td>
+						<td>
+						<c:choose>
+						<c:when test="${supermarkt.getSortiment().get(i).getVeggy()=='1'}">Ja</c:when>
+						<c:when test="${supermarkt.getSortiment().get(i).getVeggy()=='0'}">Nein</c:when>
+    					</c:choose>
+						</td>
+						<td>
+						<c:choose>
+						<c:when test="${supermarkt.getSortiment().get(i).getVegan()=='1'}">Ja</c:when>
+						<c:when test="${supermarkt.getSortiment().get(i).getVegan()=='0'}">Nein</c:when>
+    					</c:choose>
+    					</td>
+						<td>
+						<c:choose>
+						<c:when test="${supermarkt.getSortiment().get(i).getLokal()=='1'}">Ja</c:when>
+						<c:when test="${supermarkt.getSortiment().get(i).getLokal()=='0'}">Nein</c:when>
+    					</c:choose>
+    					</td>
+						<td>
+						<c:choose>
+						<c:when test="${supermarkt.getSortiment().get(i).getBio()=='1'}">Ja</c:when>
+						<c:when test="${supermarkt.getSortiment().get(i).getBio()=='0'}">Nein</c:when>
+    					</c:choose>
+    					</td>
+					</tr>
+				</c:forEach>
+			</table>
 
-	</form>
+		</form>
 	</div>
 </body>
 </html>

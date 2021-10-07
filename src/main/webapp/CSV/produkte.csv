@@ -1,89 +1,89 @@
 id,artikelbez,artikelpreis,hersteller,kategorie,vegan,vegetarisch,lokal,bio,image_id
-2,netto Margarine,1.36,netto hausmarke,Margarine,1,1,0,0,59
-3,Margarine bio,2.87,Fettwerk,Margarine,1,1,0,1,59
-4,Wildlachsfilet,2.40,Ozean Sea Msc,Fisch,0,0,0,0,54
-5,Kerrygold extra,2.31,Kerrygold,Margarine,1,1,0,0,55
-6,Buitoni Pasta,2.16,Buitoni,Nudeln,1,1,0,0,72
-7,netto Nudeln,2.09,netto hausmarke,Nudeln,1,1,0,0,3
-8,netto Reis,1.88,netto hausmarke,Reis,1,1,0,0,1
-9,netto Spaghetti,2.89,netto hausmarke,Nudeln,1,1,0,0,50
-10,Basmati Reis,1.74,Thailand,Reis,1,1,0,0,1
-11,Eier Bodenhaltung,1.39,netto hausmarke,Eier,0,1,0,0,38
-12,Eier Freiland ,1.66,Bauernhof,Eier,0,1,0,1,5
-13,Eier Bauernhof,2.69,Bauer Bertram,Eier,0,1,1,1,70
-14,Hackfleisch,1.35,netto hausmarke,Fleisch,0,0,0,0,56
-15,Hackfleisch Bio,2.54,Biohof Pferdekuh,Fleisch,0,0,0,1,10
-16,Hackfleisch Bauernhof,2.13,Bauer Bernd,Fleisch,0,0,1,1,56
-17,netto Steak ,1.12,netto hausmarke,Fleisch,0,0,0,0,40
-18,Steak Bio,1.80,Biohof Schweinegulasch,Fleisch,0,0,0,1,69
-19,Steak vom Land,1.11,Land der Schweine,Fleisch,0,0,1,1,49
-20,Rispentomaten,1.14,netto hausmarke,Gemuese,1,1,0,0,78
-21,Cherrytomaten,1.39,netto hausmarke,Gemuese,1,1,0,0,91
-22,Rispentomaten Bio,2.37,Tomatenacker,Gemuese,1,1,0,1,15
-23,Cherrytomaten Bio,2.25,Tomatenacker,Gemuese,1,1,0,1,76
-24,Salatgurke,2.80,netto hausmarke,Gemuese,1,1,0,0,57
-25,Salatgurke bio,1.07,Gurkenpalast,Gemuese,1,1,0,1,4
-26,Bananen,2.12,netto hausmarke,Obst,1,1,0,0,47
-27,Bananen,1.40,Chiquita,Obst,1,1,0,0,17
-28,Bananen Bio,1.31,Bio Banana,Obst,1,1,0,1,22
-29,Apfel Bio,2.33,Apfeljockel,Obst,1,1,0,1,36
-30,Apfel ,1.04,netto hausmarke,Obst,1,1,0,0,67
-31,Apfel ,1.43,Apfeldream,Obst,1,1,1,1,85
-32,Kiwi,1.98,Neuseeland,Obst,1,1,0,0,18
-33,Kiwi Gold,2.60,Neuseeland,Obst,1,1,0,0,53
-34,Weintrauben Bio,2.82,Traubenhorst,Obst,1,1,0,0,52
-35,Weintrauben ,2.52,netto hausmarke,Obst,1,1,0,0,31
-36,Garnelen,2.88,Ostsee,Meeresfruechte,0,0,0,0,39
-37,Garnelen Bio,2.48,Ostsee Legende,Meeresfruechte,0,0,0,0,2
-38,Krabben,2.47,Nordsee,Meeresfruechte,0,0,0,0,87
-39,Krabben Bio,1.63,Nordsee,Meeresfruechte,0,0,0,0,63
-40,Forelle,2.55,Wellensegler,Fisch,0,0,0,0,66
-41,Thunfisch,1.45,netto hausmarke,Fisch,0,0,0,0,45
-42,Thunfisch,1.21,Saupiquet,Fisch,0,0,0,0,90
-43,Champignons,1.07,Pilzfarm,Pilze,1,1,0,0,12
-44,netto Champignons ,1.72,netto hausmarke,Pilze,1,1,0,1,12
-45,Tomatenmark,2.10,netto hausmarke,sonstiges,1,1,0,0,23
-46,Tomatenmark ,2.29,oro,sonstiges,1,1,0,0,23
-47,Tortellini Mozarella,1.01,netto hausmarke,Nudeln,1,1,0,0,27
-48,Tortellini Rindfleisch,1.74,netto hausmarke,Nudeln,1,1,0,0,34
-49,Speisekartoffeln,1.26,Biohof,Kartoffeln,1,1,0,1,19
-50,Speisekartoffeln,2.62,netto hausmarke,Kartoffeln,1,1,0,0,82
-51,Speisekartoffeln,2.54,Kartoffeluniversum,Kartoffeln,1,1,1,1,86
-52,Zwiebeln,1.65,netto hausmarke,Gemuese,1,1,0,0,32
-53,Zwiebeln bio,2.01,Zwiebelhannes,Gemuese,1,1,0,1,32
-54,Süßkartoffeln,1.94,toffel koffel,Kartoffeln,1,1,0,0,16
-55,Bockwurst,1.26,netto hausmarke,Fleisch,0,0,0,0,43
-56,Bockwurst,1.40,Meica,Fleisch,0,0,0,0,33
-57,Rocula,1.10,netto hausmarke,Gemüse,1,1,0,0,41
-58,Milch,1.92,netto hausmarke,Milchprodukte,0,1,0,0,58
-59,Milch Bio,2.42,Kuhdorf,Milchprodukte,0,1,0,1,81
-60,Milch lokal,1.27,Milch Michel,Milchprodukte,0,1,1,1,58
-61,Bacon,1.10,netto hausmarke,Fleisch,0,0,0,0,61
-62,Bacon Bio,1.67,Bauer Bertram,Fleisch,0,0,0,0,61
-63,Mandelmilch,1.46,Vegan Vertan,Milchprodukte,0,1,0,1,92
-64,Haferflocken zart,1.47,netto hausmarke,sonstiges,1,1,0,0,46
-65,Haferflcoken kernig,2.77,netto hausmarke,sonstiges,1,1,0,0,78
-66,Haferflocken zart,2.22,Koelln,sonstiges,1,1,0,0,35
-67,Haferflocken kernig,1.77,Koelln,sonstiges,1,1,0,0,42
-68,Knoblauch ,1.31,netto hausmarke,Gemuese,1,1,0,0,88
-69,Knoblauch Bio,1.47,Knoblauch Kalle,Gemuese,1,1,0,1,88
-70,Kopfsalat,1.34,netto hausmarke,Gemuese,1,1,0,0,75
-71,Salz,2.82,netto hausmarke,sonstiges,1,1,0,0,13
-72,Salz Bio,2.21,Salzgrube,sonstiges,1,1,0,1,48
-73,Brokkoli ,2.41,netto hausmarke,Gemuese,1,1,0,0,20
-74,Brokkoli Bio,1.01,netto Bio,Gemuese,1,1,0,1,20
-75,Paprika rot,2.11,netto hausmarke,Gemuese,1,1,0,0,79
-76,Paprika rot Bio,2.72,netto Bio,Gemuese,1,1,0,1,83
-77,Paprika gelb,1.64,netto hausmarke,Gemuese,1,1,0,0,89
-78,Paprika gelb Bio,1.42,netto Bio,Gemuese,1,1,0,1,89
-79,Paprika grün,1.60,netto hausmarke,Gemuese,1,1,0,0,37
-80,Paprika grün Bio,1.63,netto Bio,Gemuese,1,1,0,1,26
-81,Olivenöl ,2.35,netto hausmarke,Oel,1,1,0,0,29
-82,Olivenöl Bio,2.90,netto bio,Oel,1,1,0,1,60
-83,Rapsöl,1.29,netto hausmarke,Oel,1,1,0,0,6
-84,Rapsöl Bio,1.97,netto Bio,Oel,1,1,0,1,21
-85,Joghurt Natur,1.46,netto hausmarke,Milchprodukte,0,1,0,0,73
-86,Joghurt Natur,2.74,Milram,Milchprodukte,0,1,0,1,64
-87,Curry,1.90,netto hausmarke,Gewuerze,1,1,0,0,44
-88,Zuchhini,2.85,netto hausmarke,Gemuese,1,1,0,0,74
-89,Zucchini,2.79,netto Bio,Gemuese,1,1,0,1,68
+2,penny Margarine,3.02,penny hausmarke,Margarine,1,1,0,0,59
+3,Margarine bio,4.98,Fettwerk,Margarine,1,1,0,1,59
+4,Wildlachsfilet,2.8,Ozean Sea Msc,Fisch,0,0,0,0,54
+5,Kerrygold extra,1.62,Kerrygold,Margarine,1,1,0,0,55
+6,Buitoni Pasta,1.94,Buitoni,Nudeln,1,1,0,0,72
+7,penny Nudeln,2.24,penny hausmarke,Nudeln,1,1,0,0,3
+8,penny Reis,1.74,penny hausmarke,Reis,1,1,0,0,1
+9,penny Spaghetti,4.95,penny hausmarke,Nudeln,1,1,0,0,50
+10,Basmati Reis,4,China,Reis,1,1,0,0,1
+11,Eier Bodenhaltung,1.43,penny hausmarke,Eier,0,1,0,0,38
+12,Eier Freiland ,1.19,Bauernhof,Eier,0,1,0,1,5
+13,Eier Bauernhof,4.92,Bauer Bertram,Eier,0,1,1,1,70
+14,Hackfleisch,1.87,penny hausmarke,Fleisch,0,0,0,0,56
+15,Hackfleisch Bio,3.1,Biohof Pferdekuh,Fleisch,0,0,0,1,10
+16,Hackfleisch Bauernhof,1.82,Bauer Bernd,Fleisch,0,0,1,1,56
+17,penny Steak ,4.66,penny hausmarke,Fleisch,0,0,0,0,40
+18,Steak Bio,1.73,Biohof Schweinepest,Fleisch,0,0,0,1,69
+19,Steak vom Land,1.2,Schwein gehabt,Fleisch,0,0,1,1,49
+20,Rispentomaten,2.85,penny hausmarke,Gemuese,1,1,0,0,78
+21,Cherrytomaten,4.26,penny hausmarke,Gemuese,1,1,0,0,91
+22,Rispentomaten Bio,1.31,Tomatenacker,Gemuese,1,1,0,1,15
+23,Cherrytomaten Bio,4.29,Tomatenacker,Gemuese,1,1,0,1,76
+24,Salatgurke,3.19,penny hausmarke,Gemuese,1,1,0,0,57
+25,Salatgurke bio,3.6,Gurkenland,Gemuese,1,1,0,1,4
+26,Bananen,1.17,penny hausmarke,Obst,1,1,0,0,47
+27,Bananen,2.68,Chiquita,Obst,1,1,0,0,17
+28,Bananen Bio,4.65,Bio Banana,Obst,1,1,0,1,22
+29,Apfel Bio,3.44,Apfeljost,Obst,1,1,0,1,36
+30,Apfel ,1.43,penny hausmarke,Obst,1,1,0,0,67
+31,Apfel ,3.03,Apfeldream,Obst,1,1,1,1,85
+32,Kiwi,3.38,Neuseeland,Obst,1,1,0,0,18
+33,Kiwi Gold,3.41,Neuseeland,Obst,1,1,0,0,53
+34,Weintrauben Bio,3.27,Traubenachim,Obst,1,1,0,0,52
+35,Weintrauben ,1.69,penny hausmarke,Obst,1,1,0,0,31
+36,Garnelen,4.68,Ostsee,Meeresfruechte,0,0,0,0,39
+37,Garnelen Bio,3.9,Ostsee Legende,Meeresfruechte,0,0,0,0,2
+38,Krabben,4.86,Nordsee,Meeresfruechte,0,0,0,0,87
+39,Krabben Bio,4.38,Westsee,Meeresfruechte,0,0,0,0,63
+40,Forelle,2.93,Wellensegler,Fisch,0,0,0,0,66
+41,Thunfisch,2.74,penny hausmarke,Fisch,0,0,0,0,45
+42,Thunfisch,2.56,Saupiquet,Fisch,0,0,0,0,90
+43,Champignons,2.13,Pilzfarm,Pilze,1,1,0,0,12
+44,penny Champignons ,2.66,penny hausmarke,Pilze,1,1,0,1,12
+45,Tomatenmark,3.33,penny hausmarke,sonstiges,1,1,0,0,23
+46,Tomatenmark ,3.73,oro,sonstiges,1,1,0,0,23
+47,Tortellini Mozarella,3.3,penny hausmarke,Nudeln,1,1,0,0,27
+48,Tortellini Rindfleisch,4.79,penny hausmarke,Nudeln,1,1,0,0,34
+49,Speisekartoffeln,2.41,Biohof,Kartoffeln,1,1,0,1,19
+50,Speisekartoffeln,1.44,penny hausmarke,Kartoffeln,1,1,0,0,82
+51,Speisekartoffeln,2.42,Kartoffeluniversum,Kartoffeln,1,1,1,1,86
+52,Zwiebeln,4.64,penny hausmarke,Gemuese,1,1,0,0,32
+53,Zwiebeln bio,1.83,Zwiebelhannes,Gemuese,1,1,0,1,32
+54,Süßkartoffeln,2.71,toffel koffel,Kartoffeln,1,1,0,0,16
+55,Bockwurst,2.24,penny hausmarke,Fleisch,0,0,0,0,43
+56,Bockwurst,4.22,Meica,Fleisch,0,0,0,0,33
+57,Rocula,4.84,penny hausmarke,Gemüse,1,1,0,0,41
+58,Milch,2.58,penny hausmarke,Milchprodukte,0,1,0,0,58
+59,Milch Bio,4.34,Kuhdorf,Milchprodukte,0,1,0,1,81
+60,Milch lokal,2.37,Milch Michel,Milchprodukte,0,1,1,1,58
+61,Bacon,4.4,penny hausmarke,Fleisch,0,0,0,0,61
+62,Bacon Bio,2.17,Bauer Bertram,Fleisch,0,0,0,0,61
+63,Mandelmilch,3.36,Vegan Vertan,Milchprodukte,0,1,0,1,92
+64,Haferflocken zart,2.31,penny hausmarke,sonstiges,1,1,0,0,46
+65,Haferflcoken kernig,3.06,penny hausmarke,sonstiges,1,1,0,0,78
+66,Haferflocken zart,1.95,Koelln,sonstiges,1,1,0,0,35
+67,Haferflocken kernig,4.18,Koelln,sonstiges,1,1,0,0,42
+68,Knoblauch ,1.45,penny hausmarke,Gemuese,1,1,0,0,88
+69,Knoblauch Bio,3.31,Knoblauch Kalle,Gemuese,1,1,0,1,88
+70,Kopfsalat,2.93,penny hausmarke,Gemuese,1,1,0,0,75
+71,Salz,1.11,penny hausmarke,sonstiges,1,1,0,0,13
+72,Salz Bio,3.35,Salzgrube,sonstiges,1,1,0,1,48
+73,Brokkoli ,2.02,penny hausmarke,Gemuese,1,1,0,0,20
+74,Brokkoli Bio,1.98,penny Bio,Gemuese,1,1,0,1,20
+75,Paprika rot,2.08,penny hausmarke,Gemuese,1,1,0,0,79
+76,Paprika rot Bio,3.8,penny Bio,Gemuese,1,1,0,1,83
+77,Paprika gelb,3.04,penny hausmarke,Gemuese,1,1,0,0,89
+78,Paprika gelb Bio,4.17,penny Bio,Gemuese,1,1,0,1,89
+79,Paprika grün,4.34,penny hausmarke,Gemuese,1,1,0,0,37
+80,Paprika grün Bio,4.77,penny Bio,Gemuese,1,1,0,1,26
+81,Olivenöl ,3.6,penny hausmarke,Oel,1,1,0,0,29
+82,Olivenöl Bio,3.7,penny bio,Oel,1,1,0,1,60
+83,Rapsöl,2.23,penny hausmarke,Oel,1,1,0,0,6
+84,Rapsöl Bio,4.61,penny Bio,Oel,1,1,0,1,21
+85,Joghurt Natur,3.87,penny hausmarke,Milchprodukte,0,1,0,0,73
+86,Joghurt Natur,3.43,Milram,Milchprodukte,0,1,0,1,64
+87,Curry,3.59,indien,Gewuerze,1,1,0,0,44
+88,Zuchhini,3.28,penny hausmarke,Gemuese,1,1,0,0,74
+89,Zucchini,1.53,penny Bio,Gemuese,1,1,0,1,68

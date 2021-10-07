@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"agents"},{"l":"All Packages","u":"allpackages-index.html"},{"l":"database.transfer"},{"l":"databaseConnection"},{"l":"general"},{"l":"general.supermarkets"},{"l":"managers"},{"l":"servlet.produkte"},{"l":"servlet.user"}];updateSearchResults();

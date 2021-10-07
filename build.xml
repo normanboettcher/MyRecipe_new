@@ -3,8 +3,8 @@
 
 	<!-- Set source, build and release dir -->
 	<property name = "appname" value = "MyRecipe"></property>
-	<property name = "source.dir" value = "src"></property>
-	<property name = "testsource.dir" value = "test"></property>
+	<property name = "source.dir" value = "src/main/java"></property>
+	<property name = "testsource.dir" value = "src/test/java"></property>
 	<property name = "build.dir" value = "build"></property>
 	<property name = "release.dir" value = "release"></property>
 	<property name = "report.dir" value = "generated-reports"></property>
@@ -52,6 +52,8 @@
 		
 		<echo message = "creating documentation folder"></echo>
 		<mkdir dir = "${doc.dir}/src"></mkdir>
+		
+		<mkdir dir = "${report.dir}/junit"></mkdir>
 	</target>
 	
 	<!-- Cleaning directories -->
@@ -64,6 +66,8 @@
 		
 		<echo message = "deleting documentation folder"></echo>
 		<delete dir = "${doc.dir}/src"></delete>
+		
+		<delete dir = "${report.dir}"></delete>
 	</target>
 	
 	<!-- Compile all sources and tests -->
@@ -103,6 +107,7 @@
 			<classpath>
 				<path refid = "project.classpath"></path>
 				<path location = "${build.dir}/src"></path>
+				<path location = "${build.dir}/test"></path>
 			</classpath>	
 		</javac>
 	</target>
@@ -110,8 +115,6 @@
 	<!-- Execute Tests -->
 	<target name = "executeTests" depends = "compile" if = "testsource.dir.present">
 		<echo message = "preparing junit reports dir: ${report.dir}/junit"></echo>
-		<delete dir = "${report.dir}/junit"></delete>
-		<mkdir dir = "${report.dir}/junit"></mkdir>
 		
 		<junit printsummary = "on" fork = "true" haltonfailure = "false"
 			failureproperty = "tests.failed" filtertrace = "yes" showoutput = "true">
@@ -133,7 +136,7 @@
 		</junit>
 		
 		<junitreport todir = "${report.dir}/junit">
-			<fileset dir = "${testsource.dir}">
+			<fileset dir = "${report.dir}">
 				<include name = "TEST-*.xml"></include>
 			</fileset>
 			<report format = "frames" todir = "${report.dir}/junit"></report>

@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
+import database.transfer.LoescheAusDatenbank;
 import databaseConnection.DBConnection;
 
 public class CSVManager {
@@ -38,10 +38,10 @@ public class CSVManager {
 		return arrList;
 	}
 	
-	private static void transferCSVfromFileToDB(ArrayList<String[]> list) {
+	private static void transferProductsFromCSVToDB(String laden, ArrayList<String[]> list) {
 		Connection con = DBConnection.getConnection();
 		
-		String query = "INSERT INTO netto_sortiment "
+		String query = "INSERT INTO " + laden +"_sortiment "
 				+ "VALUES "
 				+ "(?,?,?,?,?,?,?,?,?,?)";
 		try {
@@ -66,14 +66,6 @@ public class CSVManager {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
-	}
-	
-	public static void main(String[] args) throws SQLException {
-		ArrayList<String[]> list = CSVManager.loadCSV("src/main/webapp/CSV/produkte.csv");
-		
-		transferCSVfromFileToDB(list);
-		
 		
 	}
 }

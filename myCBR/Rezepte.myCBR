@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Project name="Rezepte" author="" >
+<svs>
+  <sv name="_unknown_"/>
+  <sv name="_undefined_"/>
+  <sv name="_others_"/>
+<fct name="default function" type="Symbol" mt="PARTNER_QUERY" r="REUSE" t="MAX" symm="true">
+<qsym name="_unknown_">
+</qsym>
+<qsym name="_undefined_">
+</qsym>
+<qsym name="_others_">
+</qsym>
+</fct>
+</svs>
+<model>
+  <concept name="RezepteConcept">
+    <desc name="Eigenschaft" type="Symbol" mult="true" >
+      <symbol value="Vegan" />
+      <symbol value="Fleisch" />
+      <symbol value="Vegetarisch" />
+<fct name="default function" type="Symbol" mt="PARTNER_QUERY" r="REUSE" t="MAX" symm="true">
+<qsym name="Vegan">
+<csym name="Fleisch" sim="0.65"/>
+<csym name="Vegetarisch" sim="0.7"/>
+</qsym>
+<qsym name="Fleisch">
+<csym name="Vegan" sim="0.65"/>
+<csym name="Vegetarisch" sim="0.4"/>
+</qsym>
+<qsym name="Vegetarisch">
+<csym name="Vegan" sim="0.7"/>
+<csym name="Fleisch" sim="0.4"/>
+</qsym>
+</fct>
+    </desc>
+    <desc name="Gerichteart" type="Symbol" mult="true" >
+      <symbol value="Kartoffelgericht" />
+      <symbol value="Nudelgericht" />
+      <symbol value="Reisgericht" />
+      <symbol value="Suppe" />
+      <symbol value="Fast-Food" />
+      <symbol value="Salat" />
+<fct name="default function" type="Symbol" mt="PARTNER_QUERY" r="REUSE" t="MAX" symm="true">
+<qsym name="Kartoffelgericht">
+<csym name="Nudelgericht" sim="0.6"/>
+<csym name="Reisgericht" sim="0.6"/>
+<csym name="Suppe" sim="0.8"/>
+<csym name="Fast-Food" sim="0.8"/>
+<csym name="Salat" sim="0.5"/>
+</qsym>
+<qsym name="Nudelgericht">
+<csym name="Kartoffelgericht" sim="0.6"/>
+<csym name="Reisgericht" sim="0.6"/>
+<csym name="Suppe" sim="0.8"/>
+<csym name="Fast-Food" sim="0.8"/>
+<csym name="Salat" sim="0.5"/>
+</qsym>
+<qsym name="Reisgericht">
+<csym name="Kartoffelgericht" sim="0.6"/>
+<csym name="Nudelgericht" sim="0.6"/>
+<csym name="Suppe" sim="0.8"/>
+<csym name="Fast-Food" sim="0.8"/>
+<csym name="Salat" sim="0.3"/>
+</qsym>
+<qsym name="Suppe">
+<csym name="Kartoffelgericht" sim="0.8"/>
+<csym name="Nudelgericht" sim="0.8"/>
+<csym name="Reisgericht" sim="0.8"/>
+<csym name="Fast-Food" sim="0.4"/>
+</qsym>
+<qsym name="Fast-Food">
+<csym name="Kartoffelgericht" sim="0.8"/>
+<csym name="Nudelgericht" sim="0.8"/>
+<csym name="Reisgericht" sim="0.8"/>
+<csym name="Suppe" sim="0.4"/>
+<csym name="Salat" sim="0.6"/>
+</qsym>
+<qsym name="Salat">
+<csym name="Kartoffelgericht" sim="0.5"/>
+<csym name="Nudelgericht" sim="0.5"/>
+<csym name="Reisgericht" sim="0.3"/>
+<csym name="Fast-Food" sim="0.6"/>
+</qsym>
+</fct>
+    </desc>
+    <desc name="Titel" type="String" mult="false" >
+      <fct name="default function" type="String" symm="true" config="EQUALITY" n="3" mt="PARTNER_QUERY" r="REUSE" t="MAX" />
+    </desc>
+    <desc name="K&#252;che" type="Symbol" mult="true" >
+      <symbol value="Italienisch" />
+      <symbol value="Asiatisch" />
+      <symbol value="Amerikanisch" />
+<fct name="default function" type="Symbol" mt="PARTNER_QUERY" r="REUSE" t="MAX" symm="true">
+<qsym name="Italienisch">
+<csym name="Amerikanisch" sim="0.6"/>
+</qsym>
+<qsym name="Asiatisch">
+<csym name="Amerikanisch" sim="0.4"/>
+</qsym>
+<qsym name="Amerikanisch">
+<csym name="Italienisch" sim="0.6"/>
+<csym name="Asiatisch" sim="0.4"/>
+</qsym>
+</fct>
+    </desc>
+    <amalgam name="default function" type="WEIGHTED_SUM" active="true" >
+      <entry name="Eigenschaft" active="true" fct="default function" weight="1.0"/>
+      <entry name="K&#252;che" active="true" fct="default function" weight="1.0"/>
+      <entry name="Gerichteart" active="true" fct="default function" weight="1.0"/>
+      <entry name="Titel" active="true" fct="default function" weight="1.0"/>
+    </amalgam>
+  </concept>
+</model>
+<hierarchy>
+  <fct name="default function" type="Taxonomy" mt="PARTNER_QUERY" r="REUSE" t="MAX" qconfig="INNER_NODES_ANY" cconfig="INNER_NODES_ANY" top="inheritanceDesc" sim="0.0" symm="true" >
+    <node name="RezepteConcept" sim="1.0" parent="inheritanceDesc" />
+  </fct>
+</hierarchy>
+<cases no="41" cb="Case Base"/>
+</Project>
