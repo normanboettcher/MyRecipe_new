@@ -18,6 +18,10 @@ public class Food {
 		this.hersteller = hersteller;
 		this.image = image;
 		this.kategorie = kategorie;
+		this.bio = bio;
+		this.lokal = lokal;
+		this.vegan = vegan;
+		this.vegetarisch = veggy;
 	}
 	
 	
