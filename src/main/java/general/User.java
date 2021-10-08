@@ -12,7 +12,7 @@ public class User {
 	private Adresse adrs;
 	private int id;
 	private Einkaufsliste einkaufsliste;
-	private HashMap<Date, Einkaufsliste> einkauf_historie;
+	private HashMap<Integer, Einkaufsliste> einkauf_historie;
 	
 	
 	public User(int id, String vorname,String name, String email, Adresse adrs, String pw) {
@@ -27,17 +27,18 @@ public class User {
 	public void setEinkaufsliste(Einkaufsliste list) {
 		this.einkaufsliste = list;
 		getEinkaufsliste().setUser(this);
+		addEinkaufslisteZuHistorie(list);
 	}
 	
 	public void addEinkaufslisteZuHistorie(Einkaufsliste l) {
 		if(this.einkauf_historie == null) {
-			this.einkauf_historie = new HashMap<Date, Einkaufsliste>();
+			this.einkauf_historie = new HashMap<Integer, Einkaufsliste>();
 			l.setUser(this);
-			this.einkauf_historie.put(l.getEinkaufslisteDate(), l);
+			this.einkauf_historie.put(l.getEinkaufslisteID(), l);
 		}
 		else {
 			l.setUser(this);
-			this.einkauf_historie.put(l.getEinkaufslisteDate(), l);
+			this.einkauf_historie.put(l.getEinkaufslisteID(), l);
 		}
 	}
 	
@@ -76,6 +77,10 @@ public class User {
 	
 	public Einkaufsliste getEinkaufsliste() {
 		return einkaufsliste;
+	}
+	
+	public HashMap<Integer, Einkaufsliste> getEinkaufslisteHistorie() {
+		return einkauf_historie;
 	}
 	
 }
