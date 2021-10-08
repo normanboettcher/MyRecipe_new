@@ -2,17 +2,19 @@ package general.supermarkets;
 
 public class Rezepte {
 
-	public Rezepte(String title, String kueche, String gerichteart, String eigenschaften) {
+	public Rezepte(String title, String kueche, String gerichteart, String eigenschaften, int id) {
 		this.title = title;
 		this.kueche = kueche;
 		this.gerichteart = gerichteart;
 		this.eigenschaften = eigenschaften;
+		this.id = id;
 	}
 
 	private String title;
 	private String kueche;
 	private String gerichteart;
 	private String eigenschaften;
+	private int id;
 	private double similarity; 
 	
 
@@ -38,5 +40,8 @@ public class Rezepte {
 
 	public String getEigenschaften() {
 		return eigenschaften;
+	}
+	public int getId() {
+		return id;
 	}
 }
