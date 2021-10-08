@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="0" name="AngebotAgentTest" package="agentsTest" skipped="0" tests="4" time="0.13" timestamp="2021-10-08T16:34:25">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="0" name="AngebotAgentTest" package="agentsTest" skipped="0" tests="4" time="0.132" timestamp="2021-10-08T16:59:14">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -36,7 +36,7 @@
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.AngebotAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher12346951230912759633.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit5503822432973666515.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.AngebotAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher10562089883452161857.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit11689278959785413712.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -138,11 +138,11 @@
 
       </properties>
 
-      <testcase classname="agentsTest.AngebotAgentTest" name="tauscheEinkaufslisteProduktMitAngebotProduktTest" time="0.005" />
+      <testcase classname="agentsTest.AngebotAgentTest" name="tauscheEinkaufslisteProduktMitAngebotProduktTest" time="0.004" />
 
-      <testcase classname="agentsTest.AngebotAgentTest" name="getGespartTest" time="0.001" />
+      <testcase classname="agentsTest.AngebotAgentTest" name="getGespartTest" time="0.0" />
 
-      <testcase classname="agentsTest.AngebotAgentTest" name="getErsparungInProzentTest" time="0.005" />
+      <testcase classname="agentsTest.AngebotAgentTest" name="getErsparungInProzentTest" time="0.004" />
 
       <testcase classname="agentsTest.AngebotAgentTest" name="produktImAngebotTest" time="0.001" />
 
@@ -154,7 +154,7 @@
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="1" name="EinkaufslistenVergleichsAgentTest" package="agentsTest" skipped="0" tests="1" time="0.153" timestamp="2021-10-08T16:34:26">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="1" name="EinkaufslistenVergleichsAgentTest" package="agentsTest" skipped="0" tests="1" time="0.145" timestamp="2021-10-08T16:59:15">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -190,7 +190,7 @@
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.EinkaufslistenVergleichsAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher8822183033521036142.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit5669116460593028767.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.EinkaufslistenVergleichsAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher10546550375242973485.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit7510328657668082109.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -292,31 +292,31 @@
 
       </properties>
 
-      <testcase classname="agentsTest.EinkaufslistenVergleichsAgentTest" name="sortiereNachBilligstenFuenfTest" time="0.016" />
+      <testcase classname="agentsTest.EinkaufslistenVergleichsAgentTest" name="sortiereNachBilligstenFuenfTest" time="0.013" />
 
       <system-out><![CDATA[Bevor sortiert: 
-5. 8.58 EUR
-6. 6.12 EUR
-7. 22.32 EUR
-8. 29.4 EUR
-9. 27.3 EUR
-10. 37.28 EUR
-11. 39.5 EUR
-12. 41.64 EUR
-13. 38.3 EUR
-14. 38.76 EUR
+5. 7.74 EUR
+6. 11.219999999999999 EUR
+7. 28.5 EUR
+8. 32.8 EUR
+9. 26.259999999999998 EUR
+10. 28.7 EUR
+11. 29.42 EUR
+12. 41.56 EUR
+13. 45.44 EUR
+14. 41.1 EUR
 Nach sortiert: 
-1. 6.12 EUR
-2. 8.58 EUR
-3. 22.32 EUR
-4. 27.3 EUR
-5. 29.4 EUR
+1. 7.74 EUR
+2. 11.219999999999999 EUR
+3. 26.259999999999998 EUR
+4. 28.5 EUR
+5. 28.7 EUR
 ]]></system-out>
 
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="2" name="AdresseTest" package="generalTest" skipped="0" tests="4" time="0.131" timestamp="2021-10-08T16:34:27">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="2" name="AdresseTest" package="generalTest" skipped="0" tests="4" time="0.127" timestamp="2021-10-08T16:59:16">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -352,7 +352,7 @@ Nach sortiert:
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.AdresseTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.AdresseTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.AdresseTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher3414343367477886249.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit11587038403938004282.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.AdresseTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.AdresseTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.AdresseTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher1497440292987671497.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit4123480263534560636.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -456,18 +456,18 @@ Nach sortiert:
 
       <testcase classname="generalTest.AdresseTest" name="getNumberTest" time="0.003" />
 
-      <testcase classname="generalTest.AdresseTest" name="getPLZTest" time="0.0" />
+      <testcase classname="generalTest.AdresseTest" name="getPLZTest" time="0.001" />
 
-      <testcase classname="generalTest.AdresseTest" name="getCityTest" time="0.001" />
+      <testcase classname="generalTest.AdresseTest" name="getCityTest" time="0.0" />
 
-      <testcase classname="generalTest.AdresseTest" name="getStrasseTest" time="0.0" />
+      <testcase classname="generalTest.AdresseTest" name="getStrasseTest" time="0.001" />
 
       <system-out><![CDATA[]]></system-out>
 
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="3" name="EinkaufslisteTest" package="generalTest" skipped="0" tests="7" time="0.136" timestamp="2021-10-08T16:34:28">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="3" name="EinkaufslisteTest" package="generalTest" skipped="0" tests="7" time="0.136" timestamp="2021-10-08T16:59:17">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -503,7 +503,7 @@ Nach sortiert:
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.EinkaufslisteTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.EinkaufslisteTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.EinkaufslisteTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher1712169887777838568.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit3827394664599179857.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.EinkaufslisteTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.EinkaufslisteTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.EinkaufslisteTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher8201739799525254911.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit16966539642489176964.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -611,11 +611,11 @@ Nach sortiert:
 
       <testcase classname="generalTest.EinkaufslisteTest" name="loescheProdukteVonListeTest" time="0.001" />
 
-      <testcase classname="generalTest.EinkaufslisteTest" name="getEinkaufslisteDateTest" time="0.0" />
+      <testcase classname="generalTest.EinkaufslisteTest" name="getEinkaufslisteDateTest" time="0.001" />
 
-      <testcase classname="generalTest.EinkaufslisteTest" name="getEinkaufslisteIDTest" time="0.0" />
+      <testcase classname="generalTest.EinkaufslisteTest" name="getEinkaufslisteIDTest" time="0.001" />
 
-      <testcase classname="generalTest.EinkaufslisteTest" name="berechneGesamtPreisTest" time="0.001" />
+      <testcase classname="generalTest.EinkaufslisteTest" name="berechneGesamtPreisTest" time="0.0" />
 
       <testcase classname="generalTest.EinkaufslisteTest" name="getUserTest" time="0.0" />
 
@@ -624,7 +624,7 @@ Nach sortiert:
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="4" name="FoodTest" package="generalTest" skipped="0" tests="12" time="0.135" timestamp="2021-10-08T16:34:29">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="4" name="FoodTest" package="generalTest" skipped="0" tests="12" time="0.139" timestamp="2021-10-08T16:59:18">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -660,7 +660,7 @@ Nach sortiert:
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.FoodTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.FoodTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.FoodTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher2090602497292569071.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit16990170175059526813.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.FoodTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.FoodTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.FoodTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher17345301388293186741.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit11307167441872525104.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -762,13 +762,13 @@ Nach sortiert:
 
       </properties>
 
-      <testcase classname="generalTest.FoodTest" name="getRabattTest" time="0.005" />
+      <testcase classname="generalTest.FoodTest" name="getRabattTest" time="0.004" />
 
-      <testcase classname="generalTest.FoodTest" name="getOriginPreisTest" time="0.001" />
+      <testcase classname="generalTest.FoodTest" name="getOriginPreisTest" time="0.0" />
 
-      <testcase classname="generalTest.FoodTest" name="getPreisTest" time="0.0" />
+      <testcase classname="generalTest.FoodTest" name="getPreisTest" time="0.001" />
 
-      <testcase classname="generalTest.FoodTest" name="getImageTest" time="0.001" />
+      <testcase classname="generalTest.FoodTest" name="getImageTest" time="0.0" />
 
       <testcase classname="generalTest.FoodTest" name="getArtikelNrTest" time="0.0" />
 
@@ -778,20 +778,20 @@ Nach sortiert:
 
       <testcase classname="generalTest.FoodTest" name="getBioTest" time="0.0" />
 
-      <testcase classname="generalTest.FoodTest" name="getVeganTest" time="0.0" />
+      <testcase classname="generalTest.FoodTest" name="getVeganTest" time="0.001" />
 
-      <testcase classname="generalTest.FoodTest" name="getVeggyTest" time="0.001" />
+      <testcase classname="generalTest.FoodTest" name="getVeggyTest" time="0.0" />
 
-      <testcase classname="generalTest.FoodTest" name="getLokalTest" time="0.0" />
+      <testcase classname="generalTest.FoodTest" name="getLokalTest" time="0.001" />
 
-      <testcase classname="generalTest.FoodTest" name="getBezeichnungTest" time="0.001" />
+      <testcase classname="generalTest.FoodTest" name="getBezeichnungTest" time="0.0" />
 
       <system-out><![CDATA[]]></system-out>
 
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="5" name="SupermarktTest" package="generalTest" skipped="0" tests="7" time="0.126" timestamp="2021-10-08T16:34:29">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="5" name="SupermarktTest" package="generalTest" skipped="0" tests="7" time="0.134" timestamp="2021-10-08T16:59:19">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -827,7 +827,7 @@ Nach sortiert:
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.SupermarktTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.SupermarktTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.SupermarktTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher12332631656118369607.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit10137269827113009592.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.SupermarktTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.SupermarktTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.SupermarktTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher2790294789090933395.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit1967513375237184637.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -929,17 +929,17 @@ Nach sortiert:
 
       </properties>
 
-      <testcase classname="generalTest.SupermarktTest" name="getAngeboteTest" time="0.006" />
+      <testcase classname="generalTest.SupermarktTest" name="getAngeboteTest" time="0.005" />
 
-      <testcase classname="generalTest.SupermarktTest" name="removeAngebotByKeyTest" time="0.001" />
+      <testcase classname="generalTest.SupermarktTest" name="removeAngebotByKeyTest" time="0.0" />
 
-      <testcase classname="generalTest.SupermarktTest" name="getSortimentTest" time="0.001" />
+      <testcase classname="generalTest.SupermarktTest" name="getSortimentTest" time="0.0" />
 
       <testcase classname="generalTest.SupermarktTest" name="getSortimentByKeyTest" time="0.001" />
 
-      <testcase classname="generalTest.SupermarktTest" name="addAngebotTest" time="0.0" />
+      <testcase classname="generalTest.SupermarktTest" name="addAngebotTest" time="0.001" />
 
-      <testcase classname="generalTest.SupermarktTest" name="getAngebotByKeyTest" time="0.001" />
+      <testcase classname="generalTest.SupermarktTest" name="getAngebotByKeyTest" time="0.0" />
 
       <testcase classname="generalTest.SupermarktTest" name="removeSortimentByKeyTest" time="0.001" />
 
@@ -948,7 +948,7 @@ Nach sortiert:
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="6" name="UserTest" package="generalTest" skipped="0" tests="6" time="0.146" timestamp="2021-10-08T16:34:30">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="6" name="UserTest" package="generalTest" skipped="0" tests="6" time="0.113" timestamp="2021-10-08T16:59:19">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -984,7 +984,7 @@ Nach sortiert:
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.UserTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.UserTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.UserTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher446482028121052176.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit17692383325646059622.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.UserTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.UserTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.UserTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher16758489847401249696.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit6818258122717304690.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -1086,17 +1086,17 @@ Nach sortiert:
 
       </properties>
 
-      <testcase classname="generalTest.UserTest" name="getPasswortTest" time="0.006" />
+      <testcase classname="generalTest.UserTest" name="getPasswortTest" time="0.005" />
 
-      <testcase classname="generalTest.UserTest" name="getFullNameTest" time="0.007" />
+      <testcase classname="generalTest.UserTest" name="getFullNameTest" time="0.004" />
 
-      <testcase classname="generalTest.UserTest" name="getEinkaufsListeByDateTest" time="0.002" />
+      <testcase classname="generalTest.UserTest" name="getEinkaufsListeByDateTest" time="0.001" />
 
-      <testcase classname="generalTest.UserTest" name="getEinkaufslisteHistorieTest" time="0.002" />
+      <testcase classname="generalTest.UserTest" name="getEinkaufslisteHistorieTest" time="0.001" />
 
       <testcase classname="generalTest.UserTest" name="getAdresseTest" time="0.001" />
 
-      <testcase classname="generalTest.UserTest" name="getEinkaufslisteTest" time="0.001" />
+      <testcase classname="generalTest.UserTest" name="getEinkaufslisteTest" time="0.0" />
 
       <system-out><![CDATA[[2] 2002-02-03
 [100] 2002-02-03
@@ -1121,7 +1121,7 @@ Nach sortiert:
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="7" name="DoubleManagerTest" package="managersTest" skipped="0" tests="1" time="0.118" timestamp="2021-10-08T16:34:31">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="7" name="DoubleManagerTest" package="managersTest" skipped="0" tests="1" time="0.101" timestamp="2021-10-08T16:59:20">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -1157,7 +1157,7 @@ Nach sortiert:
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.DoubleManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.DoubleManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.DoubleManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher907823615942081233.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit13855944790357670138.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.DoubleManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.DoubleManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.DoubleManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher52298610286143328.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit5845896398598911738.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -1266,7 +1266,7 @@ Nach sortiert:
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="8" name="RabattManagerTest" package="managersTest" skipped="0" tests="2" time="0.118" timestamp="2021-10-08T16:34:32">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="8" name="RabattManagerTest" package="managersTest" skipped="0" tests="2" time="0.134" timestamp="2021-10-08T16:59:21">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -1302,7 +1302,7 @@ Nach sortiert:
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.RabattManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher10374660339136923705.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit263881903984693119.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.RabattManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher16090096359335377582.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit3983635204749461022.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -1406,7 +1406,7 @@ Nach sortiert:
 
       <testcase classname="managersTest.RabattManagerTest" name="abzugRabattTest" time="0.004" />
 
-      <testcase classname="managersTest.RabattManagerTest" name="getRandomRabattTest" time="0.001" />
+      <testcase classname="managersTest.RabattManagerTest" name="getRandomRabattTest" time="0.002" />
 
       <system-out><![CDATA[]]></system-out>
 

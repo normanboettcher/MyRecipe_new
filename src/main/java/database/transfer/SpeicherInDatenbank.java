@@ -80,7 +80,7 @@ public class SpeicherInDatenbank {
 		try {
 			String speicherAngebot = "insert into " + laden + "_angebote "
 					+ "values"
-					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+					+ "(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			
 			PreparedStatement stmt = con.prepareStatement(speicherAngebot);
 			
@@ -95,7 +95,7 @@ public class SpeicherInDatenbank {
 			stmt.setInt(8, f.getLokal());
 			stmt.setInt(9, f.getBio());
 			stmt.setString(10, f.getImage());
-			
+			stmt.setInt(11, f.getUrpsungsmarktID());		
 			stmt.executeUpdate();
 			stmt.close();
 			

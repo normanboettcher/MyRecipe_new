@@ -12,6 +12,8 @@ import general.Supermarkt;
 
 public class Lidl extends Supermarkt {
 	
+	private final int URSPRUNGSID = 2;
+	
 	public Lidl() {
 		super();
 		setBezeichnung();
@@ -20,6 +22,10 @@ public class Lidl extends Supermarkt {
 	@Override
 	protected void setBezeichnung() {
 		this.bez = "Lidl";
+	}
+	
+	public int getUrsprungsID() {
+		return URSPRUNGSID;
 	}
 	
 

@@ -11,6 +11,10 @@ import database.transfer.LoescheAusDatenbank;
 import database.transfer.SpeicherInDatenbank;
 import databaseConnection.DBConnection;
 import general.Food;
+import general.supermarkets.Lidl;
+import general.supermarkets.Netto;
+import general.supermarkets.Penny;
+import general.supermarkets.Rewe;
 import managers.DoubleManager;
 import managers.RabattManager;
 
@@ -94,6 +98,28 @@ public abstract class Supermarkt {
 				
 				f.setOriginalPreis(object.getPreis());
 				f.setRabatt(rabatt);
+				
+				switch(getBezeichnung()) {
+				
+				case "Lidl": 
+					Lidl lidl = new Lidl();
+					f.setUrsprungsmarkt(lidl.getUrsprungsID());
+					break;
+				case "Penny":
+					Penny p = new Penny();
+					f.setUrsprungsmarkt(p.getUrsprungsID());
+					break;
+				case "Rewe":
+					Rewe r = new Rewe();
+					f.setUrsprungsmarkt(r.getUrsprungsID());
+					break;
+				case "Netto":
+					Netto n = new Netto();
+					f.setUrsprungsmarkt(n.getUrsprungsID());
+					break;
+					default:
+						break;
+				}
 				addAngebot(i + 1, f);
 				addAngebotToDB(f);
 		}
