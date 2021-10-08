@@ -4,6 +4,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -51,14 +53,14 @@ public class UserTest {
 			int month = 2;
 			int day = 3;
 			
-			list_2 = new Einkaufsliste(i, new Date(year, month, day));
+			list_2 = new Einkaufsliste(i, new Date(year - 1900, month - 1, day));
 			f_1 = new Food("Apfel", 1.99, "Rewe", "", 1, 1,1, 1, "Obst");
 			f_1.setArtikelNr(i + 1);
 			list_2.addProduktZuListe(f_1, 2);
 			u_2.setEinkaufsliste(list_2);
 		}
 		
-		list_3 = new Einkaufsliste(100, new Date(2002, 2, 3));
+		list_3 = new Einkaufsliste(100, new Date(2002 - 1900, 2 - 1, 3));
 		f_2 = new Food("Apfel", 1.99, "Rewe", "", 1, 1,1, 1, "Obst");
 		f_2.setArtikelNr(1);
 		list_3.addProduktZuListe(f_2, 2);
@@ -104,6 +106,23 @@ public class UserTest {
 	public void getEinkaufslisteHistorieTest() {
 		assertTrue(u_2.getEinkaufslisteHistorie() != null);
 		assertTrue(u_2.getEinkaufslisteHistorie().size() == 16);
+		
+		for(Entry<Integer, Einkaufsliste> l : u_2.getEinkaufslisteHistorie().entrySet()) {
+			
+			System.out.println(l.getKey() + ". " + " || "
+					+ "Date: " + l.getValue().getEinkaufslisteDate());
+		}
+		
 	}
-
+	
+	@Test
+	public void getEinkaufsListeByDateTest() {
+		HashMap<Integer, Einkaufsliste> einkaufslisten_an_datum = u_2.getEinkaufslisteByDate(new Date(2002 - 1900, 1, 3));
+		//System.out.println(new Date(2002- 1900, 1, 3));
+		assertTrue(einkaufslisten_an_datum.size() == 2);
+		
+		for(Entry<Integer, Einkaufsliste> l : einkaufslisten_an_datum.entrySet()) {
+			System.out.println("[" + l.getKey() + "] " + l.getValue().getEinkaufslisteDate());
+		}
+	}	
 }
