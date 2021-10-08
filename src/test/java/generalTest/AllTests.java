@@ -6,7 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 import generalTest.*;
 
 @RunWith(Suite.class)
-@SuiteClasses({ EinkaufslisteTest.class, SupermarktTest.class, UserTest.class })
+@SuiteClasses({ EinkaufslisteTest.class, SupermarktTest.class, UserTest.class,
+	AdresseTest.class})
 public class AllTests {
 
 }

@@ -12,6 +12,7 @@ import database.transfer.SpeicherInDatenbank;
 import databaseConnection.DBConnection;
 import general.Food;
 import managers.DoubleManager;
+import managers.RabattManager;
 
 public abstract class Supermarkt {
 	
@@ -60,26 +61,6 @@ public abstract class Supermarkt {
 	}
 	
 	/**
-	 * Methode um den Rabatt für ein Produkt zufaellig festzulegen.
-	 * @return Eine zufaellige Zahl zwischen 0.15 und 0.5. 
-	 *  Dies entspricht einem Bereich von 15 bis 50 % Rabatt.
-	 */
-	private double getRabatt() {
-		
-		return (Math.random() * (0.5 - 0.15) + 0.15);
-	}
-	
-	/**
-	 * Mit dieser Methode wird dem Originalpreis der gegebene Rabatt abgezogen.
-	 * @param rabatt der aktuelle zufaellige Rabatt.
-	 * @param originpreis der Originalpreis des Produktes.
-	 * @return double-value originalpreis abzueglich des Rabatts.
-	 */
-	private double abzugRabatt(double rabatt, double originpreis) {
-		return DoubleManager.round(originpreis - (originpreis * rabatt), 2);
-	}
-	
-	/**
 	 * Diese Methode initialisiert die Angebote eines Supermarktes.
 	 * Es wird eine zufaellige Anzahl von Produkten zufaellig in das 
 	 * Angebotsortiment aufgenommen.
@@ -101,11 +82,11 @@ public abstract class Supermarkt {
 		for(int i = 0; i <= angeboteAnzahl; i++) {
 				int nr = (int)(Math.random() * (getSortiment().size() - 2) + 2);	
 				//System.out.println(nr);
-				double rabatt = DoubleManager.round(getRabatt(), 2);
+				double rabatt = DoubleManager.round(RabattManager.getRandomRabatt(), 2);
 				Food object = getSortiment().get(nr);
 				
 				Food f = new Food(object.getBezeichnung(), 
-						abzugRabatt(rabatt, object.getPreis()), 
+						RabattManager.abzugRabatt(rabatt, object.getPreis()), 
 						object.getHersteller(), object.getImage(),
 						object.getVeggy(), object.getVegan(),
 						object.getLokal(), object.getBio(),
@@ -114,6 +95,7 @@ public abstract class Supermarkt {
 				f.setOriginalPreis(object.getPreis());
 				f.setRabatt(rabatt);
 				addAngebot(i + 1, f);
+				addAngebotToDB(f);
 		}
 	}
 	
@@ -130,9 +112,7 @@ public abstract class Supermarkt {
 	}
 	
 	public void addAngebot(int key, Food f) {
-		
-		SpeicherInDatenbank.speicherAngeboteInDatenbank(getBezeichnung(), f);
-		
+		f.setArtikelNr(key);
 		getAngebote().put(key, f);
 	}
 	
@@ -144,7 +124,8 @@ public abstract class Supermarkt {
 		return sortiment;
 	}
 	
-	public void addProdukt(int key, Food f) {
+	public void addProduktToSortiment(int key, Food f) {
+		f.setArtikelNr(key);
 		this.sortiment.put(key, f);
 	}
 	
@@ -156,6 +137,15 @@ public abstract class Supermarkt {
 		sortiment.remove(key);
 	}
 	
+	public void addAngebotToDB(Food f) {
+		SpeicherInDatenbank.speicherAngeboteInDatenbank(getBezeichnung(), f);
+	}
 	
-
+	public void removeAngeboteByKeyFromDB(int key) {
+		LoescheAusDatenbank.loescheAngebotAusDB(getBezeichnung(), key);
+	}
+	
+	public void removeSortimentByKeyFromDB(int key) {
+		LoescheAusDatenbank.loescheSortimentAusDB(getBezeichnung(), key);
+	}
 }

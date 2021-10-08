@@ -53,7 +53,9 @@
 		<echo message = "creating documentation folder"></echo>
 		<mkdir dir = "${doc.dir}/src"></mkdir>
 		
+		<echo message = "creating new folder for junit reports"></echo>
 		<mkdir dir = "${report.dir}/junit"></mkdir>
+		
 	</target>
 	
 	<!-- Cleaning directories -->
@@ -67,7 +69,9 @@
 		<echo message = "deleting documentation folder"></echo>
 		<delete dir = "${doc.dir}/src"></delete>
 		
+		<echo message = "deleting junit-report folder"></echo>
 		<delete dir = "${report.dir}"></delete>
+		
 	</target>
 	
 	<!-- Compile all sources and tests -->
@@ -128,14 +132,15 @@
 			<formatter type = "brief" usefile = "true"></formatter>
 			<formatter type = "xml" usefile = "true"></formatter>
 			
-			<batchtest todir = "${report.dir}/junit">
+			<batchtest todir = "${report.dir}">
 				<fileset dir = "${testsource.dir}">
-					<include name = "**/*Test.java"></include>
+					<include name = "**/*Test*.java"></include>
+					<exclude name = "**/*Tests.java"></exclude>
 				</fileset>
 			</batchtest>
 		</junit>
 		
-		<junitreport todir = "${report.dir}/junit">
+		<junitreport todir = "${report.dir}">
 			<fileset dir = "${report.dir}">
 				<include name = "TEST-*.xml"></include>
 			</fileset>
