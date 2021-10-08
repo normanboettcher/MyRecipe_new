@@ -25,7 +25,7 @@ public class RezepteServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get parameters from the formular on index.jsp
-		String inputTitle = request.getParameter("title"); 
+		String inputTitel = request.getParameter("titel"); 
 		String inputKueche = request.getParameter("kueche"); 
 		String inputGerichteart = request.getParameter("gerichteart"); 
 		String inputEigenschaften = request.getParameter("eigenschaften");
@@ -35,14 +35,14 @@ public class RezepteServlet extends HttpServlet {
 		try {
 
 			int inputIdParsed = Integer.parseInt(inputId);
-			Rezepte queryRezepte = new Rezepte(inputTitle, inputKueche, inputGerichteart, inputEigenschaften, inputIdParsed); 
+			Rezepte queryRezepte = new Rezepte(inputTitel, inputKueche, inputGerichteart, inputEigenschaften, inputIdParsed); 
 			RecipeAgent recipeAgent = new RecipeAgent(); 
 			result = recipeAgent.startQuery(queryRezepte); 
 			resultingRezepte = recipeAgent.print(result, 5);
 			request.setAttribute("resultingRezepte", resultingRezepte);
 			
 			// Forward parameters back to the form for usability
-			request.setAttribute("inputTitle", inputTitle);
+			request.setAttribute("inputTitle", inputTitel);
 			request.setAttribute("inputKueche", inputKueche);
 			request.setAttribute("inputGerichteart", inputGerichteart);
 			request.setAttribute("inputEigenschaften", inputEigenschaften);

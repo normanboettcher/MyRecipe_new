@@ -38,11 +38,11 @@ public class RecipeAgent {
 	private Retrieval retrieve;
 
 	// Attributes of our book, preparation for CBR
-	private StringDesc titleDesc;
+	private StringDesc titelDesc;
 	private SymbolDesc kuecheDesc;
 	private SymbolDesc gerichteartDesc;
 	private SymbolDesc eigenschaftenDesc;
-	private IntegerDesc idDesc;
+	private IntegerDesc rezepte_idDesc;
 
 
 	public RecipeAgent() {
@@ -68,23 +68,22 @@ public class RecipeAgent {
 	
 	public List<Pair<Instance, Similarity>> startQuery(Rezepte rezepte) {
 		// Get the values of the request
-		titleDesc = (StringDesc) this.RezepteConcept.getAllAttributeDescs().get("Title");
+		titelDesc = (StringDesc) this.RezepteConcept.getAllAttributeDescs().get("Titel");
 		kuecheDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Kueche");
-		kuecheDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("K�che");
 		gerichteartDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Gerichteart");
 		eigenschaftenDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Eigenschaften");
-		idDesc =  (IntegerDesc) this.RezepteConcept.getAllAttributeDescs().get("Id");
+		rezepte_idDesc =  (IntegerDesc) this.RezepteConcept.getAllAttributeDescs().get("Rezepte_id");
 
 		// Insert values into query
 		try {
 			retrieve = new Retrieval(RezepteConcept, casebase);
 			retrieve.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
 			Instance query = retrieve.getQueryInstance();
-			query.addAttribute(titleDesc, titleDesc.getAttribute(rezepte.getTitle()));
+			query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel()));
 			query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()));
 			query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()));
 			query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()));
-			query.addAttribute(idDesc, idDesc.getAttribute(rezepte.getId()));
+			query.addAttribute(rezepte_idDesc, rezepte_idDesc.getAttribute(rezepte.getRezepte_id()));
 		} catch (ParseException e) {
 			System.err.println("[ERROR] RecipeAgent: Error while creating the query! " + e.getMessage());
 		}
@@ -108,11 +107,11 @@ public class RecipeAgent {
 			// result is already ordered. So we can just add n Wireshark objects to the
 			// list.
 			Instance obj = RezepteConcept.getInstance(result.get(i).getFirst().getName());
-			Rezepte rezepte = new Rezepte(obj.getAttForDesc(titleDesc).getValueAsString(),
+			Rezepte rezepte = new Rezepte(obj.getAttForDesc(titelDesc).getValueAsString(),
 					obj.getAttForDesc(kuecheDesc).getValueAsString(),
 					obj.getAttForDesc(gerichteartDesc).getValueAsString(),
 					obj.getAttForDesc(eigenschaftenDesc).getValueAsString(),
-					Integer.parseInt(obj.getAttForDesc(idDesc).getValueAsString()));
+					Integer.parseInt(obj.getAttForDesc(rezepte_idDesc).getValueAsString()));
 
 			resultingRezepte.add(rezepte);
 			resultingRezepte.get(i).setSimilarity(result.get(i).getSecond().getValue());
