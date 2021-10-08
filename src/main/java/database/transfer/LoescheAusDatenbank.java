@@ -8,11 +8,11 @@ import databaseConnection.DBConnection;
 
 public class LoescheAusDatenbank {
 	
-	public static void loescheTabellenInhalt(String table) {
+	public static void loescheTabellenInhalt(String table, String spalte) {
 		Connection con = DBConnection.getConnection();
 		
 		try {
-			PreparedStatement stmt = con.prepareStatement("delete from " + table + " where artikelnr >= ?");
+			PreparedStatement stmt = con.prepareStatement("delete from " + table + " where "+ spalte + " >= ?");
 			stmt.setInt(1, 1);
 
 			stmt.executeUpdate();

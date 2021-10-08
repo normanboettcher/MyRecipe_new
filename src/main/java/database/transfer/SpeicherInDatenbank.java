@@ -3,16 +3,21 @@ package database.transfer;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Map.Entry;
 
 import databaseConnection.DBConnection;
+import general.Adresse;
 import general.Einkaufsliste;
 import general.Food;
 import general.User;
+import managers.DatumsManager;
 import managers.IdGenerator;
+import managers.PasswortManager;
 
 public class SpeicherInDatenbank {
 	
@@ -102,19 +107,23 @@ public class SpeicherInDatenbank {
 	public static void speicherEinkaufslisteInDatenbank(Einkaufsliste l) {
 		Connection con = DBConnection.getConnection();
 		
+		
 		try {
-			String speicherAngebot = "insert into ? " 
-					+ "values"
-					+ "(?, ?, ?, ?, ?)";
+			String speicherAngebot = "insert into einkauf_historie " 
+					+ "values "
+					+ "(?,?, ?, ?, ?, ?)";
 			
 			PreparedStatement stmt = con.prepareStatement(speicherAngebot);
 			
-			stmt.setString(1, "einkauf_historie");
-			stmt.setInt(6, IdGenerator.generiereEinkaufslistenID());
-			stmt.setDate(2, l.getEinkaufslisteDate());
-			stmt.setString(3, l.getUser().getFullName());
-			stmt.setDouble(4, l.getGesamtPreis());
-			stmt.setInt(5, l.getUser().getID());
+		
+				stmt.setInt(5,l.getEinkaufslisteID());
+				stmt.setDate(1, l.getEinkaufslisteDate());
+				stmt.setString(2, l.getUser().getFullName());
+				stmt.setDouble(3, l.getGesamtPreis());
+				stmt.setInt(4, l.getUser().getID());
+				for(int i : l.getProduktliste().keySet()) {
+					stmt.setInt(6, l.getProduktliste().get(i).getUrpsungsmarktID());
+				}
 			
 			stmt.executeUpdate();
 			stmt.close();
@@ -130,18 +139,19 @@ public class SpeicherInDatenbank {
 		Connection con = DBConnection.getConnection();
 		
 		try {
-			PreparedStatement stmt = con.prepareStatement("insert into ? "
+			PreparedStatement stmt = con.prepareStatement("insert into produkte_aus_einkaufsliste "
 					+ "values"
-					+ "(?, ?, ?, ?, ?)");
+					+ "(?, ?, ?, ?, ?, ?, ?)");
 			
-			stmt.setString(1, "produkte_aus_einkaufsliste");
 			
 			for(int i : l.getProduktliste().keySet()) {
-				stmt.setDate(2, l.getEinkaufslisteDate());
-				stmt.setInt(3, l.getUser().getID());
-				stmt.setInt(4, l.getProduktliste().get(i).getArtikelNr());
-				stmt.setInt(5, l.getProdukteMitMenge().get(i));
-				stmt.setInt(6, l.getEinkaufslisteID());
+				stmt.setDate(1, l.getEinkaufslisteDate());
+				stmt.setInt(2, l.getUser().getID());
+				stmt.setInt(3, l.getProduktliste().get(i).getArtikelNr());
+				stmt.setInt(4, l.getProdukteMitMenge().get(i));
+				stmt.setInt(5, l.getEinkaufslisteID());
+				stmt.setInt(6, l.getProduktliste().get(i).getUrpsungsmarktID());
+				stmt.setDouble(7, l.getProduktliste().get(i).getPreis());
 				stmt.executeUpdate();
 			}
 			stmt.close();
@@ -151,12 +161,98 @@ public class SpeicherInDatenbank {
 		}
 	}
 	
-	public static void main(String[] args) {
-	
+	public static void main(String[] args) throws NoSuchAlgorithmException {
+		
+		LoescheAusDatenbank.loescheTabellenInhalt("einkauf_historie", "einkaufsliste_id");
+		LoescheAusDatenbank.loescheTabellenInhalt("produkte_aus_einkaufsliste", "einkaufsliste_id");
+		
+		for(int i = 5; i < 15; i++) {
+			SpeicherInDatenbank.speicherUserInDatenbank(new User(i, "User " + i, "Nachname " + i, 
+					"email" + i + "@webmail.com", new Adresse("Street" + i, i + "a", "1234" + i, "City" + i), PasswortManager.generateHash("passwort")));
+		}
 		
 		Connection con = DBConnection.getConnection();
+		String[] laeden = {"", "lidl", "penny", "rewe", "netto"};
+		Food f = null;
+		int random = 0;
+		int random_user = 0;
+		String laden = "";
+		PreparedStatement stmt;
+		PreparedStatement stmt_2;
+		ResultSet r;
+		ResultSet r_2;
+		Einkaufsliste l = null; 
+		User u = null;
 		
+		for(int i = 0; i < 100; i++) {
+			
+			random = (int) (Math.random() * (4- 1) + 1);
+			random_user = (int) (Math.random() * (15 - 5) + 5);
 		
+			laden = laeden[random];
+			try {
+				
+				stmt_2 = con.prepareStatement("select * from users where id = ?");
+				stmt_2.setInt(1, random_user);
+				r_2 = stmt_2.executeQuery();
+
+				l = new Einkaufsliste(IdGenerator.generiereEinkaufslistenID(), DatumsManager.aktuellesDatum());
+				
+				int random_anzahl_produkte = (int) (Math.random() * (10 - 4)+ 4);
+				
+				
+				for(int j = 0; j < random_anzahl_produkte; j++) {
+					stmt = con.prepareStatement("select * from " + laden + "_sortiment"
+							+ " left join images "
+							+ "on " + laden + "_sortiment.image_id = images.id "
+									+ "where artikelnr = ?");
+					int random_artikel_nr = (int) (Math.random() * (93 - 2) + 2);
+					
+					stmt.setInt(1, random_artikel_nr);
+					r = stmt.executeQuery();
+					
+					while(r.next()) {
+						f = new Food(r.getString("artikelbez"), r.getDouble("artikelpreis"),
+								r.getString("hersteller"), r.getString("pfad"), r.getInt("vegetarisch"), 
+								r.getInt("vegan"), r.getInt("lokal"), r.getInt("bio"), r.getString("kategorie"));
+						f.setArtikelNr(r.getInt("artikelnr"));
+					}
+					int random_anzahl = (int) (Math.random() * (6 - 2) + 2);
+					
+					l.addProduktZuListe(f, random_anzahl);
+				}
+			
+				while(r_2.next()) {
+					u = new User(r_2.getInt("id"), r_2.getString("vorname"), r_2.getString("nachname") ,
+							r_2.getString("email"), new Adresse(r_2.getString("strasse"), r_2.getString("hausnummer"),
+									r_2.getString("plz"), r_2.getString("ort")), r_2.getString("passwort"));
+				}
+				
+				PreparedStatement sucheLaden = con.prepareStatement("select laden_id from laeden where bez = ?");
+				sucheLaden.setString(1, laden);
+				
+				ResultSet laden_result_set = sucheLaden.executeQuery();
+				int laden_id_result = 0;
+				
+				while(laden_result_set.next()) {
+					laden_id_result = laden_result_set.getInt("laden_id");
+				}
+				
+				l.berechneGesamtpreis(l.getProduktliste());
+				
+				for(int key : l.getProduktliste().keySet()) {
+					l.getProduktliste().get(key).setUrsprungsmarkt(laden_id_result);
+				}
+				
+				u.setEinkaufsliste(l);
+				SpeicherInDatenbank.speicherEinkaufslisteInDatenbank(l);
+				
+				
+				
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 		
 	}
 }

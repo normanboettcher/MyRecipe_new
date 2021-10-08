@@ -10,6 +10,8 @@ public class Food {
 	private double preis, originalpreis;
 	
 	private double rabatt;
+	
+	private int ursprungsmarkt;
 
 	public Food(String bez, double preis, String hersteller, String image,
 			int veggy, int vegan, int lokal, int bio, String kategorie) {
@@ -24,6 +26,13 @@ public class Food {
 		this.vegetarisch = veggy;
 	}
 	
+	public void setUrsprungsmarkt(int id) {
+		this.ursprungsmarkt = id;
+	}
+	
+	public int getUrpsungsmarktID() {
+		return ursprungsmarkt;
+	}
 	
 	//-----------------Simple getters for Food-----------------
 	public double getPreis() {

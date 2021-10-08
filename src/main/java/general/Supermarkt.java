@@ -68,7 +68,7 @@ public abstract class Supermarkt {
 	public void initAngebote() {
 		
 		//Wenn bereits Angebote existieren, werden sie komplett durch neue ersetzt.
-		LoescheAusDatenbank.loescheTabellenInhalt(getBezeichnung().toLowerCase() + "_angebote");
+		LoescheAusDatenbank.loescheTabellenInhalt(getBezeichnung().toLowerCase() + "_angebote", "artikelnr");
 		
 		//Mindestens 15 bis 30 Prozent des Sortiments sollen in das Angebot.
 		double high = 0.3;
