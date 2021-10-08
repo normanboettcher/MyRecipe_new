@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="normanboettcher" name="agentsTest.AngebotAgentTest" skipped="0" tests="4" time="0.164" timestamp="2021-10-08T14:36:21">
+<testsuite errors="0" failures="0" hostname="normanboettcher" name="agentsTest.AngebotAgentTest" skipped="0" tests="4" time="0.133" timestamp="2021-10-08T15:01:15">
   <properties>
     <property name="release.dir" value="release" />
     <property name="ant.library.dir" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib" />
@@ -18,7 +18,7 @@
     <property name="user.country" value="DE" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.AngebotAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher5944575376262013182.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit7594146028425948576.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.AngebotAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher16498607207666748455.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit14685859036822571525.properties" />
     <property name="jdk.debug" value="release" />
     <property name="sun.cpu.endian" value="little" />
     <property name="user.home" value="/home/norman" />
@@ -69,10 +69,10 @@
     <property name="java.class.version" value="60.0" />
     <property name="ant.project.default-target" value="release" />
   </properties>
-  <testcase classname="agentsTest.AngebotAgentTest" name="tauscheEinkaufslisteProduktMitAngebotProduktTest" time="0.006" />
-  <testcase classname="agentsTest.AngebotAgentTest" name="getGespartTest" time="0.003" />
+  <testcase classname="agentsTest.AngebotAgentTest" name="tauscheEinkaufslisteProduktMitAngebotProduktTest" time="0.005" />
+  <testcase classname="agentsTest.AngebotAgentTest" name="getGespartTest" time="0.001" />
   <testcase classname="agentsTest.AngebotAgentTest" name="getErsparungInProzentTest" time="0.005" />
-  <testcase classname="agentsTest.AngebotAgentTest" name="produktImAngebotTest" time="0.001" />
+  <testcase classname="agentsTest.AngebotAgentTest" name="produktImAngebotTest" time="0.0" />
   <system-out><![CDATA[19.9
 17.9
 [ 11.17] Prozent gespart

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="normanboettcher" name="agentsTest.EinkaufslistenVergleichsAgentTest" skipped="0" tests="1" time="0.131" timestamp="2021-10-08T14:36:22">
+<testsuite errors="0" failures="0" hostname="normanboettcher" name="agentsTest.EinkaufslistenVergleichsAgentTest" skipped="0" tests="1" time="0.136" timestamp="2021-10-08T15:01:16">
   <properties>
     <property name="release.dir" value="release" />
     <property name="ant.library.dir" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib" />
@@ -18,7 +18,7 @@
     <property name="user.country" value="DE" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.EinkaufslistenVergleichsAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher14874735532612719753.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit984221994749444024.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.EinkaufslistenVergleichsAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher5512615236481014988.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit13994750542081625244.properties" />
     <property name="jdk.debug" value="release" />
     <property name="sun.cpu.endian" value="little" />
     <property name="user.home" value="/home/norman" />
@@ -69,24 +69,24 @@
     <property name="java.class.version" value="60.0" />
     <property name="ant.project.default-target" value="release" />
   </properties>
-  <testcase classname="agentsTest.EinkaufslistenVergleichsAgentTest" name="sortiereNachBilligstenFuenfTest" time="0.015" />
+  <testcase classname="agentsTest.EinkaufslistenVergleichsAgentTest" name="sortiereNachBilligstenFuenfTest" time="0.024" />
   <system-out><![CDATA[Bevor sortiert: 
-5. 6.2 EUR
-6. 16.58 EUR
-7. 23.9 EUR
-8. 14.78 EUR
-9. 31.96 EUR
-10. 22.34 EUR
-11. 38.62 EUR
-12. 39.12 EUR
-13. 53.28 EUR
-14. 50.96 EUR
+5. 18.68 EUR
+6. 16.14 EUR
+7. 13.26 EUR
+8. 33.64 EUR
+9. 30.560000000000002 EUR
+10. 33.24 EUR
+11. 45.480000000000004 EUR
+12. 47.34 EUR
+13. 38.56 EUR
+14. 42.46 EUR
 Nach sortiert: 
-1. 6.2 EUR
-2. 14.78 EUR
-3. 16.58 EUR
-4. 22.34 EUR
-5. 23.9 EUR
+1. 13.26 EUR
+2. 16.14 EUR
+3. 18.68 EUR
+4. 30.560000000000002 EUR
+5. 33.24 EUR
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

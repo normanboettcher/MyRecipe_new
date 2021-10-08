@@ -7,13 +7,21 @@ import java.util.List;
 import de.dfki.mycbr.core.ICaseBase;
 import de.dfki.mycbr.core.Project;
 import de.dfki.mycbr.core.casebase.Instance;
+import de.dfki.mycbr.core.model.BooleanDesc;
 import de.dfki.mycbr.core.model.Concept;
+import de.dfki.mycbr.core.model.IntegerDesc;
 import de.dfki.mycbr.core.model.StringDesc;
 import de.dfki.mycbr.core.model.SymbolDesc;
 import de.dfki.mycbr.core.retrieval.Retrieval;
 import de.dfki.mycbr.core.retrieval.Retrieval.RetrievalMethod;
 import de.dfki.mycbr.core.similarity.AmalgamationFct;
+import de.dfki.mycbr.core.similarity.IntegerFct;
 import de.dfki.mycbr.core.similarity.Similarity;
+import de.dfki.mycbr.core.similarity.SymbolFct;
+import de.dfki.mycbr.core.similarity.config.AmalgamationConfig;
+import de.dfki.mycbr.core.similarity.config.NumberConfig;
+import de.dfki.mycbr.core.similarity.config.StringConfig;
+import de.dfki.mycbr.io.XMLExporter;
 import de.dfki.mycbr.util.Pair;
 import general.supermarkets.Rezepte;
 
@@ -27,7 +35,6 @@ public class RecipeAgent {
 	private Project project;
 	private Concept RezepteConcept;
 	private ICaseBase casebase;
-	private AmalgamationFct rezeptGlobalSim;
 	private Retrieval retrieve;
 
 	// Attributes of our book, preparation for CBR
@@ -35,6 +42,7 @@ public class RecipeAgent {
 	private SymbolDesc kuecheDesc;
 	private SymbolDesc gerichteartDesc;
 	private SymbolDesc eigenschaftenDesc;
+	private IntegerDesc idDesc;
 
 
 	public RecipeAgent() {
@@ -49,7 +57,7 @@ public class RecipeAgent {
 	private boolean importProject() {
 		try {
 			project = new Project(dataPath + projectName);
-			Thread.sleep(2000);
+			Thread.sleep(5000);
 			RezepteConcept = project.getConceptByID("RezepteConcept");
 			return true;
 		} catch (Exception e) {
@@ -61,9 +69,11 @@ public class RecipeAgent {
 	public List<Pair<Instance, Similarity>> startQuery(Rezepte rezepte) {
 		// Get the values of the request
 		titleDesc = (StringDesc) this.RezepteConcept.getAllAttributeDescs().get("Title");
+		kuecheDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Kueche");
 		kuecheDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("K�che");
 		gerichteartDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Gerichteart");
 		eigenschaftenDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Eigenschaften");
+		idDesc =  (IntegerDesc) this.RezepteConcept.getAllAttributeDescs().get("Id");
 
 		// Insert values into query
 		try {
@@ -74,6 +84,7 @@ public class RecipeAgent {
 			query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()));
 			query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()));
 			query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()));
+			query.addAttribute(idDesc, idDesc.getAttribute(rezepte.getId()));
 		} catch (ParseException e) {
 			System.err.println("[ERROR] RecipeAgent: Error while creating the query! " + e.getMessage());
 		}
@@ -100,7 +111,8 @@ public class RecipeAgent {
 			Rezepte rezepte = new Rezepte(obj.getAttForDesc(titleDesc).getValueAsString(),
 					obj.getAttForDesc(kuecheDesc).getValueAsString(),
 					obj.getAttForDesc(gerichteartDesc).getValueAsString(),
-					obj.getAttForDesc(eigenschaftenDesc).getValueAsString());
+					obj.getAttForDesc(eigenschaftenDesc).getValueAsString(),
+					Integer.parseInt(obj.getAttForDesc(idDesc).getValueAsString()));
 
 			resultingRezepte.add(rezepte);
 			resultingRezepte.get(i).setSimilarity(result.get(i).getSecond().getValue());
