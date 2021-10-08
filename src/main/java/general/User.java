@@ -2,7 +2,9 @@ package general;
 
 import java.sql.Date;
 import java.util.HashMap;
+import java.util.Map.Entry;
 
+import database.transfer.SpeicherInDatenbank;
 import managers.IdGenerator;
 
 
@@ -30,7 +32,7 @@ public class User {
 		addEinkaufslisteZuHistorie(list);
 	}
 	
-	public void addEinkaufslisteZuHistorie(Einkaufsliste l) {
+	private void addEinkaufslisteZuHistorie(Einkaufsliste l) {
 		if(this.einkauf_historie == null) {
 			this.einkauf_historie = new HashMap<Integer, Einkaufsliste>();
 			l.setUser(this);
@@ -40,6 +42,10 @@ public class User {
 			l.setUser(this);
 			this.einkauf_historie.put(l.getEinkaufslisteID(), l);
 		}
+	}
+	
+	public void addEinkaufslisteZuHistorieInDB(Einkaufsliste l) {
+		SpeicherInDatenbank.speicherEinkaufslisteInDatenbank(l);
 	}
 	
 	//---------simple getters for user------------------
@@ -71,8 +77,21 @@ public class User {
 		return id;
 	}
 	
-	public Einkaufsliste getEinkaufslisteByDate(Date date) {
-		return einkauf_historie.get(date);
+	public HashMap<Integer,Einkaufsliste> getEinkaufslisteByDate(Date date) {
+		HashMap<Integer,Einkaufsliste> result = new HashMap<Integer, Einkaufsliste>();
+		Date date_vergleich  = null;
+		
+		for (Entry<Integer, Einkaufsliste> entry : getEinkaufslisteHistorie().entrySet()) {
+			
+			date_vergleich = entry.getValue().getEinkaufslisteDate();
+			
+			if((date_vergleich.compareTo(date) == 0) && 
+					(entry.getValue().getUser().getID() == getID())) {
+				
+				result.put(entry.getValue().getEinkaufslisteID(), entry.getValue());
+			}
+		}
+		return result;
 	}
 	
 	public Einkaufsliste getEinkaufsliste() {

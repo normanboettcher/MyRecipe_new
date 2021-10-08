@@ -119,7 +119,34 @@ public class SpeicherInDatenbank {
 			stmt.executeUpdate();
 			stmt.close();
 			
+			speicherZutatenAusEinkaufslisteInDB(l);
+			
 		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void speicherZutatenAusEinkaufslisteInDB(Einkaufsliste l) {
+		Connection con = DBConnection.getConnection();
+		
+		try {
+			PreparedStatement stmt = con.prepareStatement("insert into ? "
+					+ "values"
+					+ "(?, ?, ?, ?, ?)");
+			
+			stmt.setString(1, "produkte_aus_einkaufsliste");
+			
+			for(int i : l.getProduktliste().keySet()) {
+				stmt.setDate(2, l.getEinkaufslisteDate());
+				stmt.setInt(3, l.getUser().getID());
+				stmt.setInt(4, l.getProduktliste().get(i).getArtikelNr());
+				stmt.setInt(5, l.getProdukteMitMenge().get(i));
+				stmt.setInt(6, l.getEinkaufslisteID());
+				stmt.executeUpdate();
+			}
+			stmt.close();
+			
+		}catch(SQLException e) {
 			e.printStackTrace();
 		}
 	}
