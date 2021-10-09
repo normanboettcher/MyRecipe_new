@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Project name="Rezepte" author="" >
+<svs>
+  <sv name="_unknown_"/>
+  <sv name="_undefined_"/>
+  <sv name="_others_"/>
+<fct name="default function" type="Symbol" mt="PARTNER_QUERY" r="REUSE" t="MAX" symm="true">
+<qsym name="_unknown_">
+</qsym>
+<qsym name="_undefined_">
+</qsym>
+<qsym name="_others_">
+</qsym>
+</fct>
+</svs>
+<model>
+  <concept name="RezepteConcept">
+    <desc name="Gerichteart" type="Symbol" mult="true" >
+      <symbol value="Kartoffelgericht" />
+      <symbol value="Nudelgericht" />
+      <symbol value="Reisgericht" />
+      <symbol value="Suppe" />
+      <symbol value="Fastfood" />
+      <symbol value="Salat" />
+<fct name="GerichteartFct" type="Symbol" mt="PARTNER_QUERY" r="REUSE" t="MAX" symm="true">
+<qsym name="Kartoffelgericht">
+<csym name="Nudelgericht" sim="0.4"/>
+<csym name="Reisgericht" sim="0.4"/>
+<csym name="Fastfood" sim="0.5"/>
+</qsym>
+<qsym name="Nudelgericht">
+<csym name="Kartoffelgericht" sim="0.4"/>
+<csym name="Reisgericht" sim="0.4"/>
+<csym name="Fastfood" sim="0.5"/>
+</qsym>
+<qsym name="Reisgericht">
+<csym name="Kartoffelgericht" sim="0.4"/>
+<csym name="Nudelgericht" sim="0.4"/>
+<csym name="Fastfood" sim="0.5"/>
+</qsym>
+<qsym name="Suppe">
+</qsym>
+<qsym name="Fastfood">
+<csym name="Kartoffelgericht" sim="0.5"/>
+<csym name="Nudelgericht" sim="0.5"/>
+<csym name="Reisgericht" sim="0.5"/>
+</qsym>
+<qsym name="Salat">
+</qsym>
+</fct>
+    </desc>
+    <desc name="Titel" type="String" mult="false" >
+      <fct name="default function" type="String" symm="true" config="EQUALITY" n="3" mt="PARTNER_QUERY" r="REUSE" t="MAX" />
+    </desc>
+    <desc name="Rezepte_Id" type="Integer" min="0" max="40" mult="false" >
+      <fct name="IdFct" type="Integer" ltype="CONSTANT" lparam="0.0" rtype="CONSTANT" rparam="0.0" mode="DIFFERENCE" symm="true" mt="PARTNER_QUERY" r="REUSE" t="MAX" />
+    </desc>
+    <desc name="Eigenschaften" type="Symbol" mult="true" >
+      <symbol value="Fleisch" />
+      <symbol value="Vegetarisch" />
+      <symbol value="Vegan" />
+<fct name="EigenschaftenFct" type="Symbol" mt="PARTNER_QUERY" r="REUSE" t="MAX" symm="true">
+<qsym name="Fleisch">
+<csym name="Vegetarisch" sim="0.25"/>
+</qsym>
+<qsym name="Vegetarisch">
+<csym name="Fleisch" sim="0.25"/>
+<csym name="Vegan" sim="0.5"/>
+</qsym>
+<qsym name="Vegan">
+<csym name="Vegetarisch" sim="0.5"/>
+</qsym>
+</fct>
+    </desc>
+    <desc name="Kueche" type="Symbol" mult="true" >
+      <symbol value="Italienisch" />
+      <symbol value="Asiatisch" />
+      <symbol value="Amerikanisch" />
+<fct name="KuecheFct" type="Symbol" mt="PARTNER_QUERY" r="REUSE" t="MAX" symm="true">
+<qsym name="Italienisch">
+<csym name="Asiatisch" sim="0.2"/>
+<csym name="Amerikanisch" sim="0.2"/>
+</qsym>
+<qsym name="Asiatisch">
+<csym name="Italienisch" sim="0.2"/>
+<csym name="Amerikanisch" sim="0.2"/>
+</qsym>
+<qsym name="Amerikanisch">
+<csym name="Italienisch" sim="0.2"/>
+<csym name="Asiatisch" sim="0.2"/>
+</qsym>
+</fct>
+    </desc>
+    <amalgam name="default function" type="WEIGHTED_SUM" active="true" >
+      <entry name="Rezepte_Id" active="true" fct="IdFct" weight="0.0"/>
+      <entry name="Eigenschaften" active="true" fct="EigenschaftenFct" weight="null"/>
+      <entry name="Gerichteart" active="true" fct="GerichteartFct" weight="2.0"/>
+      <entry name="Kueche" active="true" fct="KuecheFct" weight="1.0"/>
+      <entry name="Titel" active="true" fct="default function" weight="1.0"/>
+    </amalgam>
+  </concept>
+</model>
+<hierarchy>
+  <fct name="default function" type="Taxonomy" mt="PARTNER_QUERY" r="REUSE" t="MAX" qconfig="INNER_NODES_ANY" cconfig="INNER_NODES_ANY" top="inheritanceDesc" sim="0.0" symm="true" >
+    <node name="RezepteConcept" sim="1.0" parent="inheritanceDesc" />
+  </fct>
+</hierarchy>
+<cases no="41" cb="Casebase"/>
+</Project>
