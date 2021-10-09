@@ -137,7 +137,7 @@
 </nav></header>
 <body>
 	<!-- Suche/ Rezeptauswahl -->
-	<form class="box" action="../RezepteServlet" method="post">
+	<form class="box" action="../RezepteServlet" method="get">
 		<div class="boxContainer">
 			<table class="elementsContainer">
 				<tr>
@@ -163,15 +163,15 @@
 				</tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "kueche" value = "italien"><label for="bio">
+						type="checkbox" id="bio" name = "kueche" value = "Italienisch"><label for="bio">
 							<p style="color: white; white-space: nowrap;">Italienisch</p>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="horns" name = "kueche" value = "asia"> <label for="horns">
+						type="checkbox" id="horns" name = "kueche" value = "Asiatisch"> <label for="horns">
 							<p style="color: white; white-space: nowrap;">Asiatisch</p>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="regional" name = "kueche" value = "american"> <label for="regional">
+						type="checkbox" id="regional" name = "kueche" value = "Amerikanisch"> <label for="regional">
 							<p style="color: white; white-space: nowrap;">Amerikanisch</p>
 					</label></td>
 				</tr>
@@ -183,24 +183,24 @@
 				</tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "nudelgericht"><label for="bio"><p
+						type="checkbox" id="bio" name = "gerichteart" value = "Nudelgericht"><label for="bio"><p
 								style="color: white; white-space: nowrap;">Nudelgericht</p></label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "reisgericht"><label for="bio"><p
+						type="checkbox" id="bio" name = "gerichteart" value = "Reisgericht"><label for="bio"><p
 								style="color: white; white-space: nowrap;">Reisgericht</p></label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "kartoffelgericht"><label for="bio"><p
+						type="checkbox" id="bio" name = "gerichteart" value = "Kartoffelgericht"><label for="bio"><p
 								style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>
 				<tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "fast_food"><label for="bio"><p
+						type="checkbox" id="bio" name = "gerichteart" value = "Fastfood"><label for="bio"><p
 								style="color: white; white-space: nowrap;">Fast-Food</p></label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "suppe"><label for="bio"><p
+						type="checkbox" id="bio" name = "gerichteart" value = "Suppe"><label for="bio"><p
 								style="color: white; white-space: nowrap;">Suppe</p></label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "salat"><label for="bio"><p
+						type="checkbox" id="bio" name = "gerichteart" value = "Salat"><label for="bio"><p
 								style="color: white; white-space: nowrap;">Salat</p></label></td>
 				<tr>
 					<td
@@ -210,15 +210,15 @@
 				</tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "eigenschaften" value = "vegan"><label for="bio">
+						type="checkbox" id="bio" name = "eigenschaften" value = "Vegan"><label for="bio">
 							<p style="color: white; white-space: nowrap;">Vegan</p>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="horns" name = "eigenschaften" value = "veggy"> <label for="horns">
+						type="checkbox" id="horns" name = "eigenschaften" value = "Vegetarisch"> <label for="horns">
 							<p style="color: white; white-space: nowrap;">Vegetarisch</p>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="regional" name = eigenschaften" value = "regional"> <label for="regional"><p
+						type="checkbox" id="regional" name = eigenschaften" value = "Regional"> <label for="regional"><p
 								style="color: white; white-space: nowrap;">Fleischgericht</p></label></td>
 				</tr>
 			</table>
@@ -244,9 +244,5 @@
 		integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
 		crossorigin="anonymous"></script>
 
-	<!-- VORSICHT TESTBUTTON -->
-	<form action="../ZeigeAngeboteServlet" method="get">
-		<button name="supermarkt" value="lidl">Lidl</button>
-	</form>
 </body>
 </html>

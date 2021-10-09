@@ -44,7 +44,7 @@ public class RezepteServlet extends HttpServlet {
 			} 
 			
 			if(inputTitel == null) {
-				inputTitel = "RezeptTest";
+				inputTitel = "";
 			}
 			
 			Rezepte queryRezepte = new Rezepte(inputTitel, inputKueche, inputGerichteart, inputEigenschaften, inputIdParsed); 
@@ -53,6 +53,10 @@ public class RezepteServlet extends HttpServlet {
 			System.out.println(result == null);
 			resultingRezepte = recipeAgent.print(result, 7);
 			System.out.println(resultingRezepte == null);
+			
+			for(int i = 0; i < resultingRezepte.size(); i++ ) {
+				System.out.println(resultingRezepte.get(i).getTitel() + "-" + resultingRezepte.get(i).getSimilarity() + " Prozent");
+			}
 
 			request.setAttribute("resultingRezepte", resultingRezepte);
 			

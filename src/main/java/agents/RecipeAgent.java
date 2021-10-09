@@ -90,18 +90,36 @@ public class RecipeAgent {
 	public List<Pair<Instance, Similarity>> startQuery(Rezepte rezepte) {
 		// Get the values of the request
 		titelDesc = (StringDesc) getRezepteConcept().getAllAttributeDescs().get("Titel");
+		//titelDesc.addStringFct(StringConfig.LEVENSHTEIN, "titelfct",  true);
 		kuecheDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Kueche");
 		gerichteartDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Gerichteart");
-		eigenschaftenDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Eigenschaft");
+	
+		eigenschaftenDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Eigenschaften");
 		rezepte_idDesc =  (IntegerDesc) getRezepteConcept().getAllAttributeDescs().get("Rezepte_Id");
 
 		// Insert values into query
 		try {
-			retrieve = new Retrieval(RezepteConcept, project.getCB("Casebase"));
-						
+			//getRezepteConcept().addAmalgamationFct(AmalgamationConfig.WEIGHTED_SUM, "fct", true);
+			
+			System.out.println(getRezepteConcept().getName());
+			
+			//Wenn nach keinem Rezepot gesucht wurde, dann ist die Gewichtung des Titels 0.
+			if(rezepte.getTitel() == "") {
+				getRezepteConcept().getActiveAmalgamFct().setWeight(titelDesc, 0);
+			}
+			
+			//getRezepteConcept().getActiveAmalgamFct().setWeight(gerichteartDesc, 3);
+			//getRezepteConcept().getActiveAmalgamFct().setWeight(kuecheDesc, 4);
+			//getRezepteConcept().getActiveAmalgamFct().setWeight(eigenschaftenDesc, 2);
+			//getRezepteConcept().getActiveAmalgamFct().setWeight(titelDesc, 3);
+			//getRezepteConcept().getActiveAmalgamFct().setWeight(rezepte_idDesc, 0);
+			
+			retrieve = new Retrieval(getRezepteConcept(), project.getCB("Casebase"));
+				
 			retrieve.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
 		
 			Instance query = retrieve.getQueryInstance();
+			
 			query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel()));
 			query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()));
 			query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()));
@@ -135,7 +153,7 @@ public class RecipeAgent {
 					obj.getAttForDesc(gerichteartDesc).getValueAsString(),
 					obj.getAttForDesc(eigenschaftenDesc).getValueAsString(),
 					Integer.parseInt(obj.getAttForDesc(rezepte_idDesc).getValueAsString()));
-
+			
 			resultingRezepte.add(rezepte);
 			resultingRezepte.get(i).setSimilarity(result.get(i).getSecond().getValue());
 			System.out.println(result.get(i).getFirst().getName() + " - Similarity: "
