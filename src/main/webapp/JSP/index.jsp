@@ -164,15 +164,15 @@
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="bio" name = "kueche" value = "Italienisch"><label for="bio">
-							<p style="color: white; white-space: nowrap;">Italienisch</p>
+							<a style="color: white; white-space: nowrap;">Italienisch</a>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="horns" name = "kueche" value = "Asiatisch"> <label for="horns">
-							<p style="color: white; white-space: nowrap;">Asiatisch</p>
+							<a style="color: white; white-space: nowrap;">Asiatisch</a>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="regional" name = "kueche" value = "Amerikanisch"> <label for="regional">
-							<p style="color: white; white-space: nowrap;">Amerikanisch</p>
+							<a style="color: white; white-space: nowrap;">Amerikanisch</a>
 					</label></td>
 				</tr>
 				<tr>
@@ -183,25 +183,25 @@
 				</tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "Nudelgericht"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Nudelgericht</p></label></td>
+						type="checkbox" id="bio" name = "gerichteart" value = "Nudelgericht"><label for="bio"><a
+								style="color: white; white-space: nowrap;">Nudelgericht</a></label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "Reisgericht"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Reisgericht</p></label></td>
+						type="checkbox" id="bio" name = "gerichteart" value = "Reisgericht"><label for="bio"><a
+								style="color: white; white-space: nowrap;">Reisgericht</a></label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "Kartoffelgericht"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Kartoffelgericht</p></label></td>
+						type="checkbox" id="bio" name = "gerichteart" value = "Kartoffelgericht"><label for="bio"><a
+								style="color: white; white-space: nowrap;">Kartoffelgericht</a></label></td>
 				<tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "Fastfood"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Fast-Food</p></label></td>
+						type="checkbox" id="bio" name = "gerichteart" value = "Fastfood"><label for="bio"><a
+								style="color: white; white-space: nowrap;">Fast-Food</a></label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "Suppe"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Suppe</p></label></td>
+						type="checkbox" id="bio" name = "gerichteart" value = "Suppe"><label for="bio"><a
+								style="color: white; white-space: nowrap;">Suppe</a></label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="bio" name = "gerichteart" value = "Salat"><label for="bio"><p
-								style="color: white; white-space: nowrap;">Salat</p></label></td>
+						type="checkbox" id="bio" name = "gerichteart" value = "Salat"><label for="bio"><a
+								style="color: white; white-space: nowrap;">Salat</a></label></td>
 				<tr>
 					<td
 						style="text-align: center; padding-top: 25px; padding-bottom: 10px;"
@@ -211,15 +211,15 @@
 				<tr>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="bio" name = "eigenschaften" value = "Vegan"><label for="bio">
-							<p style="color: white; white-space: nowrap;">Vegan</p>
+							<a style="color: white; white-space: nowrap;">Vegan</a>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="horns" name = "eigenschaften" value = "Vegetarisch"> <label for="horns">
-							<p style="color: white; white-space: nowrap;">Vegetarisch</p>
+							<a style="color: white; white-space: nowrap;">Vegetarisch</a>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
 						type="checkbox" id="regional" name = "eigenschaften" value = "Fleisch"> <label for="regional">
-						<p style="color: white; white-space: nowrap;">Fleischgericht</p></label></td>
+						<a style="color: white; white-space: nowrap;">Fleischgericht</a></label></td>
 				</tr>
 			</table>
 		</div>
