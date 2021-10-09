@@ -25,20 +25,35 @@ public class RezepteServlet extends HttpServlet {
        
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get parameters from the formular on index.jsp
+		
 		String inputTitel = request.getParameter("titel"); 
+		String inputRezepte_id = request.getParameter("rezepte_id");
+		
 		String inputKueche = request.getParameter("kueche"); 
 		String inputGerichteart = request.getParameter("gerichteart"); 
 		String inputEigenschaften = request.getParameter("eigenschaften");
-		String inputRezepte_id = request.getParameter("rezepte_id");
+		
+		System.out.println(inputKueche);
 		
 		
 		try {
-
-			int inputIdParsed = Integer.parseInt(inputRezepte_id);
+			int inputIdParsed = 0;
+			
+			if(inputRezepte_id != null) {
+				inputIdParsed = Integer.parseInt(inputRezepte_id);
+			} 
+			
+			if(inputTitel == null) {
+				inputTitel = "RezeptTest";
+			}
+			
 			Rezepte queryRezepte = new Rezepte(inputTitel, inputKueche, inputGerichteart, inputEigenschaften, inputIdParsed); 
 			RecipeAgent recipeAgent = new RecipeAgent(); 
 			result = recipeAgent.startQuery(queryRezepte); 
-			resultingRezepte = recipeAgent.print(result, 5);
+			System.out.println(result == null);
+			resultingRezepte = recipeAgent.print(result, 41);
+			System.out.println(resultingRezepte == null);
+
 			request.setAttribute("resultingRezepte", resultingRezepte);
 			
 			// Forward parameters back to the form for usability
@@ -48,11 +63,11 @@ public class RezepteServlet extends HttpServlet {
 			request.setAttribute("inputEigenschaften", inputEigenschaften);
 			request.setAttribute("inputRezepte_id", inputIdParsed);
 			
-			request.getRequestDispatcher("rezepte.jsp").forward(request, response);
+			request.getRequestDispatcher("JSP/rezepte.jsp").forward(request, response);
 		} catch (Exception ex)  {
 			request.setAttribute("error", "[DEBUG] RezepteServlet.java: Type Conversion Error! Please insert a number for the year. And don't mess around with the Award Boolean!"); 
 			System.out.println("Error: " + ex.getMessage());
-			request.getRequestDispatcher("error.jsp").forward(request, response);
+			request.getRequestDispatcher("JSP/error.jsp").forward(request, response);
 		}
 	}
 

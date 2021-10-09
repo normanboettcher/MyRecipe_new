@@ -1,5 +1,8 @@
 package agents;
 
+import java.io.File;
+import java.nio.file.FileSystems;
+import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +17,7 @@ import de.dfki.mycbr.core.model.StringDesc;
 import de.dfki.mycbr.core.model.SymbolDesc;
 import de.dfki.mycbr.core.retrieval.Retrieval;
 import de.dfki.mycbr.core.retrieval.Retrieval.RetrievalMethod;
+import de.dfki.mycbr.core.retrieval.RetrievalEngine;
 import de.dfki.mycbr.core.similarity.AmalgamationFct;
 import de.dfki.mycbr.core.similarity.IntegerFct;
 import de.dfki.mycbr.core.similarity.Similarity;
@@ -27,14 +31,13 @@ import general.supermarkets.Rezepte;
 
 
 public class RecipeAgent {
-
-	private static String dataPath = "myCBR/";
+	
 	private static String projectName = "Rezepte.prj";
 
 	// Attributes for myCBR
 	private Project project;
 	private Concept RezepteConcept;
-	private ICaseBase casebase;
+	//private ICaseBase casebase;
 	private Retrieval retrieve;
 
 	// Attributes of our book, preparation for CBR
@@ -56,9 +59,19 @@ public class RecipeAgent {
 	 */
 	private boolean importProject() {
 		try {
-			project = new Project(dataPath + projectName);
-			Thread.sleep(5000);
-			RezepteConcept = project.getConceptByID("RezepteConcept");
+			File file = new File(projectName);
+			project = new Project(file.getAbsolutePath());
+			
+			System.out.println(project.getPath());
+			System.out.println(file.getAbsolutePath());
+			
+			while(project.isImporting()) {
+				Thread.sleep(3000);
+				System.out.println(".");
+			}
+			setRezepteKonzept(project.getConceptByID("RezepteConcept"));
+			//System.out.println(project);
+
 			return true;
 		} catch (Exception e) {
 			System.err.println("[DEBUG] RecipeAgent.java: Projekt(pfad) konnte nicht gefunden werden.");
@@ -66,18 +79,28 @@ public class RecipeAgent {
 		}
 	}
 	
+	private void setRezepteKonzept(Concept c) {
+		this.RezepteConcept = c;
+	}
+	
+	private Concept getRezepteConcept() {
+		return RezepteConcept;
+	}
+	
 	public List<Pair<Instance, Similarity>> startQuery(Rezepte rezepte) {
 		// Get the values of the request
-		titelDesc = (StringDesc) this.RezepteConcept.getAllAttributeDescs().get("Titel");
-		kuecheDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Kueche");
-		gerichteartDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Gerichteart");
-		eigenschaftenDesc = (SymbolDesc) this.RezepteConcept.getAllAttributeDescs().get("Eigenschaften");
-		rezepte_idDesc =  (IntegerDesc) this.RezepteConcept.getAllAttributeDescs().get("Rezepte_id");
+		titelDesc = (StringDesc) getRezepteConcept().getAllAttributeDescs().get("Titel");
+		kuecheDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Kueche");
+		gerichteartDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Gerichteart");
+		eigenschaftenDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Eigenschaft");
+		rezepte_idDesc =  (IntegerDesc) getRezepteConcept().getAllAttributeDescs().get("Rezepte_Id");
 
 		// Insert values into query
 		try {
-			retrieve = new Retrieval(RezepteConcept, casebase);
+			retrieve = new Retrieval(RezepteConcept, project.getCB("Casebase"));
+						
 			retrieve.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
+		
 			Instance query = retrieve.getQueryInstance();
 			query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel()));
 			query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()));
