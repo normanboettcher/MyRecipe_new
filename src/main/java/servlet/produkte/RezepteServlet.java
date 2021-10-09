@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import agents.RecipeAgent;
+import general.supermarkets.RezeptAnfrage;
 import general.supermarkets.Rezepte;
 import de.dfki.mycbr.core.casebase.Instance;
 import de.dfki.mycbr.core.similarity.Similarity;
@@ -29,11 +30,13 @@ public class RezepteServlet extends HttpServlet {
 		String inputTitel = request.getParameter("titel"); 
 		String inputRezepte_id = request.getParameter("rezepte_id");
 		
-		String inputKueche = request.getParameter("kueche"); 
-		String inputGerichteart = request.getParameter("gerichteart"); 
-		String inputEigenschaften = request.getParameter("eigenschaften");
+		String[] inputKueche = request.getParameterValues("kueche"); 
+		String[] inputGerichteart = request.getParameterValues("gerichteart"); 
+		String[] inputEigenschaften = request.getParameterValues("eigenschaften");
 		
-		System.out.println(inputKueche);
+		System.out.println(inputKueche[0]);
+		System.out.println(inputGerichteart[0]);
+		System.out.println(inputEigenschaften[0]);
 		
 		
 		try {
@@ -47,7 +50,8 @@ public class RezepteServlet extends HttpServlet {
 				inputTitel = "";
 			}
 			
-			Rezepte queryRezepte = new Rezepte(inputTitel, inputKueche, inputGerichteart, inputEigenschaften, inputIdParsed); 
+			RezeptAnfrage queryRezepte = new RezeptAnfrage(inputTitel, inputKueche, inputGerichteart, inputEigenschaften); 
+			
 			RecipeAgent recipeAgent = new RecipeAgent(); 
 			result = recipeAgent.startQuery(queryRezepte); 
 			System.out.println(result == null);

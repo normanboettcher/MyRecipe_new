@@ -27,6 +27,7 @@ import de.dfki.mycbr.core.similarity.config.NumberConfig;
 import de.dfki.mycbr.core.similarity.config.StringConfig;
 import de.dfki.mycbr.io.XMLExporter;
 import de.dfki.mycbr.util.Pair;
+import general.supermarkets.RezeptAnfrage;
 import general.supermarkets.Rezepte;
 
 
@@ -87,11 +88,12 @@ public class RecipeAgent {
 		return RezepteConcept;
 	}
 	
-	public List<Pair<Instance, Similarity>> startQuery(Rezepte rezepte) {
+	public List<Pair<Instance, Similarity>> startQuery(RezeptAnfrage rezepte) {
 		// Get the values of the request
 		titelDesc = (StringDesc) getRezepteConcept().getAllAttributeDescs().get("Titel");
 		//titelDesc.addStringFct(StringConfig.LEVENSHTEIN, "titelfct",  true);
 		kuecheDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Kueche");
+		
 		gerichteartDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Gerichteart");
 	
 		eigenschaftenDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Eigenschaften");
@@ -101,7 +103,7 @@ public class RecipeAgent {
 		try {
 			//getRezepteConcept().addAmalgamationFct(AmalgamationConfig.WEIGHTED_SUM, "fct", true);
 			
-			System.out.println(getRezepteConcept().getName());
+			//System.out.println(getRezepteConcept().getName());
 			
 			//Wenn nach keinem Rezepot gesucht wurde, dann ist die Gewichtung des Titels 0.
 			if(rezepte.getTitel() == "") {
@@ -120,11 +122,35 @@ public class RecipeAgent {
 		
 			Instance query = retrieve.getQueryInstance();
 			
+			System.out.println(titelDesc);
+			System.out.println(kuecheDesc);
+			System.out.println(gerichteartDesc);
+			System.out.println(eigenschaftenDesc);
+			
+			
+			//System.out.println(rezepte.getEigenschaften());
+			//System.out.println(titelDesc.getAttribute(rezepte.getTitel()));
+			
+			
 			query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel()));
-			query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()));
-			query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()));
-			query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()));
-			query.addAttribute(rezepte_idDesc, rezepte_idDesc.getAttribute(rezepte.getRezepte_id()));
+			
+			for(int i = 0; i < rezepte.getKueche().length; i++) {
+				query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[i]));
+				System.out.println(kuecheDesc.getAttribute(rezepte.getKueche()[i]));
+			}
+			
+			for(int i = 0; i < rezepte.getGerichteart().length; i++) {
+				query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[i]));
+			}
+			
+			for(int i = 0; i < rezepte.getEigenschaften().length; i++) {
+				query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[i]));
+			}
+			
+			System.out.println(query.getAttForDesc(gerichteartDesc).getValueAsString());
+			System.out.println(query.getAttForDesc(eigenschaftenDesc).getValueAsString());
+			System.out.println(query.getAttForDesc(kuecheDesc).getValueAsString());
+			
 		} catch (ParseException e) {
 			System.err.println("[ERROR] RecipeAgent: Error while creating the query! " + e.getMessage());
 		}

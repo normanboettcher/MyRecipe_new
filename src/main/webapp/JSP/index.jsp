@@ -218,8 +218,8 @@
 							<p style="color: white; white-space: nowrap;">Vegetarisch</p>
 					</label></td>
 					<td style="width: 33%; position: absolut;"><input
-						type="checkbox" id="regional" name = eigenschaften" value = "Regional"> <label for="regional"><p
-								style="color: white; white-space: nowrap;">Fleischgericht</p></label></td>
+						type="checkbox" id="regional" name = "eigenschaften" value = "Fleisch"> <label for="regional">
+						<p style="color: white; white-space: nowrap;">Fleischgericht</p></label></td>
 				</tr>
 			</table>
 		</div>
