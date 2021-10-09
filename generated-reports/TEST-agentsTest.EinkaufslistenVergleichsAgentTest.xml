@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="normanboettcher" name="agentsTest.EinkaufslistenVergleichsAgentTest" skipped="0" tests="1" time="0.145" timestamp="2021-10-08T16:59:15">
+<testsuite errors="0" failures="0" hostname="normanboettcher" name="agentsTest.EinkaufslistenVergleichsAgentTest" skipped="0" tests="1" time="0.19" timestamp="2021-10-09T15:04:25">
   <properties>
     <property name="release.dir" value="release" />
     <property name="ant.library.dir" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib" />
@@ -7,7 +7,7 @@
     <property name="java.specification.version" value="16" />
     <property name="ant.project.name" value="GroceryComparator" />
     <property name="sun.jnu.encoding" value="UTF-8" />
-    <property name="java.class.path" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build/test:/home/norman/Schreibtisch/Projekt/MyRecipe/build/src:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/annotations-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ant.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ha.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-storeconfig.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-tribes.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/el-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper-el.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jaspic-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jsp-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jstl-1.2.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/mycbr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.junit_4.13.0.v20200204-1500.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/postgresql-9.3-1100.jdbc4.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/servlet-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-coyote.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-dbcp.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-es.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-fr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ja.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ru.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jdbc.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jni.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util-scan.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-websocket.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/websocket-api.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-launcher.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit4.jar" />
+    <property name="java.class.path" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build/test:/home/norman/Schreibtisch/Projekt/MyRecipe/build/src:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/annotations-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ant.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ha.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-storeconfig.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-tribes.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/el-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jade.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper-el.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jaspic-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jsp-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jstl-1.2.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/mycbr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.junit_4.13.0.v20200204-1500.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/postgresql-9.3-1100.jdbc4.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/servlet-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-coyote.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-dbcp.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-es.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-fr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ja.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ru.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jdbc.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jni.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util-scan.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-websocket.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/websocket-api.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-launcher.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit4.jar" />
     <property name="java.vm.vendor" value="Oracle Corporation" />
     <property name="sun.arch.data.model" value="64" />
     <property name="appname" value="MyRecipe" />
@@ -18,7 +18,7 @@
     <property name="user.country" value="DE" />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.EinkaufslistenVergleichsAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher10546550375242973485.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit7510328657668082109.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.EinkaufslistenVergleichsAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher14395975557607293907.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit13490937641529528327.properties" />
     <property name="jdk.debug" value="release" />
     <property name="sun.cpu.endian" value="little" />
     <property name="user.home" value="/home/norman" />
@@ -69,24 +69,24 @@
     <property name="java.class.version" value="60.0" />
     <property name="ant.project.default-target" value="release" />
   </properties>
-  <testcase classname="agentsTest.EinkaufslistenVergleichsAgentTest" name="sortiereNachBilligstenFuenfTest" time="0.013" />
+  <testcase classname="agentsTest.EinkaufslistenVergleichsAgentTest" name="sortiereNachBilligstenFuenfTest" time="0.02" />
   <system-out><![CDATA[Bevor sortiert: 
-5. 7.74 EUR
-6. 11.219999999999999 EUR
-7. 28.5 EUR
-8. 32.8 EUR
-9. 26.259999999999998 EUR
-10. 28.7 EUR
-11. 29.42 EUR
-12. 41.56 EUR
-13. 45.44 EUR
-14. 41.1 EUR
+5. 2.62 EUR
+6. 19.240000000000002 EUR
+7. 16.48 EUR
+8. 18.78 EUR
+9. 26.96 EUR
+10. 35.019999999999996 EUR
+11. 43.2 EUR
+12. 40.12 EUR
+13. 50.620000000000005 EUR
+14. 56.18 EUR
 Nach sortiert: 
-1. 7.74 EUR
-2. 11.219999999999999 EUR
-3. 26.259999999999998 EUR
-4. 28.5 EUR
-5. 28.7 EUR
+1. 2.62 EUR
+2. 16.48 EUR
+3. 18.78 EUR
+4. 19.240000000000002 EUR
+5. 26.96 EUR
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

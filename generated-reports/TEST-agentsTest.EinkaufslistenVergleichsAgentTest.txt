@@ -1,22 +1,22 @@
 Testsuite: agentsTest.EinkaufslistenVergleichsAgentTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,145 sec
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,19 sec
 
 ------------- Standard Output ---------------
 Bevor sortiert: 
-5. 7.74 EUR
-6. 11.219999999999999 EUR
-7. 28.5 EUR
-8. 32.8 EUR
-9. 26.259999999999998 EUR
-10. 28.7 EUR
-11. 29.42 EUR
-12. 41.56 EUR
-13. 45.44 EUR
-14. 41.1 EUR
+5. 2.62 EUR
+6. 19.240000000000002 EUR
+7. 16.48 EUR
+8. 18.78 EUR
+9. 26.96 EUR
+10. 35.019999999999996 EUR
+11. 43.2 EUR
+12. 40.12 EUR
+13. 50.620000000000005 EUR
+14. 56.18 EUR
 Nach sortiert: 
-1. 7.74 EUR
-2. 11.219999999999999 EUR
-3. 26.259999999999998 EUR
-4. 28.5 EUR
-5. 28.7 EUR
+1. 2.62 EUR
+2. 16.48 EUR
+3. 18.78 EUR
+4. 19.240000000000002 EUR
+5. 26.96 EUR
 ------------- ---------------- ---------------

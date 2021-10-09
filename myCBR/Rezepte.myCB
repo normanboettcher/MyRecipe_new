@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Project name="Rezepte" author="" >
+<instances name="RezepteConcept">
+  <instance id="RezepteConcept #30" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="30" />
+    <att name="Titel" value="Rosmarinkartoffeln aus dem Ofen" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Kartoffelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #10" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="10" />
+    <att name="Titel" value="Tortellini Schinken" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #32" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="32" />
+    <att name="Titel" value="Bauernsalat" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Salat;" />
+  </instance>
+  <instance id="RezepteConcept #31" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="31" />
+    <att name="Titel" value="Big Mac Salat" />
+    <att name="Kueche" value="Amerikanisch;" />
+    <att name="Gerichteart" value="Salat;" />
+  </instance>
+  <instance id="RezepteConcept #16" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="16" />
+    <att name="Titel" value="Brokkoli Honig H&#228;hnchen" />
+    <att name="Kueche" value="Asiatisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #38" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="38" />
+    <att name="Titel" value="S&#252;&#223;er Schichtsalat" />
+    <att name="Kueche" value="_unknown_" />
+    <att name="Gerichteart" value="Salat;" />
+  </instance>
+  <instance id="RezepteConcept #15" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="15" />
+    <att name="Titel" value="Aprikosen Tomaten Ragout" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #37" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="37" />
+    <att name="Titel" value="Pizza Margarita" />
+    <att name="Kueche" value="Italienisch;Amerikanisch;" />
+    <att name="Gerichteart" value="Fastfood;" />
+  </instance>
+  <instance id="RezepteConcept #9" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="9" />
+    <att name="Titel" value="Lasagne" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #18" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="18" />
+    <att name="Titel" value="Frikadellen" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #8" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="8" />
+    <att name="Titel" value="Feine Gem&#252;selasagne" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #17" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="17" />
+    <att name="Titel" value="H&#228;hnchenkeule" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #39" >
+    <att name="Eigenschaften" value="Vegetarisch;Vegan;" />
+    <att name="Rezepte_Id" value="39" />
+    <att name="Titel" value="KFC Coleslaw" />
+    <att name="Kueche" value="Amerikanisch;" />
+    <att name="Gerichteart" value="Salat;" />
+  </instance>
+  <instance id="RezepteConcept #12" >
+    <att name="Eigenschaften" value="Vegan;" />
+    <att name="Rezepte_Id" value="12" />
+    <att name="Titel" value=" Soja Korma" />
+    <att name="Kueche" value="Asiatisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #34" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="34" />
+    <att name="Titel" value="Cheeseburger" />
+    <att name="Kueche" value="Amerikanisch;" />
+    <att name="Gerichteart" value="Fastfood;" />
+  </instance>
+  <instance id="RezepteConcept #11" >
+    <att name="Eigenschaften" value="Fleisch;Vegetarisch;" />
+    <att name="Rezepte_Id" value="11" />
+    <att name="Titel" value="Thunfisch Reis Salat" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #33" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="33" />
+    <att name="Titel" value="Pizza Salami" />
+    <att name="Kueche" value="Amerikanisch;" />
+    <att name="Gerichteart" value="Fastfood;" />
+  </instance>
+  <instance id="RezepteConcept #14" >
+    <att name="Eigenschaften" value="Vegan;" />
+    <att name="Rezepte_Id" value="14" />
+    <att name="Titel" value="Bulgur Buddha Bowl" />
+    <att name="Kueche" value="Asiatisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #36" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="36" />
+    <att name="Titel" value="Burger" />
+    <att name="Kueche" value="Amerikanisch;" />
+    <att name="Gerichteart" value="Fastfood;" />
+  </instance>
+  <instance id="RezepteConcept #13" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="13" />
+    <att name="Titel" value="Chicken Teriyaki " />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #35" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="35" />
+    <att name="Titel" value="Tomaten Auberginen Avocado Burger" />
+    <att name="Kueche" value="Amerikanisch;" />
+    <att name="Gerichteart" value="Fastfood;" />
+  </instance>
+  <instance id="RezepteConcept #3" >
+    <att name="Eigenschaften" value="Vegetarisch;Fleisch;" />
+    <att name="Rezepte_Id" value="3" />
+    <att name="Titel" value="Lachs Nudelauflauf" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #2" >
+    <att name="Eigenschaften" value="Vegan;" />
+    <att name="Rezepte_Id" value="2" />
+    <att name="Titel" value="Spaghetti Bolognese" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #1" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="1" />
+    <att name="Titel" value="Spaghetti Bolognese" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #0" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="0" />
+    <att name="Titel" value="Spinat-Gem&#252;se-Lasagne mit Tomatenso&#223;e" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #7" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="7" />
+    <att name="Titel" value="Gebratene Nudeln mit H&#228;hnchen" />
+    <att name="Kueche" value="Asiatisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #6" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="6" />
+    <att name="Titel" value="Spaghetti mit Meatballs" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #19" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="19" />
+    <att name="Titel" value="H&#228;hnchen s&#252;&#223;sauer " />
+    <att name="Kueche" value="Asiatisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #5" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="5" />
+    <att name="Titel" value="Spaghetti mit Tomaten-Pesto" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #4" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="4" />
+    <att name="Titel" value="Nudelsalat" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Salat;Nudelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #40" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="40" />
+    <att name="Titel" value="Fruit Salad" />
+    <att name="Kueche" value="_unknown_" />
+    <att name="Gerichteart" value="Salat;" />
+  </instance>
+  <instance id="RezepteConcept #21" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="21" />
+    <att name="Titel" value="Rosmarinkartoffeln" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Kartoffelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #20" >
+    <att name="Eigenschaften" value="Vegan;" />
+    <att name="Rezepte_Id" value="20" />
+    <att name="Titel" value="Tofureis" />
+    <att name="Kueche" value="Asiatisch;" />
+    <att name="Gerichteart" value="Reisgericht;" />
+  </instance>
+  <instance id="RezepteConcept #27" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="27" />
+    <att name="Titel" value="Kartoffelsalat" />
+    <att name="Kueche" value="_unknown_" />
+    <att name="Gerichteart" value="Kartoffelgericht;Salat;" />
+  </instance>
+  <instance id="RezepteConcept #26" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="26" />
+    <att name="Titel" value="Mediterranes Ofengem&#252;se mit Halloumi" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Kartoffelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #29" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="29" />
+    <att name="Titel" value="Kartoffelsuppe" />
+    <att name="Kueche" value="_unknown_" />
+    <att name="Gerichteart" value="Kartoffelgericht;Suppe;" />
+  </instance>
+  <instance id="RezepteConcept #28" >
+    <att name="Eigenschaften" value="Vegetarisch;" />
+    <att name="Rezepte_Id" value="28" />
+    <att name="Titel" value="Kartoffelgratin" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Kartoffelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #23" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="23" />
+    <att name="Titel" value="Ofenkartoffeln mit frischen Kr&#228;utern" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Kartoffelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #22" >
+    <att name="Eigenschaften" value="Vegan;Vegetarisch;" />
+    <att name="Rezepte_Id" value="22" />
+    <att name="Titel" value="Cremiges Erbsen-M&#246;hren-Gem&#252;se" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Kartoffelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #25" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="25" />
+    <att name="Titel" value="S&#252;&#223;kartoffel Hackfleisch Auflauf mit Feta" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Kartoffelgericht;" />
+  </instance>
+  <instance id="RezepteConcept #24" >
+    <att name="Eigenschaften" value="Fleisch;" />
+    <att name="Rezepte_Id" value="24" />
+    <att name="Titel" value="Gulaschsuppe" />
+    <att name="Kueche" value="Italienisch;" />
+    <att name="Gerichteart" value="Kartoffelgericht;Suppe;" />
+  </instance>
+</instances>
+<cb name="Casebase">
+     <case name="RezepteConcept #30" />
+     <case name="RezepteConcept #10" />
+     <case name="RezepteConcept #32" />
+     <case name="RezepteConcept #31" />
+     <case name="RezepteConcept #16" />
+     <case name="RezepteConcept #38" />
+     <case name="RezepteConcept #15" />
+     <case name="RezepteConcept #37" />
+     <case name="RezepteConcept #18" />
+     <case name="RezepteConcept #9" />
+     <case name="RezepteConcept #17" />
+     <case name="RezepteConcept #39" />
+     <case name="RezepteConcept #8" />
+     <case name="RezepteConcept #12" />
+     <case name="RezepteConcept #34" />
+     <case name="RezepteConcept #11" />
+     <case name="RezepteConcept #33" />
+     <case name="RezepteConcept #14" />
+     <case name="RezepteConcept #36" />
+     <case name="RezepteConcept #13" />
+     <case name="RezepteConcept #35" />
+     <case name="RezepteConcept #3" />
+     <case name="RezepteConcept #2" />
+     <case name="RezepteConcept #1" />
+     <case name="RezepteConcept #0" />
+     <case name="RezepteConcept #7" />
+     <case name="RezepteConcept #19" />
+     <case name="RezepteConcept #6" />
+     <case name="RezepteConcept #5" />
+     <case name="RezepteConcept #4" />
+     <case name="RezepteConcept #40" />
+     <case name="RezepteConcept #21" />
+     <case name="RezepteConcept #20" />
+     <case name="RezepteConcept #27" />
+     <case name="RezepteConcept #26" />
+     <case name="RezepteConcept #29" />
+     <case name="RezepteConcept #28" />
+     <case name="RezepteConcept #23" />
+     <case name="RezepteConcept #22" />
+     <case name="RezepteConcept #25" />
+     <case name="RezepteConcept #24" />
+</cb>
+</Project>
