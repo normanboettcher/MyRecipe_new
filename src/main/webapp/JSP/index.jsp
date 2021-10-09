@@ -137,7 +137,7 @@
 </nav></header>
 <body>
 	<!-- Suche/ Rezeptauswahl -->
-	<form class="box" action="#" method="post">
+	<form class="box" action="../RezepteServlet" method="post">
 		<div class="boxContainer">
 			<table class="elementsContainer">
 				<tr>
@@ -147,7 +147,7 @@
 				</tr>
 				<tr>
 					<td colspan="2"><input type="text"
-						placeholder="Welches Rezept suchen Sie..." class="search"></td>
+						placeholder="Welches Rezept suchen Sie..." class="search" value=${ inputTitel }></td>
 					<td style="width: 1px; position: absolut;" colspan="1"><button
 							class="btn btn-outline-success" type="submit" id="suchbtn">
 							<i class="fa fa-search"></i>

@@ -28,7 +28,7 @@ import general.supermarkets.Rezepte;
 
 public class RecipeAgent {
 
-	private static String dataPath = "/MyRecipe/myCBR/";
+	private static String dataPath = "myCBR/";
 	private static String projectName = "Rezepte.prj";
 
 	// Attributes for myCBR

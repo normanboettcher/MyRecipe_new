@@ -29,12 +29,12 @@ public class RezepteServlet extends HttpServlet {
 		String inputKueche = request.getParameter("kueche"); 
 		String inputGerichteart = request.getParameter("gerichteart"); 
 		String inputEigenschaften = request.getParameter("eigenschaften");
-		String inputId = request.getParameter("id");
+		String inputRezepte_id = request.getParameter("rezepte_id");
 		
 		
 		try {
 
-			int inputIdParsed = Integer.parseInt(inputId);
+			int inputIdParsed = Integer.parseInt(inputRezepte_id);
 			Rezepte queryRezepte = new Rezepte(inputTitel, inputKueche, inputGerichteart, inputEigenschaften, inputIdParsed); 
 			RecipeAgent recipeAgent = new RecipeAgent(); 
 			result = recipeAgent.startQuery(queryRezepte); 
@@ -46,9 +46,9 @@ public class RezepteServlet extends HttpServlet {
 			request.setAttribute("inputKueche", inputKueche);
 			request.setAttribute("inputGerichteart", inputGerichteart);
 			request.setAttribute("inputEigenschaften", inputEigenschaften);
-			request.setAttribute("inputId", inputIdParsed);
+			request.setAttribute("inputRezepte_id", inputIdParsed);
 			
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			request.getRequestDispatcher("rezepte.jsp").forward(request, response);
 		} catch (Exception ex)  {
 			request.setAttribute("error", "[DEBUG] RezepteServlet.java: Type Conversion Error! Please insert a number for the year. And don't mess around with the Award Boolean!"); 
 			System.out.println("Error: " + ex.getMessage());
