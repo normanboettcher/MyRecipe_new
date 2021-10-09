@@ -51,7 +51,7 @@ public class RezepteServlet extends HttpServlet {
 			RecipeAgent recipeAgent = new RecipeAgent(); 
 			result = recipeAgent.startQuery(queryRezepte); 
 			System.out.println(result == null);
-			resultingRezepte = recipeAgent.print(result, 41);
+			resultingRezepte = recipeAgent.print(result, 7);
 			System.out.println(resultingRezepte == null);
 
 			request.setAttribute("resultingRezepte", resultingRezepte);

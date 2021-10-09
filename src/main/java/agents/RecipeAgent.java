@@ -32,7 +32,7 @@ import general.supermarkets.Rezepte;
 
 public class RecipeAgent {
 	
-	private static String projectName = "Rezepte.prj";
+	private static String projectName = "myCBR/Rezepte.prj";
 
 	// Attributes for myCBR
 	private Project project;
