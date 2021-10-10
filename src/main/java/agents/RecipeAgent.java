@@ -65,7 +65,6 @@ public class RecipeAgent {
 			
 			System.out.println(project.getPath());
 			System.out.println(file.getAbsolutePath());
-			
 			while(project.isImporting()) {
 				Thread.sleep(3000);
 				System.out.println(".");
@@ -93,11 +92,8 @@ public class RecipeAgent {
 		titelDesc = (StringDesc) getRezepteConcept().getAllAttributeDescs().get("Titel");
 		//titelDesc.addStringFct(StringConfig.LEVENSHTEIN, "titelfct",  true);
 		kuecheDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Kueche");
-		
 		gerichteartDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Gerichteart");
-		
 		System.out.println("Description "+ getRezepteConcept().getAllAttributeDescs().get("Kueche"));
-	
 		eigenschaftenDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Eigenschaften");
 		rezepte_idDesc =  (IntegerDesc) getRezepteConcept().getAllAttributeDescs().get("Rezepte_Id");
 
@@ -107,7 +103,7 @@ public class RecipeAgent {
 			
 			//System.out.println(getRezepteConcept().getName());
 			
-			//Wenn nach keinem Rezepot gesucht wurde, dann ist die Gewichtung des Titels 0.
+			//Wenn nach keinem Rezept gesucht wurde, dann ist die Gewichtung des Titels 0.
 			if(rezepte.getTitel() == "") {
 				getRezepteConcept().getActiveAmalgamFct().setWeight(titelDesc, 0);
 			}
@@ -118,10 +114,8 @@ public class RecipeAgent {
 			//getRezepteConcept().getActiveAmalgamFct().setWeight(titelDesc, 3);
 			//getRezepteConcept().getActiveAmalgamFct().setWeight(rezepte_idDesc, 0);
 			
-			retrieve = new Retrieval(getRezepteConcept(), project.getCB("Casebase"));
-				
+			retrieve = new Retrieval(getRezepteConcept(), project.getCB("Casebase"));	
 			retrieve.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
-		
 			Instance query = retrieve.getQueryInstance();
 			
 			System.out.println(titelDesc);
@@ -141,9 +135,15 @@ public class RecipeAgent {
 			query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0]));
 			System.out.println("-----Konnte Kueche hinzufuegen: " + query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0])));
 
-			System.out.println(query.getAttForDesc(gerichteartDesc).getValueAsString());
-			System.out.println(query.getAttForDesc(eigenschaftenDesc).getValueAsString());
-			System.out.println(query.getAttForDesc(kuecheDesc).getValueAsString());
+			query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[0]));
+			System.out.println("-----Konnte Gerichteart hinzufuegen: " + query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[0])));
+			
+			
+			query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[0]));
+			System.out.println("-----Konnte Eigenschaften hinzufuegen: " + query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[0])));
+			//System.out.println(query.getAttForDesc(gerichteartDesc).getValueAsString());
+			//System.out.println(query.getAttForDesc(eigenschaftenDesc).getValueAsString());
+			//System.out.println(query.getAttForDesc(kuecheDesc).getValueAsString());
 			
 		} catch (ParseException e) {
 			System.err.println("[ERROR] RecipeAgent: Error while creating the query! " + e.getMessage());
