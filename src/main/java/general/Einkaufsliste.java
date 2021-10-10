@@ -14,6 +14,7 @@ public class Einkaufsliste {
 	private HashMap<Integer, Food> produkte;
 	private HashMap<Integer, Integer> produkte_mit_menge;
 	private User usr;
+	private String laden;
 	
 	public Einkaufsliste(int id, Date date) {
 		this.id = id;
@@ -22,13 +23,21 @@ public class Einkaufsliste {
 		this.produkte = new HashMap<Integer, Food>();
 	}
 	
+	public void addLaden(String laden) {
+		this.laden = laden;
+	}
+	
+	public String getLaden() {
+		return laden;
+	}
+	
 	public void setUser(User u) {
 		this.usr = u;
 	}
 	
 	public void addProduktZuListe(Food f, int anzahl) {
-		this.produkte_mit_menge.put(f.getArtikelNr(), anzahl);
-		this.produkte.put(f.getArtikelNr(), f);
+		getProdukteMitMenge().put(f.getArtikelNr(), anzahl);
+		getProduktliste().put(f.getArtikelNr(), f);
 	}
 	
 	public void loescheProduktVonListe(Food f, int anzahl) {
@@ -36,11 +45,11 @@ public class Einkaufsliste {
 		this.produkte.remove(f.getArtikelNr(), f);
 	}
 	
-	public void berechneGesamtpreis(HashMap<Integer, Food> produkte) {
+	public void berechneGesamtpreis() {
 		double preis = 0;
 		
-		for(int i : produkte.keySet()) {
-			preis += produkte.get(i).getPreis() * getProdukteMitMenge().get(i);
+		for(int i : getProduktliste().keySet()) {
+			preis += getProduktliste().get(i).getPreis() * getProdukteMitMenge().get(i);
 		}
 		
 		this.preis = preis;

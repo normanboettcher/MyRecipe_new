@@ -25,7 +25,7 @@ public class EinkaufslisteTest {
 		food = new Food("Banane", 2, "Biofarm", "", 1, 1, 0, 1, "Obst");
 		food.setArtikelNr(1);
 		liste.addProduktZuListe(food, 2);
-		liste.berechneGesamtpreis(liste.getProduktliste());
+		liste.berechneGesamtpreis();
 		
 		usr.setEinkaufsliste(liste);
 	}

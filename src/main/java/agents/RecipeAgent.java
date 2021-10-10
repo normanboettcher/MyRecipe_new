@@ -63,8 +63,8 @@ public class RecipeAgent {
 			File file = new File(projectName);
 			project = new Project(file.getAbsolutePath());
 			
-			System.out.println(project.getPath());
-			System.out.println(file.getAbsolutePath());
+			//System.out.println(project.getPath());
+		//	System.out.println(file.getAbsolutePath());
 			while(project.isImporting()) {
 				Thread.sleep(3000);
 				System.out.println(".");
@@ -87,67 +87,57 @@ public class RecipeAgent {
 		return RezepteConcept;
 	}
 	
-	public List<Pair<Instance, Similarity>> startQuery(RezeptAnfrage rezepte) {
+	public List<Pair<Instance, Similarity>> startQuery(RezeptAnfrage rezepte) throws ParseException {
 		// Get the values of the request
 		titelDesc = (StringDesc) getRezepteConcept().getAllAttributeDescs().get("Titel");
 		//titelDesc.addStringFct(StringConfig.LEVENSHTEIN, "titelfct",  true);
 		kuecheDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Kueche");
 		gerichteartDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Gerichteart");
-		System.out.println("Description "+ getRezepteConcept().getAllAttributeDescs().get("Kueche"));
+		//System.out.println("Description "+ getRezepteConcept().getAllAttributeDescs().get("Kueche"));
 		eigenschaftenDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Eigenschaften");
 		rezepte_idDesc =  (IntegerDesc) getRezepteConcept().getAllAttributeDescs().get("Rezepte_Id");
 
-		// Insert values into query
-		try {
-			//getRezepteConcept().addAmalgamationFct(AmalgamationConfig.WEIGHTED_SUM, "fct", true);
-			
-			//System.out.println(getRezepteConcept().getName());
-			
-			//Wenn nach keinem Rezept gesucht wurde, dann ist die Gewichtung des Titels 0.
-			if(rezepte.getTitel() == "") {
-				getRezepteConcept().getActiveAmalgamFct().setWeight(titelDesc, 0);
-			}
-			
-			//getRezepteConcept().getActiveAmalgamFct().setWeight(gerichteartDesc, 3);
-			//getRezepteConcept().getActiveAmalgamFct().setWeight(kuecheDesc, 4);
-			//getRezepteConcept().getActiveAmalgamFct().setWeight(eigenschaftenDesc, 2);
-			//getRezepteConcept().getActiveAmalgamFct().setWeight(titelDesc, 3);
-			//getRezepteConcept().getActiveAmalgamFct().setWeight(rezepte_idDesc, 0);
-			
-			retrieve = new Retrieval(getRezepteConcept(), project.getCB("Casebase"));	
-			retrieve.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
-			Instance query = retrieve.getQueryInstance();
-			
-			System.out.println(titelDesc);
-			System.out.println(kuecheDesc);
-			System.out.println(gerichteartDesc);
-			System.out.println(eigenschaftenDesc);
-			
-			
-			//System.out.println(rezepte.getEigenschaften());
-			//System.out.println(titelDesc.getAttribute(rezepte.getTitel()));
-			
-			
-			System.out.println("----Konnte Titel hinzufuegen: "+ query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel())));
-			System.out.println("----Konnte ID hinzufuegen: "+ query.addAttribute(rezepte_idDesc, 2));
-			
-			System.out.println(rezepte.getKueche()[0]);
-			query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0]));
-			System.out.println("-----Konnte Kueche hinzufuegen: " + query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0])));
-
-			query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[0]));
-			System.out.println("-----Konnte Gerichteart hinzufuegen: " + query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[0])));
-			
-			
-			query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[0]));
-			System.out.println("-----Konnte Eigenschaften hinzufuegen: " + query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[0])));
-			//System.out.println(query.getAttForDesc(gerichteartDesc).getValueAsString());
-			//System.out.println(query.getAttForDesc(eigenschaftenDesc).getValueAsString());
-			//System.out.println(query.getAttForDesc(kuecheDesc).getValueAsString());
-			
-		} catch (ParseException e) {
-			System.err.println("[ERROR] RecipeAgent: Error while creating the query! " + e.getMessage());
+		//Wenn nach keinem Rezept gesucht wurde, dann ist die Gewichtung des Titels 0.
+		if(rezepte.getTitel() == "") {
+			getRezepteConcept().getActiveAmalgamFct().setWeight(titelDesc, 0);
 		}
+		
+		//getRezepteConcept().getActiveAmalgamFct().setWeight(gerichteartDesc, 3);
+		//getRezepteConcept().getActiveAmalgamFct().setWeight(kuecheDesc, 4);
+		//getRezepteConcept().getActiveAmalgamFct().setWeight(eigenschaftenDesc, 2);
+		//getRezepteConcept().getActiveAmalgamFct().setWeight(titelDesc, 3);
+		//getRezepteConcept().getActiveAmalgamFct().setWeight(rezepte_idDesc, 0);
+		
+		retrieve = new Retrieval(getRezepteConcept(), project.getCB("Casebase"));	
+		retrieve.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
+		Instance query = retrieve.getQueryInstance();
+		
+		//System.out.println(titelDesc);
+		//System.out.println(kuecheDesc);
+		//System.out.println(gerichteartDesc);
+		//System.out.println(eigenschaftenDesc);
+		
+		
+		//System.out.println(rezepte.getEigenschaften());
+		//System.out.println(titelDesc.getAttribute(rezepte.getTitel()));
+		
+		
+		//System.out.println("----Konnte Titel hinzufuegen: "+ query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel())));
+		//System.out.println("----Konnte ID hinzufuegen: "+ query.addAttribute(rezepte_idDesc, 2));
+		
+		//System.out.println(rezepte.getKueche()[0]);
+		query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0]));
+		//System.out.println("-----Konnte Kueche hinzufuegen: " + query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0])));
+
+		query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[0]));
+		//System.out.println("-----Konnte Gerichteart hinzufuegen: " + query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[0])));
+		
+		
+		query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[0]));
+		//System.out.println("-----Konnte Eigenschaften hinzufuegen: " + query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[0])));
+		//System.out.println(query.getAttForDesc(gerichteartDesc).getValueAsString());
+		//System.out.println(query.getAttForDesc(eigenschaftenDesc).getValueAsString());
+		//System.out.println(query.getAttForDesc(kuecheDesc).getValueAsString());
 
 		// Send query
 		retrieve.start();
@@ -176,8 +166,8 @@ public class RecipeAgent {
 			
 			resultingRezepte.add(rezepte);
 			resultingRezepte.get(i).setSimilarity(result.get(i).getSecond().getValue());
-			System.out.println(result.get(i).getFirst().getName() + " - Similarity: "
-					+ Math.floor(result.get(i).getSecond().getValue() * 100) / 100);
+			//System.out.println(result.get(i).getFirst().getName() + " - Similarity: "
+				//	+ Math.floor(result.get(i).getSecond().getValue() * 100) / 100);
 		}
 		return resultingRezepte;
 	}

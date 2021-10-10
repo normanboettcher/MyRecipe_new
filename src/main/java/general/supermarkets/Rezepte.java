@@ -1,5 +1,9 @@
 package general.supermarkets;
 
+import java.util.HashMap;
+
+import general.Food;
+
 public class Rezepte {
 	
 
@@ -9,6 +13,7 @@ public class Rezepte {
 	private String eigenschaften;
 	private int rezepte_id;
 	private double similarity; 
+	private HashMap<Integer, Integer> zutaten;
 	
 
 	public Rezepte(String titel, String kueche, String gerichteart, String eigenschaften, int rezepte_id) {
@@ -17,8 +22,23 @@ public class Rezepte {
 		this.gerichteart = gerichteart;
 		this.eigenschaften = eigenschaften;
 		this.rezepte_id = rezepte_id;
+		this.zutaten = new HashMap<Integer, Integer>();
+
 	}
 
+	
+	public HashMap<Integer, Integer> getZutaten() {
+		return zutaten;
+	}
+	
+	public void hinzufuegen(int id, int menge) {
+		this.zutaten.put(id, menge);
+	}
+	
+	public int getZutatById(int id) {
+		return this.zutaten.get(id);
+	}
+	
 	public double getSimilarity() {
 		return similarity;
 	}

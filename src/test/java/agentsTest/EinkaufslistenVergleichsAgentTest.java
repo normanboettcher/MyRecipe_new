@@ -34,7 +34,7 @@ public class EinkaufslistenVergleichsAgentTest {
 			
 			food.setArtikelNr(i);
 			liste.addProduktZuListe(food, 2);
-			liste.berechneGesamtpreis(liste.getProduktliste());
+			liste.berechneGesamtpreis();
 
 			usr.setEinkaufsliste(liste);
 		}

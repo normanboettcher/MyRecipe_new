@@ -34,9 +34,9 @@ public class RezepteServlet extends HttpServlet {
 		String[] inputGerichteart = request.getParameterValues("gerichteart"); 
 		String[] inputEigenschaften = request.getParameterValues("eigenschaften");
 		
-		System.out.println(inputKueche[0]);
-		System.out.println(inputGerichteart[0]);
-		System.out.println(inputEigenschaften[0]);
+		//System.out.println(inputKueche[0]);
+		//System.out.println(inputGerichteart[0]);
+		//System.out.println(inputEigenschaften[0]);
 		
 		
 		try {
@@ -54,22 +54,19 @@ public class RezepteServlet extends HttpServlet {
 			
 			RecipeAgent recipeAgent = new RecipeAgent(); 
 			result = recipeAgent.startQuery(queryRezepte); 
-			System.out.println(result == null);
-			resultingRezepte = recipeAgent.print(result, 7);
-			System.out.println(resultingRezepte == null);
-			
-			for(int i = 0; i < resultingRezepte.size(); i++ ) {
-				System.out.println(resultingRezepte.get(i).getTitel() + "-" + resultingRezepte.get(i).getSimilarity() + " Prozent");
-			}
-
+			//System.out.println(result == null);
+			resultingRezepte = recipeAgent.print(result, 5);
+			//System.out.println(resultingRezepte == null);
 			request.setAttribute("resultingRezepte", resultingRezepte);
 			
+			
+			
 			// Forward parameters back to the form for usability
-			request.setAttribute("inputTitle", inputTitel);
-			request.setAttribute("inputKueche", inputKueche);
-			request.setAttribute("inputGerichteart", inputGerichteart);
-			request.setAttribute("inputEigenschaften", inputEigenschaften);
-			request.setAttribute("inputRezepte_id", inputIdParsed);
+			//request.setAttribute("inputTitle", inputTitel);
+			//request.setAttribute("inputKueche", inputKueche);
+			//request.setAttribute("inputGerichteart", inputGerichteart);
+			//request.setAttribute("inputEigenschaften", inputEigenschaften);
+			//request.setAttribute("inputRezepte_id", inputIdParsed);
 			
 			request.getRequestDispatcher("JSP/rezepte.jsp").forward(request, response);
 		} catch (Exception ex)  {

@@ -15,6 +15,7 @@ import general.Adresse;
 import general.Einkaufsliste;
 import general.Food;
 import general.User;
+import general.supermarkets.Rezepte;
 import managers.DatumsManager;
 import managers.IdGenerator;
 import managers.PasswortManager;
@@ -161,10 +162,30 @@ public class SpeicherInDatenbank {
 		}
 	}
 	
+	public static void speicherZutatenAusRezept(Rezepte r) {
+		Connection con = DBConnection.getConnection();
+		
+		try {
+			PreparedStatement stmt = con.prepareStatement("insert into zutaten_aus_rezepte "
+					+ "values"
+					+ "(?, ?, ?)");
+			
+			for(int i : r.getZutaten().keySet()) {
+				stmt.setInt(1, r.getRezepte_id());
+				stmt.setInt(2, i);
+				stmt.setInt(3, r.getZutaten().get(i));
+				stmt.executeUpdate();
+			}
+			stmt.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) throws NoSuchAlgorithmException {
 		
-		LoescheAusDatenbank.loescheTabellenInhalt("einkauf_historie", "einkaufsliste_id");
-		LoescheAusDatenbank.loescheTabellenInhalt("produkte_aus_einkaufsliste", "einkaufsliste_id");
+		//LoescheAusDatenbank.loescheTabellenInhalt("einkauf_historie", "einkaufsliste_id");
+		//LoescheAusDatenbank.loescheTabellenInhalt("produkte_aus_einkaufsliste", "einkaufsliste_id");
 		
 		for(int i = 5; i < 15; i++) {
 			SpeicherInDatenbank.speicherUserInDatenbank(new User(i, "User " + i, "Nachname " + i, 
@@ -238,7 +259,7 @@ public class SpeicherInDatenbank {
 					laden_id_result = laden_result_set.getInt("laden_id");
 				}
 				
-				l.berechneGesamtpreis(l.getProduktliste());
+				l.berechneGesamtpreis();
 				
 				for(int key : l.getProduktliste().keySet()) {
 					l.getProduktliste().get(key).setUrsprungsmarkt(laden_id_result);
