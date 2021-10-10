@@ -95,6 +95,8 @@ public class RecipeAgent {
 		kuecheDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Kueche");
 		
 		gerichteartDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Gerichteart");
+		
+		System.out.println("Description "+ getRezepteConcept().getAllAttributeDescs().get("Kueche"));
 	
 		eigenschaftenDesc = (SymbolDesc) getRezepteConcept().getAllAttributeDescs().get("Eigenschaften");
 		rezepte_idDesc =  (IntegerDesc) getRezepteConcept().getAllAttributeDescs().get("Rezepte_Id");
@@ -132,21 +134,13 @@ public class RecipeAgent {
 			//System.out.println(titelDesc.getAttribute(rezepte.getTitel()));
 			
 			
-			query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel()));
+			System.out.println("----Konnte Titel hinzufuegen: "+ query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel())));
+			System.out.println("----Konnte ID hinzufuegen: "+ query.addAttribute(rezepte_idDesc, 2));
 			
-			for(int i = 0; i < rezepte.getKueche().length; i++) {
-				query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[i]));
-				System.out.println(kuecheDesc.getAttribute(rezepte.getKueche()[i]));
-			}
-			
-			for(int i = 0; i < rezepte.getGerichteart().length; i++) {
-				query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[i]));
-			}
-			
-			for(int i = 0; i < rezepte.getEigenschaften().length; i++) {
-				query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[i]));
-			}
-			
+			System.out.println(rezepte.getKueche()[0]);
+			query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0]));
+			System.out.println("-----Konnte Kueche hinzufuegen: " + query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0])));
+
 			System.out.println(query.getAttForDesc(gerichteartDesc).getValueAsString());
 			System.out.println(query.getAttForDesc(eigenschaftenDesc).getValueAsString());
 			System.out.println(query.getAttForDesc(kuecheDesc).getValueAsString());
