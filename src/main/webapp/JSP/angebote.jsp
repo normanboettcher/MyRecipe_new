@@ -65,19 +65,19 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 			<th>Originalpreis</th>
 			<th>Rabatt</th>
 		</tr>
-		<c:forEach var="i" begin="1" end="${supermarkt.getAngebote().size()}">
+		<c:forEach items = "${supermarkt.getAngebote()}" var = "angebote">
 			<tr>
-				<td><img src="${supermarkt.getAngebote().get(i).getImage()}"
+				<td><img src="${angebote.value.getImage()}"
 					alt="produktbild" width="125" height="125"></td>
-				<td>${supermarkt.getAngebote().get(i).getBezeichnung()}</td>
-				<td>${supermarkt.getAngebote().get(i).getPreis()}&#8364;</td>
-				<td>${supermarkt.getAngebote().get(i).getHersteller()}</td>
-				<td>${supermarkt.getAngebote().get(i).getVeggy()}</td>
-				<td>${supermarkt.getAngebote().get(i).getVegan()}</td>
-				<td>${supermarkt.getAngebote().get(i).getLokal()}</td>
-				<td>${supermarkt.getAngebote().get(i).getBio()}</td>
-				<td>${supermarkt.getAngebote().get(i).getOriginPreis() }
-				<td>${supermarkt.getAngebote().get(i).getRabatt() * 100} Prozent</td>
+				<td>${angebote.value.getBezeichnung()}</td>
+				<td>${angebote.value.getPreis()}&#8364;</td>
+				<td>${angebote.value.getHersteller()}</td>
+				<td>${angebote.value.getVeggy()}</td>
+				<td>${angebote.value.getVegan()}</td>
+				<td>${angebote.value.getLokal()}</td>
+				<td>${angebote.value.getBio()}</td>
+				<td>${angebote.value.getOriginPreis() }
+				<td>${angebote.value.getRabatt() * 100} Prozent</td>
 			</tr>
 		</c:forEach>
 	</table>

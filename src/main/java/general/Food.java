@@ -12,6 +12,8 @@ public class Food {
 	private double rabatt;
 	
 	private int ursprungsmarkt;
+	
+	private boolean imAngebot;
 
 	public Food(String bez, double preis, String hersteller, String image,
 			int veggy, int vegan, int lokal, int bio, String kategorie) {
@@ -26,12 +28,24 @@ public class Food {
 		this.vegetarisch = veggy;
 	}
 	
+	public void setPreis(double p) {
+		this.preis = p;
+	}
+	
 	public void setUrsprungsmarkt(int id) {
 		this.ursprungsmarkt = id;
 	}
 	
 	public int getUrpsungsmarktID() {
 		return ursprungsmarkt;
+	}
+	
+	public void setImAngebot(boolean t) {
+		this.imAngebot = t;
+	}
+	
+	public boolean getImAngebot() {
+		return imAngebot;
 	}
 	
 	//-----------------Simple getters for Food-----------------

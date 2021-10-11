@@ -12,9 +12,9 @@ public class LoescheAusDatenbank {
 		Connection con = DBConnection.getConnection();
 		
 		try {
-			PreparedStatement stmt = con.prepareStatement("delete from " + table + " where "+ spalte + " >= ?");
+			PreparedStatement stmt = con.prepareStatement("delete from " + table + "_angebote where "+ spalte + " >= ?");
 			stmt.setInt(1, 1);
-
+			//System.out.println(stmt);
 			stmt.executeUpdate();
 			stmt.close();
 			con.close();

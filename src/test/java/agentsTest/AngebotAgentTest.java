@@ -46,46 +46,4 @@ public class AngebotAgentTest {
 
 	}
 
-	@Test
-	public void produktImAngebotTest() {
-		assertTrue(a_agent.produktImAngebot(sortiment, angebote, 2) == true);
-		assertFalse(a_agent.produktImAngebot(sortiment, angebote, 3) == true);
-	}
-	
-	@Test
-	public void tauscheEinkaufslisteProduktMitAngebotProduktTest() {
-		
-		assertTrue(liste.getProduktliste().get(2).getPreis() == 1.99);
-		
-		if (a_agent.produktImAngebot(sortiment, angebote, 2)) {
-			a_agent.tauscheEinkaufslisteProduktMitAngebotProdukt(liste);
-		}
-		
-		assertTrue(liste.getProduktliste().get(2).getPreis() == 0.99);
-	}
-	
-	@Test
-	public void getGespartTest() {
-		
-		if (a_agent.produktImAngebot(sortiment, angebote, 2)) {
-			a_agent.tauscheEinkaufslisteProduktMitAngebotProdukt(liste);
-		}
-		a_agent.berechneErsparung(liste);
-		
-		System.out.println(a_agent.getSortimentPreisZwischenspeicher());
-		System.out.println(a_agent.getPreisEndergebnis());
-	}
-	
-	@Test
-	public void getErsparungInProzentTest() {
-
-		if (a_agent.produktImAngebot(sortiment, angebote, 2)) {
-			a_agent.tauscheEinkaufslisteProduktMitAngebotProdukt(liste);
-		}
-		a_agent.berechneErsparung(liste);
-		a_agent.berechneErsparungInProzent();
-		
-		System.out.println("[ " + a_agent.getErsparungInProzent() + "] Prozent gespart");
-		assertTrue((int) a_agent.getErsparungInProzent() == 11);
-	}
 }
