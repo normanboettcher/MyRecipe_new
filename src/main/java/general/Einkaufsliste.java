@@ -15,12 +15,30 @@ public class Einkaufsliste {
 	private HashMap<Integer, Integer> produkte_mit_menge;
 	private User usr;
 	private String laden;
+	private double ersparnis;
+	private double ersparnisInProzent;
 	
 	public Einkaufsliste(int id, Date date) {
 		this.id = id;
 		this.date = date;
 		this.produkte_mit_menge = new HashMap<Integer, Integer>();
 		this.produkte = new HashMap<Integer, Food>();
+	}
+	
+	public void setErsparnisInProzent(double d) {
+		this.ersparnisInProzent = d;
+	}
+	
+	public double getErsparnisInProzent() {
+		return ersparnisInProzent;
+	}
+	
+	public void setErsparnis(double d) {
+		this.ersparnis = d;
+	}
+	
+	public double getErsparnis() {
+		return ersparnis;
 	}
 	
 	public void addLaden(String laden) {

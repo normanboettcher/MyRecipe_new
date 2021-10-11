@@ -127,7 +127,7 @@ public class EinkaufslistenVergleichsAgent {
 				while(laden_bez.next()) {
 					laden = laden_bez.getString("bez");
 				}
-				System.out.println("-----" +laden);
+				//System.out.println("-----" +laden);
 				
 				l.addLaden(laden);
 				PreparedStatement stmt = con.prepareStatement("select * from " + laden + "_sortiment"
@@ -147,11 +147,12 @@ public class EinkaufslistenVergleichsAgent {
 							produkte.getInt("bio"), produkte.getString("kategorie"));
 					f.setArtikelNr(produkte.getInt("artikelnr"));
 					l.addProduktZuListe(f,  produkte.getInt("anzahl"));
+					
 					//System.out.println(produkte.getString("artikelbez"));
 				}
 				//System.out.println(l.getProduktliste().size());
 				l.berechneGesamtpreis();
-				System.out.println(l.getGesamtPreis());
+	
 				results.put(l.getEinkaufslisteID(), l);
 				
 				stmt.close();

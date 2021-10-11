@@ -86,7 +86,7 @@ public class SpeicherInDatenbank {
 			PreparedStatement stmt = con.prepareStatement(speicherAngebot);
 			
 			
-			stmt.setInt(1, IdGenerator.generiereAngeboteID(laden));
+			stmt.setInt(1, f.getArtikelNr());
 			stmt.setString(2, f.getBezeichnung());
 			stmt.setDouble(3, f.getPreis());
 			stmt.setString(4, f.getHersteller());
