@@ -115,7 +115,7 @@ public class RegisterServlet extends HttpServlet {
 		}
 		
 		if(fehler_aufgetreten) {
-			req.getRequestDispatcher("JSP/register.jsp").forward(req, res);
+			req.getRequestDispatcher("JSP/login.jsp").forward(req, res);
 			
 		} else {
 			User usr = new User(IdGenerator.generiereUserID(),vorname ,nachname, email,
