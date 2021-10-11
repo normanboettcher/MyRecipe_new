@@ -18,11 +18,12 @@
 	href="<%=request.getContextPath()%>/CSS/indexStyle.css">
 <title>MyRecipe</title>
 </head>
+<!-- Wenn USer nicht eingeloggt, kann er nicht auf diese Seite zugreifen -->
 <!--<c:if test="${admin == null && kunde == null}">
 		<meta http-equiv="refresh" content="0; URL=login.jsp">
 	</c:if> -->
 
-<header> <!-- Sticky Navbar with Logo --> <nav
+<header> <!-- Navbar with Logo --> <nav
 class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
 	<a class="navbar-brand" href="index.jsp"><img
@@ -86,7 +87,9 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 									width="30" height="25"> Penny</a>
 							</button>
 						</form></li>
-					<li><hr class="dropdown-divider"></li>
+					<li><a class="nav-link" href="test.jsp"><i
+					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
+
 					<li><form action="../ZeigeAngeboteServlet" method="get">
 							<button name="supermarkt" value="rewe"
 								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
@@ -106,10 +109,6 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 						</form></li>
 
 				</ul></li>
-			<c:if test="${kunde == null && admin == null }">
-				<li><a class="nav-link" href="login.jsp"><i
-						class="fa fa-user"></i> Login</a></li>
-			</c:if>
 			<c:if test="${kunde != null || admin != null }">
 				<li><a class="nav-link" href="../LogoutServlet"><i
 						class="fa fa-unlock-alt"></i> Logout</a></li>

@@ -17,10 +17,10 @@
 <title>Login</title>
 </head>
 <body>
-	<header> <!-- Sticky Navbar with Logo --> <nav
+	<header> <!-- Navbar with Logo --> <nav
 class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
-	<a class="navbar-brand" href="index.jsp"><img
+	<a class="navbar-brand" href="login.jsp"><img
 		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
 		height="45"> MyRecipe</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -28,96 +28,23 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 		aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
-
-	<div class="collapse navbar-collapse" id="navbarNav">
-		<ul class="navbar-nav">
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
-					class="fas fa-store-alt"></i> Händler
-			</a>
-			<!-- Navbar: DropDown Verschiedene Händer und Produkte -->
-				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<li><form action="../ZeigeSortimentServlet" method="get">
-							<button name="supermarkt" value="penny"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i><a><img
-									src="<%=request.getContextPath()%>/IMG/penny_logo.png" alt=""
-									width="30" height="25"> Penny</a>
-							</button>
-						</form></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><form action="../ZeigeSortimentServlet" method="get">
-							<button name="supermarkt" value="rewe"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i><a><img
-									src="<%=request.getContextPath()%>/IMG/rewe_logo.png" alt=""
-									width="30" height="25"> Rewe</a>
-							</button>
-						</form></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><form action="../ZeigeSortimentServlet" method="get">
-							<button name="supermarkt" value="netto"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i><a><img
-									src="<%=request.getContextPath()%>/IMG/netto_logo.png" alt=""
-									width="25" height="25"> Netto</a>
-							</button>
-						</form></li>
-
-				</ul></li>
-				<!-- Navbar: DropDown Verschiedene Händer und Angebote -->
-			<li class="nav-item dropdown"><a
-				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
-				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
-					class="fas fa-piggy-bank"></i> Angebote
-			</a>
-				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<li><form action="../ZeigeAngeboteServlet" method="get">
-							<button name="supermarkt" value="penny"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i><a><img
-									src="<%=request.getContextPath()%>/IMG/penny_logo.png" alt=""
-									width="30" height="25"> Penny</a>
-							</button>
-						</form></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><form action="../ZeigeAngeboteServlet" method="get">
-							<button name="supermarkt" value="rewe"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i><a><img
-									src="<%=request.getContextPath()%>/IMG/rewe_logo.png" alt=""
-									width="30" height="25"> Rewe</a>
-							</button>
-						</form></li>
-					<li><hr class="dropdown-divider"></li>
-					<li><form action="../ZeigeAngeboteServlet" method="get">
-							<button name="supermarkt" value="netto"
-								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
-								</i><a><img
-									src="<%=request.getContextPath()%>/IMG/netto_logo.png" alt=""
-									width="25" height="25"> Netto</a>
-							</button>
-						</form></li>
-
-				</ul></li>
-		
-		</ul>
-	</div>
 </div>
 </nav></header>
 
 	<!-- Login Bereich-->
 	<form class="box" action="../LoginServlet" method="post">
-		<h1>Login</h1>
+	<h1><img
+		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="125"
+		height="120"></h1>
+		<h2 style="color:white;">MyRecipe</h2>
 		<input type="text" name="username" placeholder="Username"> 
 		<input
 			type="password" name="pw" placeholder="Password"> 
 			
 		<input
-			type="submit" name="" value="Login"> <a href="kontakt.jsp">Lost
+			type="submit" name="" value="Login"> <a style="color:white" href="kontakt.jsp">Lost
 			your password?</a><br> 
-			<a href="register.jsp">Don't have an
+			<a style="color:white" href="register.jsp">Don't have an
 			account?</a>
 	</form>
 	<script
