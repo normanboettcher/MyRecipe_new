@@ -17,6 +17,10 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/CSS/RezepteStyle.css">
 <title>MyRecipe</title>
+<!-- Wenn USer nicht eingeloggt, kann er nicht auf diese Seite zugreifen -->
+<c:if test="${admin == null && kunde == null}">
+		<meta http-equiv="refresh" content="0; URL=login.jsp">
+	</c:if>
 <header> <!-- Sticky Navbar with Logo --> <nav
 	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
@@ -28,8 +32,29 @@
 		aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
+<header> <!-- Navbar with Logo --> <nav
+class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+	<a class="navbar-brand" href="index.jsp"><img
+		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
+		height="45"> MyRecipe</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+		data-bs-target="#navbarNav" aria-controls="navbarNav"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-	</header>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<li><a
+				class="nav-link" href="JSP/index.jsp"><i
+					class="fas fa-arrow-left"></i> Zurück zur Startseite
+			</a></li>
+			
+		</ul>
+	</div>
+</div>
+</nav></header>
 <div class="regform">
 	<h1>Preise Ihres Einkaufs</h1>
 </div>

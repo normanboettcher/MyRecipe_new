@@ -18,6 +18,29 @@
 	href="<%=request.getContextPath()%>/CSS/CreateAccountStyle.css">
 <title>MyRecipe</title>
 </head>
+<header> <!-- Navbar with Logo --> <nav
+class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+	<a class="navbar-brand" href="index.jsp"><img
+		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
+		height="45"> MyRecipe</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+		data-bs-target="#navbarNav" aria-controls="navbarNav"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<li><a
+				class="nav-link" href="login.jsp"><i
+					class="fas fa-arrow-left"></i> Zurück zum Login
+			</a></li>
+			
+		</ul>
+	</div>
+</div>
+</nav></header>
 <body>
 	<!-- Formular zum Registrieren-->
 	<div class="regform">
@@ -79,13 +102,10 @@
 			<input class="passwort" type="password" name="passwort"
 				placeholder="Passwort" required> 
 			<input class="passwort2" type="password" name="passwort2"
-				placeholder="Passwort bestätigen" required><br>
+				placeholder="Passwort bestätigen" required>
 				
 			<button class="regButton" type="submit">Registrieren</button>
 		</form>
-		<!-- Button zurück zur Startseite-->
-		<a href="index.jsp"><button class="regButton" type="submit">Zurück
-				zur Startseite</button></a><br>
 	</div>
 	</body>
 </html>
