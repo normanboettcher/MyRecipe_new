@@ -18,10 +18,11 @@
 </head>
 <body>
 	<header> <!-- Sticky Navbar with Logo --> <nav
-	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
-	<a class="navbar-brand" href="index.jsp"><img src="<%=request.getContextPath()%>/IMG/logo.png"
-		alt="" width="50" height="45"> MyRecipe</a>
+	<a class="navbar-brand" href="index.jsp"><img
+		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
+		height="45"> MyRecipe</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
 		data-bs-target="#navbarNav" aria-controls="navbarNav"
 		aria-expanded="false" aria-label="Toggle navigation">
@@ -30,31 +31,81 @@
 
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<li><a class="nav-link" href="#"><i class="fas fa-utensils"></i>
-					Rezepte</a></li>
-
-
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
 					class="fas fa-store-alt"></i> Händler
 			</a>
+			<!-- Navbar: DropDown Verschiedene Händer und Produkte -->
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-					<li><a class="dropdown-item" href="#">Lidl</a></li>
+					<li><form action="../ZeigeSortimentServlet" method="get">
+							<button name="supermarkt" value="penny"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/penny_logo.png" alt=""
+									width="30" height="25"> Penny</a>
+							</button>
+						</form></li>
 					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Penny</a></li>
+					<li><form action="../ZeigeSortimentServlet" method="get">
+							<button name="supermarkt" value="rewe"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/rewe_logo.png" alt=""
+									width="30" height="25"> Rewe</a>
+							</button>
+						</form></li>
 					<li><hr class="dropdown-divider"></li>
-					<li><a class="dropdown-item" href="#">Rewe</a></li>
-				</ul></li>
-			<li><a class="nav-link" href="test.jsp"><i
-					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
+					<li><form action="../ZeigeSortimentServlet" method="get">
+							<button name="supermarkt" value="netto"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/netto_logo.png" alt=""
+									width="25" height="25"> Netto</a>
+							</button>
+						</form></li>
 
-			<li><a class="nav-link" href="login.jsp"><i
-					class="fa fa-user"></i> Mein Konto</a></li>
+				</ul></li>
+				<!-- Navbar: DropDown Verschiedene Händer und Angebote -->
+			<li class="nav-item dropdown"><a
+				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
+					class="fas fa-piggy-bank"></i> Angebote
+			</a>
+				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+					<li><form action="../ZeigeAngeboteServlet" method="get">
+							<button name="supermarkt" value="penny"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/penny_logo.png" alt=""
+									width="30" height="25"> Penny</a>
+							</button>
+						</form></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><form action="../ZeigeAngeboteServlet" method="get">
+							<button name="supermarkt" value="rewe"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/rewe_logo.png" alt=""
+									width="30" height="25"> Rewe</a>
+							</button>
+						</form></li>
+					<li><hr class="dropdown-divider"></li>
+					<li><form action="../ZeigeAngeboteServlet" method="get">
+							<button name="supermarkt" value="netto"
+								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
+								</i><a><img
+									src="<%=request.getContextPath()%>/IMG/netto_logo.png" alt=""
+									width="25" height="25"> Netto</a>
+							</button>
+						</form></li>
+
+				</ul></li>
+		
 		</ul>
 	</div>
 </div>
-</nav> </header>
+</nav></header>
 
 	<!-- Login Bereich-->
 	<form class="box" action="../LoginServlet" method="post">

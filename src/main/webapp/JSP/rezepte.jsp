@@ -18,34 +18,63 @@
 	href="<%=request.getContextPath()%>/CSS/RezepteStyle.css">
 <title>MyRecipe</title>
 </head>
-<header></header>
+<header> <!-- Sticky Navbar with Logo --> <nav
+	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+<div class="container-fluid">
+	<a class="navbar-brand" href="JSP/index.jsp"><img
+		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
+		height="45"> MyRecipe</a>
+	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+		data-bs-target="#navbarNav" aria-controls="navbarNav"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	</header>
 <body>
-		<c:forEach var="i" begin="0" end="${resultingRezepte.size() - 1}">
-		<p> ${i + 1}. Platz <p>
-		<table>
-			<tr>
-				<th>Titel</th>
-				<th>Gerichteart</th>
-				<th>Eigenschaft</th>
-				<th>Similarity</th>
-				<th></th>
-			</tr>
-			<tr>
-				<td>${resultingRezepte.get(i).getTitel()}</td>
-				<td>${resultingRezepte.get(i).getKueche()}</td>
-				<td>${resultingRezepte.get(i).getEigenschaften()}</td>
-				<td>${resultingRezepte.get(i).getSimilarity() * 100 } Prozent</td>
-				<td>
-					<form action = "EinkaufslistenVergleichServlet" method = "get">
-						<input type = "radio" id = "radio_auswahl" name = "rezept_checked" value = "${resultingRezepte.get(i).getRezepte_id()}">
-						<label for = "radio_auswahl">Einkaufsliste anfertigen</label>
-						<input type = "submit">Anfragen
-					</form>
-				</td>
-			</tr>
-			</table>
-			<br>
-			<br>
-		</c:forEach>
+	<!-- Ergebnisse der Useranfrage -->
+	<div class="regform">
+		<h1>Passende Rezepte:</h1>
+	</div>
+	<div class="main">
+		<form action="EinkaufslistenVergleichServlet" method="get">
+			<c:forEach var="i" begin="0" end="${resultingRezepte.size() - 1}">
+				<br>
+
+				<table class="table">
+					<tr>
+						<th>Rank</th>
+						<th>Similarity</th>
+						<th>Titel</th>
+						<th>Küche</th>
+						<th>Gerichteart</th>
+						<th>Eigenschaft</th>
+
+						<th></th>
+					</tr>
+					<tr>
+						<td>${i + 1}</td>
+						<td>${resultingRezepte.get(i).getSimilarity() * 100 }Prozent</td>
+						<td>${resultingRezepte.get(i).getTitel()}</td>
+						<td>${resultingRezepte.get(i).getKueche()}</td>
+						<td>${resultingRezepte.get(i).getGerichteart()}</td>
+						<td>${resultingRezepte.get(i).getEigenschaften()}</td>
+
+						<td>
+							<div>
+							<button class="regButton2"
+								value="${resultingRezepte.get(i).getRezepte_id()}"
+								name="rezept_checked" type="submit">Berechnen</button>
+							</div>	
+						</td>
+					</tr>
+				</table>
+
+			</c:forEach>
+		</form>
+		<!-- Button zurück zur Startseite-->
+		<a href="JSP/index.jsp"><button class="regButton" type="submit">Zurück
+				zur Startseite</button></a><br>
+	</div>
 </body>
 </html>

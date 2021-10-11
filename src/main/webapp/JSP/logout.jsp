@@ -14,17 +14,15 @@
 	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 	crossorigin="anonymous">
 <link rel="stylesheet" href="<%= request.getContextPath() %>/CSS/LogoutStyle.css">
-<title>Login</title>
+<title>Logout</title>
 </head>
 <body>
 <div class="main">
-<h1 class="byeText">Auf Wiedersehen, ${name} hoffentlich sehen wir uns bald wieder.</h1>
+<h1 class="byeText">Auf Wiedersehen, hoffentlich sehen wir uns bald wieder.</h1>
 <!-- Button zurück zum Login-->
-		<a href="login.jsp"><button class="regButton" type="submit">Zurück
+		<a href="JSP/login.jsp"><button class="regButton" type="submit">Zurück
 				zum Login</button></a>
-<!-- Button zurück zur Startseite-->
-		<a href="index.jsp"><button class="regButton" type="submit">Zurück
-				zur Startseite</button></a><br>
+
 </div>
 </body>
 </html>

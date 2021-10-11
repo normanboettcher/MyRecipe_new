@@ -1,84 +1,79 @@
 /* -- @author Thomas Mook -- */
 @charset "UTF-8";
-* {
-	box-sizing: border-box;
-}
 body {
-	margin: 0;
-	padding: 0;
-	font-family: 'Poppins', sans-serif;
-	background: grey;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	-o-background-size: cover;
-	background-size: cover;
+	background:white;
+	margin: 0px;
+	padding: 0px;
 	font-family: sans-serif;
 }
-.container {
-	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	margin-top: 100 px;
-	padding-bottom: 100px;
-}
-.img {
-	margin-right: 20px;
-	margin-left: 20px;
-	margin-top: 80px;
-	position: relative;
-	overflow: hidden;	
-}
-.pic {
-	width: 281px;
-	height: 400px;
-}
-.add-cart {
-	position: absolute;
-	width: 100%;
-	background-color: transparent;
-	transition: all 0.3 ease-in-out;
-	opacity: 0;
-	cursor: pointer;
+.regform {
+	margin-top:40px;
+	width: 1000px;
+	background-color: rgb(0,0,0,0.6);
+	margin:auto;
+	color: #FFFFFF;
+	padding: 10px 0px 10px 0px;
 	text-align: center;
-	color: black;
+	border-radius: 15px 15px 0px 0px;
 }
-.button {
-	background-color: #2ecc71;
-	border:2px solid #2ecc71;
-	font-family: sans-serif;
-	font-size: 18px;
+.main {
+	background-color: rgb(0,0,0,0.5);
+	width: 1000px;
+	margin: auto;
 }
-.img:hover .cart {
-	bottom: 130px;
-	opacity: 1;
-	padding: 10px;
-	text-decoration: none;
+form {
+	padding:10px;
 }
-.img span {
+.table td,.table th {
+	border: 2px white solid;
 	color: white;
-	display: block;
-	margin-top:2px;
-	text-align: center;
+	border-collapse: separate;
 }
-.img .titel {
-	font-weight: bold;
-}
-.Bbutton {
+.table tr:hover {
+	background-color: black;
+	}
+.regButton {
 	position: relative;
 	border: 0;
 	background: none;
 	display: block;
-	margin: 0px auto;
+	margin: 20px auto;
 	text-align: center;
-	border: 2px solid #2ecc71;
-	padding: 10px 40px;
+	border: 2px solid white;
+	padding: 14px 40px;
 	outline: none;
 	color: white;
 	border-radius: 24px;
 	transition: 0.25s;
 	curser: pointer;
-	width:180px;
 }
-.Bbutton:hover {
-	background:#2ecc71;
+.regButton2 {
+	position: relative;
+	width: 17,5px;
+	height: 35px;
+	font-size: 12px;
+	text-align: center middle;
+	border: 0;
+	background: none;
+	display: block;
+	margin: 20px auto;
+	border: 2px solid white;
+	outline: none;
+	color: white;
+	border-radius: 24px;
+	transition: 0.25s;
+	curser: pointer;
+	
 }
+	
+.main input[type = "text"]:focus,.main input[type = "password"]:focus {
+	border-color: #575757;	
+}
+.main button[type = "submit"]:hover {
+	background:#575757;
+	
+}
+.main a {
+	text-decoration:none;
+}
+	
