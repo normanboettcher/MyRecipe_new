@@ -1,13 +1,20 @@
 package general;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map.Entry;
 
+import managers.DoubleManager;
 
-public class Einkaufsliste {
+
+public class Einkaufsliste implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7654645523434557746L;
 	private int id;
 	private Date date;
 	private double preis;
@@ -30,7 +37,7 @@ public class Einkaufsliste {
 	}
 	
 	public double getErsparnisInProzent() {
-		return ersparnisInProzent;
+		return DoubleManager.round(ersparnisInProzent,2);
 	}
 	
 	public void setErsparnis(double d) {
@@ -38,7 +45,7 @@ public class Einkaufsliste {
 	}
 	
 	public double getErsparnis() {
-		return ersparnis;
+		return DoubleManager.round(ersparnis, 2);
 	}
 	
 	public void addLaden(String laden) {
@@ -82,7 +89,7 @@ public class Einkaufsliste {
 	}
 	
 	public double getGesamtPreis() {
-		return preis;
+		return DoubleManager.round(preis, 2);
 	}
 
 	public HashMap<Integer, Food> getProduktliste() {

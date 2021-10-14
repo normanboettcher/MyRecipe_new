@@ -1,9 +1,16 @@
 package general;
 
+import java.io.Serializable;
+
 import managers.DoubleManager;
 
-public class Food {
+public class Food implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4655826009192803502L;
+
 	private int vegetarisch, vegan, lokal, bio, artikelnr;
 	
 	private String bez, hersteller, image, kategorie;

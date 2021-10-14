@@ -1,26 +1,27 @@
 package agents;
 
 import java.io.IOException;
-import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Objects;
 
 import databaseConnection.DBConnection;
 import general.Einkaufsliste;
 import general.Food;
+import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.Behaviour;
-import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.domain.introspection.ACLMessage;
+import jade.lang.acl.ACLMessage;
+import jade.lang.acl.UnreadableException;
 import managers.DoubleManager;
-import jade.lang.acl.*;
 
 public class AngeboteAgent extends Agent {
 	
@@ -69,7 +70,7 @@ public class AngeboteAgent extends Agent {
 	
 
 	
-	private class AngebotAgentBehaviour extends Behaviour {
+	private class AngebotAgentBehaviour extends OneShotBehaviour {
 		
 		/**
 		 * 
@@ -82,8 +83,6 @@ public class AngeboteAgent extends Agent {
 		private double preisEndergebnis;
 		private double gespart;
 		private double ersparungInProzent;
-		private int laden_id;
-		boolean finished = false;
 		
 		public AngebotAgentBehaviour() {
 			
@@ -91,48 +90,78 @@ public class AngeboteAgent extends Agent {
 		
 		@Override
 		public void action() {
-			jade.lang.acl.ACLMessage msg = receive();
 			
-			System.out.println(msg == null);
+			String str1 = "Agent: [" + getName() + " ] ist  jetzt in der action()";
+			String str2 = "";
+			String str3 = "";
+			String str4 = "";
+			String str5 = "";
+			String str6 = "";
+			
+			jade.lang.acl.ACLMessage msg = blockingReceive();
+
 			
 			if(msg != null) {
-				String title = msg.getContent();
-				System.out.println(title);
-				System.out.println("Bin jetzt in action von AngebotAgent");
+				
+				str2 = "Agent: [ " + getName() + " ] konnte Nachricht "
+						+ "[ " + msg + " ] von [ " + msg.getSender().getName() + " ] empfangen.";
 				
 				jade.lang.acl.ACLMessage reply = msg.createReply();
+				
+				str3 = "Agent : [ " + getName() + " ] hat reply [ " + reply + " ] erstellt.";
 				
 				HashMap<Integer, Einkaufsliste> l = new HashMap<Integer, Einkaufsliste>();
 				try {
 					l = (HashMap<Integer, Einkaufsliste>) msg.getContentObject();
+					
+					if(l != null) {
+						str4 = "Agent : [ "+ getName() + " ] konnte Liste mit Einkaufslisten von [ "
+								+ msg.getSender().getName() + " ] entgegennehmen.";					
+					
 
-					for(int i : l.keySet()) {
-						Einkaufsliste liste = einkaufslisteMitAngeboten(i);
-						l.put(i, liste);
+						for(int i : l.keySet()) {
+							str5 += "Agent: [ " + getName() + " ] prueft und erstellt Angebote fuer Einkaufsliste"
+									+ " mit ID: [ " + l.get(i).getEinkaufslisteID() + " ]";
+							this.einkaufsliste = l.get(i);
+
+							Einkaufsliste liste = einkaufslisteMitAngeboten(i);
+							l.put(i, liste);
+						}
+						
+						reply.setContentObject(l);
+						
+						str6 = "Antwort auf verfuegbare angebote lautet: [ " + reply.getContent() + " ]"
+								+ " und Object [ " + reply.getContentObject() + " ] konnte [ " + reply + " ] hinzugefuegt werden.";
+						
+						send(reply);
+						
+						ArrayList<String> s = new ArrayList<String>();
+						
+						s.add(str1); s.add(str2); s.add(str3); s.add(str4); s.add(str5); s.add(str6);
+						
+						Object[] objects = {s, "0"};
+						
+						jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+						send_to_protocoll.setContentObject(objects);
+						send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
+						send(send_to_protocoll);
+						
 					}
 				} catch (UnreadableException e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();
-				}
-				
-				try {
-					reply.setContentObject((Serializable) l );
-					reply.setContent("yes");
-					send(reply);
-					finished = true;
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} 
-			} 
-			
+				}
+				
+			} else {
+				System.out.println("Noch keine Message erhalten....");
+				block();
+			}
 		}
 		
-		@Override
-		public boolean done() {
-			
-			return finished;
-		}	
+		
 		
 		public double getGespart() {
 			return gespart;
@@ -145,10 +174,6 @@ public class AngeboteAgent extends Agent {
 		
 		private Einkaufsliste getEinkaufsliste() {
 			return einkaufsliste;
-		}
-		
-		private int getLadenID() {
-			return laden_id;
 		}
 		
 		private HashMap<Integer, Food> holeAngebote(int id) {
@@ -221,7 +246,11 @@ public class AngeboteAgent extends Agent {
 			getEinkaufsliste().berechneGesamtpreis();
 			this.preisEndergebnis = getEinkaufsliste().getGesamtPreis();
 			this.gespart = berechneErsparung(preis_alt, getPreisEndergebnis());
+			
 			berechneErsparungInProzent();
+			
+			getEinkaufsliste().setErsparnisInProzent(getErsparungInProzent());
+			getEinkaufsliste().setErsparnis(getGespart());
 			
 			return getEinkaufsliste();
 		}

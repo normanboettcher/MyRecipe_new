@@ -2,16 +2,17 @@ package jade.connector;
 
 import java.util.HashMap;
 
+import agents.AngeboteAgent;
+import agents.EinkaufslistenVergleichsAgent;
+import agents.ProtokollAgent;
+import agents.SenderAgent;
 import jade.core.Agent;
-import jade.wrapper.AgentContainer;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
-import jade.core.Runtime;
+import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.ControllerException;
 import jade.wrapper.StaleProxyException;
-import agents.AngeboteAgent;
-import agents.EinkaufslistenVergleichsAgent;
 
 public class JadeConnector {
 	
@@ -24,13 +25,12 @@ public class JadeConnector {
 	
 	public JadeConnector(HashMap<String, Agent> agenten)  {
 		
-		
 		EinkaufslistenVergleichsAgent vergleichsagent = (EinkaufslistenVergleichsAgent) agenten.get("Vergleichsagent");
 		AngeboteAgent angebote = (AngeboteAgent) agenten.get("AngebotAgent");
 		
-		System.out.println("Vergleichagent ist null: " + agenten.get("Vergleichsagent") == null);
-		System.out.println("Angebotagent ist null: " + agenten.get("AngebotAgent") == null);
-		
+		SenderAgent sender = (SenderAgent) agenten.get("SendeAgent");
+		ProtokollAgent protokoll_agent = new ProtokollAgent();
+				
 		this.rt = jade.core.Runtime.instance();
 		rt.setCloseVM(true);
 		//create default profile and main container
@@ -53,21 +53,20 @@ public class JadeConnector {
 		try {
 			ac = this.agent_container.acceptNewAgent("Vergleichsagent", vergleichsagent);
 			ac = this.agent_container.acceptNewAgent("AngebotAgent", angebote);
+			ac = this.agent_container.acceptNewAgent("SendeAgent", sender);
+			ac = this.agent_container.acceptNewAgent("ProtokollAgent", protokoll_agent);
 			
-			System.out.println("Ich starte jetzt....deine scheiss Agenten");
-			
+			agent_container.getAgent("ProtokollAgent").start();
 			agent_container.getAgent("Vergleichsagent").start();
+			agent_container.getAgent("AngebotAgent").start();
+			agent_container.getAgent("SendeAgent").start();
+			
 		} catch (StaleProxyException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ControllerException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} finally {
-			
-		}
-		
+		} 
 	}
-	
-
 }

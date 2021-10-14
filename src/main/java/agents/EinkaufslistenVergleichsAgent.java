@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -18,13 +19,11 @@ import general.Einkaufsliste;
 import general.Food;
 import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.Behaviour;
-import jade.core.behaviours.CyclicBehaviour;
+import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.domain.introspection.ACLMessage;
 import jade.lang.acl.UnreadableException;
 import managers.DatumsManager;
 
@@ -90,7 +89,11 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 		return rezept_id;
 	}
 	
-	private class VergleichsAgentAnfrageVerhalten extends Behaviour {
+	private class VergleichsAgentAnfrageVerhalten extends OneShotBehaviour {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -5183576776849426475L;
 		private boolean finished = false;
 		
 		public VergleichsAgentAnfrageVerhalten() {
@@ -98,53 +101,131 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 		
 		@Override
 		public void action() {
-			System.out.println("Bin jetzt in der action von EinkaufslisteVergleichsAgent");
+			String str1  = "Agent: [" + getName() + " ] ist  jetzt in der action() von VergleichsAgentAnfrageVerhalten";
+			String str2  = "";
 			
 			jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
 			msg.setContent("Anfrage fuer Angebote");
 			try {
-				msg.setContentObject(erstelleEinkaufslistenFuerAlleLaeden(getRezeptID()));
+				HashMap<Integer, Einkaufsliste> l = erstelleEinkaufslistenFuerAlleLaeden(getRezeptID());
+				msg.setContentObject(l);
+				
+				if(msg.getContentObject() != null) {
+					str2 = "Agent: [" + getName() + " ] hat alle Einkaufslisten geladen und "
+							+ "zur Message [" + msg.getContent() + " ] hinzugefuegt.";
+									
+				}
+				
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnreadableException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			msg.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
+						
+			send(msg);
+			
+			String str3 = ("Message gesendet. von [ " + getName() + " ]");
+			
+			ArrayList<String> strings = new ArrayList<String>();
+			
+			strings.add(str1); strings.add(str2); strings.add(str3);
+			
+			jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+			
+			Object[] objects = {strings, "0"};
+			
+			try {
+				send_to_protocoll.setContentObject(objects);
+				send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
+				send(send_to_protocoll);
+				
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			new AngeboteAgent();
-			msg.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
 			
-			send(msg);
-		}
-		
-		@Override
-		public boolean done() {
-			return finished;
 		}
 	}
 	
-	private class AntwortVerhalten extends Behaviour {
-		boolean finished = false;
+	private class AntwortVerhalten extends OneShotBehaviour {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 3237076074829884439L;
+	
 		@Override
 		public void action() {
+			String str1 = "";
+			String str2 = "";
+			String str3 = "";
+			String str4 = "";
+			String str5 = "";
+			
+			str1 = "Agent: [ " + getName() + " ] ist jetzt in der action() von AntwortVerhalten";
+			jade.lang.acl.ACLMessage antwort = blockingReceive();
+			
+			str2 = "Agent: [ " + getName() + " ] konnte Antwort [ " + antwort + " ]"
+					+ " von [ " + antwort.getSender() + " ] empfangen." ;
 		
-			jade.lang.acl.ACLMessage antwort = receive();
-			if(antwort.getContent().equals("yes")) {
-				HashMap<Integer, Einkaufsliste> l;
-				try {
-					l = (HashMap<Integer, Einkaufsliste>) antwort.getContentObject();
-					vergleicheEinkaufslisten(l);
-					finished = true;
-				} catch (UnreadableException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} 
+			if(antwort != null) {
+			
+				
+					HashMap<Integer, Einkaufsliste> l;
+					try {
+						l = (HashMap<Integer, Einkaufsliste>) antwort.getContentObject();
+						vergleicheEinkaufslisten(l);
+
+						str3 = "Agent: [ " + getName() + " ] hat Einkaufslisten [ " + l + " ] "
+								+ "verglichen und sortiert.";
+						
+						for(int i : getEinkaufslistenSortiertNachPreis().keySet()) {
+							str4 += "ID: [ " + getEinkaufslistenSortiertNachPreis().get(i).getEinkaufslisteID() + " ] Preis:"
+									+ " [ " + getEinkaufslistenSortiertNachPreis().get(i).getGesamtPreis() + " ] Ersparnis : [ " 
+									+ getEinkaufslistenSortiertNachPreis().get(i).getErsparnis() + " ]";
+						}
+						
+						jade.lang.acl.ACLMessage send_to_sender = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+						send_to_sender.addReceiver(new AID("SendeAgent", AID.ISLOCALNAME));
+						send_to_sender.setContentObject(getEinkaufslistenSortiertNachPreis());
+						
+						str5 = "Agent: [ " + getName() + " ] sendet ContentObject [ " + l + " ]";
+						send(send_to_sender);
+						
+						ArrayList<String> strings = new ArrayList<String>();
+						
+						strings.add(str1); strings.add(str2); strings.add(str3); strings.add(str4); strings.add(str5);
+						
+						jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+						
+						Object[] objects = {strings, "0"};
+						
+						try {
+							send_to_protocoll.setContentObject(objects);
+							send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
+							send(send_to_protocoll);
+							
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+					} catch (UnreadableException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				
 			} else {
-				System.out.println("Kein Erfolg bei Angeboten");
+				System.out.println("Keine Antwort vorliegend");
+				block();
 			}
 		}
 		
-		@Override
-		public boolean done() {
-			return finished;
-		}
 	}
 	
 	public HashMap<Integer, Einkaufsliste> getEinkaufslistenSortiertNachPreis() {
@@ -152,7 +233,7 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 	}
 	
 	private void vergleicheEinkaufslisten(HashMap<Integer, Einkaufsliste> liste) {
-			this.einkaufslisten_geordnet_nach_preis = sortiereNachBilligstenDrei(liste, AUFSTEIGEND);
+			this.einkaufslisten_geordnet_nach_preis = sortiereNachBilligsten(liste, AUFSTEIGEND);
 	}
 	
 	private static HashMap<Integer, Double> extrahierePreisVonEinkaufsliste(
@@ -166,13 +247,12 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 		return listen_mit_preisen_und_id;
 	}
 	
-	private static HashMap<Integer, Einkaufsliste> sortiereNachBilligstenDrei(
+	private static HashMap<Integer, Einkaufsliste> sortiereNachBilligsten(
 			HashMap<Integer, Einkaufsliste> unsortiert, final boolean order) {
 		
 		List<Entry<Integer, Double>> liste = new LinkedList<Entry<Integer, Double>>(extrahierePreisVonEinkaufsliste(unsortiert).entrySet());
 		
-		System.out.println("Bevor sortiert: ");
-		printMap(unsortiert);
+		//printMap(unsortiert);
 		
 		Collections.sort(liste, new Comparator<Entry<Integer, Double>>() {
 			public int compare(
@@ -189,13 +269,14 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 		HashMap<Integer, Einkaufsliste> sortiert = new LinkedHashMap<Integer, Einkaufsliste>();
 		
 		int key = 0;
-			for(Entry<Integer, Double> entry: liste) {
-				key = entry.getKey();
+			for(int i = 0; i < liste.size(); i++) {
+				key = liste.get(i).getKey();
+				
 				sortiert.put(key, unsortiert.get(key));
 			}		
 		
-		System.out.println("Nach sortiert: ");
-		printMap(sortiert);
+		//System.out.println("Nach sortiert: ");
+		//printMap(sortiert);
 		return sortiert;
 	}
 	
@@ -219,7 +300,7 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 		
 		for(int i = 0; i < laeden.length; i++) {
 			laden_id = laeden[i];
-			System.out.println(laden_id);
+			
 			
 			Einkaufsliste l = new Einkaufsliste(laden_id, DatumsManager.aktuellesDatum());
 			
@@ -242,8 +323,6 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 						+ " on " + laden + "_sortiment.artikelnr = zutaten_aus_rezepte.artikelnr"
 								+ " where zutaten_aus_rezepte.rezept_id = ?");
 				stmt.setInt(1, rezept_id);
-				
-				System.out.println(stmt);
 				
 				ResultSet produkte = stmt.executeQuery();
 				
