@@ -121,7 +121,7 @@
     
         cur['sun.io.unicode.encoding'] = 'UnicodeLittle';
     
-        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.AngebotAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher2615434409972561617.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit15247833049833555516.properties';
+        cur['sun.java.command'] = 'org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.AngebotAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher5194938743394346661.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit12713964168509992933.properties';
     
         cur['sun.java.launcher'] = 'SUN_STANDARD';
     
@@ -185,8 +185,8 @@
             <tr valign="top">
                 <th width="80%">Name</th><th>Tests</th><th>Errors</th><th>Failures</th><th>Skipped</th><th nowrap>Time(s)</th><th nowrap>Time Stamp</th><th>Host</th>
             </tr>
-            <tr valign="top" class="Pass">
-                <td><a title="Display all tests" href="0_AngebotAgentTest.html">AngebotAgentTest</a></td><td><a title="Display all tests" href="0_AngebotAgentTest.html">4</a></td><td>0</td><td>0</td><td>0</td><td>0.186</td><td>2021-10-09T15:04:24</td><td>normanboettcher</td>
+            <tr valign="top" class="Error">
+                <td><a title="Display all tests" href="0_AngebotAgentTest.html">AngebotAgentTest</a></td><td><a title="Display all tests" href="0_AngebotAgentTest.html">1</a></td><td><a title="Display only errors" href="0_AngebotAgentTest-errors.html">1</a></td><td>0</td><td>0</td><td>0.133</td><td>2021-10-13T15:29:59</td><td>normanboettcher</td>
             </tr>
         </table>
         <h2>Tests</h2>
@@ -194,28 +194,32 @@
             <tr valign="top">
                 <th>Name</th><th>Status</th><th width="80%">Type</th><th nowrap>Time(s)</th>
             </tr>
-            <tr valign="top" class="TableRowColor">
-                <td><a name="tauscheEinkaufslisteProduktMitAngebotProduktTest"></a>tauscheEinkaufslisteProduktMitAngebotProduktTest</td><td>Success</td><td></td><td>0.006</td>
-            </tr>
-            <tr valign="top" class="TableRowColor">
-                <td><a name="getGespartTest"></a>getGespartTest</td><td>Success</td><td></td><td>0.001</td>
-            </tr>
-            <tr valign="top" class="TableRowColor">
-                <td><a name="getErsparungInProzentTest"></a>getErsparungInProzentTest</td><td>Success</td><td></td><td>0.005</td>
-            </tr>
-            <tr valign="top" class="TableRowColor">
-                <td><a name="produktImAngebotTest"></a>produktImAngebotTest</td><td>Success</td><td></td><td>0.001</td>
+            <tr valign="top" class="Error">
+                <td><a name="initializationError"></a>initializationError</td><td>Error</td><td>Invalid test class 'agentsTest.AngebotAgentTest':
+  1. No runnable methods
+                    <br>
+                    <br>
+                    <code>org.junit.runners.model.InvalidTestClassError: Invalid test class 'agentsTest.AngebotAgentTest':
+                        <br>
+                          1. No runnable methods
+                        <br>
+                        	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+                        <br>
+                        	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+                        <br>
+                        	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+                        <br>
+                        	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+                        <br>
+                        	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+                        <br>
+                    </code></td><td>0.008</td>
             </tr>
         </table>
         <div class="Properties">
             <a href="javascript:displayProperties('agentsTest.AngebotAgentTest');">
                     Properties &raquo;
                 </a>
-        </div>
-        <div class="Properties">
-            <a href="./0_AngebotAgentTest-out.html">
-                        System.out &raquo;
-                    </a>
         </div>
     </body>
 </html>

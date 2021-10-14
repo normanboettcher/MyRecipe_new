@@ -14,6 +14,8 @@ import agents.AngeboteAgent;
 import agents.EinkaufslistenVergleichsAgent;
 import general.Einkaufsliste;
 import general.Food;
+import jade.connector.JadeConnector;
+import jade.core.Agent;
 
 /**
  * Servlet implementation class EinkaufslistenVergleichServlet
@@ -34,29 +36,26 @@ public class EinkaufslistenVergleichServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		int checked_id = Integer.parseInt(request.getParameter("rezept_checked"));
-		EinkaufslistenVergleichsAgent agent = new EinkaufslistenVergleichsAgent();
-		AngeboteAgent angebot_agent = new AngeboteAgent();
+		HashMap<String, Agent> agenten_map = new HashMap<String, Agent>();
+		EinkaufslistenVergleichsAgent vergleich = new EinkaufslistenVergleichsAgent(checked_id);
+		AngeboteAgent angebote = new AngeboteAgent();
 		
-		HashMap<Integer, Einkaufsliste> einkaufslisten_alt = agent.erstelleEinkaufslistenFuerAlleLaeden(checked_id); 
-		HashMap<Integer, Einkaufsliste> einkaufslisten_neu = new HashMap<Integer, Einkaufsliste>();
+		agenten_map.put(vergleich.getAgentName(), vergleich);
+		agenten_map.put(angebote.getAgentName(), angebote);
 		
-		agent.vergleicheEinkaufslisten(einkaufslisten_alt);
+		System.out.println("Start Agents and let them communicate");
+		new JadeConnector(agenten_map);
 		
-		for(Entry<Integer, Einkaufsliste> l : einkaufslisten_alt.entrySet()) {
-			for(int i : l.getValue().getProduktliste().keySet()) {
-				System.out.println("In Map preis: " + l.getValue().getGesamtPreis());
-			}
+		System.out.println("Okay...now we are here....but did it really work? Who knows");
+		HashMap<Integer, Einkaufsliste> sortiert = vergleich.getEinkaufslistenSortiertNachPreis();
+		
+		System.out.println(sortiert == null);
+		
+		for(Entry<Integer, Einkaufsliste> l : sortiert.entrySet()) {
+			System.out.println(l.getValue().getEinkaufslisteID() + " " + l.getValue().getGesamtPreis() + " " + l.getValue().getErsparnis());
 		}
-		
-		for(int i : einkaufslisten_alt.keySet()) {
-			Einkaufsliste liste_mit_angebot = angebot_agent.produktImAngebot(i, einkaufslisten_alt.get(i));
-			einkaufslisten_neu.put(liste_mit_angebot.getEinkaufslisteID(), liste_mit_angebot);
-		}
-		
-		agent.vergleicheEinkaufslisten(einkaufslisten_neu);
-		
-		HashMap<Integer, Einkaufsliste> sortiert = agent.getEinkaufslistenSortiertNachPreis();
 		
 		request.setAttribute("result", sortiert);
 		

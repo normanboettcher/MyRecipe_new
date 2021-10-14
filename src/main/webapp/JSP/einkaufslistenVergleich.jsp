@@ -18,9 +18,6 @@
 	href="<%=request.getContextPath()%>/CSS/RezepteStyle.css">
 <title>MyRecipe</title>
 <!-- Wenn USer nicht eingeloggt, kann er nicht auf diese Seite zugreifen -->
-<c:if test="${admin == null && kunde == null}">
-		<meta http-equiv="refresh" content="0; URL=login.jsp">
-	</c:if>
 <header> <!-- Sticky Navbar with Logo --> <nav
 	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">

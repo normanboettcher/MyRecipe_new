@@ -20,9 +20,7 @@
 </head>
 <body>
 <!-- Wenn USer nicht eingeloggt, kann er nicht auf diese Seite zugreifen -->
-<c:if test="${admin == null && kunde == null}">
-		<meta http-equiv="refresh" content="0; URL=login.jsp">
-	</c:if>
+
 	<header> <!-- Navbar with Logo --> <nav
 class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
