@@ -43,6 +43,12 @@ public class EinkaufslistenVergleichServlet extends HttpServlet {
 		
 		agent.vergleicheEinkaufslisten(einkaufslisten_alt);
 		
+		for(Entry<Integer, Einkaufsliste> l : einkaufslisten_alt.entrySet()) {
+			for(int i : l.getValue().getProduktliste().keySet()) {
+				System.out.println("In Map preis: " + l.getValue().getGesamtPreis());
+			}
+		}
+		
 		for(int i : einkaufslisten_alt.keySet()) {
 			Einkaufsliste liste_mit_angebot = angebot_agent.produktImAngebot(i, einkaufslisten_alt.get(i));
 			einkaufslisten_neu.put(liste_mit_angebot.getEinkaufslisteID(), liste_mit_angebot);

@@ -128,23 +128,17 @@ public class AngeboteAgent {
 	
 		HashMap<Integer, Food> angebot = holeAngebote(laden_id);
 		HashMap<Integer, Food> sortiment = l.getProduktliste();
-		
+		l.berechneGesamtpreis();
+		double preis_alt = l.getGesamtPreis();
 		boolean imAngebot = false;
 		
 		for(int i : sortiment.keySet()) {
 		
 				int artikelnr = i;
-				System.out.println(artikelnr);
 
 				if ((sortiment.get(artikelnr) != null) && (angebot.get(artikelnr) != null)) {
 					imAngebot = true;
 					
-					System.out.println("Angebot: " + angebot.get(artikelnr).getBezeichnung());
-					System.out.println("Angebot preis : " + angebot.get(artikelnr).getPreis());
-
-					System.out.println("Sortiment: "  + sortiment.get(artikelnr).getBezeichnung());
-					System.out.println("Sortiment preis: " +sortiment.get(artikelnr).getPreis());
-
 					this.angebotZwischenspeicher = angebot.get(artikelnr);
 					this.sortimentZwischenspeicher = sortiment.get(artikelnr);
 
@@ -153,17 +147,17 @@ public class AngeboteAgent {
 
 					if(imAngebot) {
 						tauscheEinkaufslisteProduktMitAngebotProdukt(l, getAngebotZwischenspeicher(), getSortimentZwischenspeicher());
-						berechneErsparung(l);
 					}
 				}
 			}
+		l.berechneGesamtpreis();
+		double preis_neu = l.getGesamtPreis();
+		this.gespart = berechneErsparung(preis_alt, preis_neu);
 		return l;
 	}
 	
 	private void tauscheEinkaufslisteProduktMitAngebotProdukt(Einkaufsliste l, Food angebot, Food alt) {
-		
-		
-		System.out.println("----------------------");
+	
 		l.getProduktliste().get(alt.getArtikelNr()).setOriginalPreis(alt.getPreis());
 		
 		l.getProduktliste().get(alt.getArtikelNr()).setPreis(angebot.getPreis());
@@ -171,16 +165,9 @@ public class AngeboteAgent {
 	
 	
 	
-	private void berechneErsparung(Einkaufsliste l) {
+	private double berechneErsparung(double preis_alt, double preis_neu) {
+		return preis_alt - preis_neu;
 		
-		for(Food f : l.getProduktliste().values()) {
-			this.preisEndergebnis += f.getPreis() * l.getProdukteMitMenge().get(f.getArtikelNr());
-		}
-		
-		this.gespart = DoubleManager.round(getSortimentPreisZwischenspeicher() - getPreisEndergebnis(), 2);
-		berechneErsparungInProzent();
-		l.setErsparnis(getGespart());
-		l.setErsparnisInProzent(getErsparungInProzent());
 	}
 	
 	private void berechneErsparungInProzent() {
