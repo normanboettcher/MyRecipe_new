@@ -32,11 +32,9 @@ public class ProtokollAgent extends Agent {
 	private PrintWriter w;
 	
 	public ProtokollAgent() {
-		
-		this.protokoll = new File("/home/norman/Schreibtisch/Projekt/MyRecipe/Agent_Protokolle/Protokoll" + LocalDateTime.now());
-		
-		System.out.println(getFile());
-		
+		String project_path = System.getProperty("user.dir");
+		this.protokoll = new File(project_path + "/Agent_Protokolle/Protokoll" + LocalDateTime.now());
+	
 		try {
 			this.w = new PrintWriter(getFile()); 
 			
@@ -84,7 +82,7 @@ public class ProtokollAgent extends Agent {
 
 		@Override
 		public void action() {
-			jade.lang.acl.ACLMessage empfangen = blockingReceive();
+			jade.lang.acl.ACLMessage empfangen = receive();
 			
 			ArrayList<String> strings;
 			String status;
@@ -141,6 +139,7 @@ public class ProtokollAgent extends Agent {
 				
 				getPrintWriter().println("============= END OF PROTOCOLL=============");
 				getPrintWriter().close();
+				
 				break;
 			default:
 					break;

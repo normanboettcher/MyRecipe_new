@@ -14,7 +14,7 @@ public class Food implements Serializable {
 	private int vegetarisch, vegan, lokal, bio, artikelnr;
 	
 	private String bez, hersteller, image, kategorie;
-	private double preis, originalpreis;
+	private double preis, originalpreis, gespart;
 	
 	private double rabatt;
 	
@@ -33,6 +33,18 @@ public class Food implements Serializable {
 		this.lokal = lokal;
 		this.vegan = vegan;
 		this.vegetarisch = veggy;
+	}
+	
+	public void berechneErsparnisFuerFood() {
+		this.gespart = getOriginPreis() - getPreis();
+	}
+	
+	public double getErsparnisFuerFood() {
+		return DoubleManager.round(gespart, 2);
+	}
+	
+	public double getErsparnisInProzentFuerFood() {
+		return DoubleManager.round((getErsparnisFuerFood() / getOriginPreis()) * 100, 2);
 	}
 	
 	public void setPreis(double p) {

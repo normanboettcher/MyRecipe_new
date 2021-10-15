@@ -53,20 +53,16 @@ public class EinkaufslistenVergleichServlet extends HttpServlet {
 		System.out.println("Start Agents and let them communicate");
 
 		new JadeConnector(agenten_map);
-		
-		System.out.println("Schleife durchbrochen");
-		
-		
+	
 		try {
 			Thread.sleep(15000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		request.setAttribute("result", sender.getObjectToSend());
-		request.getRequestDispatcher("JSP/einkaufslistenVergleich.jsp").forward(request, response);
 			
+		request.setAttribute("result", sender.getObjectToSend());
+		request.getRequestDispatcher("JSP/einkaufslistenVergleich.jsp").forward(request, response);	
 	}
 	
 	/**

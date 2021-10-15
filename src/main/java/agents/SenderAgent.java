@@ -22,11 +22,6 @@ public class SenderAgent extends Agent {
 	private HashMap<Integer, Einkaufsliste> object_to_send;
 	private boolean ready_to_send;
 	
-	
-	private void setReadyToSendToServlet(boolean t) {
-		this.ready_to_send = t;
-	}
-	
 	public SenderAgent() {
 		this.name = "SendeAgent";
 		this.ready_to_send = false;
@@ -93,9 +88,10 @@ public class SenderAgent extends Agent {
 			String str1 = "";
 			String str2 = "";
 			
-			ACLMessage ms = blockingReceive();
+			jade.lang.acl.ACLMessage ms = blockingReceive();
+			String conv_id = ms.getConversationId();
 			
-			if(ms != null) {
+			if(ms != null && conv_id.equals("ProzessBeendet")) {
 				str1 = "Start action() from [ " + getName() + " ]"
 						+ " in SendeAgentBehaviour";
 				try {

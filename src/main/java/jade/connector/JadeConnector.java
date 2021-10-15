@@ -2,10 +2,12 @@ package jade.connector;
 
 import java.util.HashMap;
 
+import agents.AktualisiereAngeboteAgent;
 import agents.AngeboteAgent;
 import agents.EinkaufslistenVergleichsAgent;
 import agents.ProtokollAgent;
 import agents.SenderAgent;
+import agents.UeberwachungsAgent;
 import jade.core.Agent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
@@ -30,6 +32,8 @@ public class JadeConnector {
 		
 		SenderAgent sender = (SenderAgent) agenten.get("SendeAgent");
 		ProtokollAgent protokoll_agent = new ProtokollAgent();
+		AktualisiereAngeboteAgent a_agent = new AktualisiereAngeboteAgent();
+		UeberwachungsAgent ue_agent = new UeberwachungsAgent();
 				
 		this.rt = jade.core.Runtime.instance();
 		rt.setCloseVM(true);
@@ -55,10 +59,15 @@ public class JadeConnector {
 			ac = this.agent_container.acceptNewAgent("AngebotAgent", angebote);
 			ac = this.agent_container.acceptNewAgent("SendeAgent", sender);
 			ac = this.agent_container.acceptNewAgent("ProtokollAgent", protokoll_agent);
+			ac = this.agent_container.acceptNewAgent("UeberwachungAgent", ue_agent);
+			ac = this.agent_container.acceptNewAgent("AktualisierungsAgent", a_agent);
+			
 			
 			agent_container.getAgent("ProtokollAgent").start();
 			agent_container.getAgent("Vergleichsagent").start();
 			agent_container.getAgent("AngebotAgent").start();
+			agent_container.getAgent("UeberwachungAgent").start();
+			agent_container.getAgent("AktualisierungsAgent").start();
 			agent_container.getAgent("SendeAgent").start();
 			
 		} catch (StaleProxyException e) {

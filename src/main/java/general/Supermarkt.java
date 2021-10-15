@@ -1,5 +1,6 @@
 package general;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,8 +21,13 @@ import general.supermarkets.Rewe;
 import managers.DoubleManager;
 import managers.RabattManager;
 
-public abstract class Supermarkt {
+public abstract class Supermarkt implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3796200850152707931L;
+
 	protected String bez;
 	
 	private HashMap<Integer, Food> sortiment, angebote;
@@ -46,8 +52,6 @@ public abstract class Supermarkt {
 					+ "LEFT JOIN " + getBezeichnung().toLowerCase() + 
 					"_sortiment ON images.id = " + getBezeichnung().toLowerCase() + "_sortiment.image_id");
 			
-			//System.out.println(stmt);
-			
 			r = stmt.executeQuery();
 			
 			while(r.next()) {
@@ -66,93 +70,28 @@ public abstract class Supermarkt {
 		}
 	}
 	
-	private HashMap<Integer, Integer> randomNumbers(int intervall) {
-		HashMap<Integer, Integer> list = new HashMap<Integer, Integer>();
-		int nr = 0;
-		while(list.size() <= intervall) {
-			nr = (int)(Math.random() * (getSortiment().size() - 2) + 2);
-			list.put(nr, nr);
-		}
-		return list;
-	
-	}
-	
-	/**
-	 * Diese Methode initialisiert die Angebote eines Supermarktes.
-	 * Es wird eine zufaellige Anzahl von Produkten zufaellig in das 
-	 * Angebotsortiment aufgenommen.
-	 */
-	public void initAngebote() {
+	public void holeAngebote() {
+		Connection con = DBConnection.getConnection();
 		
-		//Mindestens 15 bis 30 Prozent des Sortiments sollen in das Angebot.
-		double high = 0.3;
-		double low = 0.15;
-		int angeboteAnzahl = 0;
-		
-		//Zufaellige Festlegung der Anzahl von Angeboten.
-		angeboteAnzahl = (int) (getSortiment().size() * (Math.random() * (high - low) + low));
-				
-		HashMap<Integer, Integer> random_artikelnr = randomNumbers(angeboteAnzahl);
-		int[] arr = new int[random_artikelnr.size()];
-		int counter = 0;
-		
-		LoescheAusDatenbank.loescheTabellenInhalt(getBezeichnung().toLowerCase(), "artikelnr");
-		
-		for(int key : random_artikelnr.keySet()) {
-			arr[counter] = key;
-			//System.out.println(arr[counter]);
-			counter++;
-		}
-		
-		
-		//Anzahl richtet sich nach der Anzahl an angeboten.
-		for(int i = 0; i <= angeboteAnzahl; i++) {
-			
-				double rabatt = DoubleManager.round(RabattManager.getRandomRabatt(), 2);
-				System.out.println(arr[i]);
-				Food object = getSortiment().get(arr[i]);
-				
-				System.out.println(object.getBezeichnung());
-				
-				Food f = new Food(object.getBezeichnung(), 
-						RabattManager.abzugRabatt(rabatt, object.getPreis()), 
-						object.getHersteller(), object.getImage(),
-						object.getVeggy(), object.getVegan(),
-						object.getLokal(), object.getBio(),
-						object.getKategorie());
-				f.setArtikelNr(arr[i]);
-				f.setOriginalPreis(object.getPreis());
-				f.setRabatt(rabatt);
-				
-				switch(getBezeichnung()) {
-				
-				case "Lidl": 
-					Lidl lidl = new Lidl();
-					f.setUrsprungsmarkt(lidl.getUrsprungsID());
-					break;
-				case "Penny":
-					Penny p = new Penny();
-					f.setUrsprungsmarkt(p.getUrsprungsID());
-					break;
-				case "Rewe":
-					Rewe r = new Rewe();
-					f.setUrsprungsmarkt(r.getUrsprungsID());
-					break;
-				case "Netto":
-					Netto n = new Netto();
-					f.setUrsprungsmarkt(n.getUrsprungsID());
-					break;
-					default:
-						break;
-				}
-				addAngebot(arr[i], f);
-				addAngebotToDB(f);
-		}
-		
-		for(Entry<Integer, Food> f : getAngebote().entrySet()) {
-			System.out.println(f.getValue().getArtikelNr() + " " + f.getValue().getBezeichnung() + " " + f.getValue().getImage() + " " + f.getValue().getPreis());
+		try {
+			PreparedStatement stmt = con.prepareStatement("select * from " + getBezeichnung()
+					+ "_angebote");
+			ResultSet r = stmt.executeQuery();
+			Food f = null;
+			while(r.next()) {
+				f = new Food(r.getString("artikelbez"), r.getDouble("artikelpreis"), 
+						r.getString("hersteller"), r.getString("image_pfad"), r.getInt("vegetarisch"), r.getInt("vegan"),
+						r.getInt("lokal"), r.getInt("bio"), r.getString("kategorie"));
+				f.setArtikelNr(r.getInt("artikelnr"));
+				addAngebot(f.getArtikelNr(), f);
+			}
+			stmt.close();
+			r.close();
+		} catch(SQLException e) {
+			e.printStackTrace();
 		}
 	}
+	
 	
 	public HashMap<Integer, Food> getAngebote() {
 		return angebote;
@@ -190,10 +129,6 @@ public abstract class Supermarkt {
 	
 	public void removeSortimentByKey(int key) {
 		sortiment.remove(key);
-	}
-	
-	public void addAngebotToDB(Food f) {
-		SpeicherInDatenbank.speicherAngeboteInDatenbank(getBezeichnung(), f);
 	}
 	
 	public void removeAngeboteByKeyFromDB(int key) {
