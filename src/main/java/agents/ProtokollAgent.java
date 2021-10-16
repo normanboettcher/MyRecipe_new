@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.io.Writer;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -138,7 +139,9 @@ public class ProtokollAgent extends Agent {
 	
 	private void schreibeKomplettesProtokollZuDatei(ArrayList<String> str) {
 		String project_path = System.getProperty("user.dir");
-		this.protokoll = new File(project_path + "/Agent_Protokolle/Protokoll_" + LocalDateTime.now());
+		String datum = LocalDateTime.now().toString();
+		String filename = datum.replaceAll(":", "_");
+		this.protokoll = new File(project_path + "/Agent_Protokolle/Protokoll_" + filename + ".txt");
 		try {
 			this.w = new PrintWriter(getFile()); 
 			
