@@ -1,8 +1,15 @@
 Testsuite: agentsTest.AngebotAgentTest
-Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,186 sec
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0,133 sec
 
-------------- Standard Output ---------------
-19.9
-17.9
-[ 11.17] Prozent gespart
-------------- ---------------- ---------------
+Testcase: initializationError(agentsTest.AngebotAgentTest):	Caused an ERROR
+Invalid test class 'agentsTest.AngebotAgentTest':
+  1. No runnable methods
+org.junit.runners.model.InvalidTestClassError: Invalid test class 'agentsTest.AngebotAgentTest':
+  1. No runnable methods
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+
+

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <testsuites>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="0" name="AngebotAgentTest" package="agentsTest" skipped="0" tests="4" time="0.186" timestamp="2021-10-09T15:04:24">
+  <testsuite errors="1" failures="0" hostname="normanboettcher" id="0" name="AngebotAgentTest" package="agentsTest" skipped="0" tests="1" time="0.133" timestamp="2021-10-13T15:29:59">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -36,7 +36,7 @@
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.AngebotAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher2615434409972561617.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit15247833049833555516.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.AngebotAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.AngebotAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher5194938743394346661.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit12713964168509992933.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -138,336 +138,24 @@
 
       </properties>
 
-      <testcase classname="agentsTest.AngebotAgentTest" name="tauscheEinkaufslisteProduktMitAngebotProduktTest" time="0.006" />
-
-      <testcase classname="agentsTest.AngebotAgentTest" name="getGespartTest" time="0.001" />
-
-      <testcase classname="agentsTest.AngebotAgentTest" name="getErsparungInProzentTest" time="0.005" />
-
-      <testcase classname="agentsTest.AngebotAgentTest" name="produktImAngebotTest" time="0.001" />
-
-      <system-out><![CDATA[19.9
-17.9
-[ 11.17] Prozent gespart
-]]></system-out>
-
-      <system-err><![CDATA[]]></system-err>
-
-  </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="1" name="EinkaufslistenVergleichsAgentTest" package="agentsTest" skipped="0" tests="1" time="0.19" timestamp="2021-10-09T15:04:25">
-      <properties>
-          <property name="release.dir" value="release" />
-
-          <property name="ant.library.dir" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib" />
-
-          <property name="testsource.dir" value="src/test/java" />
-
-          <property name="java.specification.version" value="16" />
-
-          <property name="ant.project.name" value="GroceryComparator" />
-
-          <property name="sun.jnu.encoding" value="UTF-8" />
-
-          <property name="java.class.path" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build/test:/home/norman/Schreibtisch/Projekt/MyRecipe/build/src:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/annotations-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ant.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ha.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-storeconfig.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-tribes.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/el-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jade.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper-el.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jaspic-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jsp-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jstl-1.2.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/mycbr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.junit_4.13.0.v20200204-1500.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/postgresql-9.3-1100.jdbc4.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/servlet-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-coyote.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-dbcp.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-es.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-fr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ja.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ru.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jdbc.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jni.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util-scan.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-websocket.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/websocket-api.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-launcher.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit4.jar" />
-
-          <property name="java.vm.vendor" value="Oracle Corporation" />
-
-          <property name="sun.arch.data.model" value="64" />
-
-          <property name="appname" value="MyRecipe" />
-
-          <property name="java.vendor.url" value="https://java.oracle.com/" />
-
-          <property name="source.dir" value="src/main/java" />
-
-          <property name="os.name" value="Linux" />
-
-          <property name="java.vm.specification.version" value="16" />
-
-          <property name="user.country" value="DE" />
-
-          <property name="sun.java.launcher" value="SUN_STANDARD" />
-
-          <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
-
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.EinkaufslistenVergleichsAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher14395975557607293907.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit13490937641529528327.properties" />
-
-          <property name="jdk.debug" value="release" />
-
-          <property name="sun.cpu.endian" value="little" />
-
-          <property name="user.home" value="/home/norman" />
-
-          <property name="user.language" value="de" />
-
-          <property name="eclipse.pdebuild.templates" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/templates" />
-
-          <property name="java.specification.vendor" value="Oracle Corporation" />
-
-          <property name="java.version.date" value="2021-04-20" />
-
-          <property name="java.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre" />
-
-          <property name="testsource.dir.present" value="true" />
-
-          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
-          <property name="file.separator" value="/" />
-
-          <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
-
-          <property name="java.vm.compressedOopsMode" value="32-bit" />
-
-          <property name="line.separator" value="&#xa;" />
-
-          <property name="ant.java.version" value="16" />
-
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
-          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
-
-          <property name="doc.dir" value="doc" />
-
-          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
-
-          <property name="java.runtime.version" value="16.0.1+9-24" />
-
-          <property name="user.name" value="norman" />
-
-          <property name="ant.file" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
-
-          <property name="path.separator" value=":" />
-
-          <property name="os.version" value="5.11.0-37-generic" />
-
-          <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
-
-          <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
-
-          <property name="ant.project.invoked-targets" value="release" />
-
-          <property name="file.encoding" value="UTF-8" />
-
-          <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
-
-          <property name="report.dir" value="generated-reports" />
-
-          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
-
-          <property name="build.dir" value="build" />
-
-          <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
-
-          <property name="java.io.tmpdir" value="/tmp" />
-
-          <property name="ant.file.type.GroceryComparator" value="file" />
-
-          <property name="java.version" value="16.0.1" />
-
-          <property name="user.dir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
-          <property name="os.arch" value="amd64" />
-
-          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
-
-          <property name="ant.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926" />
-
-          <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
-
-          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
-
-          <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
-
-          <property name="java.vendor" value="Oracle Corporation" />
-
-          <property name="java.vm.info" value="mixed mode" />
-
-          <property name="java.vm.version" value="16.0.1+9-24" />
-
-          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
-
-          <property name="java.class.version" value="60.0" />
-
-          <property name="ant.project.default-target" value="release" />
-
-      </properties>
-
-      <testcase classname="agentsTest.EinkaufslistenVergleichsAgentTest" name="sortiereNachBilligstenFuenfTest" time="0.02" />
-
-      <system-out><![CDATA[Bevor sortiert: 
-5. 2.62 EUR
-6. 19.240000000000002 EUR
-7. 16.48 EUR
-8. 18.78 EUR
-9. 26.96 EUR
-10. 35.019999999999996 EUR
-11. 43.2 EUR
-12. 40.12 EUR
-13. 50.620000000000005 EUR
-14. 56.18 EUR
-Nach sortiert: 
-1. 2.62 EUR
-2. 16.48 EUR
-3. 18.78 EUR
-4. 19.240000000000002 EUR
-5. 26.96 EUR
-]]></system-out>
-
-      <system-err><![CDATA[]]></system-err>
-
-  </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="2" name="AdresseTest" package="generalTest" skipped="0" tests="4" time="0.159" timestamp="2021-10-09T15:04:26">
-      <properties>
-          <property name="release.dir" value="release" />
-
-          <property name="ant.library.dir" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib" />
-
-          <property name="testsource.dir" value="src/test/java" />
-
-          <property name="java.specification.version" value="16" />
-
-          <property name="ant.project.name" value="GroceryComparator" />
-
-          <property name="sun.jnu.encoding" value="UTF-8" />
-
-          <property name="java.class.path" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build/test:/home/norman/Schreibtisch/Projekt/MyRecipe/build/src:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/annotations-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ant.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ha.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-storeconfig.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-tribes.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/el-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jade.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper-el.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jaspic-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jsp-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jstl-1.2.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/mycbr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.junit_4.13.0.v20200204-1500.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/postgresql-9.3-1100.jdbc4.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/servlet-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-coyote.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-dbcp.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-es.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-fr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ja.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ru.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jdbc.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jni.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util-scan.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-websocket.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/websocket-api.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-launcher.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit4.jar" />
-
-          <property name="java.vm.vendor" value="Oracle Corporation" />
-
-          <property name="sun.arch.data.model" value="64" />
-
-          <property name="appname" value="MyRecipe" />
-
-          <property name="java.vendor.url" value="https://java.oracle.com/" />
-
-          <property name="source.dir" value="src/main/java" />
-
-          <property name="os.name" value="Linux" />
-
-          <property name="java.vm.specification.version" value="16" />
-
-          <property name="user.country" value="DE" />
-
-          <property name="sun.java.launcher" value="SUN_STANDARD" />
-
-          <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
-
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.AdresseTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.AdresseTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.AdresseTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher13287252121391542514.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit8345183363125190675.properties" />
-
-          <property name="jdk.debug" value="release" />
-
-          <property name="sun.cpu.endian" value="little" />
-
-          <property name="user.home" value="/home/norman" />
-
-          <property name="user.language" value="de" />
-
-          <property name="eclipse.pdebuild.templates" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/templates" />
-
-          <property name="java.specification.vendor" value="Oracle Corporation" />
-
-          <property name="java.version.date" value="2021-04-20" />
-
-          <property name="java.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre" />
-
-          <property name="testsource.dir.present" value="true" />
-
-          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
-          <property name="file.separator" value="/" />
-
-          <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
-
-          <property name="java.vm.compressedOopsMode" value="32-bit" />
-
-          <property name="line.separator" value="&#xa;" />
-
-          <property name="ant.java.version" value="16" />
-
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
-          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
-
-          <property name="doc.dir" value="doc" />
-
-          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
-
-          <property name="java.runtime.version" value="16.0.1+9-24" />
-
-          <property name="user.name" value="norman" />
-
-          <property name="ant.file" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
-
-          <property name="path.separator" value=":" />
-
-          <property name="os.version" value="5.11.0-37-generic" />
-
-          <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
-
-          <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
-
-          <property name="ant.project.invoked-targets" value="release" />
-
-          <property name="file.encoding" value="UTF-8" />
-
-          <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
-
-          <property name="report.dir" value="generated-reports" />
-
-          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
-
-          <property name="build.dir" value="build" />
-
-          <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
-
-          <property name="java.io.tmpdir" value="/tmp" />
-
-          <property name="ant.file.type.GroceryComparator" value="file" />
-
-          <property name="java.version" value="16.0.1" />
-
-          <property name="user.dir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
-          <property name="os.arch" value="amd64" />
-
-          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
-
-          <property name="ant.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926" />
-
-          <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
-
-          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
-
-          <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
-
-          <property name="java.vendor" value="Oracle Corporation" />
-
-          <property name="java.vm.info" value="mixed mode" />
-
-          <property name="java.vm.version" value="16.0.1+9-24" />
-
-          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
-
-          <property name="java.class.version" value="60.0" />
-
-          <property name="ant.project.default-target" value="release" />
-
-      </properties>
-
-      <testcase classname="generalTest.AdresseTest" name="getNumberTest" time="0.002" />
-
-      <testcase classname="generalTest.AdresseTest" name="getPLZTest" time="0.0" />
-
-      <testcase classname="generalTest.AdresseTest" name="getCityTest" time="0.0" />
-
-      <testcase classname="generalTest.AdresseTest" name="getStrasseTest" time="0.001" />
+      <testcase classname="agentsTest.AngebotAgentTest" name="initializationError" time="0.008">
+          <error message="Invalid test class &apos;agentsTest.AngebotAgentTest&apos;:&#xa;  1. No runnable methods" type="org.junit.runners.model.InvalidTestClassError">org.junit.runners.model.InvalidTestClassError: Invalid test class &apos;agentsTest.AngebotAgentTest&apos;:
+  1. No runnable methods
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+</error>
+
+      </testcase>
 
       <system-out><![CDATA[]]></system-out>
 
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="3" name="EinkaufslisteTest" package="generalTest" skipped="0" tests="7" time="0.176" timestamp="2021-10-09T15:04:28">
+  <testsuite errors="1" failures="0" hostname="normanboettcher" id="1" name="EinkaufslistenVergleichsAgentTest" package="agentsTest" skipped="0" tests="1" time="0.126" timestamp="2021-10-13T15:30:00">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -487,9 +175,9 @@ Nach sortiert:
 
           <property name="sun.arch.data.model" value="64" />
 
-          <property name="appname" value="MyRecipe" />
-
           <property name="java.vendor.url" value="https://java.oracle.com/" />
+
+          <property name="appname" value="MyRecipe" />
 
           <property name="source.dir" value="src/main/java" />
 
@@ -497,13 +185,13 @@ Nach sortiert:
 
           <property name="java.vm.specification.version" value="16" />
 
-          <property name="user.country" value="DE" />
-
           <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="user.country" value="DE" />
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.EinkaufslisteTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.EinkaufslisteTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.EinkaufslisteTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher17579399507364200246.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit1623700300866155349.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner agentsTest.EinkaufslistenVergleichsAgentTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-agentsTest.EinkaufslistenVergleichsAgentTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher5236233827578415268.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit8592840210724326622.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -523,9 +211,9 @@ Nach sortiert:
 
           <property name="testsource.dir.present" value="true" />
 
-          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
           <property name="file.separator" value="/" />
+
+          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
 
           <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
 
@@ -535,9 +223,9 @@ Nach sortiert:
 
           <property name="ant.java.version" value="16" />
 
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
           <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
 
           <property name="doc.dir" value="doc" />
 
@@ -557,17 +245,17 @@ Nach sortiert:
 
           <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
 
-          <property name="ant.project.invoked-targets" value="release" />
-
           <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.invoked-targets" value="release" />
 
           <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
 
           <property name="report.dir" value="generated-reports" />
 
-          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
-
           <property name="build.dir" value="build" />
+
+          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
 
           <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
 
@@ -587,13 +275,13 @@ Nach sortiert:
 
           <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
 
-          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
-
           <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
 
-          <property name="java.vendor" value="Oracle Corporation" />
+          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
 
           <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
 
           <property name="java.vm.version" value="16.0.1+9-24" />
 
@@ -601,13 +289,325 @@ Nach sortiert:
 
           <property name="java.class.version" value="60.0" />
 
+          <property name="tests.failed" value="true" />
+
           <property name="ant.project.default-target" value="release" />
 
       </properties>
 
-      <testcase classname="generalTest.EinkaufslisteTest" name="getProdukteMitMengeTest" time="0.007" />
+      <testcase classname="agentsTest.EinkaufslistenVergleichsAgentTest" name="initializationError" time="0.009">
+          <error message="Invalid test class &apos;agentsTest.EinkaufslistenVergleichsAgentTest&apos;:&#xa;  1. No runnable methods" type="org.junit.runners.model.InvalidTestClassError">org.junit.runners.model.InvalidTestClassError: Invalid test class &apos;agentsTest.EinkaufslistenVergleichsAgentTest&apos;:
+  1. No runnable methods
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+</error>
 
-      <testcase classname="generalTest.EinkaufslisteTest" name="getProduktlisteTest" time="0.0" />
+      </testcase>
+
+      <system-out><![CDATA[]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="2" name="AdresseTest" package="generalTest" skipped="0" tests="4" time="0.131" timestamp="2021-10-13T15:30:01">
+      <properties>
+          <property name="release.dir" value="release" />
+
+          <property name="ant.library.dir" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib" />
+
+          <property name="testsource.dir" value="src/test/java" />
+
+          <property name="java.specification.version" value="16" />
+
+          <property name="ant.project.name" value="GroceryComparator" />
+
+          <property name="sun.jnu.encoding" value="UTF-8" />
+
+          <property name="java.class.path" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build/test:/home/norman/Schreibtisch/Projekt/MyRecipe/build/src:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/annotations-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ant.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ha.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-storeconfig.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-tribes.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/el-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jade.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper-el.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jaspic-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jsp-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jstl-1.2.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/mycbr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.junit_4.13.0.v20200204-1500.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/postgresql-9.3-1100.jdbc4.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/servlet-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-coyote.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-dbcp.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-es.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-fr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ja.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ru.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jdbc.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jni.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util-scan.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-websocket.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/websocket-api.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-launcher.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit4.jar" />
+
+          <property name="java.vm.vendor" value="Oracle Corporation" />
+
+          <property name="sun.arch.data.model" value="64" />
+
+          <property name="java.vendor.url" value="https://java.oracle.com/" />
+
+          <property name="appname" value="MyRecipe" />
+
+          <property name="source.dir" value="src/main/java" />
+
+          <property name="os.name" value="Linux" />
+
+          <property name="java.vm.specification.version" value="16" />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="user.country" value="DE" />
+
+          <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
+
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.AdresseTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.AdresseTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.AdresseTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher9519553321475155689.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit2763055836445660485.properties" />
+
+          <property name="jdk.debug" value="release" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="user.home" value="/home/norman" />
+
+          <property name="user.language" value="de" />
+
+          <property name="eclipse.pdebuild.templates" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/templates" />
+
+          <property name="java.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.version.date" value="2021-04-20" />
+
+          <property name="java.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre" />
+
+          <property name="testsource.dir.present" value="true" />
+
+          <property name="file.separator" value="/" />
+
+          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
+
+          <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
+
+          <property name="java.vm.compressedOopsMode" value="32-bit" />
+
+          <property name="line.separator" value="&#xa;" />
+
+          <property name="ant.java.version" value="16" />
+
+          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="doc.dir" value="doc" />
+
+          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+
+          <property name="java.runtime.version" value="16.0.1+9-24" />
+
+          <property name="user.name" value="norman" />
+
+          <property name="ant.file" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
+
+          <property name="path.separator" value=":" />
+
+          <property name="os.version" value="5.11.0-37-generic" />
+
+          <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+
+          <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
+
+          <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.invoked-targets" value="release" />
+
+          <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+
+          <property name="report.dir" value="generated-reports" />
+
+          <property name="build.dir" value="build" />
+
+          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
+
+          <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
+
+          <property name="java.io.tmpdir" value="/tmp" />
+
+          <property name="ant.file.type.GroceryComparator" value="file" />
+
+          <property name="java.version" value="16.0.1" />
+
+          <property name="user.dir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
+
+          <property name="os.arch" value="amd64" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="ant.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926" />
+
+          <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
+
+          <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
+
+          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
+
+          <property name="java.vm.version" value="16.0.1+9-24" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="java.class.version" value="60.0" />
+
+          <property name="tests.failed" value="true" />
+
+          <property name="ant.project.default-target" value="release" />
+
+      </properties>
+
+      <testcase classname="generalTest.AdresseTest" name="getNumberTest" time="0.003" />
+
+      <testcase classname="generalTest.AdresseTest" name="getPLZTest" time="0.0" />
+
+      <testcase classname="generalTest.AdresseTest" name="getCityTest" time="0.001" />
+
+      <testcase classname="generalTest.AdresseTest" name="getStrasseTest" time="0.0" />
+
+      <system-out><![CDATA[]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="3" name="EinkaufslisteTest" package="generalTest" skipped="0" tests="7" time="0.129" timestamp="2021-10-13T15:30:02">
+      <properties>
+          <property name="release.dir" value="release" />
+
+          <property name="ant.library.dir" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib" />
+
+          <property name="testsource.dir" value="src/test/java" />
+
+          <property name="java.specification.version" value="16" />
+
+          <property name="ant.project.name" value="GroceryComparator" />
+
+          <property name="sun.jnu.encoding" value="UTF-8" />
+
+          <property name="java.class.path" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build/test:/home/norman/Schreibtisch/Projekt/MyRecipe/build/src:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/annotations-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ant.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-ha.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-storeconfig.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina-tribes.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/catalina.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/el-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jade.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper-el.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jasper.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jaspic-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jsp-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/jstl-1.2.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/mycbr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.hamcrest.core_1.3.0.v20180420-1519.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/org.junit_4.13.0.v20200204-1500.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/postgresql-9.3-1100.jdbc4.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/servlet-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-api.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-coyote.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-dbcp.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-es.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-fr.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ja.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-i18n-ru.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jdbc.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-jni.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util-scan.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-util.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/tomcat-websocket.jar:/home/norman/Schreibtisch/Projekt/MyRecipe/src/main/webapp/WEB-INF/lib/websocket-api.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-launcher.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit.jar:/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant-junit4.jar" />
+
+          <property name="java.vm.vendor" value="Oracle Corporation" />
+
+          <property name="sun.arch.data.model" value="64" />
+
+          <property name="java.vendor.url" value="https://java.oracle.com/" />
+
+          <property name="appname" value="MyRecipe" />
+
+          <property name="source.dir" value="src/main/java" />
+
+          <property name="os.name" value="Linux" />
+
+          <property name="java.vm.specification.version" value="16" />
+
+          <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="user.country" value="DE" />
+
+          <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
+
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.EinkaufslisteTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.EinkaufslisteTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.EinkaufslisteTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher15352237664560433199.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit5650178398652694100.properties" />
+
+          <property name="jdk.debug" value="release" />
+
+          <property name="sun.cpu.endian" value="little" />
+
+          <property name="user.home" value="/home/norman" />
+
+          <property name="user.language" value="de" />
+
+          <property name="eclipse.pdebuild.templates" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/templates" />
+
+          <property name="java.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.version.date" value="2021-04-20" />
+
+          <property name="java.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre" />
+
+          <property name="testsource.dir.present" value="true" />
+
+          <property name="file.separator" value="/" />
+
+          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
+
+          <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
+
+          <property name="java.vm.compressedOopsMode" value="32-bit" />
+
+          <property name="line.separator" value="&#xa;" />
+
+          <property name="ant.java.version" value="16" />
+
+          <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
+
+          <property name="doc.dir" value="doc" />
+
+          <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+
+          <property name="java.runtime.version" value="16.0.1+9-24" />
+
+          <property name="user.name" value="norman" />
+
+          <property name="ant.file" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
+
+          <property name="path.separator" value=":" />
+
+          <property name="os.version" value="5.11.0-37-generic" />
+
+          <property name="java.runtime.name" value="OpenJDK Runtime Environment" />
+
+          <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
+
+          <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.invoked-targets" value="release" />
+
+          <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
+
+          <property name="report.dir" value="generated-reports" />
+
+          <property name="build.dir" value="build" />
+
+          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
+
+          <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
+
+          <property name="java.io.tmpdir" value="/tmp" />
+
+          <property name="ant.file.type.GroceryComparator" value="file" />
+
+          <property name="java.version" value="16.0.1" />
+
+          <property name="user.dir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
+
+          <property name="os.arch" value="amd64" />
+
+          <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+
+          <property name="ant.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926" />
+
+          <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
+
+          <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
+
+          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
+
+          <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
+
+          <property name="java.vm.version" value="16.0.1+9-24" />
+
+          <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+
+          <property name="java.class.version" value="60.0" />
+
+          <property name="tests.failed" value="true" />
+
+          <property name="ant.project.default-target" value="release" />
+
+      </properties>
+
+      <testcase classname="generalTest.EinkaufslisteTest" name="getProdukteMitMengeTest" time="0.005" />
+
+      <testcase classname="generalTest.EinkaufslisteTest" name="getProduktlisteTest" time="0.001" />
 
       <testcase classname="generalTest.EinkaufslisteTest" name="loescheProdukteVonListeTest" time="0.0" />
 
@@ -617,14 +617,14 @@ Nach sortiert:
 
       <testcase classname="generalTest.EinkaufslisteTest" name="berechneGesamtPreisTest" time="0.0" />
 
-      <testcase classname="generalTest.EinkaufslisteTest" name="getUserTest" time="0.002" />
+      <testcase classname="generalTest.EinkaufslisteTest" name="getUserTest" time="0.001" />
 
       <system-out><![CDATA[]]></system-out>
 
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="4" name="FoodTest" package="generalTest" skipped="0" tests="12" time="0.175" timestamp="2021-10-09T15:04:29">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="4" name="FoodTest" package="generalTest" skipped="0" tests="12" time="0.112" timestamp="2021-10-13T15:30:02">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -644,9 +644,9 @@ Nach sortiert:
 
           <property name="sun.arch.data.model" value="64" />
 
-          <property name="appname" value="MyRecipe" />
-
           <property name="java.vendor.url" value="https://java.oracle.com/" />
+
+          <property name="appname" value="MyRecipe" />
 
           <property name="source.dir" value="src/main/java" />
 
@@ -654,13 +654,13 @@ Nach sortiert:
 
           <property name="java.vm.specification.version" value="16" />
 
-          <property name="user.country" value="DE" />
-
           <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="user.country" value="DE" />
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.FoodTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.FoodTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.FoodTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher8862160146556488884.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit10183201711890687983.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.FoodTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.FoodTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.FoodTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher5320424161592409731.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit1164050510324353105.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -680,9 +680,9 @@ Nach sortiert:
 
           <property name="testsource.dir.present" value="true" />
 
-          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
           <property name="file.separator" value="/" />
+
+          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
 
           <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
 
@@ -692,9 +692,9 @@ Nach sortiert:
 
           <property name="ant.java.version" value="16" />
 
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
           <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
 
           <property name="doc.dir" value="doc" />
 
@@ -714,17 +714,17 @@ Nach sortiert:
 
           <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
 
-          <property name="ant.project.invoked-targets" value="release" />
-
           <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.invoked-targets" value="release" />
 
           <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
 
           <property name="report.dir" value="generated-reports" />
 
-          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
-
           <property name="build.dir" value="build" />
+
+          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
 
           <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
 
@@ -744,13 +744,13 @@ Nach sortiert:
 
           <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
 
-          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
-
           <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
 
-          <property name="java.vendor" value="Oracle Corporation" />
+          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
 
           <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
 
           <property name="java.vm.version" value="16.0.1+9-24" />
 
@@ -758,13 +758,15 @@ Nach sortiert:
 
           <property name="java.class.version" value="60.0" />
 
+          <property name="tests.failed" value="true" />
+
           <property name="ant.project.default-target" value="release" />
 
       </properties>
 
-      <testcase classname="generalTest.FoodTest" name="getRabattTest" time="0.004" />
+      <testcase classname="generalTest.FoodTest" name="getRabattTest" time="0.003" />
 
-      <testcase classname="generalTest.FoodTest" name="getOriginPreisTest" time="0.0" />
+      <testcase classname="generalTest.FoodTest" name="getOriginPreisTest" time="0.001" />
 
       <testcase classname="generalTest.FoodTest" name="getPreisTest" time="0.0" />
 
@@ -784,14 +786,14 @@ Nach sortiert:
 
       <testcase classname="generalTest.FoodTest" name="getLokalTest" time="0.001" />
 
-      <testcase classname="generalTest.FoodTest" name="getBezeichnungTest" time="0.0" />
+      <testcase classname="generalTest.FoodTest" name="getBezeichnungTest" time="0.001" />
 
       <system-out><![CDATA[]]></system-out>
 
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="5" name="SupermarktTest" package="generalTest" skipped="0" tests="7" time="0.19" timestamp="2021-10-09T15:04:30">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="5" name="SupermarktTest" package="generalTest" skipped="0" tests="7" time="0.116" timestamp="2021-10-13T15:30:03">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -811,9 +813,9 @@ Nach sortiert:
 
           <property name="sun.arch.data.model" value="64" />
 
-          <property name="appname" value="MyRecipe" />
-
           <property name="java.vendor.url" value="https://java.oracle.com/" />
+
+          <property name="appname" value="MyRecipe" />
 
           <property name="source.dir" value="src/main/java" />
 
@@ -821,13 +823,13 @@ Nach sortiert:
 
           <property name="java.vm.specification.version" value="16" />
 
-          <property name="user.country" value="DE" />
-
           <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="user.country" value="DE" />
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.SupermarktTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.SupermarktTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.SupermarktTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher18253422650864449729.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit10509089622346803372.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.SupermarktTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.SupermarktTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.SupermarktTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher11779067976219082977.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit4275003466790872986.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -847,9 +849,9 @@ Nach sortiert:
 
           <property name="testsource.dir.present" value="true" />
 
-          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
           <property name="file.separator" value="/" />
+
+          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
 
           <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
 
@@ -859,9 +861,9 @@ Nach sortiert:
 
           <property name="ant.java.version" value="16" />
 
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
           <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
 
           <property name="doc.dir" value="doc" />
 
@@ -881,17 +883,17 @@ Nach sortiert:
 
           <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
 
-          <property name="ant.project.invoked-targets" value="release" />
-
           <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.invoked-targets" value="release" />
 
           <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
 
           <property name="report.dir" value="generated-reports" />
 
-          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
-
           <property name="build.dir" value="build" />
+
+          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
 
           <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
 
@@ -911,13 +913,13 @@ Nach sortiert:
 
           <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
 
-          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
-
           <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
 
-          <property name="java.vendor" value="Oracle Corporation" />
+          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
 
           <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
 
           <property name="java.vm.version" value="16.0.1+9-24" />
 
@@ -925,11 +927,13 @@ Nach sortiert:
 
           <property name="java.class.version" value="60.0" />
 
+          <property name="tests.failed" value="true" />
+
           <property name="ant.project.default-target" value="release" />
 
       </properties>
 
-      <testcase classname="generalTest.SupermarktTest" name="getAngeboteTest" time="0.008" />
+      <testcase classname="generalTest.SupermarktTest" name="getAngeboteTest" time="0.006" />
 
       <testcase classname="generalTest.SupermarktTest" name="removeAngebotByKeyTest" time="0.001" />
 
@@ -937,7 +941,7 @@ Nach sortiert:
 
       <testcase classname="generalTest.SupermarktTest" name="getSortimentByKeyTest" time="0.001" />
 
-      <testcase classname="generalTest.SupermarktTest" name="addAngebotTest" time="0.003" />
+      <testcase classname="generalTest.SupermarktTest" name="addAngebotTest" time="0.0" />
 
       <testcase classname="generalTest.SupermarktTest" name="getAngebotByKeyTest" time="0.001" />
 
@@ -948,7 +952,7 @@ Nach sortiert:
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="6" name="UserTest" package="generalTest" skipped="0" tests="6" time="0.188" timestamp="2021-10-09T15:04:31">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="6" name="UserTest" package="generalTest" skipped="0" tests="6" time="0.144" timestamp="2021-10-13T15:30:04">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -968,9 +972,9 @@ Nach sortiert:
 
           <property name="sun.arch.data.model" value="64" />
 
-          <property name="appname" value="MyRecipe" />
-
           <property name="java.vendor.url" value="https://java.oracle.com/" />
+
+          <property name="appname" value="MyRecipe" />
 
           <property name="source.dir" value="src/main/java" />
 
@@ -978,13 +982,13 @@ Nach sortiert:
 
           <property name="java.vm.specification.version" value="16" />
 
-          <property name="user.country" value="DE" />
-
           <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="user.country" value="DE" />
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.UserTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.UserTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.UserTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher10535007375110676453.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit13285472794923393814.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner generalTest.UserTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.UserTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-generalTest.UserTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher9989410783610991035.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit11281154721799359872.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -1004,9 +1008,9 @@ Nach sortiert:
 
           <property name="testsource.dir.present" value="true" />
 
-          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
           <property name="file.separator" value="/" />
+
+          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
 
           <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
 
@@ -1016,9 +1020,9 @@ Nach sortiert:
 
           <property name="ant.java.version" value="16" />
 
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
           <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
 
           <property name="doc.dir" value="doc" />
 
@@ -1038,17 +1042,17 @@ Nach sortiert:
 
           <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
 
-          <property name="ant.project.invoked-targets" value="release" />
-
           <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.invoked-targets" value="release" />
 
           <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
 
           <property name="report.dir" value="generated-reports" />
 
-          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
-
           <property name="build.dir" value="build" />
+
+          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
 
           <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
 
@@ -1068,13 +1072,13 @@ Nach sortiert:
 
           <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
 
-          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
-
           <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
 
-          <property name="java.vendor" value="Oracle Corporation" />
+          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
 
           <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
 
           <property name="java.vm.version" value="16.0.1+9-24" />
 
@@ -1082,21 +1086,23 @@ Nach sortiert:
 
           <property name="java.class.version" value="60.0" />
 
+          <property name="tests.failed" value="true" />
+
           <property name="ant.project.default-target" value="release" />
 
       </properties>
 
-      <testcase classname="generalTest.UserTest" name="getPasswortTest" time="0.013" />
+      <testcase classname="generalTest.UserTest" name="getPasswortTest" time="0.006" />
 
-      <testcase classname="generalTest.UserTest" name="getFullNameTest" time="0.008" />
+      <testcase classname="generalTest.UserTest" name="getFullNameTest" time="0.007" />
 
-      <testcase classname="generalTest.UserTest" name="getEinkaufsListeByDateTest" time="0.003" />
+      <testcase classname="generalTest.UserTest" name="getEinkaufsListeByDateTest" time="0.002" />
 
-      <testcase classname="generalTest.UserTest" name="getEinkaufslisteHistorieTest" time="0.003" />
+      <testcase classname="generalTest.UserTest" name="getEinkaufslisteHistorieTest" time="0.002" />
 
       <testcase classname="generalTest.UserTest" name="getAdresseTest" time="0.001" />
 
-      <testcase classname="generalTest.UserTest" name="getEinkaufslisteTest" time="0.002" />
+      <testcase classname="generalTest.UserTest" name="getEinkaufslisteTest" time="0.001" />
 
       <system-out><![CDATA[[2] 2002-02-03
 [100] 2002-02-03
@@ -1121,7 +1127,7 @@ Nach sortiert:
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="7" name="DoubleManagerTest" package="managersTest" skipped="0" tests="1" time="0.167" timestamp="2021-10-09T15:04:32">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="7" name="DoubleManagerTest" package="managersTest" skipped="0" tests="1" time="0.11" timestamp="2021-10-13T15:30:05">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -1141,9 +1147,9 @@ Nach sortiert:
 
           <property name="sun.arch.data.model" value="64" />
 
-          <property name="appname" value="MyRecipe" />
-
           <property name="java.vendor.url" value="https://java.oracle.com/" />
+
+          <property name="appname" value="MyRecipe" />
 
           <property name="source.dir" value="src/main/java" />
 
@@ -1151,13 +1157,13 @@ Nach sortiert:
 
           <property name="java.vm.specification.version" value="16" />
 
-          <property name="user.country" value="DE" />
-
           <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="user.country" value="DE" />
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.DoubleManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.DoubleManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.DoubleManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher11517804167794496440.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit7912265499505313646.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.DoubleManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.DoubleManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.DoubleManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher13169158004157094886.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit954808533279607278.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -1177,9 +1183,9 @@ Nach sortiert:
 
           <property name="testsource.dir.present" value="true" />
 
-          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
           <property name="file.separator" value="/" />
+
+          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
 
           <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
 
@@ -1189,9 +1195,9 @@ Nach sortiert:
 
           <property name="ant.java.version" value="16" />
 
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
           <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
 
           <property name="doc.dir" value="doc" />
 
@@ -1211,17 +1217,17 @@ Nach sortiert:
 
           <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
 
-          <property name="ant.project.invoked-targets" value="release" />
-
           <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.invoked-targets" value="release" />
 
           <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
 
           <property name="report.dir" value="generated-reports" />
 
-          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
-
           <property name="build.dir" value="build" />
+
+          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
 
           <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
 
@@ -1241,13 +1247,13 @@ Nach sortiert:
 
           <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
 
-          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
-
           <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
 
-          <property name="java.vendor" value="Oracle Corporation" />
+          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
 
           <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
 
           <property name="java.vm.version" value="16.0.1+9-24" />
 
@@ -1255,18 +1261,120 @@ Nach sortiert:
 
           <property name="java.class.version" value="60.0" />
 
+          <property name="tests.failed" value="true" />
+
           <property name="ant.project.default-target" value="release" />
 
       </properties>
 
-      <testcase classname="managersTest.DoubleManagerTest" name="roundTest" time="0.005" />
+      <testcase classname="managersTest.DoubleManagerTest" name="roundTest" time="0.011" />
 
-      <system-out><![CDATA[]]></system-out>
+      <system-out><![CDATA[1.0
+1.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+1.0
+1.0
+1.0
+0.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+1.0
+0.0
+0.0
+1.0
+0.0
+0.0
+1.0
+0.0
+0.0
+1.0
+0.0
+1.0
+0.0
+0.0
+0.0
+1.0
+1.0
+0.0
+0.0
+1.0
+1.0
+0.0
+0.0
+1.0
+0.0
+1.0
+0.0
+1.0
+0.0
+0.0
+1.0
+1.0
+0.0
+1.0
+1.0
+1.0
+0.0
+0.0
+0.0
+0.0
+0.0
+1.0
+1.0
+0.0
+0.0
+1.0
+1.0
+0.0
+0.0
+1.0
+0.0
+1.0
+0.0
+1.0
+1.0
+0.0
+0.0
+1.0
+0.0
+0.0
+0.0
+0.0
+1.0
+1.0
+1.0
+1.0
+0.0
+1.0
+0.0
+0.0
+0.0
+]]></system-out>
 
       <system-err><![CDATA[]]></system-err>
 
   </testsuite>
-  <testsuite errors="0" failures="0" hostname="normanboettcher" id="8" name="RabattManagerTest" package="managersTest" skipped="0" tests="2" time="0.143" timestamp="2021-10-09T15:04:33">
+  <testsuite errors="0" failures="0" hostname="normanboettcher" id="8" name="RabattManagerTest" package="managersTest" skipped="0" tests="2" time="0.13" timestamp="2021-10-13T15:30:06">
       <properties>
           <property name="release.dir" value="release" />
 
@@ -1286,9 +1394,9 @@ Nach sortiert:
 
           <property name="sun.arch.data.model" value="64" />
 
-          <property name="appname" value="MyRecipe" />
-
           <property name="java.vendor.url" value="https://java.oracle.com/" />
+
+          <property name="appname" value="MyRecipe" />
 
           <property name="source.dir" value="src/main/java" />
 
@@ -1296,13 +1404,13 @@ Nach sortiert:
 
           <property name="java.vm.specification.version" value="16" />
 
-          <property name="user.country" value="DE" />
-
           <property name="sun.java.launcher" value="SUN_STANDARD" />
+
+          <property name="user.country" value="DE" />
 
           <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
 
-          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.RabattManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher8917440897983994172.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit13489937616185882908.properties" />
+          <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.RabattManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher15221376240547857545.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit15069517358388169997.properties" />
 
           <property name="jdk.debug" value="release" />
 
@@ -1322,9 +1430,9 @@ Nach sortiert:
 
           <property name="testsource.dir.present" value="true" />
 
-          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
-
           <property name="file.separator" value="/" />
+
+          <property name="basedir" value="/home/norman/Schreibtisch/Projekt/MyRecipe" />
 
           <property name="eclipse.pdebuild.home" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/." />
 
@@ -1334,9 +1442,9 @@ Nach sortiert:
 
           <property name="ant.java.version" value="16" />
 
-          <property name="java.specification.name" value="Java Platform API Specification" />
-
           <property name="java.vm.specification.vendor" value="Oracle Corporation" />
+
+          <property name="java.specification.name" value="Java Platform API Specification" />
 
           <property name="doc.dir" value="doc" />
 
@@ -1356,17 +1464,17 @@ Nach sortiert:
 
           <property name="ant.file.GroceryComparator" value="/home/norman/Schreibtisch/Projekt/MyRecipe/build.xml" />
 
-          <property name="ant.project.invoked-targets" value="release" />
-
           <property name="file.encoding" value="UTF-8" />
+
+          <property name="ant.project.invoked-targets" value="release" />
 
           <property name="java.vm.name" value="OpenJDK 64-Bit Server VM" />
 
           <property name="report.dir" value="generated-reports" />
 
-          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
-
           <property name="build.dir" value="build" />
+
+          <property name="ant.core.lib" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib/ant.jar" />
 
           <property name="java.vendor.url.bug" value="https://bugreport.java.com/bugreport/" />
 
@@ -1386,13 +1494,13 @@ Nach sortiert:
 
           <property name="ant.version" value="Apache Ant(TM) version 1.10.10 compiled on April 12 2021" />
 
-          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
-
           <property name="java.library.path" value="/usr/java/packages/lib:/usr/lib64:/lib64:/lib:/usr/lib" />
 
-          <property name="java.vendor" value="Oracle Corporation" />
+          <property name="eclipse.pdebuild.scripts" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.pde.build_3.11.0.v20210429-0618/scripts" />
 
           <property name="java.vm.info" value="mixed mode" />
+
+          <property name="java.vendor" value="Oracle Corporation" />
 
           <property name="java.vm.version" value="16.0.1+9-24" />
 
@@ -1400,11 +1508,13 @@ Nach sortiert:
 
           <property name="java.class.version" value="60.0" />
 
+          <property name="tests.failed" value="true" />
+
           <property name="ant.project.default-target" value="release" />
 
       </properties>
 
-      <testcase classname="managersTest.RabattManagerTest" name="abzugRabattTest" time="0.006" />
+      <testcase classname="managersTest.RabattManagerTest" name="abzugRabattTest" time="0.003" />
 
       <testcase classname="managersTest.RabattManagerTest" name="getRandomRabattTest" time="0.001" />
 

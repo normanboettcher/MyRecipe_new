@@ -1,22 +1,15 @@
 Testsuite: agentsTest.EinkaufslistenVergleichsAgentTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0,19 sec
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0,126 sec
 
-------------- Standard Output ---------------
-Bevor sortiert: 
-5. 2.62 EUR
-6. 19.240000000000002 EUR
-7. 16.48 EUR
-8. 18.78 EUR
-9. 26.96 EUR
-10. 35.019999999999996 EUR
-11. 43.2 EUR
-12. 40.12 EUR
-13. 50.620000000000005 EUR
-14. 56.18 EUR
-Nach sortiert: 
-1. 2.62 EUR
-2. 16.48 EUR
-3. 18.78 EUR
-4. 19.240000000000002 EUR
-5. 26.96 EUR
-------------- ---------------- ---------------
+Testcase: initializationError(agentsTest.EinkaufslistenVergleichsAgentTest):	Caused an ERROR
+Invalid test class 'agentsTest.EinkaufslistenVergleichsAgentTest':
+  1. No runnable methods
+org.junit.runners.model.InvalidTestClassError: Invalid test class 'agentsTest.EinkaufslistenVergleichsAgentTest':
+  1. No runnable methods
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:78)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+
+

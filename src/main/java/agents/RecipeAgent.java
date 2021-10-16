@@ -33,7 +33,8 @@ import general.supermarkets.Rezepte;
 
 public class RecipeAgent {
 	
-	private static String projectName = "myCBR/Rezepte.prj";
+	private static String projectName = "/myCBR/Rezepte.prj";
+	private static String project_path = System.getProperty("user.dir");
 
 	// Attributes for myCBR
 	private Project project;
@@ -60,8 +61,10 @@ public class RecipeAgent {
 	 */
 	private boolean importProject() {
 		try {
-			File file = new File(projectName);
-			project = new Project(file.getAbsolutePath());
+			System.out.println(project_path);
+			System.out.println(project_path + projectName);
+			File file = new File(project_path + projectName);
+			project = new Project(file.getCanonicalPath());
 			
 			//System.out.println(project.getPath());
 		//	System.out.println(file.getAbsolutePath());

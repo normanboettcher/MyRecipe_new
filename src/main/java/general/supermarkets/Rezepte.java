@@ -3,6 +3,7 @@ package general.supermarkets;
 import java.util.HashMap;
 
 import general.Food;
+import managers.DoubleManager;
 
 public class Rezepte {
 	
@@ -26,7 +27,6 @@ public class Rezepte {
 
 	}
 
-	
 	public HashMap<Integer, Integer> getZutaten() {
 		return zutaten;
 	}
@@ -40,7 +40,7 @@ public class Rezepte {
 	}
 	
 	public double getSimilarity() {
-		return similarity;
+		return DoubleManager.round(similarity, 2);
 	}
 
 	public void setSimilarity(double similarity) {

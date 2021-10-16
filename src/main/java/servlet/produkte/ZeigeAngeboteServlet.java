@@ -40,40 +40,25 @@ public class ZeigeAngeboteServlet extends HttpServlet {
 		switch(supermarkt) {
 			case "lidl" : 
 				Lidl lidl = new Lidl();
-				if(lidl.getSortiment().size() == 0) {
-					lidl.initSortiment();
-				}
-				lidl.initAngebote();
-				System.out.println(lidl.getAngebote().size());
-				System.out.println(lidl.getSortiment().size());
-				//System.out.println(lidl.getSortiment().get(3).getImage());
+				lidl.holeAngebote();
 				session.setAttribute("supermarkt", lidl);
 				request.getRequestDispatcher("JSP/angebote.jsp").forward(request, response);
 				break;
 			case "penny":
 				Penny penny = new Penny();
-				if(penny.getSortiment().size() == 0) {
-					penny.initSortiment();
-				}
-				penny.initAngebote();
+				penny.holeAngebote();
 				session.setAttribute("supermarkt", penny);
 				request.getRequestDispatcher("JSP/angebote.jsp").forward(request, response);
 				break;
 			case "rewe":
 				Rewe rewe = new Rewe();
-				if(rewe.getSortiment().size() == 0) {
-					rewe.initSortiment();
-				}
-				rewe.initAngebote();
+				rewe.holeAngebote();
 				session.setAttribute("supermarkt", rewe);
 				request.getRequestDispatcher("JSP/angebote.jsp").forward(request, response);
 				break;
 			case "netto":
 				Netto netto = new Netto();
-				if(netto.getSortiment().size() == 0) {
-					netto.initSortiment();
-				}
-				netto.initAngebote();
+				netto.holeAngebote();
 				session.setAttribute("supermarkt", netto);
 				request.getRequestDispatcher("JSP/angebote.jsp").forward(request, response);
 				break;

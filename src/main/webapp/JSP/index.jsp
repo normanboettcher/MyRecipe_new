@@ -119,7 +119,7 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 </nav></header>
 <body>
 	<!-- Suche/ Rezeptauswahl -->
-	<form class="box" action="../RezepteServlet" method="get" onsubmit="return ((validateForm() & validateForm2() & validateForm3()) == 1)">
+	<form class="box" action="../RezepteServlet" method = "get" onsubmit="return ((validateForm() & validateForm2() & validateForm3()) == 1)">
 		<div class="boxContainer">
 			<table class="elementsContainer">
 				<tr>

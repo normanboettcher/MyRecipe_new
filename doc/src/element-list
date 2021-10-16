@@ -3,6 +3,8 @@ database.transfer
 databaseConnection
 general
 general.supermarkets
+hochladen
+jade.connector
 managers
 servlet.produkte
 servlet.user

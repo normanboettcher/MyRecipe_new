@@ -1,177 +1,345 @@
 package agents;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import databaseConnection.DBConnection;
 import general.Einkaufsliste;
 import general.Food;
+import jade.core.AID;
+import jade.core.Agent;
+import jade.core.behaviours.Behaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAException;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.lang.acl.UnreadableException;
 import managers.DoubleManager;
 
-public class AngeboteAgent {
+public class AngeboteAgent extends Agent {
 	
-	private Food angebotZwischenspeicher;
-	private Food sortimentZwischenspeicher;
-	private double sortimentPreisZwischenspeicher;
-	private double preisEndergebnis;
-	private double gespart;
-	private double ersparungInProzent;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6592100288896507467L;
 	
+	private String name;
+
 	public AngeboteAgent() {
+		this.name = "AngebotAgent";
+	}
+	
+	public String getAgentName() {
+		return name;
+	}
+	
+	protected void setup() {
 		
-	}
-	
-	public Food getAngebotZwischenspeicher() {
-		return angebotZwischenspeicher;
-	}
-	
-	public Food getSortimentZwischenspeicher() {
-		return sortimentZwischenspeicher;
-	}
-	
-	public double getSortimentPreisZwischenspeicher() {
-		return DoubleManager.round(sortimentPreisZwischenspeicher, 2);
-	}
-	
-	public double getPreisEndergebnis() {
-		return DoubleManager.round(preisEndergebnis, 2);
-	}
-	
-	public double getGespart() {
-		return gespart;
-	}
-	
-	public double getErsparungInProzent() {
-		return DoubleManager.round(ersparungInProzent, 2);
-	}
-	
-	private HashMap<Integer, Food> holeSortiment(int id) {
-		HashMap<Integer, Food> angebote = new HashMap<Integer, Food>();
+		DFAgentDescription desc = new DFAgentDescription();
+		ServiceDescription sd = new ServiceDescription();
 		
-		Connection con = DBConnection.getConnection();
-		String laden = "";
+		sd.setName("AngebotAgent");		
+		sd.setType("Angebot Agent");
+		desc.addServices(sd);
+		
 		try {
-			
-			
-			PreparedStatement hole_laden = con.prepareStatement("select bez from laeden where laden_id = ?");
-			hole_laden.setInt(1, id);
-			
-			ResultSet r = hole_laden.executeQuery();
-			
-			while(r.next()) {
-				laden = r.getString("bez");
-			}
-			
-			PreparedStatement stmt = con.prepareStatement("select * from " + laden + "_sortiment");
-			
-			ResultSet r2 = stmt.executeQuery();
-			
-			while(r2.next()) {
-				Food f = new Food(r2.getString("artikelbez"), r2.getDouble("artikelpreis"),
-						r2.getString("hersteller"), "", r2.getInt("vegan"), r2.getInt("vegetarisch"), r2.getInt("lokal"),
-						r2.getInt("bio"), r2.getString("kategorie"));
-				f.setArtikelNr(r2.getInt("artikelnr"));
-				angebote.put(r2.getInt("artikelnr"),f);
-			}
-			stmt.close();
-			hole_laden.close();
-			r2.close();
-			r.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
+			DFService.register(this, desc);
+		} catch(FIPAException fe) {
+			System.out.println(fe.getMessage());
 		}
-		return angebote;
+		
+		addBehaviour(new AngebotAgentBehaviour());
 	}
 	
-	private HashMap<Integer, Food> holeAngebote(int id) {
-		HashMap<Integer, Food> angebote = new HashMap<Integer, Food>();
-		
-		Connection con = DBConnection.getConnection();
-		String laden = "";
+	protected void takeDown() {
 		try {
-			
-			
-			PreparedStatement hole_laden = con.prepareStatement("select bez from laeden where laden_id = ?");
-			hole_laden.setInt(1, id);
-			
-			ResultSet r = hole_laden.executeQuery();
-			
-			while(r.next()) {
-				laden = r.getString("bez");
-			}
-			
-			PreparedStatement stmt = con.prepareStatement("select * from " + laden + "_angebote");
-			
-			ResultSet r2 = stmt.executeQuery();
-			
-			while(r2.next()) {
-				Food f = new Food(r2.getString("artikelbez"), r2.getDouble("artikelpreis"),
-						r2.getString("hersteller"), "", r2.getInt("vegan"), r2.getInt("vegetarisch"), r2.getInt("lokal"),
-						r2.getInt("bio"), r2.getString("kategorie"));
-				f.setArtikelNr(r2.getInt("artikelnr"));
-				angebote.put(f.getArtikelNr(),f);
-			}
-			stmt.close();
-			hole_laden.close();
-			r2.close();
-			r.close();
-		} catch(SQLException e) {
-			e.printStackTrace();
+			DFService.deregister(this);
+		} catch(FIPAException fe) {
+			System.out.println(fe.getMessage());
 		}
-		return angebote;
 	}
 	
-	public Einkaufsliste produktImAngebot(int laden_id, Einkaufsliste l) {
-	
-		HashMap<Integer, Food> angebot = holeAngebote(laden_id);
-		HashMap<Integer, Food> sortiment = l.getProduktliste();
-		l.berechneGesamtpreis();
-		double preis_alt = l.getGesamtPreis();
-		boolean imAngebot = false;
-		
-		for(int i : sortiment.keySet()) {
-		
-				int artikelnr = i;
 
-				if ((sortiment.get(artikelnr) != null) && (angebot.get(artikelnr) != null)) {
-					imAngebot = true;
+	
+	private class AngebotAgentBehaviour extends Behaviour {
+		
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 3312816331448840101L;
+		private Food angebotZwischenspeicher;
+		private Food sortimentZwischenspeicher;
+		private Einkaufsliste einkaufsliste;
+
+		private double preisEndergebnis;
+		private double gespart;
+		private double ersparungInProzent;
+		private boolean finished = false;
+		
+		private AngebotAgentBehaviour() {
+			
+		}
+		
+		@Override
+		public boolean done() {
+			return finished;
+		}
+	
+		@Override
+		public void action() {
+			System.out.println("In Action von AngebotAgent");
+			String str1 = "Agent: [" + getName() + " ] ist  jetzt in der action()";
+			String str2 = "";
+			String str3 = "";
+			String str4 = "";
+			String str5 = "";
+			String str6 = "";
+			
+			String conv_id = "";
+			
+			jade.lang.acl.ACLMessage msg = blockingReceive();
+			
+			if(msg != null) {
+				conv_id = msg.getConversationId();
+			} else {
+				msg = blockingReceive();
+			}
+			
+			if(msg != null && conv_id.equals("Anfrage")) {
+				
+				str2 = "Agent: [ " + getName() + " ] konnte Nachricht "
+						+ "[ " + msg + " ] von [ " + msg.getSender().getName() + " ] empfangen.";
+				
+				jade.lang.acl.ACLMessage reply = msg.createReply();
+				
+				System.out.println("Antwort gemacht fuer " + msg.getSender());
+				
+				str3 = "Agent : [ " + getName() + " ] hat reply [ " + reply + " ] erstellt.";
+				
+				HashMap<Integer, Einkaufsliste> l = new HashMap<Integer, Einkaufsliste>();
+				try {
+					l = (HashMap<Integer, Einkaufsliste>) msg.getContentObject();
 					
-					this.angebotZwischenspeicher = angebot.get(artikelnr);
-					this.sortimentZwischenspeicher = sortiment.get(artikelnr);
+					if(l != null) {
+						str4 = "Agent : [ "+ getName() + " ] konnte Liste mit Einkaufslisten von [ "
+								+ msg.getSender().getName() + " ] entgegennehmen.";					
+						
+						jade.lang.acl.ACLMessage aktuell_anfrage = new jade.lang.acl.ACLMessage(
+								jade.lang.acl.ACLMessage.REQUEST);
+						aktuell_anfrage.addReceiver(new AID("UeberwachungAgent", AID.ISLOCALNAME));
+						aktuell_anfrage.setContentObject(l);
+						aktuell_anfrage.setConversationId("AufforderungAnUeberwachung");
+						send(aktuell_anfrage);
+						System.out.println("Anfrage gesendet fuer Ueberwachungagent");
+						
+						ArrayList<String> s = new ArrayList<String>();
+						
+						s.add(str1); s.add(str2); s.add(str3); s.add(str4);
+						
+						Object[] objects = {s, "0"};
+						
+						jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+						send_to_protocoll.setContentObject(objects);
+						send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
+						send(send_to_protocoll);
+						
+					}
+				} catch (UnreadableException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			    } else if(msg != null && conv_id.equals("UpdateVonUeberwachung")) {
+						
+						System.out.println("Antwort von Ueberwachungsagent erhalten");
+						
+						Object[] o;
+						try {
+							o = (Object[]) msg.getContentObject();
 
-					this.angebotZwischenspeicher.setImAngebot(imAngebot);
-					this.sortimentZwischenspeicher.setImAngebot(imAngebot);
+							boolean aktualisiert = (boolean) o[0];
+							HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) o[1];
+						
+							if(aktualisiert == true) {
+								System.out.println("Angebote wurden aktualisiert");
+							} else {
+								System.out.println("Noch keine aktuellen Angebote verfügbar");
+							}
 
-					if(imAngebot) {
-						tauscheEinkaufslisteProduktMitAngebotProdukt(l, getAngebotZwischenspeicher(), getSortimentZwischenspeicher());
+							for(int i : l.keySet()) {
+								str5 += "Agent: [ " + getName() + " ] prueft und erstellt Angebote fuer Einkaufsliste"
+										+ " mit ID: [ " + l.get(i).getEinkaufslisteID() + " ]";
+								this.einkaufsliste = l.get(i);
+
+								Einkaufsliste liste = einkaufslisteMitAngeboten(i);
+								l.put(i, liste);
+							}
+							jade.lang.acl.ACLMessage to_vergleichsagent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM); 
+
+							to_vergleichsagent.addReceiver(new AID("Vergleichsagent", AID.ISLOCALNAME));
+							to_vergleichsagent.setContentObject(l);
+							str6 = "Antwort auf verfuegbare angebote lautet: [ " + to_vergleichsagent.getContent() + " ]"
+									+ " und Object [ " + to_vergleichsagent.getContentObject() + " ] konnte [ " + to_vergleichsagent + " ] hinzugefuegt werden.";
+						
+							to_vergleichsagent.setConversationId("ErgebnisVorliegend");
+							send(to_vergleichsagent);
+
+							ArrayList<String> s = new ArrayList<String>();
+
+							s.add(str1); s.add(str2); s.add(str3); s.add(str4); s.add(str5); s.add(str6);
+
+							Object[] objects = {s, "0"};
+
+							jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+							send_to_protocoll.setContentObject(objects);
+							send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
+							send(send_to_protocoll);
+							this.finished = true;
+						} catch (UnreadableException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						} catch (IOException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+
+					} else {
+						block();
+					}
+		
+			}
+		
+
+		public double getGespart() {
+			return DoubleManager.round(gespart, 2);
+		}
+		
+		public double getErsparungInProzent() {
+			return DoubleManager.round(ersparungInProzent, 2);
+		}
+
+		
+		private Einkaufsliste getEinkaufsliste() {
+			return einkaufsliste;
+		}
+		
+		private HashMap<Integer, Food> holeAngebote(int id) {
+			HashMap<Integer, Food> angebote = new HashMap<Integer, Food>();
+			
+			Connection con = DBConnection.getConnection();
+			String laden = "";
+			try {
+				
+				
+				PreparedStatement hole_laden = con.prepareStatement("select bez from laeden where laden_id = ?");
+				hole_laden.setInt(1, id);
+				
+				ResultSet r = hole_laden.executeQuery();
+				
+				while(r.next()) {
+					laden = r.getString("bez");
+				}
+				
+				PreparedStatement stmt = con.prepareStatement("select * from " + laden + "_angebote");
+				
+				ResultSet r2 = stmt.executeQuery();
+				
+				while(r2.next()) {
+					Food f = new Food(r2.getString("artikelbez"), r2.getDouble("artikelpreis"),
+							r2.getString("hersteller"), "", r2.getInt("vegan"), r2.getInt("vegetarisch"), r2.getInt("lokal"),
+							r2.getInt("bio"), r2.getString("kategorie"));
+					f.setArtikelNr(r2.getInt("artikelnr"));
+					angebote.put(f.getArtikelNr(),f);
+				}
+				stmt.close();
+				hole_laden.close();
+				r2.close();
+				r.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+			return angebote;
+		}
+		
+		private Einkaufsliste einkaufslisteMitAngeboten(int laden_id) {
+		
+			HashMap<Integer, Food> angebot = holeAngebote(laden_id);
+			HashMap<Integer, Food> sortiment = getEinkaufsliste().getProduktliste();
+			
+			getEinkaufsliste().berechneGesamtpreis();
+			
+			double preis_alt = getEinkaufsliste().getGesamtPreis();
+			boolean imAngebot = false;
+			
+			for(int i : sortiment.keySet()) {
+			
+					int artikelnr = i;
+
+					if ((sortiment.get(artikelnr) != null) && (angebot.get(artikelnr) != null)) {
+						imAngebot = true;
+						
+						this.angebotZwischenspeicher = angebot.get(artikelnr);
+						this.sortimentZwischenspeicher = sortiment.get(artikelnr);
+
+						this.angebotZwischenspeicher.setImAngebot(imAngebot);
+						this.sortimentZwischenspeicher.setImAngebot(imAngebot);
+
+						if(imAngebot) {
+							tauscheEinkaufslisteProduktMitAngebotProdukt(getEinkaufsliste(), getAngebotZwischenspeicher(), getSortimentZwischenspeicher());
+						}
 					}
 				}
-			}
-		l.berechneGesamtpreis();
-		double preis_neu = l.getGesamtPreis();
-		this.gespart = berechneErsparung(preis_alt, preis_neu);
-		return l;
-	}
-	
-	private void tauscheEinkaufslisteProduktMitAngebotProdukt(Einkaufsliste l, Food angebot, Food alt) {
-	
-		l.getProduktliste().get(alt.getArtikelNr()).setOriginalPreis(alt.getPreis());
+			
+			getEinkaufsliste().berechneGesamtpreis();
+			
+			this.preisEndergebnis = getEinkaufsliste().getGesamtPreis();
+			this.gespart = berechneErsparung(preis_alt, getPreisEndergebnis());
+			
+			berechneErsparungInProzent();
+			
+			getEinkaufsliste().setErsparnisInProzent(getErsparungInProzent());
+			getEinkaufsliste().setErsparnis(getGespart());
+			
+			return getEinkaufsliste();
+		}
 		
-		l.getProduktliste().get(alt.getArtikelNr()).setPreis(angebot.getPreis());
-	}
-	
-	
-	
-	private double berechneErsparung(double preis_alt, double preis_neu) {
-		return preis_alt - preis_neu;
+		private void tauscheEinkaufslisteProduktMitAngebotProdukt(Einkaufsliste l, Food angebot, Food alt) {
 		
-	}
-	
-	private void berechneErsparungInProzent() {
-		this.ersparungInProzent = (getGespart() * 100) / getPreisEndergebnis();
-	}
-	
+			l.getProduktliste().get(alt.getArtikelNr()).setOriginalPreis(alt.getPreis());
+			
+			l.getProduktliste().get(alt.getArtikelNr()).setPreis(angebot.getPreis());
+			l.getProduktliste().get(angebot.getArtikelNr()).setImAngebot(true);
+			
+			l.getProduktliste().get(angebot.getArtikelNr()).berechneErsparnisFuerFood();
+			
+		}
+		
+		private Food getAngebotZwischenspeicher() {
+			return angebotZwischenspeicher;
+		}
+		
+		private Food getSortimentZwischenspeicher() {
+			return sortimentZwischenspeicher;
+		}
+		
+		private double getPreisEndergebnis() {
+			return DoubleManager.round(preisEndergebnis, 2);
+		}
+		
+		private double berechneErsparung(double preis_alt, double preis_neu) {
+			return preis_alt - preis_neu;
+			
+		}
+		
+		private void berechneErsparungInProzent() {
+			this.ersparungInProzent = (getGespart() * 100) / getPreisEndergebnis();
+		}	
+	}	
 }

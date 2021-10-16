@@ -18,9 +18,6 @@
 	href="<%=request.getContextPath()%>/CSS/RezepteStyle.css">
 <title>MyRecipe</title>
 <!-- Wenn USer nicht eingeloggt, kann er nicht auf diese Seite zugreifen -->
-<c:if test="${admin == null && kunde == null}">
-		<meta http-equiv="refresh" content="0; URL=login.jsp">
-	</c:if>
 <header> <!-- Sticky Navbar with Logo --> <nav
 	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
@@ -61,14 +58,18 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="main">
 <form>
 	<c:forEach items="${result}" var="result">
-		
-
 			<h3 style="text-align:center; color:white;">${result.value.getLaden()}</h3>
 			<table class="table">
 			<tr>
 				<th style="text-align:center;">Produkte</th>
 				<th style="text-align:center;">Menge</th>
-				<th style="text-align:center;">Preis</th>
+				<th style="text-align:center;">Preis/Stk</th>
+				<th style="text-align:center;">Originalpreis/Stk</th>
+				<th style="text-align:center;">Gespart/Stk</th>
+				<th style="text-align:center;">Gespart in Prozent/Stk</th>
+				<th style="text-align:center;">Preis/Gesamt</th>
+				<th style="text-align:center;">Gespart/Gesamt</th>
+				<th style="text-align:center;">Gespart in Prozent/Gesamt</th>
 				
 			</tr>
 			<c:forEach items="${result.value.getProduktliste()}" var="produkte">
@@ -81,12 +82,29 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 							<td>${produkte.value.getPreis()}</td>
 						</c:if>
 					</c:forEach>
+					<c:if test="${produkte.value.getImAngebot() == true }">
+						<td>${produkte.value.getOriginPreis()} EUR</td>
+						<td>${produkte.value.getErsparnisFuerFood()}</td>
+						<td>${produkte.value.getErsparnisInProzentFuerFood()} Prozent</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+					</c:if>
+					<c:if test="${produkte.value.getImAngebot() == false }">
+						<td>Originalpreis entspricht Preis</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+						<td>-</td>
+					</c:if>
 				</tr>
-			
 				</c:forEach>
 			<tr>
-				<td colspan="2"></td>
+				<td colspan="6"></td>
 				<td style="text-align:center; font-weight: bold; width: 33%;">${result.value.getGesamtPreis()} EUR Gesamt</td>
+				<td style="text-align:center; font-weight: bold; width: 33%;">${result.value.getErsparnis()} EUR</td>
+				<td style="text-align:center; font-weight: bold; width: 33%;">${result.value.getErsparnisInProzent()} Prozent</td>
 			</tr>
 		</table>
 		
