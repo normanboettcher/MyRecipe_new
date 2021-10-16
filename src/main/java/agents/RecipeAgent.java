@@ -1,38 +1,36 @@
 package agents;
 
 import java.io.File;
-import java.nio.file.FileSystems;
-import java.nio.file.Path;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.dfki.mycbr.core.ICaseBase;
 import de.dfki.mycbr.core.Project;
 import de.dfki.mycbr.core.casebase.Instance;
-import de.dfki.mycbr.core.model.BooleanDesc;
 import de.dfki.mycbr.core.model.Concept;
 import de.dfki.mycbr.core.model.IntegerDesc;
 import de.dfki.mycbr.core.model.StringDesc;
 import de.dfki.mycbr.core.model.SymbolDesc;
 import de.dfki.mycbr.core.retrieval.Retrieval;
 import de.dfki.mycbr.core.retrieval.Retrieval.RetrievalMethod;
-import de.dfki.mycbr.core.retrieval.RetrievalEngine;
-import de.dfki.mycbr.core.similarity.AmalgamationFct;
-import de.dfki.mycbr.core.similarity.IntegerFct;
 import de.dfki.mycbr.core.similarity.Similarity;
-import de.dfki.mycbr.core.similarity.SymbolFct;
-import de.dfki.mycbr.core.similarity.config.AmalgamationConfig;
-import de.dfki.mycbr.core.similarity.config.NumberConfig;
-import de.dfki.mycbr.core.similarity.config.StringConfig;
-import de.dfki.mycbr.io.XMLExporter;
 import de.dfki.mycbr.util.Pair;
 import general.supermarkets.RezeptAnfrage;
 import general.supermarkets.Rezepte;
+import jade.core.Agent;
+import jade.core.behaviours.OneShotBehaviour;
+import jade.domain.DFService;
+import jade.domain.FIPAException;
+import jade.domain.FIPAAgentManagement.DFAgentDescription;
+import jade.domain.FIPAAgentManagement.ServiceDescription;
 
 
-public class RecipeAgent {
+public class RecipeAgent extends Agent {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4018246584458218215L;
 	private static String projectName = "/myCBR/Rezepte.prj";
 	private static String project_path = System.getProperty("user.dir");
 
@@ -51,7 +49,45 @@ public class RecipeAgent {
 
 
 	public RecipeAgent() {
-		importProject();
+	}
+	
+	
+	protected void setup() {
+		
+		DFAgentDescription desc = new DFAgentDescription();
+		ServiceDescription sd = new ServiceDescription();
+		
+		sd.setName("RezepteAgent");		
+		sd.setType("Rezepte Agent");
+		desc.addServices(sd);
+		
+		try {
+			DFService.register(this, desc);
+		} catch(FIPAException fe) {
+			System.out.println(fe.getMessage());
+		}
+		
+		addBehaviour(new RecipeAgentBehavior());
+	}
+	
+	protected void takeDown() {
+		try {
+			DFService.deregister(this);
+		} catch(FIPAException fe) {
+			System.out.println(fe.getMessage());
+		}
+	}
+	
+	
+	private class RecipeAgentBehavior extends OneShotBehaviour {
+
+		@Override
+		public void action() {
+			importProject();
+			
+			
+		}
+		
 	}
 
 	/**

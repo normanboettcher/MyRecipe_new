@@ -213,14 +213,14 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 	
 	public static void schreibeStatus(int s) {
 		Integer status = new Integer(s);
-		File file = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.dat");
+		File file = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
 		File file_new = null;
 		
 		if(file.exists()) {
 			file.delete();
-			file_new = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.dat");
+			file_new = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
 		} else {
-			file_new = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.dat");
+			file_new = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
 		}
 		
 		DataOutputStream dous = null;
