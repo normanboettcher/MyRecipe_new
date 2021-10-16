@@ -24,7 +24,7 @@
 	</c:if> -->
 
 <header> <!-- Navbar with Logo --> <nav
-class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
 	<a class="navbar-brand" href="index.jsp"><img
 		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
@@ -41,8 +41,7 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
 					class="fas fa-store-alt"></i> Händler
-			</a>
-			<!-- Navbar: DropDown Verschiedene Händer und Produkte -->
+			</a> <!-- Navbar: DropDown Verschiedene Händer und Produkte -->
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<li><form action="../ZeigeSortimentServlet" method="get">
 							<button name="supermarkt" value="penny"
@@ -72,7 +71,7 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 						</form></li>
 
 				</ul></li>
-				<!-- Navbar: DropDown Verschiedene Händer und Angebote -->
+			<!-- Navbar: DropDown Verschiedene Händer und Angebote -->
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
 				role="button" data-bs-toggle="dropdown" aria-expanded="false"> <i
@@ -87,9 +86,7 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 									width="30" height="25"> Penny</a>
 							</button>
 						</form></li>
-					<li><a class="nav-link" href="test.jsp"><i
-					class="fas fa-shopping-basket"></i> Einkaufskorb</a></li>
-
+					<li><hr class="dropdown-divider"></li>
 					<li><form action="../ZeigeAngeboteServlet" method="get">
 							<button name="supermarkt" value="rewe"
 								style="border: none; background: #ffffff; color: #3d3832; margin-left: 15px;">
@@ -119,7 +116,8 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 </nav></header>
 <body>
 	<!-- Suche/ Rezeptauswahl -->
-	<form class="box" action="../RezepteServlet" method = "get" onsubmit="return ((validateForm() & validateForm2() & validateForm3()) == 1)">
+	<form class="box" action="../RezepteServlet" method="get"
+		onsubmit="return ((validateForm() & validateForm2() & validateForm3()) == 1)">
 		<div class="boxContainer">
 			<table class="elementsContainer">
 				<tr>
@@ -146,14 +144,14 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 				</tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input type="radio"
-						name="kueche" id="Italienisch" value="Italienisch"><label> </label><a
-						style="color: white; white-space: nowrap;"> Italienisch</a></td>
+						name="kueche" id="Italienisch" value="Italienisch"><label>
+					</label><a style="color: white; white-space: nowrap;"> Italienisch</a></td>
 					<td style="width: 33%; position: absolut;"><input type="radio"
-						name="kueche" id="Asiatisch" value="Asiatisch"> <label> </label><a
-						style="color: white; white-space: nowrap;"> Asiatisch</a></td>
+						name="kueche" id="Asiatisch" value="Asiatisch"> <label>
+					</label><a style="color: white; white-space: nowrap;"> Asiatisch</a></td>
 					<td style="width: 33%; position: absolut;"><input type="radio"
-						name="kueche" id="Amerikanisch" value="Amerikanisch"> <label> </label><a
-						style="color: white; white-space: nowrap;"> Amerikanisch</a></td>
+						name="kueche" id="Amerikanisch" value="Amerikanisch"> <label>
+					</label><a style="color: white; white-space: nowrap;"> Amerikanisch</a></td>
 				</tr>
 				<tr>
 					<td
@@ -190,14 +188,15 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 				</tr>
 				<tr>
 					<td style="width: 33%; position: absolut;"><input type="radio"
-						name="eigenschaften" id="Vegan" value="Vegan"><label> </label><a
-						style="color: white; white-space: nowrap;"> Vegan</a></td>
+						name="eigenschaften" id="Vegan" value="Vegan"><label>
+					</label><a style="color: white; white-space: nowrap;"> Vegan</a></td>
 					<td style="width: 33%; position: absolut;"><input type="radio"
-						name="eigenschaften" id="Vegetarisch" value="Vegetarisch"> <label>
-					</label><a style="color: white; white-space: nowrap;"> Vegetarisch</a></td>
+						name="eigenschaften" id="Vegetarisch" value="Vegetarisch">
+						<label> </label><a style="color: white; white-space: nowrap;">
+							Vegetarisch</a></td>
 					<td style="width: 33%; position: absolut;"><input type="radio"
-						name="eigenschaften" id="Fleisch" value="Fleisch"> <label> </label><a
-						style="color: white; white-space: nowrap;">Fleischgericht</a></td>
+						name="eigenschaften" id="Fleisch" value="Fleisch"> <label>
+					</label><a style="color: white; white-space: nowrap;">Fleischgericht</a></td>
 				</tr>
 			</table>
 		</div>
@@ -214,38 +213,44 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 	<button onclick="togglePopup()"
 		style="border: none; background: none; align: left; margin-top: 600px;">:)</button>
 	<script type="text/javascript">
-	function validateForm() {
-	    var radios = document.getElementsByName("kueche");
-	    var formValid = false;
-	    var i = 0;
-	    while (!formValid && i < radios.length) {
-	        if (radios[i].checked) formValid = true;
-	        i++;        
-	    }
-	    if (!formValid) alert("Bitte wählen Sie eine Küche aus!");
-	    return formValid;
+		function validateForm() {
+			var radios = document.getElementsByName("kueche");
+			var formValid = false;
+			var i = 0;
+			while (!formValid && i < radios.length) {
+				if (radios[i].checked)
+					formValid = true;
+				i++;
+			}
+			if (!formValid)
+				alert("Bitte wählen Sie eine Küche aus!");
+			return formValid;
 		}
-	function validateForm2() {
-	    var radios = document.getElementsByName("gerichteart");
-	    var formValid = false;
-	    var i = 0;
-	    while (!formValid && i < radios.length) {
-	        if (radios[i].checked) formValid = true;
-	        i++;        
-	    }
-	    if (!formValid) alert("Bitte wählen Sie eine Gerichteart aus!");
-	    return formValid;
+		function validateForm2() {
+			var radios = document.getElementsByName("gerichteart");
+			var formValid = false;
+			var i = 0;
+			while (!formValid && i < radios.length) {
+				if (radios[i].checked)
+					formValid = true;
+				i++;
+			}
+			if (!formValid)
+				alert("Bitte wählen Sie eine Gerichteart aus!");
+			return formValid;
 		}
-	function validateForm3() {
-	    var radios = document.getElementsByName("eigenschaften");
-	    var formValid = false;
-	    var i = 0;
-	    while (!formValid && i < radios.length) {
-	        if (radios[i].checked) formValid = true;
-	        i++;        
-	    }
-	    if (!formValid) alert("Bitte wählen Sie eine Eigenschaft aus!");
-	    return formValid;
+		function validateForm3() {
+			var radios = document.getElementsByName("eigenschaften");
+			var formValid = false;
+			var i = 0;
+			while (!formValid && i < radios.length) {
+				if (radios[i].checked)
+					formValid = true;
+				i++;
+			}
+			if (!formValid)
+				alert("Bitte wählen Sie eine Eigenschaft aus!");
+			return formValid;
 		}
 		function togglePopup() {
 			document.getElementById("popup-1").classList.toggle("active");

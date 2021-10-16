@@ -204,8 +204,7 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			else {
 				block();
 			}	
-		}
-		
+		}	
 		public static int holeStatus() {
 			Integer status = 0;
 			DataInputStream dis = null;
@@ -250,30 +249,24 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			}
 
 			DataOutputStream dous = null;
-
-			try {
-				dous =  new DataOutputStream(new FileOutputStream(file_new));
-				//writer.println(status);
-				//writer.close();
-				System.out.println("Schreibe status: " + status);
-				dous.writeInt(status);
-			} catch (FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} finally {
-				//writer.close();
-				try {
-					dous.close();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+		
+		try {
+			dous =  new DataOutputStream(new FileOutputStream(file_new));
+			//writer.println(status);
+			//writer.close();
+			System.out.println("Schreibe status: " + status);
+			dous.writeInt(status);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			//writer.close();
 		}
 	}
+}
 }
 	
 
