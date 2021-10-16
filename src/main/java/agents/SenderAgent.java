@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import general.Einkaufsliste;
+import general.supermarkets.Rezepte;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.OneShotBehaviour;
@@ -19,7 +20,7 @@ public class SenderAgent extends Agent {
 	
 	
 	private String name;
-	private HashMap<Integer, Einkaufsliste> object_to_send;
+	private Object object_to_send;
 	private boolean ready_to_send;
 	
 	public SenderAgent() {
@@ -31,11 +32,16 @@ public class SenderAgent extends Agent {
 		return name;
 	}
 	
-	private void setObjectToSend(HashMap<Integer, Einkaufsliste> l) {
-		this.object_to_send = l;
+	private void setObjectToSend(Object l) {
+		if(l instanceof HashMap) {
+			this.object_to_send = (HashMap<Integer, Einkaufsliste>) l;
+		} else if (l instanceof ArrayList) {
+			this.object_to_send = (ArrayList<Rezepte>) l;
+		}
+		
 	}
 	
-	public HashMap<Integer, Einkaufsliste> getObjectToSend() {
+	public Object getObjectToSend() {
 		return object_to_send;
 	}
 	
@@ -89,9 +95,14 @@ public class SenderAgent extends Agent {
 			String str2 = "";
 			
 			jade.lang.acl.ACLMessage ms = blockingReceive();
-			String conv_id = ms.getConversationId();
+			String conv_id = "";
+			if(ms != null) {
+				ms.getConversationId();
+			} else {
+				block();
+			}
 			
-			if(ms != null && conv_id.equals("ProzessBeendet")) {
+			if(ms != null && conv_id.equals("ProzessBeendetVergleich")) {
 				str1 = "Start action() from [ " + getName() + " ]"
 						+ " in SendeAgentBehaviour";
 				try {
@@ -103,6 +114,37 @@ public class SenderAgent extends Agent {
 					str2 = "Agent: [ " + getName() + " ] konnte Nachricht "
 							+ " von [ " + ms.getSender() + " ] empfangen und Objekt "
 									+ "[ " + objekt + " ] zum Senden vorbereiten";
+					
+					ArrayList<String> s = new ArrayList<String>();
+					s.add(str1); s.add(str2);
+					
+					Object[] objects = {s, "1"};
+					
+					jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+					send_to_protocoll.setContentObject(objects);
+					send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
+					send(send_to_protocoll);
+				
+				} catch (UnreadableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else if(ms != null && conv_id.equals("ProzessBeendetQuery")) {
+				str1 = "Start action() from [ " + getName() + " ]"
+						+ " in SendeAgentBehaviour";
+				try {
+					
+					ArrayList<Rezepte> objekt = (ArrayList<Rezepte>) ms.getContentObject();
+					
+					setObjectToSend(objekt);
+					
+					str2 = "Agent: [ " + getName() + " ] konnte Nachricht "
+							+ " von [ " + ms.getSender() + " ] empfangen und Objekt "
+									+ "[ " + objekt + " ] zum Senden vorbereiten. "
+											+ "Der Queryprozess ist beendet.";
 					
 					ArrayList<String> s = new ArrayList<String>();
 					s.add(str1); s.add(str2);

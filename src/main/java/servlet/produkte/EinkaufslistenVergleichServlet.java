@@ -52,7 +52,7 @@ public class EinkaufslistenVergleichServlet extends HttpServlet {
 		
 		System.out.println("Start Agents and let them communicate");
 
-		new JadeConnector(agenten_map);
+		JadeConnector.startAgentsZumBerechnen(agenten_map);
 	
 		try {
 			Thread.sleep(13500);

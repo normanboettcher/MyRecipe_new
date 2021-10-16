@@ -10,12 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import agents.RecipeAgent;
-import general.supermarkets.RezeptAnfrage;
-import general.supermarkets.Rezepte;
+import agents.SenderAgent;
 import de.dfki.mycbr.core.casebase.Instance;
 import de.dfki.mycbr.core.similarity.Similarity;
 import de.dfki.mycbr.util.Pair;
+import general.supermarkets.RezeptAnfrage;
+import general.supermarkets.Rezepte;
+import jade.connector.JadeConnector;
 
 
 @WebServlet("/RezepteServlet")
@@ -52,14 +53,16 @@ public class RezepteServlet extends HttpServlet {
 			
 			RezeptAnfrage queryRezepte = new RezeptAnfrage(inputTitel, inputKueche, inputGerichteart, inputEigenschaften); 
 			
-			RecipeAgent recipeAgent = new RecipeAgent(); 
-			result = recipeAgent.startQuery(queryRezepte); 
+			SenderAgent sender = new SenderAgent();
+			
+			JadeConnector.runAgentsForCBRQuery(sender, queryRezepte);
+			
+			Thread.sleep(10000);
+			//result = recipeAgent.startQuery(queryRezepte); 
 			//System.out.println(result == null);
-			resultingRezepte = recipeAgent.print(result, 5);
+			//resultingRezepte = recipeAgent.print(result, 5);
 			//System.out.println(resultingRezepte == null);
-			request.setAttribute("resultingRezepte", resultingRezepte);
-			
-			
+			request.setAttribute("resultingRezepte", sender.getObjectToSend());
 			
 			// Forward parameters back to the form for usability
 			//request.setAttribute("inputTitle", inputTitel);

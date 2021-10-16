@@ -1,7 +1,6 @@
 package agents;
 
 
-import java.io.BufferedReader;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
@@ -9,9 +8,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.HashMap;
 
@@ -20,6 +17,7 @@ import general.Supermarkt;
 import general.supermarkets.Lidl;
 import general.supermarkets.Penny;
 import general.supermarkets.Rewe;
+import general.supermarkets.RezeptAnfrage;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
@@ -36,6 +34,8 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 	 */
 	private static final long serialVersionUID = 8503306574485571056L;
 	private String name;
+	private RezeptAnfrage anfrage; //Der Ueberwachungsagent muss die RezeptAnfrage an 
+								   //den RecipeAgent uebermitteln koennen.
 	
 	public UeberwachungsAgent() {
 		this.name = "Ueberwachung";
@@ -45,13 +45,21 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		return name;
 	}
 	
+	public void setRezeptAnfrage(RezeptAnfrage a) {
+		this.anfrage = a;
+	}
+	
+	protected RezeptAnfrage getRezeptAnfrage() {
+		return anfrage;
+	}
+	
 	protected void setup() {
 		
 		DFAgentDescription desc = new DFAgentDescription();
 		ServiceDescription sd = new ServiceDescription();
 		
-		sd.setName("AktualisiereAngeboteAgent");		
-		sd.setType("Aktualisierungs Agent");
+		sd.setName("UeberwachungAngeboteAgent");		
+		sd.setType("Ueberwachungs Agent");
 		desc.addServices(sd);
 		
 		try {
@@ -173,81 +181,99 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-			} else {
-				block();
-			}
+					
+			} else if (aufforderung == null) {
+				jade.lang.acl.ACLMessage msg_an_RecipeAgent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+				msg_an_RecipeAgent.addReceiver(new AID("RezeptAgent", AID.ISLOCALNAME));
+				msg_an_RecipeAgent.setConversationId("CBRImport");
+				send(msg_an_RecipeAgent);
+			} else if (aufforderung != null && conv_id.equals("CBRImportFertig")) {
+				jade.lang.acl.ACLMessage msg_for_query_to_recipe_agent = aufforderung.createReply();
 				
+				msg_for_query_to_recipe_agent.setConversationId("CBRQuery");
+				RezeptAnfrage anfrage = getRezeptAnfrage();
+				try {
+					msg_for_query_to_recipe_agent.setContentObject(anfrage);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				send(msg_for_query_to_recipe_agent);
+				this.finished = true;
+			}
+			else {
+				block();
+			}	
 		}
-
-	
-	public static int holeStatus() {
-		Integer status = 0;
-		DataInputStream dis = null;
-		try {
-			//bfr = new BufferedReader(
+		
+		public static int holeStatus() {
+			Integer status = 0;
+			DataInputStream dis = null;
+			try {
+				//bfr = new BufferedReader(
 				//	new FileReader(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.txt"));
-			//StringBuilder sb = new StringBuilder();
-			//String line = bfr.readLine();
-			
-			//status = Integer.parseInt(line);
-			dis = new DataInputStream(new FileInputStream(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat"));
-			
-		
-			status = dis.readInt();
-			
-		} catch (EOFException eof) {
-			//Ist ok
-		} catch(IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-			//	bfr.close();
-				dis.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				//StringBuilder sb = new StringBuilder();
+				//String line = bfr.readLine();
+
+				//status = Integer.parseInt(line);
+				dis = new DataInputStream(new FileInputStream(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat"));
+
+
+				status = dis.readInt();
+
+			} catch (EOFException eof) {
+				//Ist ok
+			} catch(IOException e) {
 				e.printStackTrace();
+			} finally {
+				try {
+					//	bfr.close();
+					dis.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
+			return status;
 		}
-		return status;
-	}
 	
-	public static void schreibeStatus(int s) {
-		Integer status = new Integer(s);
-		File file = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
-		File file_new = null;
-		
-		if(file.exists()) {
-			file.delete();
-			file_new = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
-		} else {
-			file_new = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
-		}
-		
-		DataOutputStream dous = null;
-		
-		try {
-			dous =  new DataOutputStream(new FileOutputStream(file_new));
-			//writer.println(status);
-			//writer.close();
-			System.out.println("Schreibe status: " + status);
-			dous.writeInt(status);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-			//writer.close();
+		public static void schreibeStatus(int s) {
+			Integer status = new Integer(s);
+			File file = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
+			File file_new = null;
+
+			if(file.exists()) {
+				file.delete();
+				file_new = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
+			} else {
+				file_new = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
+			}
+
+			DataOutputStream dous = null;
+
 			try {
-				dous.close();
+				dous =  new DataOutputStream(new FileOutputStream(file_new));
+				//writer.println(status);
+				//writer.close();
+				System.out.println("Schreibe status: " + status);
+				dous.writeInt(status);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			} finally {
+				//writer.close();
+				try {
+					dous.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		}
 	}
-}
 }
 	
 

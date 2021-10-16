@@ -150,7 +150,7 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 							
 							jade.lang.acl.ACLMessage send_to_sender = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
 							send_to_sender.addReceiver(new AID("SendeAgent", AID.ISLOCALNAME));
-							send_to_sender.setConversationId("ProzessBeendet");
+							send_to_sender.setConversationId("ProzessBeendetVergleich");
 							send_to_sender.setContentObject(getEinkaufslistenSortiertNachPreis());
 							
 							str7 = "Agent: [ " + getName() + " ] sendet ContentObject [ " + l + " ]";

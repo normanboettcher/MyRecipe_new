@@ -1,6 +1,8 @@
 package general.supermarkets;
 
-public class RezeptAnfrage {
+import java.io.Serializable;
+
+public class RezeptAnfrage implements Serializable {
 	
 
 	private String titel;

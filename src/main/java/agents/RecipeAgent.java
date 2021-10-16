@@ -17,12 +17,15 @@ import de.dfki.mycbr.core.similarity.Similarity;
 import de.dfki.mycbr.util.Pair;
 import general.supermarkets.RezeptAnfrage;
 import general.supermarkets.Rezepte;
+import jade.core.AID;
 import jade.core.Agent;
-import jade.core.behaviours.OneShotBehaviour;
+import jade.core.behaviours.Behaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.lang.acl.ACLMessage;
+import jade.lang.acl.UnreadableException;
 
 
 public class RecipeAgent extends Agent {
@@ -39,6 +42,8 @@ public class RecipeAgent extends Agent {
 	private Concept RezepteConcept;
 	//private ICaseBase casebase;
 	private Retrieval retrieve;
+	
+	private String name;
 
 	// Attributes of our book, preparation for CBR
 	private StringDesc titelDesc;
@@ -49,6 +54,11 @@ public class RecipeAgent extends Agent {
 
 
 	public RecipeAgent() {
+		this.name = "RezeptAgent";
+	}
+	
+	public String getAgentName() {
+		return name;
 	}
 	
 	
@@ -79,13 +89,63 @@ public class RecipeAgent extends Agent {
 	}
 	
 	
-	private class RecipeAgentBehavior extends OneShotBehaviour {
+	private class RecipeAgentBehavior extends Behaviour {
 
-		@Override
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -2258555579999397566L;
+		boolean finished = false;
+		
+		
 		public void action() {
-			importProject();
 			
+			jade.lang.acl.ACLMessage empfang = receive();
+			String conv_id = "";
 			
+			if (empfang != null) {
+				conv_id = empfang.getConversationId();
+			} else {
+				block();
+			}
+			
+			if (empfang != null && conv_id.equals("CBRImport")) {
+				importProject();
+				
+				jade.lang.acl.ACLMessage antwort = empfang.createReply();
+				
+				antwort.setConversationId("CBRImportFertig");
+				send(antwort);
+				
+			} else if (empfang != null && conv_id.equals("CBRQuery")) {
+				RezeptAnfrage r = null;
+				try {
+					r = (RezeptAnfrage) empfang.getContentObject();
+					List<Pair<Instance, Similarity>> rezept_nach_query = startQuery(r);
+					ArrayList<Rezepte> fertige_rezepte_auswahl = getFertigeRezepte(rezept_nach_query, 5);
+					
+					jade.lang.acl.ACLMessage antwort_zu_sender = new jade.lang.acl.ACLMessage(
+							jade.lang.acl.ACLMessage.INFORM);
+					
+					antwort_zu_sender.setConversationId("ProzessBeendetQuery");
+					antwort_zu_sender.addReceiver(new AID("SendeAgent", AID.ISLOCALNAME));
+					send(antwort_zu_sender);
+					finished = true;
+					
+				} catch (UnreadableException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			} else {
+				block();
+			}
+		}
+
+		public boolean done() {
+			return finished;
 		}
 		
 	}
@@ -126,7 +186,7 @@ public class RecipeAgent extends Agent {
 		return RezepteConcept;
 	}
 	
-	public List<Pair<Instance, Similarity>> startQuery(RezeptAnfrage rezepte) throws ParseException {
+	private List<Pair<Instance, Similarity>> startQuery(RezeptAnfrage rezepte) throws ParseException {
 		// Get the values of the request
 		titelDesc = (StringDesc) getRezepteConcept().getAllAttributeDescs().get("Titel");
 		//titelDesc.addStringFct(StringConfig.LEVENSHTEIN, "titelfct",  true);
@@ -190,7 +250,7 @@ public class RecipeAgent extends Agent {
 	 * @param numberOfBestCases
 	 * @return
 	 */
-	public ArrayList<Rezepte> print(List<Pair<Instance, Similarity>> result, int numberOfBestCases) {
+	public ArrayList<Rezepte> getFertigeRezepte(List<Pair<Instance, Similarity>> result, int numberOfBestCases) {
 
 		ArrayList<Rezepte> resultingRezepte = new ArrayList<Rezepte>();
 		for (int i = 0; i < numberOfBestCases; i++) {

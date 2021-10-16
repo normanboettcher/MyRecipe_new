@@ -21,7 +21,7 @@
 <header> <!-- Navbar with Logo --> <nav
 class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
-	<a class="navbar-brand" href="index.jsp"><img
+	<a class="navbar-brand" href="login.jsp"><img
 		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
 		height="45"> MyRecipe</a>
 	<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
