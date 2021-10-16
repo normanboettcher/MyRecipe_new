@@ -180,7 +180,7 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		}
 
 	
-	public static int holeStatus() {
+	public int holeStatus() {
 		Integer status = 0;
 		DataInputStream dis = null;
 		try {
@@ -211,7 +211,7 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		return status;
 	}
 	
-	public static void schreibeStatus(int s) {
+	public void schreibeStatus(int s) {
 		Integer status = new Integer(s);
 		File file = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.dat");
 		File file_new = null;
