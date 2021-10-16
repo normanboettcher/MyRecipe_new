@@ -55,7 +55,7 @@ public class EinkaufslistenVergleichServlet extends HttpServlet {
 		new JadeConnector(agenten_map);
 	
 		try {
-			Thread.sleep(15000);
+			Thread.sleep(13500);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -2,8 +2,13 @@ package agents;
 
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -105,12 +110,14 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 				
 				int counter = holeStatus();
 				
+				System.out.println(counter);
+				
 				int status = 0;
 				
 				//Sollten die Angebote bereits dreimal abgerufen worden sein ohne 
 				//aktualisiert zu werden, werden sie aktualisiert und der status dafuer auf 
 				// 1 gesetzt und dem Aktualisierungsagenten geschickt
-				if(counter == 3) {
+				if(counter >= 3) {
 					status = 1;
 				}
 				
@@ -138,7 +145,6 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 				
 								b = (boolean) obs[0];
 
-								System.out.println(b);
 								if(b == true) {
 									//Wenn aktualisiert wurde, dann faengt status wieder von 0 an zu zaehlen
 									schreibeStatus(0);
@@ -175,21 +181,28 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 
 	
 	public static int holeStatus() {
-		int status = 0;
-		BufferedReader bfr = null;
+		Integer status = 0;
+		DataInputStream dis = null;
 		try {
-			bfr = new BufferedReader(
-					new FileReader(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.txt"));
-			StringBuilder sb = new StringBuilder();
-			String line = bfr.readLine();
+			//bfr = new BufferedReader(
+				//	new FileReader(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.txt"));
+			//StringBuilder sb = new StringBuilder();
+			//String line = bfr.readLine();
 			
-			status = Integer.parseInt(line);
+			//status = Integer.parseInt(line);
+			dis = new DataInputStream(new FileInputStream(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat"));
 			
+		
+			status = dis.readInt();
+			
+		} catch (EOFException eof) {
+			//Ist ok
 		} catch(IOException e) {
 			e.printStackTrace();
 		} finally {
 			try {
-				bfr.close();
+			//	bfr.close();
+				dis.close();
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -199,22 +212,39 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 	}
 	
 	public static void schreibeStatus(int s) {
-		File file = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.txt");
-		file.delete();
-		File file_new = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.txt");
+		Integer status = new Integer(s);
+		File file = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.dat");
+		File file_new = null;
 		
-		String status = Integer.toString(s);
-		PrintWriter writer = null;
+		if(file.exists()) {
+			file.delete();
+			file_new = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.dat");
+		} else {
+			file_new = new File(System.getProperty("user.dir")+  "/UeberwachungAgent/anfrage.dat");
+		}
+		
+		DataOutputStream dous = null;
 		
 		try {
-			writer = new PrintWriter(file_new);
-			writer.println(status);
-			writer.close();
+			dous =  new DataOutputStream(new FileOutputStream(file_new));
+			//writer.println(status);
+			//writer.close();
+			System.out.println("Schreibe status: " + status);
+			dous.writeInt(status);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
-			writer.close();
+			//writer.close();
+			try {
+				dous.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 }

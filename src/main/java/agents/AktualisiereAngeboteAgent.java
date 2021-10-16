@@ -88,7 +88,7 @@ public class AktualisiereAngeboteAgent extends Agent {
 		@Override
 		public void action() {
 			String conv_id = "";
-			System.out.println("In Action von AktualisierungsBeh");
+			
 			jade.lang.acl.ACLMessage msg = blockingReceive();
 				
 			UeberwachungsAgent ue_agent;
@@ -103,7 +103,6 @@ public class AktualisiereAngeboteAgent extends Agent {
 				if(msg != null && conv_id.equals("UpdateAnfrage")) {
 				Object[] objects = (Object[]) msg.getContentObject();
 				ue_agent = (UeberwachungsAgent) objects[0];
-				System.out.println("In try von AktualisierungsBeh");
 				
 					Supermarkt[] maerkte = (Supermarkt[]) objects[1];
 					int status = (int) objects[2];
@@ -201,7 +200,6 @@ public class AktualisiereAngeboteAgent extends Agent {
 				default:
 					break;
 			}
-			System.out.println("In initAngebote von AktualisierungsBeh");
 			
 			//Mindestens 15 bis 30 Prozent des Sortiments sollen in das Angebot.
 			double high = 0.3;
