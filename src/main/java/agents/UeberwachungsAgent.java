@@ -35,7 +35,8 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 	private static final long serialVersionUID = 8503306574485571056L;
 	private String name;
 	private RezeptAnfrage anfrage; //Der Ueberwachungsagent muss die RezeptAnfrage an 
-								   //den RecipeAgent uebermitteln koennen.
+									//den RecipeAgent uebermitteln koennen.
+	private String status;
 	
 	public UeberwachungsAgent() {
 		this.name = "Ueberwachung";
@@ -43,6 +44,14 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 	
 	public String getAgentName() {
 		return name;
+	}
+	
+	public void setStatus(String s) {
+		this.status = s;
+	}
+	
+	private String getStatus() {
+		return status;
 	}
 	
 	public void setRezeptAnfrage(RezeptAnfrage a) {
@@ -68,6 +77,9 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			System.out.println(fe.getMessage());
 		}
 		
+		if(getStatus().equals("start")) {
+			addBehaviour(new Startverhalten());
+		}
 		addBehaviour(new UeberwachungsVerhalten());
 	}
 	
@@ -79,6 +91,50 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		}
 	}
 
+	private class Startverhalten extends Behaviour {
+		private boolean finished = false;
+		@Override
+		public void action() {
+			System.out.println(getStatus());
+			
+			if(getStatus().equals("start")) {
+				System.out.println("Bin in IF weil start");
+				jade.lang.acl.ACLMessage msg_an_RecipeAgent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+				msg_an_RecipeAgent.addReceiver(new AID("RezeptAgent", AID.ISLOCALNAME));
+				msg_an_RecipeAgent.setConversationId("CBRImport");
+				send(msg_an_RecipeAgent);
+			}
+			
+			jade.lang.acl.ACLMessage empfang = blockingReceive();
+			String conv_id = "";
+			
+			if(empfang != null) {
+				conv_id = empfang.getConversationId();
+			}
+			
+			if (empfang != null && conv_id.equals("CBRImportFertig")) {
+				jade.lang.acl.ACLMessage msg_for_query_to_recipe_agent = empfang.createReply();
+
+				msg_for_query_to_recipe_agent.setConversationId("CBRQuery");
+				RezeptAnfrage anfrage = getRezeptAnfrage();
+				try {
+					msg_for_query_to_recipe_agent.setContentObject(anfrage);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				send(msg_for_query_to_recipe_agent);
+				this.finished = true;
+			}
+		}
+
+		@Override
+		public boolean done() {
+			// TODO Auto-generated method stub
+			return finished;
+		}
+		
+	}
 	
 	private class UeberwachungsVerhalten extends Behaviour {
 		private boolean finished = false;
@@ -100,110 +156,94 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			
 			System.out.println("In Action von Uberwachungsverhalten");
 			
-			jade.lang.acl.ACLMessage aufforderung = blockingReceive();
-			
-			
-			if(aufforderung != null) {
-				conv_id = aufforderung.getConversationId();
-			}
-			
-			if(aufforderung != null && conv_id.equals("AufforderungAnUeberwachung")) {
-				
-				System.out.println("Aufforderung von Angebot Agent erhalten.");
-				
-				System.out.println("Aufforderung entgegen genommen");
-				
-				jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-				msg.addReceiver(new AID("AktualisierungsAgent", AID.ISLOCALNAME));
-				
-				int counter = holeStatus();
-				
-				System.out.println(counter);
-				
-				int status = 0;
-				
-				//Sollten die Angebote bereits dreimal abgerufen worden sein ohne 
-				//aktualisiert zu werden, werden sie aktualisiert und der status dafuer auf 
-				// 1 gesetzt und dem Aktualisierungsagenten geschickt
-				if(counter >= 3) {
-					status = 1;
+				jade.lang.acl.ACLMessage aufforderung = blockingReceive();
+
+				if(aufforderung != null) {
+					conv_id = aufforderung.getConversationId();
+				} else {
+					block();
 				}
-				
-				try {
-					Supermarkt[] maerkte = {new Lidl(), new Penny(), new Rewe()}; 
-					
-					HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) aufforderung.getContentObject();
-					
-					Object[] o = {new UeberwachungsAgent(),maerkte, status, l};
-					msg.setContentObject(o);
-					msg.setConversationId("UpdateAnfrage");
-					send(msg);
-					System.out.println("Anfrage an den Aktualisierungsagenten gesendet..");
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			} else if (aufforderung != null && conv_id.equals("UpdateAntwort")) {
-							
+
+				if(aufforderung != null && conv_id.equals("AufforderungAnUeberwachung")) {
+
+					System.out.println("Aufforderung von Angebot Agent erhalten.");
+
+					System.out.println("Aufforderung entgegen genommen");
+
+					jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+					msg.addReceiver(new AID("AktualisierungsAgent", AID.ISLOCALNAME));
+
+					int counter = holeStatus();
+
+					System.out.println(counter);
+
+					int status = 0;
+
+					//Sollten die Angebote bereits dreimal abgerufen worden sein ohne 
+					//aktualisiert zu werden, werden sie aktualisiert und der status dafuer auf 
+					// 1 gesetzt und dem Aktualisierungsagenten geschickt
+					if(counter >= 3) {
+						status = 1;
+					}
+
+					try {
+						Supermarkt[] maerkte = {new Lidl(), new Penny(), new Rewe()}; 
+
+						HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) aufforderung.getContentObject();
+
+						Object[] o = {new UeberwachungsAgent(),maerkte, status, l};
+						msg.setContentObject(o);
+						msg.setConversationId("UpdateAnfrage");
+						send(msg);
+						System.out.println("Anfrage an den Aktualisierungsagenten gesendet..");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				} else if (aufforderung != null && conv_id.equals("UpdateAntwort")) {
+
 					boolean b = false;
 					try {
 						if(aufforderung != null) {
 							Object[] obs =  (Object[]) aufforderung.getContentObject();
 							AktualisiereAngeboteAgent a = (AktualisiereAngeboteAgent) obs[1];
 							HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) obs[2];
-				
-								b = (boolean) obs[0];
 
-								if(b == true) {
-									//Wenn aktualisiert wurde, dann faengt status wieder von 0 an zu zaehlen
-									schreibeStatus(0);
-									jade.lang.acl.ACLMessage to_angebot_agent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-									to_angebot_agent.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
-									Object[] objects_to_send = {b, l};
-									to_angebot_agent.setContentObject(objects_to_send);
-									to_angebot_agent.setConversationId("UpdateVonUeberwachung");
-									send(to_angebot_agent);
-									this.finished = true;
-								} else {
-									int counter = holeStatus() + 1;
-									schreibeStatus(counter);
-									jade.lang.acl.ACLMessage to_angebot_agent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-									to_angebot_agent.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
-									Object[] objects_to_send = {b, l};
-									to_angebot_agent.setContentObject(objects_to_send);
-									to_angebot_agent.setConversationId("UpdateVonUeberwachung");
-									send(to_angebot_agent);
-									this.finished = true;
-								}
+							b = (boolean) obs[0];
+
+							if(b == true) {
+								//Wenn aktualisiert wurde, dann faengt status wieder von 0 an zu zaehlen
+								schreibeStatus(0);
+								jade.lang.acl.ACLMessage to_angebot_agent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+								to_angebot_agent.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
+								Object[] objects_to_send = {b, l};
+								to_angebot_agent.setContentObject(objects_to_send);
+								to_angebot_agent.setConversationId("UpdateVonUeberwachung");
+								send(to_angebot_agent);
+								this.finished = true;
+							} else {
+								int counter = holeStatus() + 1;
+								schreibeStatus(counter);
+								jade.lang.acl.ACLMessage to_angebot_agent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+								to_angebot_agent.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
+								Object[] objects_to_send = {b, l};
+								to_angebot_agent.setContentObject(objects_to_send);
+								to_angebot_agent.setConversationId("UpdateVonUeberwachung");
+								send(to_angebot_agent);
+								this.finished = true;
 							}
-						} catch (UnreadableException e) {
+						}
+					} catch (UnreadableException e) {
 						e.printStackTrace();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					
-			} else if (aufforderung == null) {
-				jade.lang.acl.ACLMessage msg_an_RecipeAgent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-				msg_an_RecipeAgent.addReceiver(new AID("RezeptAgent", AID.ISLOCALNAME));
-				msg_an_RecipeAgent.setConversationId("CBRImport");
-				send(msg_an_RecipeAgent);
-			} else if (aufforderung != null && conv_id.equals("CBRImportFertig")) {
-				jade.lang.acl.ACLMessage msg_for_query_to_recipe_agent = aufforderung.createReply();
-				
-				msg_for_query_to_recipe_agent.setConversationId("CBRQuery");
-				RezeptAnfrage anfrage = getRezeptAnfrage();
-				try {
-					msg_for_query_to_recipe_agent.setContentObject(anfrage);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				} 
+
+				else {
+					block();
 				}
-				send(msg_for_query_to_recipe_agent);
-				this.finished = true;
 			}
-			else {
-				block();
-			}	
 		}	
 		public static int holeStatus() {
 			Integer status = 0;
@@ -267,7 +307,7 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		}
 	}
 }
-}
+
 	
 
 				

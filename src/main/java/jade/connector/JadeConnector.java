@@ -39,7 +39,9 @@ public class JadeConnector {
 		ProtokollAgent protokoll_agent = new ProtokollAgent();
 		AktualisiereAngeboteAgent a_agent = new AktualisiereAngeboteAgent();
 		UeberwachungsAgent ue_agent = new UeberwachungsAgent();
-				
+		
+		ue_agent.setStatus("");
+		
 		rt = jade.core.Runtime.instance();
 		rt.setCloseVM(true);
 		//create default profile and main container
@@ -91,6 +93,7 @@ public class JadeConnector {
 		ProtokollAgent p_agent = new ProtokollAgent();
 		
 		ue_agent.setRezeptAnfrage(anfrage);
+		ue_agent.setStatus("start");
 		
 		rt = jade.core.Runtime.instance();
 		rt.setCloseVM(true);

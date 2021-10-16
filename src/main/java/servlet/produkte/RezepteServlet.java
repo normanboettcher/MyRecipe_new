@@ -2,6 +2,7 @@ package servlet.produkte;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -57,19 +58,10 @@ public class RezepteServlet extends HttpServlet {
 			
 			JadeConnector.runAgentsForCBRQuery(sender, queryRezepte);
 			
-			Thread.sleep(10000);
-			//result = recipeAgent.startQuery(queryRezepte); 
-			//System.out.println(result == null);
-			//resultingRezepte = recipeAgent.print(result, 5);
-			//System.out.println(resultingRezepte == null);
-			request.setAttribute("resultingRezepte", sender.getObjectToSend());
+			Thread.sleep(7000);
 			
-			// Forward parameters back to the form for usability
-			//request.setAttribute("inputTitle", inputTitel);
-			//request.setAttribute("inputKueche", inputKueche);
-			//request.setAttribute("inputGerichteart", inputGerichteart);
-			//request.setAttribute("inputEigenschaften", inputEigenschaften);
-			//request.setAttribute("inputRezepte_id", inputIdParsed);
+			ArrayList<Rezepte>rezepte = (ArrayList<Rezepte>) sender.getObjectToSend();
+			request.setAttribute("resultingRezepte", rezepte);
 			
 			request.getRequestDispatcher("JSP/rezepte.jsp").forward(request, response);
 		} catch (Exception ex)  {

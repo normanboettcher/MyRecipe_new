@@ -2,7 +2,6 @@ package servlet.produkte;
 
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.Map.Entry;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +13,7 @@ import agents.AngeboteAgent;
 import agents.EinkaufslistenVergleichsAgent;
 import agents.SenderAgent;
 import general.Einkaufsliste;
-import general.Food;
+import general.supermarkets.Rezepte;
 import jade.connector.JadeConnector;
 import jade.core.Agent;
 
@@ -60,8 +59,9 @@ public class EinkaufslistenVergleichServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
-		request.setAttribute("result", sender.getObjectToSend());
+		HashMap<Integer, Einkaufsliste> result = (HashMap<Integer, Einkaufsliste>) sender.getObjectToSend();
+		
+		request.setAttribute("result", result);
 		request.getRequestDispatcher("JSP/einkaufslistenVergleich.jsp").forward(request, response);	
 	}
 	

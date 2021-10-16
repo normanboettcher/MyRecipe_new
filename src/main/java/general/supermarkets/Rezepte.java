@@ -1,13 +1,18 @@
 package general.supermarkets;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 import general.Food;
 import managers.DoubleManager;
 
-public class Rezepte {
+public class Rezepte implements Serializable {
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5527515392357977679L;
 	private String titel;
 	private String kueche;
 	private String gerichteart;

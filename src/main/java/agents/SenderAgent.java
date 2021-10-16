@@ -97,7 +97,7 @@ public class SenderAgent extends Agent {
 			jade.lang.acl.ACLMessage ms = blockingReceive();
 			String conv_id = "";
 			if(ms != null) {
-				ms.getConversationId();
+				conv_id = ms.getConversationId();
 			} else {
 				block();
 			}
@@ -140,6 +140,7 @@ public class SenderAgent extends Agent {
 					ArrayList<Rezepte> objekt = (ArrayList<Rezepte>) ms.getContentObject();
 					
 					setObjectToSend(objekt);
+					ArrayList<Rezepte> r= (ArrayList<Rezepte>) getObjectToSend();
 					
 					str2 = "Agent: [ " + getName() + " ] konnte Nachricht "
 							+ " von [ " + ms.getSender() + " ] empfangen und Objekt "

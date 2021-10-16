@@ -1,6 +1,7 @@
 package agents;
 
 import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +68,7 @@ public class RecipeAgent extends Agent {
 		DFAgentDescription desc = new DFAgentDescription();
 		ServiceDescription sd = new ServiceDescription();
 		
-		sd.setName("RezepteAgent");		
+		sd.setName("RezeptAgent");		
 		sd.setType("Rezepte Agent");
 		desc.addServices(sd);
 		
@@ -100,13 +101,13 @@ public class RecipeAgent extends Agent {
 		
 		public void action() {
 			
-			jade.lang.acl.ACLMessage empfang = receive();
+			jade.lang.acl.ACLMessage empfang = blockingReceive();
 			String conv_id = "";
 			
 			if (empfang != null) {
 				conv_id = empfang.getConversationId();
 			} else {
-				block();
+				empfang = blockingReceive();
 			}
 			
 			if (empfang != null && conv_id.equals("CBRImport")) {
@@ -127,15 +128,25 @@ public class RecipeAgent extends Agent {
 					jade.lang.acl.ACLMessage antwort_zu_sender = new jade.lang.acl.ACLMessage(
 							jade.lang.acl.ACLMessage.INFORM);
 					
+					System.out.println("Sende objekt: ");
+					
+					for(int i = 0; i < fertige_rezepte_auswahl.size(); i++) {
+						System.out.println(fertige_rezepte_auswahl.get(i));
+					}
+					
 					antwort_zu_sender.setConversationId("ProzessBeendetQuery");
 					antwort_zu_sender.addReceiver(new AID("SendeAgent", AID.ISLOCALNAME));
+					antwort_zu_sender.setContentObject(fertige_rezepte_auswahl);
 					send(antwort_zu_sender);
-					finished = true;
+					this.finished = true;
 					
 				} catch (UnreadableException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
