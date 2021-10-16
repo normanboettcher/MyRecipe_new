@@ -222,6 +222,4 @@ public class ProtokollAgent extends Agent {
 		
 		return str;
 	}
-	
-	
 }
