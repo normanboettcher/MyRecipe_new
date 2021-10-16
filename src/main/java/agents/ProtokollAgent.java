@@ -1,7 +1,13 @@
 package agents;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -30,21 +36,18 @@ public class ProtokollAgent extends Agent {
 	private File protokoll;
 	private String ordner;
 	private PrintWriter w;
+	private ArrayList<String> collection;
 	
 	public ProtokollAgent() {
-		String project_path = System.getProperty("user.dir");
-		this.protokoll = new File(project_path + "/Agent_Protokolle/Protokoll" + LocalDateTime.now());
+		this.collection = new ArrayList<String>();
+	}
 	
-		try {
-			this.w = new PrintWriter(getFile()); 
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+	protected ArrayList<String> getCollection() {
+		return collection;
+	}
+	
+	protected void collect(String str) {
+		getCollection().add(str + "\n");
 	}
 	
 	protected void setup() {
@@ -116,38 +119,108 @@ public class ProtokollAgent extends Agent {
 		return w;
 	}
 	
-	private String getOrdner() {
-		return ordner;
-	}
-	
 	private void writeProtokollToFile(String str, String status) {
 		
 		switch(status) {
 			case "2":
-				getPrintWriter().println(("===================="
-						+ "PRINT NEXT STEPS TO PROTOCOLL==============="));
-				getPrintWriter().println("");
-				getPrintWriter().println(str + "\n");			
-				getPrintWriter().println("================NEXT STEPS FOLLOW================" + "\n" + "\n");
-			
+				schreibeZwischenstandZuDatei();
 			case "0":
-
-				getPrintWriter().println(("===================="
-						+ "PRINT NEXT STEPS TO PROTOCOLL==============="));
-				getPrintWriter().println("");
-				getPrintWriter().println(str + "\n");			
-				getPrintWriter().println("================NEXT STEPS FOLLOW================" + "\n" + "\n");
-				
+				collect(str);
 				break;
 			case "1":
 				
-				getPrintWriter().println("============= END OF PROTOCOLL========================");
-				getPrintWriter().close();
-				
+				schreibeKomplettesProtokollZuDatei(getCollection());
 				break;
 			default:
 					break;
 		}
+	}
+	
+	private void schreibeKomplettesProtokollZuDatei(ArrayList<String> str) {
+		String project_path = System.getProperty("user.dir");
+		this.protokoll = new File(project_path + "/Agent_Protokolle/Protokoll_" + LocalDateTime.now());
+		try {
+			this.w = new PrintWriter(getFile()); 
+			
+			getPrintWriter().println(leseVonProtokollAusZwischenstand());
+			
+			for(int i = 0; i < str.size(); i++) {
+				getPrintWriter().println(str.get(i));
+			}
+			
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			getPrintWriter().close();
+			File file = new File(System.getProperty("user.dir") + "/Agent_Protokolle/Zwischenstand.dat");
+			file.delete();
+		}
+	}
+	
+	private void schreibeZwischenstandZuDatei() {
+		
+		File file = new File(System.getProperty("user.dir") + "/Agent_Protokolle/Zwischenstand.dat");
+		File file_new = null;
+
+		if(file.exists()) {
+			file.delete();
+			file_new = new File(System.getProperty("user.dir") + "/Agent_Protokolle/Zwischenstand.dat");
+		} else {
+			file_new = new File(System.getProperty("user.dir") + "/Agent_Protokolle/Zwischenstand.dat");
+		}
+
+		DataOutputStream dous = null;
+	
+	try {
+		dous =  new DataOutputStream(new FileOutputStream(file_new));
+		
+		for(int i = 0; i < getCollection().size(); i++) {
+			dous.writeBytes(getCollection().get(i));
+		}
+		
+	} catch (FileNotFoundException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} finally {
+		//writer.close();
+	}
+	}
+	
+	private String leseVonProtokollAusZwischenstand() {
+		String str = "==================================LADE PROTOKOLL AUS ZWISCHENSTAND"
+				+ "=====================================" + "\n";
+		
+		DataInputStream dis = null;
+		try {
+			
+			dis = new DataInputStream(new FileInputStream(System.getProperty("user.dir") + "/Agent_Protokolle/Zwischenstand.dat"));
+			
+			while(dis.readLine() != null) {
+				str += dis.readLine() + "\n";
+			}
+			
+		} catch (EOFException eof) {
+			//Ist ok
+		} catch(IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				//	bfr.close();
+				dis.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		return str;
 	}
 	
 	

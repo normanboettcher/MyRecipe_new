@@ -46,6 +46,10 @@ public class SenderAgent extends Agent {
 		return object_to_send;
 	}
 	
+	public void setReadyToSend(boolean t) {
+		this.ready_to_send = t;
+	}
+	
 	public boolean readyToSend() {
 		return ready_to_send;
 	}
@@ -113,10 +117,12 @@ public class SenderAgent extends Agent {
 					HashMap<Integer, Einkaufsliste> objekt = (HashMap<Integer, Einkaufsliste>) ms.getContentObject();
 					
 					setObjectToSend(objekt);
+					setReadyToSend(true);
 					
 					str1 += "Agent: [ " + getName() + " ] konnte Nachricht "
 							+ " von [ " + ms.getSender() + " ] empfangen. \n "
 									+ "Prozess fuer den Vergleich ist beendet.";
+					
 					send(UeberwachungsAgent.sendToProtokollAgent(str1, "1"));
 					this.finished = true;
 				

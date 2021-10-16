@@ -124,7 +124,7 @@ public class RecipeAgent extends Agent {
 				antwort.setConversationId("CBRImportFertig");
 				send(antwort);
 				
-				send(UeberwachungsAgent.sendToProtokollAgent(str, "2"));
+				send(UeberwachungsAgent.sendToProtokollAgent(str, "0"));
 				
 			} else if (empfang != null && conv_id.equals("CBRQuery")) {
 				RezeptAnfrage r = null;
@@ -149,6 +149,7 @@ public class RecipeAgent extends Agent {
 											+ " \n  Agent : [ " + getName() + " ] uebersendet "
 													+ "Ergebnis der Query mit [ " + antwort_zu_sender + " ]"
 															+ " an SendeAgenten. \n";
+					//Schreibe Zwischenstand in Datei
 					send(UeberwachungsAgent.sendToProtokollAgent(str2, "2"));
 					
 				} catch (UnreadableException e) {
@@ -168,8 +169,7 @@ public class RecipeAgent extends Agent {
 
 		public boolean done() {
 			return finished;
-		}
-		
+		}	
 	}
 
 	/**

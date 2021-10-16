@@ -299,14 +299,8 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			Integer status = 0;
 			DataInputStream dis = null;
 			try {
-				//bfr = new BufferedReader(
-				//	new FileReader(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.txt"));
-				//StringBuilder sb = new StringBuilder();
-				//String line = bfr.readLine();
-
-				//status = Integer.parseInt(line);
+				
 				dis = new DataInputStream(new FileInputStream(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat"));
-
 
 				status = dis.readInt();
 
