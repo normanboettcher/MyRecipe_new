@@ -100,7 +100,7 @@ public class RecipeAgent extends Agent {
 		
 		
 		public void action() {
-			
+			String str = "";
 			jade.lang.acl.ACLMessage empfang = blockingReceive();
 			String conv_id = "";
 			
@@ -112,11 +112,19 @@ public class RecipeAgent extends Agent {
 			
 			if (empfang != null && conv_id.equals("CBRImport")) {
 				importProject();
-				
+				str = "Agent: [ " + getName() + " ] hat Anfrage von [ " + empfang.getSender() + " ] "
+						+ "entegegen genommen. Mit KonversationID : [ " + empfang.getConversationId() + " ]"
+								+ " \n";
 				jade.lang.acl.ACLMessage antwort = empfang.createReply();
+				
+				str += "Agent : [ " + getName() + " ] hat Antwort [ " + antwort + " ] vorbereitet. \n";
+				str += "KonversationsID : [ " + antwort.getConversationId() + " ] \n";
+				str += "Dadurch ist der CBRImport erfolgreich abgeschlossen \n";
 				
 				antwort.setConversationId("CBRImportFertig");
 				send(antwort);
+				
+				send(UeberwachungsAgent.sendToProtokollAgent(str, "2"));
 				
 			} else if (empfang != null && conv_id.equals("CBRQuery")) {
 				RezeptAnfrage r = null;
@@ -128,17 +136,20 @@ public class RecipeAgent extends Agent {
 					jade.lang.acl.ACLMessage antwort_zu_sender = new jade.lang.acl.ACLMessage(
 							jade.lang.acl.ACLMessage.INFORM);
 					
-					System.out.println("Sende objekt: ");
-					
-					for(int i = 0; i < fertige_rezepte_auswahl.size(); i++) {
-						System.out.println(fertige_rezepte_auswahl.get(i));
-					}
-					
 					antwort_zu_sender.setConversationId("ProzessBeendetQuery");
 					antwort_zu_sender.addReceiver(new AID("SendeAgent", AID.ISLOCALNAME));
 					antwort_zu_sender.setContentObject(fertige_rezepte_auswahl);
 					send(antwort_zu_sender);
 					this.finished = true;
+					
+					String str2 = "Agent : [ " + getName() + " ] hat die Aufforderung zur Query "
+							+ "von [ " + empfang.getSender() + " ] mit der KonversationsID "
+									+ "[ " + empfang.getConversationId() + " ] empfangen. \n "
+											+ "Methode startQuery() wurde gestartet :  startQuery(r) "
+											+ " \n  Agent : [ " + getName() + " ] uebersendet "
+													+ "Ergebnis der Query mit [ " + antwort_zu_sender + " ]"
+															+ " an SendeAgenten. \n";
+					send(UeberwachungsAgent.sendToProtokollAgent(str2, "2"));
 					
 				} catch (UnreadableException e) {
 					// TODO Auto-generated catch block

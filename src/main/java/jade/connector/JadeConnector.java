@@ -40,6 +40,7 @@ public class JadeConnector {
 		AktualisiereAngeboteAgent a_agent = new AktualisiereAngeboteAgent();
 		UeberwachungsAgent ue_agent = new UeberwachungsAgent();
 		
+		vergleichsagent.setStatus("start");
 		ue_agent.setStatus("");
 		
 		rt = jade.core.Runtime.instance();

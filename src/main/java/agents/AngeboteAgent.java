@@ -93,13 +93,8 @@ public class AngeboteAgent extends Agent {
 		@Override
 		public void action() {
 			System.out.println("In Action von AngebotAgent");
-			String str1 = "Agent: [" + getName() + " ] ist  jetzt in der action()";
-			String str2 = "";
-			String str3 = "";
-			String str4 = "";
-			String str5 = "";
-			String str6 = "";
-			
+			String str1 = "Agent: [" + getName() + " ] ist  jetzt in der action() \n";
+			String str = "";
 			String conv_id = "";
 			
 			jade.lang.acl.ACLMessage msg = blockingReceive();
@@ -112,22 +107,22 @@ public class AngeboteAgent extends Agent {
 			
 			if(msg != null && conv_id.equals("Anfrage")) {
 				
-				str2 = "Agent: [ " + getName() + " ] konnte Nachricht "
-						+ "[ " + msg + " ] von [ " + msg.getSender().getName() + " ] empfangen.";
+				str1 += "Agent: [ " + getName() + " ] konnte Nachricht "
+						+ "[ " + msg + " ] von [ " + msg.getSender().getName() + " ] empfangen. \n";
 				
 				jade.lang.acl.ACLMessage reply = msg.createReply();
 				
 				System.out.println("Antwort gemacht fuer " + msg.getSender());
 				
-				str3 = "Agent : [ " + getName() + " ] hat reply [ " + reply + " ] erstellt.";
+				str1 += "Agent : [ " + getName() + " ] hat reply [ " + reply + " ] erstellt. \n";
 				
 				HashMap<Integer, Einkaufsliste> l = new HashMap<Integer, Einkaufsliste>();
 				try {
 					l = (HashMap<Integer, Einkaufsliste>) msg.getContentObject();
 					
 					if(l != null) {
-						str4 = "Agent : [ "+ getName() + " ] konnte Liste mit Einkaufslisten von [ "
-								+ msg.getSender().getName() + " ] entgegennehmen.";					
+						str1 += "Agent : [ "+ getName() + " ] konnte Liste mit Einkaufslisten von [ "
+								+ msg.getSender().getName() + " ] entgegennehmen. \n";					
 						
 						jade.lang.acl.ACLMessage aktuell_anfrage = new jade.lang.acl.ACLMessage(
 								jade.lang.acl.ACLMessage.REQUEST);
@@ -135,18 +130,9 @@ public class AngeboteAgent extends Agent {
 						aktuell_anfrage.setContentObject(l);
 						aktuell_anfrage.setConversationId("AufforderungAnUeberwachung");
 						send(aktuell_anfrage);
-						System.out.println("Anfrage gesendet fuer Ueberwachungagent");
+						str1 += "KonversationID: [ " + aktuell_anfrage.getConversationId() + " ]";
 						
-						ArrayList<String> s = new ArrayList<String>();
-						
-						s.add(str1); s.add(str2); s.add(str3); s.add(str4);
-						
-						Object[] objects = {s, "0"};
-						
-						jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-						send_to_protocoll.setContentObject(objects);
-						send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
-						send(send_to_protocoll);
+						send(UeberwachungsAgent.sendToProtokollAgent(str1, "0"));
 						
 					}
 				} catch (UnreadableException e1) {
@@ -158,7 +144,7 @@ public class AngeboteAgent extends Agent {
 				}
 			    } else if(msg != null && conv_id.equals("UpdateVonUeberwachung")) {
 						
-						System.out.println("Antwort von Ueberwachungsagent erhalten");
+						str = "Antwort [ " + msg + " ] von Ueberwachungsagent erhalten";
 						
 						Object[] o;
 						try {
@@ -174,8 +160,8 @@ public class AngeboteAgent extends Agent {
 							}
 
 							for(int i : l.keySet()) {
-								str5 += "Agent: [ " + getName() + " ] prueft und erstellt Angebote fuer Einkaufsliste"
-										+ " mit ID: [ " + l.get(i).getEinkaufslisteID() + " ]";
+								str += "Agent: [ " + getName() + " ] prueft und erstellt Angebote fuer Einkaufsliste"
+										+ " mit ID: [ " + l.get(i).getEinkaufslisteID() + " ] \n";
 								this.einkaufsliste = l.get(i);
 
 								Einkaufsliste liste = einkaufslisteMitAngeboten(i);
@@ -185,22 +171,14 @@ public class AngeboteAgent extends Agent {
 
 							to_vergleichsagent.addReceiver(new AID("Vergleichsagent", AID.ISLOCALNAME));
 							to_vergleichsagent.setContentObject(l);
-							str6 = "Antwort auf verfuegbare angebote lautet: [ " + to_vergleichsagent.getContent() + " ]"
-									+ " und Object [ " + to_vergleichsagent.getContentObject() + " ] konnte [ " + to_vergleichsagent + " ] hinzugefuegt werden.";
-						
 							to_vergleichsagent.setConversationId("ErgebnisVorliegend");
 							send(to_vergleichsagent);
-
-							ArrayList<String> s = new ArrayList<String>();
-
-							s.add(str1); s.add(str2); s.add(str3); s.add(str4); s.add(str5); s.add(str6);
-
-							Object[] objects = {s, "0"};
-
-							jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-							send_to_protocoll.setContentObject(objects);
-							send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
-							send(send_to_protocoll);
+							
+							str += "Nachricht [ " + to_vergleichsagent + " ] wurde erfolgreich"
+									+ " vorbereitet und versendet \n"
+									+ "Konversation ID [ " + to_vergleichsagent.getConversationId() +" ] \n"; 
+							String end = str1 + "\n" + str;
+							send(UeberwachungsAgent.sendToProtokollAgent(end, "0"));
 							this.finished = true;
 						} catch (UnreadableException e) {
 							// TODO Auto-generated catch block

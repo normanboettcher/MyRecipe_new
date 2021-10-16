@@ -8,6 +8,7 @@ import general.Einkaufsliste;
 import general.supermarkets.Rezepte;
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.OneShotBehaviour;
 import jade.domain.DFService;
 import jade.domain.FIPAException;
@@ -82,59 +83,51 @@ public class SenderAgent extends Agent {
 	private static final long serialVersionUID = 6637908621330116852L;
 	
 	
-	private class SendeAgentBehaviour extends OneShotBehaviour {
-
+	private class SendeAgentBehaviour extends Behaviour {
+		private boolean finished = false;
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = -3512239954477308987L;
-
+		
+		@Override
+		public boolean done() {
+			return finished;
+		}
+		
 		@Override
 		public void action() {
 			String str1 = "";
-			String str2 = "";
 			
-			jade.lang.acl.ACLMessage ms = blockingReceive();
+			jade.lang.acl.ACLMessage ms = receive();
 			String conv_id = "";
 			if(ms != null) {
 				conv_id = ms.getConversationId();
-			} else {
-				block();
-			}
+			} 
 			
 			if(ms != null && conv_id.equals("ProzessBeendetVergleich")) {
-				str1 = "Start action() from [ " + getName() + " ]"
-						+ " in SendeAgentBehaviour";
+				str1 += "Start action() from [ " + getName() + " ]"
+						+ " in SendeAgentBehaviour \n";
 				try {
 					
 					HashMap<Integer, Einkaufsliste> objekt = (HashMap<Integer, Einkaufsliste>) ms.getContentObject();
 					
 					setObjectToSend(objekt);
 					
-					str2 = "Agent: [ " + getName() + " ] konnte Nachricht "
-							+ " von [ " + ms.getSender() + " ] empfangen und Objekt "
-									+ "[ " + objekt + " ] zum Senden vorbereiten";
-					
-					ArrayList<String> s = new ArrayList<String>();
-					s.add(str1); s.add(str2);
-					
-					Object[] objects = {s, "1"};
-					
-					jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-					send_to_protocoll.setContentObject(objects);
-					send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
-					send(send_to_protocoll);
+					str1 += "Agent: [ " + getName() + " ] konnte Nachricht "
+							+ " von [ " + ms.getSender() + " ] empfangen. \n "
+									+ "Prozess fuer den Vergleich ist beendet.";
+					send(UeberwachungsAgent.sendToProtokollAgent(str1, "1"));
+					this.finished = true;
 				
 				} catch (UnreadableException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
 				}
+				
 			} else if(ms != null && conv_id.equals("ProzessBeendetQuery")) {
 				str1 = "Start action() from [ " + getName() + " ]"
-						+ " in SendeAgentBehaviour";
+						+ " in SendeAgentBehaviour \n";
 				try {
 					
 					ArrayList<Rezepte> objekt = (ArrayList<Rezepte>) ms.getContentObject();
@@ -142,28 +135,18 @@ public class SenderAgent extends Agent {
 					setObjectToSend(objekt);
 					ArrayList<Rezepte> r= (ArrayList<Rezepte>) getObjectToSend();
 					
-					str2 = "Agent: [ " + getName() + " ] konnte Nachricht "
+					str1 += "Agent: [ " + getName() + " ] konnte Nachricht "
 							+ " von [ " + ms.getSender() + " ] empfangen und Objekt "
-									+ "[ " + objekt + " ] zum Senden vorbereiten. "
-											+ "Der Queryprozess ist beendet.";
+									+ "Output zum Senden vorbereiten. "
+											+ "Der Queryprozess ist beendet. \n";
 					
-					ArrayList<String> s = new ArrayList<String>();
-					s.add(str1); s.add(str2);
-					
-					Object[] objects = {s, "1"};
-					
-					jade.lang.acl.ACLMessage send_to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-					send_to_protocoll.setContentObject(objects);
-					send_to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
-					send(send_to_protocoll);
+					send(UeberwachungsAgent.sendToProtokollAgent(str1, "0"));
+					this.finished = true;
 				
 				} catch (UnreadableException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				} 
 			} else {
 				block();
 			}

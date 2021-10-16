@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import general.Einkaufsliste;
@@ -25,6 +26,7 @@ import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 
 public class UeberwachungsAgent extends Agent implements Serializable {
@@ -92,17 +94,29 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 	}
 
 	private class Startverhalten extends Behaviour {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 6118121119868365156L;
 		private boolean finished = false;
 		@Override
 		public void action() {
-			System.out.println(getStatus());
+			String str =  "";
 			
 			if(getStatus().equals("start")) {
-				System.out.println("Bin in IF weil start");
+				str = "Agent: [ " + getName() + " ] befindet sich im Start und  bereitet ";
 				jade.lang.acl.ACLMessage msg_an_RecipeAgent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
 				msg_an_RecipeAgent.addReceiver(new AID("RezeptAgent", AID.ISLOCALNAME));
 				msg_an_RecipeAgent.setConversationId("CBRImport");
 				send(msg_an_RecipeAgent);
+				
+				str += "Nachricht : [ " + msg_an_RecipeAgent + " ] zum absenden vor."
+						+ "Mit KonversationsID: [ " + msg_an_RecipeAgent.getConversationId() + " ] \n";
+				
+				str += "Agent : [ " + getName() + " ] uebersendet Fortschritt an ProtokollAgent \n"; 
+				
+				
+				send(sendToProtokollAgent(str, "0"));
 			}
 			
 			jade.lang.acl.ACLMessage empfang = blockingReceive();
@@ -113,6 +127,7 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			}
 			
 			if (empfang != null && conv_id.equals("CBRImportFertig")) {
+				String str2 = "";
 				jade.lang.acl.ACLMessage msg_for_query_to_recipe_agent = empfang.createReply();
 
 				msg_for_query_to_recipe_agent.setConversationId("CBRQuery");
@@ -125,6 +140,13 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 				}
 				send(msg_for_query_to_recipe_agent);
 				this.finished = true;
+				
+				str2 = "Agent : [ " + getName() + " ] konnte Antwort von [ " + empfang.getSender()
+					+ " ] empfangen mit der KonversationsID [ " + empfang.getConversationId() + " ]"
+							+ " Die Antwort von [ " + getName() + " ] "
+									+ "konnte mit [ " + msg_for_query_to_recipe_agent + " ]"
+											+ " erfolgreich erstellt und abgeschickt werden. \n";
+				send(sendToProtokollAgent(str2, "0"));
 			}
 		}
 
@@ -153,9 +175,7 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		public void action() {
 			
 			String conv_id = "";
-			
-			System.out.println("In Action von Uberwachungsverhalten");
-			
+			String str1 = "";
 				jade.lang.acl.ACLMessage aufforderung = blockingReceive();
 
 				if(aufforderung != null) {
@@ -165,25 +185,29 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 				}
 
 				if(aufforderung != null && conv_id.equals("AufforderungAnUeberwachung")) {
-
-					System.out.println("Aufforderung von Angebot Agent erhalten.");
-
-					System.out.println("Aufforderung entgegen genommen");
-
+					
 					jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
 					msg.addReceiver(new AID("AktualisierungsAgent", AID.ISLOCALNAME));
-
+					
+					str1 = "Agent: [ " + getName() + " ] konnte Nachricht von "
+							+ "[ " + aufforderung.getSender() + " ] entegegen nehmen. \n"
+									+ "KonversationsID : [ " +aufforderung.getConversationId() + " ] \n";
+					
+					
 					int counter = holeStatus();
-
-					System.out.println(counter);
-
+					
+					str1 += "Der Aktuelle Status zur Aktualisierung betraegt : [ " + counter + " ] \n";
+					
 					int status = 0;
 
 					//Sollten die Angebote bereits dreimal abgerufen worden sein ohne 
 					//aktualisiert zu werden, werden sie aktualisiert und der status dafuer auf 
 					// 1 gesetzt und dem Aktualisierungsagenten geschickt
 					if(counter >= 3) {
+						str1 += "Der Status wurde auf 1 geaendert. Es stehen neue Angebote zur Verfuegung. \n";
 						status = 1;
+					} else {
+						str1 += "Der Status bleibt 0. Es gibt noch keine neuen Angebote \n";
 					}
 
 					try {
@@ -195,7 +219,12 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 						msg.setContentObject(o);
 						msg.setConversationId("UpdateAnfrage");
 						send(msg);
-						System.out.println("Anfrage an den Aktualisierungsagenten gesendet..");
+						
+						str1 += "Agent [ " + getName() + " ] versendet Nachricht [ " + msg + " ]"
+								+ " mit KonversationID : [ " + msg.getConversationId() + " ] \n";
+						
+						send(sendToProtokollAgent(str1, "0"));
+					
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -218,7 +247,11 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 								Object[] objects_to_send = {b, l};
 								to_angebot_agent.setContentObject(objects_to_send);
 								to_angebot_agent.setConversationId("UpdateVonUeberwachung");
+								String str = "Agent :  + [ " + getName() + " ] hat den Status erneut "
+										+ "auf 0 gesetzt und die aktualsisierten Einkaufslisten inkl. neuer Angebote mit "
+										+ " [ " + to_angebot_agent + " ] an AngeboteAgent geschickt. \n";
 								send(to_angebot_agent);
+								send(sendToProtokollAgent(str, "0"));
 								this.finished = true;
 							} else {
 								int counter = holeStatus() + 1;
@@ -228,7 +261,11 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 								Object[] objects_to_send = {b, l};
 								to_angebot_agent.setContentObject(objects_to_send);
 								to_angebot_agent.setConversationId("UpdateVonUeberwachung");
+								String str = "Agent :  + [ " + getName() + " ] hat den Status um 1 auf "
+										+ "[ " + counter + " ] erhöht und die aktualsisierten Einkaufslisten inkl alter Angebote mit"
+										+ " [ " + to_angebot_agent + " ] an AngeboteAgent geschickt. \n";
 								send(to_angebot_agent);
+								send(sendToProtokollAgent(str, "0"));
 								this.finished = true;
 							}
 						}
@@ -244,7 +281,20 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 					block();
 				}
 			}
-		}	
+		}
+	
+	public static jade.lang.acl.ACLMessage sendToProtokollAgent(String str, String status) {
+		jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+		try {
+			Object[] objects = {str, status};
+			msg.setContentObject(objects);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		msg.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
+		return msg;
+	}
 		public static int holeStatus() {
 			Integer status = 0;
 			DataInputStream dis = null;

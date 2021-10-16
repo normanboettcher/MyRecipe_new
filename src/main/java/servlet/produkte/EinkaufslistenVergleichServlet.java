@@ -54,13 +54,12 @@ public class EinkaufslistenVergleichServlet extends HttpServlet {
 		JadeConnector.startAgentsZumBerechnen(agenten_map);
 	
 		try {
-			Thread.sleep(13500);
+			Thread.sleep(25000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		HashMap<Integer, Einkaufsliste> result = (HashMap<Integer, Einkaufsliste>) sender.getObjectToSend();
-		
+		HashMap<Integer, Einkaufsliste> result = (HashMap<Integer, Einkaufsliste>) sender.getObjectToSend();	
 		request.setAttribute("result", result);
 		request.getRequestDispatcher("JSP/einkaufslistenVergleich.jsp").forward(request, response);	
 	}

@@ -36,11 +36,6 @@ public class RezepteServlet extends HttpServlet {
 		String[] inputGerichteart = request.getParameterValues("gerichteart"); 
 		String[] inputEigenschaften = request.getParameterValues("eigenschaften");
 		
-		//System.out.println(inputKueche[0]);
-		//System.out.println(inputGerichteart[0]);
-		//System.out.println(inputEigenschaften[0]);
-		
-		
 		try {
 			int inputIdParsed = 0;
 			

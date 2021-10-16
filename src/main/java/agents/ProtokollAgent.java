@@ -84,14 +84,14 @@ public class ProtokollAgent extends Agent {
 		public void action() {
 			jade.lang.acl.ACLMessage empfangen = receive();
 			
-			ArrayList<String> strings;
+			String strings;
 			String status;
 			
 			if(empfangen != null) {
 				Object[] objects;
 				try {
 					objects = (Object[]) empfangen.getContentObject();
-					strings = (ArrayList<String>) objects[0];
+					strings = (String) objects[0];
 					status = (String) objects[1];
 					
 					//System.out.println(status);
@@ -120,24 +120,28 @@ public class ProtokollAgent extends Agent {
 		return ordner;
 	}
 	
-	private void writeProtokollToFile(ArrayList<String> str, String status) {
+	private void writeProtokollToFile(String str, String status) {
 		
 		switch(status) {
+			case "2":
+				getPrintWriter().println(("===================="
+						+ "PRINT NEXT STEPS TO PROTOCOLL==============="));
+				getPrintWriter().println("");
+				getPrintWriter().println(str + "\n");			
+				getPrintWriter().println("================NEXT STEPS FOLLOW================" + "\n" + "\n");
+			
 			case "0":
 
 				getPrintWriter().println(("===================="
 						+ "PRINT NEXT STEPS TO PROTOCOLL==============="));
-				for(int i = 0; i < str.size(); i++) {
-					getPrintWriter().println("");
-					getPrintWriter().println(str.get(i) + "\n");
-				}
-				
+				getPrintWriter().println("");
+				getPrintWriter().println(str + "\n");			
 				getPrintWriter().println("================NEXT STEPS FOLLOW================" + "\n" + "\n");
 				
 				break;
 			case "1":
 				
-				getPrintWriter().println("============= END OF PROTOCOLL=============");
+				getPrintWriter().println("============= END OF PROTOCOLL========================");
 				getPrintWriter().close();
 				
 				break;

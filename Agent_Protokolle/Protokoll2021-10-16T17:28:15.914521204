@@ -1,0 +1,120 @@
+====================PRINT NEXT STEPS TO PROTOCOLL===============
+
+Agent: [Vergleichsagent@192.168.178.21:1099/JADE ] hat alle Einkaufslisten geladen und zur Message [(INFORM
+:X-JADE-Encoding Base64
+ :conversation-id  Anfrage ) ] hinzugefuegt. 
+Message gesendet. von [ Vergleichsagent@192.168.178.21:1099/JADE ] 
+
+
+================NEXT STEPS FOLLOW================
+
+
+====================PRINT NEXT STEPS TO PROTOCOLL===============
+
+Agent: [AngebotAgent@192.168.178.21:1099/JADE ] ist  jetzt in der action() 
+Agent: [ AngebotAgent@192.168.178.21:1099/JADE ] konnte Nachricht [ (INFORM
+ :sender  ( agent-identifier :name Vergleichsagent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc ))
+ :receiver  (set ( agent-identifier :name AngebotAgent@192.168.178.21:1099/JADE ) )
+:X-JADE-Encoding Base64
+ :conversation-id  Anfrage ) ] von [ Vergleichsagent@192.168.178.21:1099/JADE ] empfangen. 
+Agent : [ AngebotAgent@192.168.178.21:1099/JADE ] hat reply [ (INFORM
+ :receiver  (set ( agent-identifier :name Vergleichsagent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc )) )
+ :reply-with  Vergleichsagent@192.168.178.21:1099/JADE1634398102394  :conversation-id  Anfrage ) ] erstellt. 
+Agent : [ AngebotAgent@192.168.178.21:1099/JADE ] konnte Liste mit Einkaufslisten von [ Vergleichsagent@192.168.178.21:1099/JADE ] entgegennehmen. 
+KonversationID: [ AufforderungAnUeberwachung ]
+
+================NEXT STEPS FOLLOW================
+
+
+====================PRINT NEXT STEPS TO PROTOCOLL===============
+
+Agent: [ UeberwachungAgent@192.168.178.21:1099/JADE ] konnte Nachricht von [ ( agent-identifier :name AngebotAgent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc )) ] entegegen nehmen. 
+KonversationsID : [ AufforderungAnUeberwachung ] 
+Der Aktuelle Status zur Aktualisierung betraegt : [ 1 ] 
+Der Status bleibt 0. Es gibt noch keine neuen Angebote 
+Agent [ UeberwachungAgent@192.168.178.21:1099/JADE ] versendet Nachricht [ (INFORM
+ :sender  ( agent-identifier :name UeberwachungAgent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc ))
+ :receiver  (set ( agent-identifier :name AktualisierungsAgent@192.168.178.21:1099/JADE ) )
+:X-JADE-Encoding Base64
+ :conversation-id  UpdateAnfrage ) ] mit KonversationID : [ UpdateAnfrage ] 
+
+
+================NEXT STEPS FOLLOW================
+
+
+====================PRINT NEXT STEPS TO PROTOCOLL===============
+
+Agent : [ AktualisierungsAgent@192.168.178.21:1099/JADE ] hat Antwort [ (INFORM
+ :receiver  (set ( agent-identifier :name UeberwachungAgent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc )) )
+:X-JADE-Encoding Base64
+ :reply-with  UeberwachungAgent@192.168.178.21:1099/JADE1634398102507  :conversation-id  UpdateAntwort ) ] vorbereitet und abgeschickt. 
+KonversationID : [ UpdateAntwort ]
+
+================NEXT STEPS FOLLOW================
+
+
+====================PRINT NEXT STEPS TO PROTOCOLL===============
+
+Agent : [ AktualisierungsAgent@192.168.178.21:1099/JADE ] hat Anfrage fuer Update von [ ( agent-identifier :name UeberwachungAgent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc )) ] erhalten. 
+KonversationID : [ UpdateAnfrage ] 
+Agent : [ AktualisierungsAgent@192.168.178.21:1099/JADE ] hat Angebote nicht aktualisiert. 
+
+
+================NEXT STEPS FOLLOW================
+
+
+====================PRINT NEXT STEPS TO PROTOCOLL===============
+
+Agent :  + [ UeberwachungAgent@192.168.178.21:1099/JADE ] hat den Status um 1 auf [ 2 ] erhöht und die aktualsisierten Einkaufslisten inkl alter Angebote mit [ (INFORM
+ :receiver  (set ( agent-identifier :name AngebotAgent@192.168.178.21:1099/JADE ) )
+:X-JADE-Encoding Base64
+ :conversation-id  UpdateVonUeberwachung ) ] an AngeboteAgent geschickt. 
+
+
+================NEXT STEPS FOLLOW================
+
+
+====================PRINT NEXT STEPS TO PROTOCOLL===============
+
+Agent: [AngebotAgent@192.168.178.21:1099/JADE ] ist  jetzt in der action() 
+
+Antwort [ (INFORM
+ :sender  ( agent-identifier :name UeberwachungAgent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc ))
+ :receiver  (set ( agent-identifier :name AngebotAgent@192.168.178.21:1099/JADE ) )
+:X-JADE-Encoding Base64
+ :conversation-id  UpdateVonUeberwachung ) ] von Ueberwachungsagent erhaltenAgent: [ AngebotAgent@192.168.178.21:1099/JADE ] prueft und erstellt Angebote fuer Einkaufsliste mit ID: [ 1 ] 
+Agent: [ AngebotAgent@192.168.178.21:1099/JADE ] prueft und erstellt Angebote fuer Einkaufsliste mit ID: [ 3 ] 
+Agent: [ AngebotAgent@192.168.178.21:1099/JADE ] prueft und erstellt Angebote fuer Einkaufsliste mit ID: [ 4 ] 
+Nachricht [ (INFORM
+ :sender  ( agent-identifier :name AngebotAgent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc ))
+ :receiver  (set ( agent-identifier :name Vergleichsagent@192.168.178.21:1099/JADE ) )
+:X-JADE-Encoding Base64
+ :conversation-id  ErgebnisVorliegend ) ] wurde erfolgreich vorbereitet und versendet 
+Konversation ID [ ErgebnisVorliegend ] 
+
+
+================NEXT STEPS FOLLOW================
+
+
+====================PRINT NEXT STEPS TO PROTOCOLL===============
+
+Agent: [Vergleichsagent@192.168.178.21:1099/JADE ] ist  jetzt in der action() von VergleichsAgentAnfrageVerhalten 
+Agent: [ Vergleichsagent@192.168.178.21:1099/JADE ] ist jetzt in der action() von AntwortVerhalten 
+Agent: [ Vergleichsagent@192.168.178.21:1099/JADE ] konnte Antwort [ (INFORM
+ :sender  ( agent-identifier :name AngebotAgent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc ))
+ :receiver  (set ( agent-identifier :name Vergleichsagent@192.168.178.21:1099/JADE ) )
+:X-JADE-Encoding Base64
+ :conversation-id  ErgebnisVorliegend ) ] von [ ( agent-identifier :name AngebotAgent@192.168.178.21:1099/JADE  :addresses (sequence http://normanboettcher:36133/acc )) ] empfangen. 
+Agent: [ Vergleichsagent@192.168.178.21:1099/JADE ] hat Einkaufslisten verglichen und sortiert.ID: [ 3 ] Preis: [ 11.86 ] Ersparnis : [ 2.98 ] 
+ID: [ 1 ] Preis: [ 16.97 ] Ersparnis : [ 0.96 ] 
+ID: [ 4 ] Preis: [ 17.77 ] Ersparnis : [ 4.7 ] 
+Agent: [ Vergleichsagent@192.168.178.21:1099/JADE ] sendet Endergebnis mit Nachricht [ (INFORM
+ :receiver  (set ( agent-identifier :name SendeAgent@192.168.178.21:1099/JADE ) )
+:X-JADE-Encoding Base64
+ :conversation-id  ProzessBeendetVergleich ) ]  
+KonversationID : [ ProzessBeendetVergleich ]
+
+================NEXT STEPS FOLLOW================
+
+
+============= END OF PROTOCOLL========================

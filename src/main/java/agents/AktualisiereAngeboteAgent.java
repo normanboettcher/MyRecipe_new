@@ -88,11 +88,10 @@ public class AktualisiereAngeboteAgent extends Agent {
 		@Override
 		public void action() {
 			String conv_id = "";
+			String str = "";
 			
 			jade.lang.acl.ACLMessage msg = blockingReceive();
 				
-			UeberwachungsAgent ue_agent;
-			
 			if(msg != null) {
 				conv_id = msg.getConversationId();
 			} else {
@@ -101,9 +100,11 @@ public class AktualisiereAngeboteAgent extends Agent {
 			
 			try {
 				if(msg != null && conv_id.equals("UpdateAnfrage")) {
+					str += "Agent : [ " + getName() + " ] hat Anfrage fuer Update"
+							+ " von [ " + msg.getSender() + " ] erhalten. \n"
+									+ "KonversationID : [ " + msg.getConversationId() + " ] \n";
 				Object[] objects = (Object[]) msg.getContentObject();
-				ue_agent = (UeberwachungsAgent) objects[0];
-				
+		
 					Supermarkt[] maerkte = (Supermarkt[]) objects[1];
 					int status = (int) objects[2];
 					
@@ -113,13 +114,16 @@ public class AktualisiereAngeboteAgent extends Agent {
 							Supermarkt s = maerkte[i];
 							
 							initAngebote(s.getBezeichnung());
+							str += "Agent : [ " + getName() + " ] hat Angebote aktualisiert. \n";
 						}
 						setAktualisiert(true);
 						sendBackToUeberwachung(msg, getAktualisiert(), objects);
 					} else {
+						str += "Agent : [ " + getName() + " ] hat Angebote nicht aktualisiert. \n";
 						setAktualisiert(false);
 						sendBackToUeberwachung(msg, getAktualisiert(), objects);
 					}
+					send(UeberwachungsAgent.sendToProtokollAgent(str, "0"));
 				} else {
 					block();
 				}
@@ -133,7 +137,7 @@ public class AktualisiereAngeboteAgent extends Agent {
 			return finished;
 		}
 				
-		private void sendBackToUeberwachung(jade.lang.acl.ACLMessage m,boolean aktualisiert, Object[] objects) {
+		private void sendBackToUeberwachung(jade.lang.acl.ACLMessage m, boolean aktualisiert, Object[] objects) {
 			System.out.println("In sendback von AktualisierungsBeh");
 			jade.lang.acl.ACLMessage msg = m.createReply();
 			try {
@@ -144,16 +148,11 @@ public class AktualisiereAngeboteAgent extends Agent {
 				msg.setContentObject(ob);
 				msg.setConversationId("UpdateAntwort");
 				
-				ArrayList<String> s = new ArrayList<>();
-				s.add("Agent: [ " + getName() + " ] Sende Hinweis zur Aktualisierung zurueck.");
-				s.add("Angebote wurden Aktualisiert: [ " + aktualisiert + " ]");
-				Object[] o = {s, "0"};
-				
-				jade.lang.acl.ACLMessage to_protocoll = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-				to_protocoll.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
-				to_protocoll.setContentObject(o);
-				send(to_protocoll);
+				String str = "Agent : [ " + getName() + " ] hat Antwort [ " + msg + " ] "
+						+ "vorbereitet und abgeschickt. \n"
+						+ "KonversationID : [ " + msg.getConversationId() + " ]";
 				send(msg);
+				send(UeberwachungsAgent.sendToProtokollAgent(str, "0"));
 				this.finished = true;
 				
 			} catch (IOException e) {
