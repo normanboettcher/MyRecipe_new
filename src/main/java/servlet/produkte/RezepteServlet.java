@@ -47,6 +47,7 @@ public class RezepteServlet extends HttpServlet {
 				inputTitel = "";
 			}
 			
+			
 			RezeptAnfrage queryRezepte = new RezeptAnfrage(inputTitel, inputKueche, inputGerichteart, inputEigenschaften); 
 			
 			SenderAgent sender = new SenderAgent();
