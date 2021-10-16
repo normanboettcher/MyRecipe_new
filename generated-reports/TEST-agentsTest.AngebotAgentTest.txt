@@ -1,5 +1,5 @@
 Testsuite: agentsTest.AngebotAgentTest
-Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0,133 sec
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0,136 sec
 
 Testcase: initializationError(agentsTest.AngebotAgentTest):	Caused an ERROR
 Invalid test class 'agentsTest.AngebotAgentTest':

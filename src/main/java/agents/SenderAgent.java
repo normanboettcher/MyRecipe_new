@@ -1,20 +1,18 @@
 package agents;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 import general.Einkaufsliste;
 import general.supermarkets.Rezepte;
-import jade.core.AID;
+
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
-import jade.core.behaviours.OneShotBehaviour;
+
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 
 public class SenderAgent extends Agent {
@@ -33,6 +31,7 @@ public class SenderAgent extends Agent {
 		return name;
 	}
 	
+	@SuppressWarnings("unchecked")
 	private void setObjectToSend(Object l) {
 		if(l instanceof HashMap) {
 			this.object_to_send = (HashMap<Integer, Einkaufsliste>) l;
@@ -114,6 +113,7 @@ public class SenderAgent extends Agent {
 						+ " in SendeAgentBehaviour \n";
 				try {
 					
+					@SuppressWarnings("unchecked")
 					HashMap<Integer, Einkaufsliste> objekt = (HashMap<Integer, Einkaufsliste>) ms.getContentObject();
 					
 					setObjectToSend(objekt);
@@ -127,10 +127,8 @@ public class SenderAgent extends Agent {
 					this.finished = true;
 				
 				} catch (UnreadableException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
 			} else if(ms != null && conv_id.equals("ProzessBeendetQuery")) {
 				str1 = "Start action() from [ " + getName() + " ]"
 						+ " in SendeAgentBehaviour \n";
@@ -150,7 +148,6 @@ public class SenderAgent extends Agent {
 					this.finished = true;
 				
 				} catch (UnreadableException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				} 
 			} else {

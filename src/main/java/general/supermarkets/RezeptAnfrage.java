@@ -5,6 +5,10 @@ import java.io.Serializable;
 public class RezeptAnfrage implements Serializable {
 	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4211544371418073329L;
 	private String titel;
 	private String[] kueche;
 	private String[] gerichteart;

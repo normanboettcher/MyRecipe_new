@@ -13,7 +13,6 @@ import agents.AngeboteAgent;
 import agents.EinkaufslistenVergleichsAgent;
 import agents.SenderAgent;
 import general.Einkaufsliste;
-import general.supermarkets.Rezepte;
 import jade.connector.JadeConnector;
 import jade.core.Agent;
 
@@ -54,12 +53,13 @@ public class EinkaufslistenVergleichServlet extends HttpServlet {
 		JadeConnector.startAgentsZumBerechnen(agenten_map);
 	
 		try {
-			Thread.sleep(22000);
+			Thread.sleep(23000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+		@SuppressWarnings("unchecked")
 		HashMap<Integer, Einkaufsliste> result = (HashMap<Integer, Einkaufsliste>) sender.getObjectToSend();	
 		request.setAttribute("result", result);
 		request.getRequestDispatcher("JSP/einkaufslistenVergleich.jsp").forward(request, response);	

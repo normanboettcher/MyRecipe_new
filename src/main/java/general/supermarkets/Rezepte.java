@@ -3,7 +3,6 @@ package general.supermarkets;
 import java.io.Serializable;
 import java.util.HashMap;
 
-import general.Food;
 import managers.DoubleManager;
 
 public class Rezepte implements Serializable {

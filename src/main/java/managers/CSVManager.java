@@ -9,13 +9,12 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-import database.transfer.LoescheAusDatenbank;
 import databaseConnection.DBConnection;
 
 public class CSVManager {
 	
+	@SuppressWarnings("deprecation")
 	public static ArrayList<String[]> loadCSV(String filename) {
 		File file = new File(filename);
 		String thisLine;
@@ -23,6 +22,7 @@ public class CSVManager {
 		
 		try {
 			FileInputStream fis = new FileInputStream(file);
+			@SuppressWarnings("resource")
 			DataInputStream dis = new DataInputStream(fis);
 			
 			while((thisLine = dis.readLine()) != null) {
@@ -38,6 +38,7 @@ public class CSVManager {
 		return arrList;
 	}
 	
+	@SuppressWarnings("unused")
 	private static void transferProductsFromCSVToDB(String laden, ArrayList<String[]> list) {
 		Connection con = DBConnection.getConnection();
 		
@@ -66,6 +67,5 @@ public class CSVManager {
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
 	}
 }

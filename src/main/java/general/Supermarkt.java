@@ -5,21 +5,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Random;
 
 import database.transfer.LoescheAusDatenbank;
-import database.transfer.SpeicherInDatenbank;
+
 import databaseConnection.DBConnection;
-import general.Food;
-import general.supermarkets.Lidl;
-import general.supermarkets.Netto;
-import general.supermarkets.Penny;
-import general.supermarkets.Rewe;
-import managers.DoubleManager;
-import managers.RabattManager;
 
 public abstract class Supermarkt implements Serializable {
 	

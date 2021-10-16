@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -40,6 +39,7 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 	
 	private String status = "";
 	
+	@SuppressWarnings("unused")
 	private static final boolean ABSTEIGEND = false;
 	private static final boolean AUFSTEIGEND = true;
 	
@@ -104,6 +104,10 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 	}
 	
 	private class Startverhalten extends Behaviour {
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = -2944265822906998929L;
 		boolean finished = false;
 		String str1 = "";
 		@Override
@@ -159,6 +163,7 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 			return finished;
 		}
 		
+		@SuppressWarnings("unchecked")
 		@Override
 		public void action() {
 			
@@ -207,10 +212,8 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 					send(UeberwachungsAgent.sendToProtokollAgent(str1, "0"));
 					this.finished = true;							
 					} catch (UnreadableException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}				
 			} else {
@@ -241,9 +244,8 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 	private static HashMap<Integer, Einkaufsliste> sortiereNachBilligsten(
 			HashMap<Integer, Einkaufsliste> unsortiert, final boolean order) {
 		
-		List<Entry<Integer, Double>> liste = new LinkedList<Entry<Integer, Double>>(extrahierePreisVonEinkaufsliste(unsortiert).entrySet());
-		
-		//printMap(unsortiert);
+		List<Entry<Integer, Double>> liste = 
+				new LinkedList<Entry<Integer, Double>>(extrahierePreisVonEinkaufsliste(unsortiert).entrySet());
 		
 		Collections.sort(liste, new Comparator<Entry<Integer, Double>>() {
 			public int compare(
@@ -275,6 +277,7 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 	 * Hilfsmethode zum ausgeben der Maps. Zu Testzwecken.
 	 * @param map die ubergebene map, die ausgegeben werden soll jeweils mit key und value.
 	 */
+	@SuppressWarnings("unused")
 	private static void printMap(HashMap<Integer, Einkaufsliste> map) {
 		for(Entry<Integer, Einkaufsliste> entry : map.entrySet()) {
 			System.out.println(entry.getKey() + ". " + entry.getValue().getGesamtPreis() + " EUR");

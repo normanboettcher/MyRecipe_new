@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 import database.transfer.SpeicherInDatenbank;
-import managers.IdGenerator;
 
 
 public class User {

@@ -2,7 +2,6 @@ package servlet.produkte;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -37,6 +36,7 @@ public class RezepteServlet extends HttpServlet {
 		String[] inputEigenschaften = request.getParameterValues("eigenschaften");
 		
 		try {
+			@SuppressWarnings("unused")
 			int inputIdParsed = 0;
 			
 			if(inputRezepte_id != null) {
@@ -54,8 +54,9 @@ public class RezepteServlet extends HttpServlet {
 			
 			JadeConnector.runAgentsForCBRQuery(sender, queryRezepte);
 			
-			Thread.sleep(7000);
+			Thread.sleep(6000);
 			
+			@SuppressWarnings("unchecked")
 			ArrayList<Rezepte>rezepte = (ArrayList<Rezepte>) sender.getObjectToSend();
 			request.setAttribute("resultingRezepte", rezepte);
 			

@@ -5,7 +5,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import databaseConnection.DBConnection;
@@ -151,6 +150,7 @@ public class AngeboteAgent extends Agent {
 							o = (Object[]) msg.getContentObject();
 
 							boolean aktualisiert = (boolean) o[0];
+							@SuppressWarnings("unchecked")
 							HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) o[1];
 						
 							if(aktualisiert == true) {
@@ -181,17 +181,13 @@ public class AngeboteAgent extends Agent {
 							send(UeberwachungsAgent.sendToProtokollAgent(end, "0"));
 							this.finished = true;
 						} catch (UnreadableException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						} catch (IOException e) {
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
-
 					} else {
 						block();
 					}
-		
 			}
 		
 

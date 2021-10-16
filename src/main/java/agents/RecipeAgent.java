@@ -26,7 +26,6 @@ import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 
 public class RecipeAgent extends Agent {
@@ -138,27 +137,24 @@ public class RecipeAgent extends Agent {
 					this.finished = true;
 
 					String str2 = "Agent : [ " + getName() + " ] hat die Aufforderung zur Query " + "von [ "
-							+ empfang.getSender() + " ] mit der KonversationsID " + "[ " + empfang.getConversationId()
-							+ " ] empfangen. \n " + "Methode startQuery() wurde gestartet :  startQuery(r) "
-							+ " \n  Agent : [ " + getName() + " ] uebersendet " + "Ergebnis der Query mit [ "
-							+ antwort_zu_sender + " ]" + " an SendeAgenten. \n";
-					// Schreibe Zwischenstand in Datei
-					send(UeberwachungsAgent.sendToProtokollAgent(str2, "2"));
+						+ empfang.getSender() + " ] mit der KonversationsID " + "[ " + empfang.getConversationId()
+						+ " ] empfangen. \n " + "Methode startQuery() wurde gestartet :  startQuery(r) "
+						+ " \n  Agent : [ " + getName() + " ] uebersendet " + "Ergebnis der Query mit [ "
+						+ antwort_zu_sender + " ]" + " an SendeAgenten. \n";
+				// Schreibe Zwischenstand in Datei
+				send(UeberwachungsAgent.sendToProtokollAgent(str2, "2"));
 
-				} catch (UnreadableException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			} else {
-				block();
+			} catch (UnreadableException e) {
+				e.printStackTrace();
+			} catch (ParseException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				e.printStackTrace();
 			}
+		} else {
+			block();
 		}
+	}
 
 		public boolean done() {
 			return finished;

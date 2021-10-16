@@ -24,7 +24,9 @@ public class JadeConnector {
 	private static Profile profile;
 	private static ProfileImpl start_profil;
 	private static AgentContainer agent_container;
+	@SuppressWarnings("unused")
 	private static AgentContainer main_container;
+	@SuppressWarnings("unused")
 	private static AgentController ac;
 	
 	public JadeConnector()  {
@@ -60,8 +62,6 @@ public class JadeConnector {
 		System.out.println("Launch AgentContainer after " + start_profil);
 		System.out.println("Containers created");
 		
-		System.out.println("Launching Vergleichsagent and AngebotAgent on main container...");
-		
 		try {
 			ac = agent_container.acceptNewAgent("Vergleichsagent", vergleichsagent);
 			ac = agent_container.acceptNewAgent("AngebotAgent", angebote);
@@ -79,10 +79,8 @@ public class JadeConnector {
 			agent_container.getAgent("SendeAgent").start();
 			
 		} catch (StaleProxyException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ControllerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}
@@ -127,10 +125,8 @@ public class JadeConnector {
 			agent_container.getAgent("SendeAgent").start();
 			
 		} catch (StaleProxyException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ControllerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		

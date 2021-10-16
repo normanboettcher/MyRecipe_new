@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import general.Einkaufsliste;
@@ -26,7 +25,6 @@ import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.lang.acl.ACLMessage;
 import jade.lang.acl.UnreadableException;
 
 public class UeberwachungsAgent extends Agent implements Serializable {
@@ -176,112 +174,111 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			
 			String conv_id = "";
 			String str1 = "";
-				jade.lang.acl.ACLMessage aufforderung = blockingReceive();
+			jade.lang.acl.ACLMessage aufforderung = blockingReceive();
 
-				if(aufforderung != null) {
-					conv_id = aufforderung.getConversationId();
+			if(aufforderung != null) {
+				conv_id = aufforderung.getConversationId();
+			} else {
+				block();
+			}
+				
+			if(aufforderung != null && conv_id.equals("AufforderungAnUeberwachung")) {
+					
+				jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+				msg.addReceiver(new AID("AktualisierungsAgent", AID.ISLOCALNAME));
+					
+				str1 = "Agent: [ " + getName() + " ] konnte Nachricht von "
+						+ "[ " + aufforderung.getSender() + " ] entegegen nehmen. \n"
+								+ "KonversationsID : [ " +aufforderung.getConversationId() + " ] \n";
+					
+					
+				int counter = holeStatus();
+					
+				str1 += "Der Aktuelle Status zur Aktualisierung betraegt : [ " + counter + " ] \n";
+					
+				int status = 0;
+
+				//Sollten die Angebote bereits dreimal abgerufen worden sein ohne 
+				//aktualisiert zu werden, werden sie aktualisiert und der status dafuer auf 
+				// 1 gesetzt und dem Aktualisierungsagenten geschickt
+				if(counter >= 3) {
+					str1 += "Der Status wurde auf 1 geaendert. Es stehen neue Angebote zur Verfuegung. \n";
+					status = 1;
 				} else {
-					block();
+					str1 += "Der Status bleibt 0. Es gibt noch keine neuen Angebote \n";
 				}
 
-				if(aufforderung != null && conv_id.equals("AufforderungAnUeberwachung")) {
-					
-					jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-					msg.addReceiver(new AID("AktualisierungsAgent", AID.ISLOCALNAME));
-					
-					str1 = "Agent: [ " + getName() + " ] konnte Nachricht von "
-							+ "[ " + aufforderung.getSender() + " ] entegegen nehmen. \n"
-									+ "KonversationsID : [ " +aufforderung.getConversationId() + " ] \n";
-					
-					
-					int counter = holeStatus();
-					
-					str1 += "Der Aktuelle Status zur Aktualisierung betraegt : [ " + counter + " ] \n";
-					
-					int status = 0;
+				try {
+					Supermarkt[] maerkte = {new Lidl(), new Penny(), new Rewe()}; 
 
-					//Sollten die Angebote bereits dreimal abgerufen worden sein ohne 
-					//aktualisiert zu werden, werden sie aktualisiert und der status dafuer auf 
-					// 1 gesetzt und dem Aktualisierungsagenten geschickt
-					if(counter >= 3) {
-						str1 += "Der Status wurde auf 1 geaendert. Es stehen neue Angebote zur Verfuegung. \n";
-						status = 1;
-					} else {
-						str1 += "Der Status bleibt 0. Es gibt noch keine neuen Angebote \n";
-					}
+					HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) aufforderung.getContentObject();
 
-					try {
-						Supermarkt[] maerkte = {new Lidl(), new Penny(), new Rewe()}; 
-
-						HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) aufforderung.getContentObject();
-
-						Object[] o = {new UeberwachungsAgent(),maerkte, status, l};
-						msg.setContentObject(o);
-						msg.setConversationId("UpdateAnfrage");
-						send(msg);
+					Object[] o = {new UeberwachungsAgent(),maerkte, status, l};
+					msg.setContentObject(o);
+					msg.setConversationId("UpdateAnfrage");
+					send(msg);
 						
-						str1 += "Agent [ " + getName() + " ] versendet Nachricht [ " + msg + " ]"
-								+ " mit KonversationID : [ " + msg.getConversationId() + " ] \n";
+					str1 += "Agent [ " + getName() + " ] versendet Nachricht [ " + msg + " ]"
+							+ " mit KonversationID : [ " + msg.getConversationId() + " ] \n";
 						
-						send(sendToProtokollAgent(str1, "0"));
-					
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-				} else if (aufforderung != null && conv_id.equals("UpdateAntwort")) {
+					send(sendToProtokollAgent(str1, "0"));
+				
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			} else if (aufforderung != null && conv_id.equals("UpdateAntwort")) {
 
-					boolean b = false;
-					try {
-						if(aufforderung != null) {
-							Object[] obs =  (Object[]) aufforderung.getContentObject();
-							AktualisiereAngeboteAgent a = (AktualisiereAngeboteAgent) obs[1];
-							HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) obs[2];
+				boolean b = false;
+				try {
+					if(aufforderung != null) {
+						Object[] obs =  (Object[]) aufforderung.getContentObject();
+						AktualisiereAngeboteAgent a = (AktualisiereAngeboteAgent) obs[1];
+						HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) obs[2];
 
-							b = (boolean) obs[0];
+						b = (boolean) obs[0];
 
-							if(b == true) {
-								//Wenn aktualisiert wurde, dann faengt status wieder von 0 an zu zaehlen
-								schreibeStatus(0);
-								jade.lang.acl.ACLMessage to_angebot_agent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-								to_angebot_agent.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
-								Object[] objects_to_send = {b, l};
-								to_angebot_agent.setContentObject(objects_to_send);
-								to_angebot_agent.setConversationId("UpdateVonUeberwachung");
-								String str = "Agent :  + [ " + getName() + " ] hat den Status erneut "
-										+ "auf 0 gesetzt und die aktualsisierten Einkaufslisten inkl. neuer Angebote mit "
-										+ " [ " + to_angebot_agent + " ] an AngeboteAgent geschickt. \n";
-								send(to_angebot_agent);
-								send(sendToProtokollAgent(str, "0"));
-								this.finished = true;
-							} else {
-								int counter = holeStatus() + 1;
-								schreibeStatus(counter);
-								jade.lang.acl.ACLMessage to_angebot_agent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
-								to_angebot_agent.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
-								Object[] objects_to_send = {b, l};
-								to_angebot_agent.setContentObject(objects_to_send);
-								to_angebot_agent.setConversationId("UpdateVonUeberwachung");
-								String str = "Agent :  + [ " + getName() + " ] hat den Status um 1 auf "
-										+ "[ " + counter + " ] erhöht und die aktualsisierten Einkaufslisten inkl alter Angebote mit"
-										+ " [ " + to_angebot_agent + " ] an AngeboteAgent geschickt. \n";
-								send(to_angebot_agent);
-								send(sendToProtokollAgent(str, "0"));
-								this.finished = true;
-							}
+						if(b == true) {
+							//Wenn aktualisiert wurde, dann faengt status wieder von 0 an zu zaehlen
+							schreibeStatus(0);
+							jade.lang.acl.ACLMessage to_angebot_agent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+							to_angebot_agent.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
+							Object[] objects_to_send = {b, l};
+							to_angebot_agent.setContentObject(objects_to_send);
+							to_angebot_agent.setConversationId("UpdateVonUeberwachung");
+							String str = "Agent :  + [ " + getName() + " ] hat den Status erneut "
+									+ "auf 0 gesetzt und die aktualsisierten Einkaufslisten inkl. neuer Angebote mit "
+									+ " [ " + to_angebot_agent + " ] an AngeboteAgent geschickt. \n";
+							send(to_angebot_agent);
+							send(sendToProtokollAgent(str, "0"));
+							this.finished = true;
+						} else {
+							int counter = holeStatus() + 1;
+							schreibeStatus(counter);
+							jade.lang.acl.ACLMessage to_angebot_agent = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
+							to_angebot_agent.addReceiver(new AID("AngebotAgent", AID.ISLOCALNAME));
+							Object[] objects_to_send = {b, l};
+							to_angebot_agent.setContentObject(objects_to_send);
+							to_angebot_agent.setConversationId("UpdateVonUeberwachung");
+							String str = "Agent :  + [ " + getName() + " ] hat den Status um 1 auf "
+									+ "[ " + counter + " ] erhöht und die aktualsisierten Einkaufslisten inkl alter Angebote mit"
+									+ " [ " + to_angebot_agent + " ] an AngeboteAgent geschickt. \n";
+							send(to_angebot_agent);
+							send(sendToProtokollAgent(str, "0"));
+							this.finished = true;
 						}
-					} catch (UnreadableException e) {
-						e.printStackTrace();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
 					}
-				} 
-
-				else {
-					block();
+				} catch (UnreadableException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
+			} 
+			else {
+				block();
 			}
 		}
+	}
 	
 	public static jade.lang.acl.ACLMessage sendToProtokollAgent(String str, String status) {
 		jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
@@ -289,7 +286,6 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			Object[] objects = {str, status};
 			msg.setContentObject(objects);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		msg.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
@@ -310,10 +306,8 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 				e.printStackTrace();
 			} finally {
 				try {
-					//	bfr.close();
 					dis.close();
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			}
@@ -321,6 +315,7 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		}
 	
 		public static void schreibeStatus(int s) {
+			@SuppressWarnings("removal")
 			Integer status = new Integer(s);
 			File file = new File(System.getProperty("user.dir") + "/UeberwachungAgent/anfrage.dat");
 			File file_new = null;
@@ -336,27 +331,14 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		
 		try {
 			dous =  new DataOutputStream(new FileOutputStream(file_new));
-			//writer.println(status);
-			//writer.close();
-			System.out.println("Schreibe status: " + status);
+			
 			dous.writeInt(status);
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
 			//writer.close();
 		}
 	}
 }
-
-	
-
-				
-		
-		
-
-	
-

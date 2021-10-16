@@ -1,6 +1,6 @@
 package agents;
 
-import java.io.BufferedReader;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
@@ -8,24 +8,24 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.OneShotBehaviour;
+
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.lang.acl.ACLMessage;
+
 import jade.lang.acl.UnreadableException;
-import managers.DatumsManager;
+
 
 public class ProtokollAgent extends Agent {
 	
@@ -35,7 +35,6 @@ public class ProtokollAgent extends Agent {
 	private static final long serialVersionUID = 8184434646383054043L;
 	
 	private File protokoll;
-	private String ordner;
 	private PrintWriter w;
 	private ArrayList<String> collection;
 	
@@ -98,12 +97,9 @@ public class ProtokollAgent extends Agent {
 					strings = (String) objects[0];
 					status = (String) objects[1];
 					
-					//System.out.println(status);
-					
 					writeProtokollToFile(strings, status);
 					
 				} catch (UnreadableException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else {
@@ -152,10 +148,8 @@ public class ProtokollAgent extends Agent {
 			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (@SuppressWarnings("hiding") IOException e) {
 			e.printStackTrace();
 		} finally {
 			getPrintWriter().close();
@@ -178,24 +172,21 @@ public class ProtokollAgent extends Agent {
 
 		DataOutputStream dous = null;
 	
-	try {
-		dous =  new DataOutputStream(new FileOutputStream(file_new));
-		
-		for(int i = 0; i < getCollection().size(); i++) {
-			dous.writeBytes(getCollection().get(i));
-		}
-		
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} finally {
-		//writer.close();
-	}
+		try {
+			dous =  new DataOutputStream(new FileOutputStream(file_new));
+
+			for(int i = 0; i < getCollection().size(); i++) {
+				dous.writeBytes(getCollection().get(i));
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 	}
 	
+	@SuppressWarnings("deprecation")
 	private String leseVonProtokollAusZwischenstand() {
 		String str = "==================================LADE PROTOKOLL AUS ZWISCHENSTAND"
 				+ "=====================================" + "\n";
@@ -215,14 +206,11 @@ public class ProtokollAgent extends Agent {
 			e.printStackTrace();
 		} finally {
 			try {
-				//	bfr.close();
 				dis.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
 		return str;
 	}
 }

@@ -2,7 +2,6 @@ package agents;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import database.transfer.LoescheAusDatenbank;
@@ -14,7 +13,6 @@ import general.supermarkets.Lidl;
 import general.supermarkets.Netto;
 import general.supermarkets.Penny;
 import general.supermarkets.Rewe;
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.domain.DFService;
@@ -141,6 +139,7 @@ public class AktualisiereAngeboteAgent extends Agent {
 			System.out.println("In sendback von AktualisierungsBeh");
 			jade.lang.acl.ACLMessage msg = m.createReply();
 			try {
+				@SuppressWarnings("unchecked")
 				HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) objects[3];
 				
 				System.out.println("In try von sendback von AktualisierungsBeh");
