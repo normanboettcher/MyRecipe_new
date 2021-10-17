@@ -24,7 +24,12 @@ public class RezepteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	List<Pair<Instance, Similarity>> result;
 	ArrayList<Rezepte> resultingRezepte; 
-       
+	
+    /**
+     * get Methode.
+     * @param request request.
+     * @param response response.
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get parameters from the formular on index.jsp
 		
@@ -47,7 +52,6 @@ public class RezepteServlet extends HttpServlet {
 				inputTitel = "";
 			}
 			
-			
 			RezeptAnfrage queryRezepte = new RezeptAnfrage(inputTitel, inputKueche, inputGerichteart, inputEigenschaften); 
 			
 			SenderAgent sender = new SenderAgent();
@@ -67,7 +71,12 @@ public class RezepteServlet extends HttpServlet {
 			request.getRequestDispatcher("JSP/error.jsp").forward(request, response);
 		}
 	}
-
+	
+	/**
+	 * post- Methode.
+	 * @param request request.
+	 * @param response response.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

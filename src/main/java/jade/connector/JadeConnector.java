@@ -17,9 +17,13 @@ import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.ControllerException;
 import jade.wrapper.StaleProxyException;
-
+/**
+ * Klasse, um eine Jade Runtime zu realisieren.
+ * @author norman
+ *
+ */
 public class JadeConnector {
-	
+	//Attribute
 	private static jade.core.Runtime rt;
 	private static Profile profile;
 	private static ProfileImpl start_profil;
@@ -29,9 +33,11 @@ public class JadeConnector {
 	@SuppressWarnings("unused")
 	private static AgentController ac;
 	
-	public JadeConnector()  {
-	}
-	
+	/**
+	 * Methode zum Starten einer Runtime mit mehreren Agenten.
+	 * 
+	 * @param agenten Agenten, die uebergeben werden.
+	 */
 	public static void startAgentsZumBerechnen(HashMap<String, Agent> agenten) {
 		
 		EinkaufslistenVergleichsAgent vergleichsagent = (EinkaufslistenVergleichsAgent) agenten.get("Vergleichsagent");
@@ -84,7 +90,13 @@ public class JadeConnector {
 			e.printStackTrace();
 		} 
 	}
-	
+
+	/**
+	 * Methode, um Agenten fuer CBR- Prozess zu starten.
+	 * 
+	 * @param s       Ein Sender Agent der mit uebergeben wird.
+	 * @param anfrage Die Anfrage fuer das CBR.
+	 */
 	public static void runAgentsForCBRQuery(SenderAgent s, RezeptAnfrage anfrage) {
 		UeberwachungsAgent ue_agent =new UeberwachungsAgent();
 		RecipeAgent r_agent = new RecipeAgent();
@@ -129,7 +141,6 @@ public class JadeConnector {
 		} catch (ControllerException e) {
 			e.printStackTrace();
 		} 
-		
 	}
 }
 

@@ -27,8 +27,18 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.UnreadableException;
 
+/**
+ * Klasse, um Ueberwachungsagenten zu realisieren. Der Ueberwachungsagent prueft
+ * den Status der Angebote, Vermittelt zwischen dem Aktualisierungsagenten und
+ * dem AngebotAgenten, beauftragt CBR- Agenten, definiert Funktion zum Festlegen
+ * der Message an den ProtkollAgenten, die als static von anderen Agenten
+ * ausgefuehrt wird.
+ * 
+ * @author norman
+ *
+ */
 public class UeberwachungsAgent extends Agent implements Serializable {
-	
+	//Attribute
 	/**
 	 * 
 	 */
@@ -38,30 +48,62 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 									//den RecipeAgent uebermitteln koennen.
 	private String status;
 	
+	/**
+	 * Konstruktor des Ueberwachungsagenten Der {@code name} wrd fest auf
+	 * 'Ueberwachung' gesetzt.
+	 */
 	public UeberwachungsAgent() {
 		this.name = "Ueberwachung";
 	}
-	
+
+	/**
+	 * Rueckgabe des Namens.
+	 * 
+	 * @return name
+	 */
 	public String getAgentName() {
 		return name;
 	}
-	
+
+	/**
+	 * Methode, um Status des Ueberwachungsagenten festzulegen. Bei Status start
+	 * wird der Agent beauftragt, den CBR- Agenten zu beauftragen.
+	 * 
+	 * @param s der Status als String.
+	 */
 	public void setStatus(String s) {
 		this.status = s;
 	}
-	
+
+	/**
+	 * Rueckgabe des Status des Agenten.
+	 * 
+	 * @return status
+	 */
 	private String getStatus() {
 		return status;
 	}
-	
+
+	/**
+	 * Der Ueberwachungsagent nimmt eine Anfrage fuer ein Rezept entgegen.
+	 * 
+	 * @param a die Anfrage.
+	 */
 	public void setRezeptAnfrage(RezeptAnfrage a) {
 		this.anfrage = a;
 	}
-	
+
+	/**
+	 * Rueckgabe der RezeptAnfrage.
+	 * 
+	 * @return anfrage
+	 */
 	protected RezeptAnfrage getRezeptAnfrage() {
 		return anfrage;
 	}
-	
+	/**
+	 * Agent wird registriert.
+	 */
 	protected void setup() {
 		
 		DFAgentDescription desc = new DFAgentDescription();
@@ -82,7 +124,9 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		}
 		addBehaviour(new UeberwachungsVerhalten());
 	}
-	
+	/**
+	 * Agent wird deregistriert.
+	 */
 	protected void takeDown() {
 		try {
 			DFService.deregister(this);
@@ -91,6 +135,12 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		}
 	}
 
+	/**
+	 * Private Klasse, um Startverhalten des Agenten zu bestimmen.
+	 * 
+	 * @author norman
+	 *
+	 */
 	private class Startverhalten extends Behaviour {
 		/**
 		 * 
@@ -155,7 +205,13 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		}
 		
 	}
-	
+
+	/**
+	 * Private klasse, um Ueberwachungsverhalten zu realisieren.
+	 * 
+	 * @author norman
+	 *
+	 */
 	private class UeberwachungsVerhalten extends Behaviour {
 		private boolean finished = false;
 		/**
@@ -279,7 +335,16 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			}
 		}
 	}
-	
+
+	/**
+	 * Methode, um die Message an der Protokollagenten vorzubereiten. Diese Methode
+	 * wird von anderen Agenten benutzt.
+	 * 
+	 * @param str    der Fortschritt des Prozesses als String
+	 * @param status der Status des Prozesses.
+	 * @return msg die vorbereitete Message, die von anderen Agenten mit
+	 *         {@code send} gesendet werden muss.
+	 */
 	public static jade.lang.acl.ACLMessage sendToProtokollAgent(String str, String status) {
 		jade.lang.acl.ACLMessage msg = new jade.lang.acl.ACLMessage(jade.lang.acl.ACLMessage.INFORM);
 		try {
@@ -291,6 +356,12 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 		msg.addReceiver(new AID("ProtokollAgent", AID.ISLOCALNAME));
 		return msg;
 	}
+
+	/**
+	 * private Methode, um den Status der Angbeote zu holen.
+	 * 
+	 * @return status der Status als Integer.
+	 */
 		public static int holeStatus() {
 			Integer status = 0;
 			DataInputStream dis = null;
@@ -313,7 +384,12 @@ public class UeberwachungsAgent extends Agent implements Serializable {
 			}
 			return status;
 		}
-	
+
+		/**
+		 * Methode um Status der Angebote in Datei zu speichern.
+		 * 
+		 * @param s der zu schreibende Status als Integer.
+		 */
 		public static void schreibeStatus(int s) {
 			@SuppressWarnings("removal")
 			Integer status = new Integer(s);

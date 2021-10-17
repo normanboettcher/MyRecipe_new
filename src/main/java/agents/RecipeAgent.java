@@ -27,9 +27,13 @@ import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.UnreadableException;
-
+/**
+ * Klasse, um einen RezeptAgenten mit CB zu realiseren.
+ * @author norman
+ *
+ */
 public class RecipeAgent extends Agent {
-
+	//Attribute
 	/**
 	 * 
 	 */
@@ -51,15 +55,26 @@ public class RecipeAgent extends Agent {
 	private SymbolDesc gerichteartDesc;
 	private SymbolDesc eigenschaftenDesc;
 	private IntegerDesc rezepte_idDesc;
-
+	
+	/**
+	 * Konstruktor des RezeptAgenten. Der {@code name} wird fest auf 'RezeptAgent'
+	 * gelegt.
+	 */
 	public RecipeAgent() {
 		this.name = "RezeptAgent";
 	}
 
+	/**
+	 * Rueckgabe des Agentennamens.
+	 * 
+	 * @return name
+	 */
 	public String getAgentName() {
 		return name;
 	}
-
+	/**
+	 * Agent wird registriert.
+	 */
 	protected void setup() {
 
 		DFAgentDescription desc = new DFAgentDescription();
@@ -77,7 +92,9 @@ public class RecipeAgent extends Agent {
 
 		addBehaviour(new RecipeAgentBehavior());
 	}
-
+	/**
+	 * Agent wird deregistriert.
+	 */
 	protected void takeDown() {
 		try {
 			DFService.deregister(this);
@@ -86,6 +103,12 @@ public class RecipeAgent extends Agent {
 		}
 	}
 
+	/**
+	 * private Klasse, um das Verhalten des RezeptAgenten zu realisieren.
+	 * 
+	 * @author norman
+	 *
+	 */
 	private class RecipeAgentBehavior extends Behaviour {
 
 		/**
@@ -93,7 +116,11 @@ public class RecipeAgent extends Agent {
 		 */
 		private static final long serialVersionUID = -2258555579999397566L;
 		boolean finished = false;
-
+		
+		/**
+		 * In der action wird ein CBR- Projekt impoertiert und ggf., bei Aufforderung
+		 * durch einen Ueberwachungsagenten eine CBR- Query getaetigt.
+		 */
 		public void action() {
 			String str = "";
 			jade.lang.acl.ACLMessage empfang = blockingReceive();
@@ -155,10 +182,13 @@ public class RecipeAgent extends Agent {
 			block();
 		}
 	}
-
-		public boolean done() {
-			return finished;
-		}
+	
+		/**
+		 * 
+		 */
+	public boolean done() {
+		return finished;
+	}
 	}
 
 	/**
@@ -189,14 +219,31 @@ public class RecipeAgent extends Agent {
 		}
 	}
 
+	/**
+	 * Methode zum setzen des Konzeptes.
+	 * 
+	 * @param c das Konzept aus der CB.
+	 */
 	private void setRezepteKonzept(Concept c) {
 		this.RezepteConcept = c;
 	}
 
+	/**
+	 * Rueckgabe des Konzeptes.
+	 * 
+	 * @return RezepteConcept
+	 */
 	private Concept getRezepteConcept() {
 		return RezepteConcept;
 	}
-
+	
+	/**
+	 * private Methode, um eine query an die CB zu starten.
+	 * 
+	 * @param rezepte Die Eigenschaften der Anfrage fuer ein Rezept aus der CB.
+	 * @return das Ergebnis der Query.
+	 * @throws ParseException
+	 */
 	private List<Pair<Instance, Similarity>> startQuery(RezeptAnfrage rezepte) throws ParseException {
 		// Get the values of the request
 		titelDesc = (StringDesc) getRezepteConcept().getAllAttributeDescs().get("Titel");
@@ -221,38 +268,12 @@ public class RecipeAgent extends Agent {
 		retrieve.setRetrievalMethod(RetrievalMethod.RETRIEVE_SORTED);
 		Instance query = retrieve.getQueryInstance();
 
-		// System.out.println(titelDesc);
-		// System.out.println(kuecheDesc);
-		// System.out.println(gerichteartDesc);
-		// System.out.println(eigenschaftenDesc);
-
-		// System.out.println(rezepte.getEigenschaften());
-		// System.out.println(titelDesc.getAttribute(rezepte.getTitel()));
-
-		// System.out.println("----Konnte Titel hinzufuegen: "+
-		// query.addAttribute(titelDesc, titelDesc.getAttribute(rezepte.getTitel())));
-		// System.out.println("----Konnte ID hinzufuegen: "+
-		// query.addAttribute(rezepte_idDesc, 2));
-
-		// System.out.println(rezepte.getKueche()[0]);
 		query.addAttribute(kuecheDesc, kuecheDesc.getAttribute(rezepte.getKueche()[0]));
-		// System.out.println("-----Konnte Kueche hinzufuegen: " +
-		// query.addAttribute(kuecheDesc,
-		// kuecheDesc.getAttribute(rezepte.getKueche()[0])));
-
+		
 		query.addAttribute(gerichteartDesc, gerichteartDesc.getAttribute(rezepte.getGerichteart()[0]));
-		// System.out.println("-----Konnte Gerichteart hinzufuegen: " +
-		// query.addAttribute(gerichteartDesc,
-		// gerichteartDesc.getAttribute(rezepte.getGerichteart()[0])));
-
+		
 		query.addAttribute(eigenschaftenDesc, eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[0]));
-		// System.out.println("-----Konnte Eigenschaften hinzufuegen: " +
-		// query.addAttribute(eigenschaftenDesc,
-		// eigenschaftenDesc.getAttribute(rezepte.getEigenschaften()[0])));
-		// System.out.println(query.getAttForDesc(gerichteartDesc).getValueAsString());
-		// System.out.println(query.getAttForDesc(eigenschaftenDesc).getValueAsString());
-		// System.out.println(query.getAttForDesc(kuecheDesc).getValueAsString());
-
+	
 		// Send query
 		retrieve.start();
 		System.out.println("[DEBUG] RecipeAgent: Query successful!");
@@ -260,10 +281,12 @@ public class RecipeAgent extends Agent {
 	}
 
 	/**
+	 * Methode, um die Rezepte als ArrayList aus der Query wiederzugeben.
 	 * 
-	 * @param result
-	 * @param numberOfBestCases
-	 * @return
+	 * @param result            die fertigen Rezepte.
+	 * @param numberOfBestCases die Anzahl der besten Faelle, die ausgegeben werden
+	 *                          muessen.
+	 * @return resultingRezepte die fertigen Rezepte.
 	 */
 	public ArrayList<Rezepte> getFertigeRezepte(List<Pair<Instance, Similarity>> result, int numberOfBestCases) {
 
@@ -285,5 +308,4 @@ public class RecipeAgent extends Agent {
 		}
 		return resultingRezepte;
 	}
-
 }

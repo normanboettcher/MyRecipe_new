@@ -1,7 +1,11 @@
 package general.supermarkets;
 
 import general.Supermarkt;
-
+/**
+ * Klasse Netto erbt von Supermarkt.
+ * @author norman
+ *
+ */
 public class Netto extends Supermarkt {
 	
 	/**
@@ -19,7 +23,10 @@ public class Netto extends Supermarkt {
 	protected void setBezeichnung() {
 		this.bez = "Netto";
 	}
-	
+	/**
+	 * Rueckgabe der festen ID {@code 3}.
+	 * @return URSSPRUNGSID
+	 */
 	public int getUrsprungsID() {
 		return URSPRUNGSID;
 	}

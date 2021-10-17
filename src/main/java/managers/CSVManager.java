@@ -12,8 +12,20 @@ import java.util.ArrayList;
 
 import databaseConnection.DBConnection;
 
+/**
+ * Realisierung eines CSV- MAnagers. Wurde benoetigt, um produkte aus CSV in die
+ * Datenbank zu laden.
+ * 
+ * @author norman
+ *
+ */
 public class CSVManager {
-	
+	/**
+	 * Methode, um eine CSV zu laden und als Liste wiederzugeben.
+	 * 
+	 * @param filename Der Name der CSV datei.
+	 * @return arrList eine Liste mit String Arrays.
+	 */
 	@SuppressWarnings("deprecation")
 	public static ArrayList<String[]> loadCSV(String filename) {
 		File file = new File(filename);
@@ -37,7 +49,13 @@ public class CSVManager {
 		}
 		return arrList;
 	}
-	
+
+	/**
+	 * Methode, um die Produkte von der CSV in die DB zu transferieren.
+	 * 
+	 * @param laden der Laden, fuer den die Produkte sind.
+	 * @param list  die Liste, aus der geladenen CSV- Datei.
+	 */
 	@SuppressWarnings("unused")
 	private static void transferProductsFromCSVToDB(String laden, ArrayList<String[]> list) {
 		Connection con = DBConnection.getConnection();

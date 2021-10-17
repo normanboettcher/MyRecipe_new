@@ -15,22 +15,46 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.UnreadableException;
 
+/**
+ * Klasse, um Sender Agenten zu realisieren. Der Sender Agent uebermittelt die
+ * Ergebnisse der Agentenkommunikation an die jeweiligen Servlets.
+ * 
+ * @author norman
+ *
+ */
 public class SenderAgent extends Agent {
 	
-	
+	//Attribute
 	private String name;
 	private Object object_to_send;
-	private boolean ready_to_send;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6637908621330116852L;
 	
+	/**
+	 * Konstruktor des SendeAgenten. der {@code name} wird fest auf 'SendeAgent'
+	 * gesetzt.
+	 */
 	public SenderAgent() {
 		this.name = "SendeAgent";
-		this.ready_to_send = false;
 	}
-	
+
+	/**
+	 * Rueckgabe des Agentennamens.
+	 * 
+	 * @return name
+	 */
 	public String getAgentName() {
 		return name;
 	}
-	
+
+	/**
+	 * Methode, um das Onjekt, welches gesendet werden soll, fuer den Agenten als
+	 * Attribut festzulegen.
+	 * 
+	 * @param l das zu sendende Objekt.
+	 */
 	@SuppressWarnings("unchecked")
 	private void setObjectToSend(Object l) {
 		if(l instanceof HashMap) {
@@ -38,22 +62,19 @@ public class SenderAgent extends Agent {
 		} else if (l instanceof ArrayList) {
 			this.object_to_send = (ArrayList<Rezepte>) l;
 		}
-		
 	}
-	
+
+	/**
+	 * Methode zur Rueckgabe des Objektes.
+	 * 
+	 * @return object_to_send
+	 */
 	public Object getObjectToSend() {
 		return object_to_send;
 	}
-	
-	public void setReadyToSend(boolean t) {
-		this.ready_to_send = t;
-	}
-	
-	public boolean readyToSend() {
-		return ready_to_send;
-	}
-	
-	
+	/**
+	 * Agent wird registriert.
+	 */
 	protected void setup() {
 		
 		DFAgentDescription desc = new DFAgentDescription();
@@ -71,7 +92,9 @@ public class SenderAgent extends Agent {
 		
 		addBehaviour(new SendeAgentBehaviour());
 	}
-	
+	/**
+	 * Agent wird deregistriert.
+	 */
 	protected void takeDown() {
 		try {
 			DFService.deregister(this);
@@ -79,13 +102,13 @@ public class SenderAgent extends Agent {
 			System.out.println(fe.getMessage());
 		}
 	}
-	
+
 	/**
+	 * private Klasse, um Verhalten des SendeAgenten zu realisieren.
 	 * 
+	 * @author norman
+	 *
 	 */
-	private static final long serialVersionUID = 6637908621330116852L;
-	
-	
 	private class SendeAgentBehaviour extends Behaviour {
 		private boolean finished = false;
 		/**
@@ -117,8 +140,7 @@ public class SenderAgent extends Agent {
 					HashMap<Integer, Einkaufsliste> objekt = (HashMap<Integer, Einkaufsliste>) ms.getContentObject();
 					
 					setObjectToSend(objekt);
-					setReadyToSend(true);
-					
+				
 					str1 += "Agent: [ " + getName() + " ] konnte Nachricht "
 							+ " von [ " + ms.getSender() + " ] empfangen. \n "
 									+ "Prozess fuer den Vergleich ist beendet.";

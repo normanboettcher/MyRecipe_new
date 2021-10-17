@@ -25,9 +25,13 @@ import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
 import jade.lang.acl.UnreadableException;
 import managers.DatumsManager;
-
+/**
+ * Klasse und Vergleichsagent fuer Einkaufslisten zu realisieren.
+ * @author norman
+ *
+ */
 public class EinkaufslistenVergleichsAgent extends Agent {
-	
+	//Attribute
 	/**
 	 * 
 	 */
@@ -36,31 +40,55 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 	private HashMap<Integer, Einkaufsliste> einkaufslisten_geordnet_nach_preis;
 	private int rezept_id;
 	private String name;
-	
 	private String status = "";
 	
 	@SuppressWarnings("unused")
 	private static final boolean ABSTEIGEND = false;
 	private static final boolean AUFSTEIGEND = true;
 	
+	/**
+	 * Konsturktor des Vergleichsagenten.
+	 * 
+	 * @param rezept_id die RezeptID, fuer die Einkaufslisten erstellt werden
+	 *                  muessen. Der Name wird fest auf 'Vergleichsagent' gesetzt.
+	 */
 	public EinkaufslistenVergleichsAgent(int rezept_id) {
 		this.rezept_id = rezept_id;
 		this.einkaufslisten_geordnet_nach_preis = new HashMap<Integer, Einkaufsliste>(); 
 		this.name = "Vergleichsagent";
 	}
-	
+
+	/**
+	 * Methode gibt den Namen des Agenten zurueck.
+	 * 
+	 * @return name der Name des Agenten.
+	 */
 	public String getAgentName() {
 		return name;
 	}
-	
+
+	/**
+	 * Der Vergleichsagent kann einen Status erhalten. Der Status start laesst den
+	 * Agenten den Vergleichsprozess anstossen.
+	 * 
+	 * @param s der Status als String.
+	 */
 	public void setStatus(String s) {
 		this.status = s;
 	}
-	
+
+	/**
+	 * Methode fuer die Rueckgabe des Status.
+	 * 
+	 * @return status der Status des Agenten als String.
+	 */
 	private String getStatus() {
 		return status;
 	}
-	
+
+	/**
+	 * Agent wird registriert.
+	 */
 	protected void setup() {
 		
 		DFAgentDescription desc = new DFAgentDescription();
@@ -86,7 +114,9 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 		addBehaviour(new VergleichsAgentAnfrageVerhalten());
 		
 	}
-	
+	/**
+	 * Agent wird deregistriert.
+	 */
 	protected void takeDown() {
 		
 		try {
@@ -98,11 +128,23 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 			System.out.println(fe.getMessage());
 		}
 	}
-	
+
+	/**
+	 * Rueckgabe der Rezept id.
+	 * 
+	 * @return rezept_id
+	 */
 	private int getRezeptID() {
 		return rezept_id;
 	}
-	
+
+	/**
+	 * private Klasse, um das Startverhalten des Agenten zu realisieren, wenn Status
+	 * auf 'start' gesetzt wurde.
+	 * 
+	 * @author norman
+	 *
+	 */
 	private class Startverhalten extends Behaviour {
 		/**
 		 * 
@@ -147,16 +189,20 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 			return finished;
 		}
 	}
-	
+
+	/**
+	 * Private Klasse, um das Verhalten fuer den Vergleich zu realisieren.
+	 * Kommuniikation mit Angebotagenten.
+	 * 
+	 * @author norman
+	 *
+	 */
 	private class VergleichsAgentAnfrageVerhalten extends Behaviour {
 		/**
 		 * 
 		 */
 		private static final long serialVersionUID = -5183576776849426475L;
 		private boolean finished = false;
-		
-		public VergleichsAgentAnfrageVerhalten() {
-		}
 		
 		@Override
 		public boolean done() {
@@ -221,15 +267,33 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 			}
 		}
 	}
-	
+
+	/**
+	 * Rueckgabe der sortierten Einkaufslisten Absteigend nach Preis.
+	 * 
+	 * @return einkaufslisten_geordnet_nach_preis die geordneten Einkaufslisten.
+	 */
 	public HashMap<Integer, Einkaufsliste> getEinkaufslistenSortiertNachPreis() {
 		return einkaufslisten_geordnet_nach_preis;
 	}
-	
+
+	/**
+	 * private Methode, um die Einkaufslisten zu vergleichen.
+	 * 
+	 * @param liste die Liste mit allen Einkaufslisten, die verglichen werden
+	 *              sollen.
+	 */
 	private void vergleicheEinkaufslisten(HashMap<Integer, Einkaufsliste> liste) {
 			this.einkaufslisten_geordnet_nach_preis = sortiereNachBilligsten(liste, AUFSTEIGEND);
 	}
-	
+
+	/**
+	 * private Methode, um die Preise aus den Einkaufslisten zu holen, damit nach
+	 * diesen Werten sortiert werden kann.
+	 * 
+	 * @param l Die Liste, aus denen die Preise der Einkaufslisten gewonnen werden.
+	 * @return listen_mit_preisen_und_id Einkaufslisten auf PReise reduziert.
+	 */
 	private static HashMap<Integer, Double> extrahierePreisVonEinkaufsliste(
 			HashMap<Integer, Einkaufsliste> l) {
 		
@@ -240,7 +304,14 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 		}
 		return listen_mit_preisen_und_id;
 	}
-	
+
+	/**
+	 * Methode, um Einkaufslisten nach Kriterium Preis zu sortieren.
+	 * 
+	 * @param unsortiert die bisher unsortierte Liste.
+	 * @param order      Aufsteigend oder Absteigend sortieren.
+	 * @return sortiert die sortierten Einkaufslisten.
+	 */
 	private static HashMap<Integer, Einkaufsliste> sortiereNachBilligsten(
 			HashMap<Integer, Einkaufsliste> unsortiert, final boolean order) {
 		
@@ -267,15 +338,14 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 				
 				sortiert.put(key, unsortiert.get(key));
 			}		
-		
-		//System.out.println("Nach sortiert: ");
-		//printMap(sortiert);
 		return sortiert;
 	}
 	
 	/**
 	 * Hilfsmethode zum ausgeben der Maps. Zu Testzwecken.
-	 * @param map die ubergebene map, die ausgegeben werden soll jeweils mit key und value.
+	 * 
+	 * @param map die ubergebene map, die ausgegeben werden soll jeweils mit key und
+	 *            value.
 	 */
 	@SuppressWarnings("unused")
 	private static void printMap(HashMap<Integer, Einkaufsliste> map) {
@@ -283,7 +353,14 @@ public class EinkaufslistenVergleichsAgent extends Agent {
 			System.out.println(entry.getKey() + ". " + entry.getValue().getGesamtPreis() + " EUR");
 		}
 	}
-	
+
+	/**
+	 * private Methode um fuer jeden Laden eine Einkaufsliste zu erstellen.
+	 * 
+	 * @param rezept_id das Rezept, auf dessen Basis die Einkaufslisten erstellt
+	 *                  werden.
+	 * @return results die erstellten Einkaufslisten aus dem Sortiment.
+	 */
 	private HashMap<Integer, Einkaufsliste> erstelleEinkaufslistenFuerAlleLaeden(int rezept_id) {
 		Connection con = DBConnection.getConnection();
 		

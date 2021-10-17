@@ -1,7 +1,11 @@
 package general.supermarkets;
 
 import general.Supermarkt;
-
+/**
+ * Klasse Penny erbt von Supermarkt.
+ * @author norman
+ *
+ */
 public class Penny extends Supermarkt {
 
 	/**
@@ -19,7 +23,10 @@ public class Penny extends Supermarkt {
 	protected void setBezeichnung() {
 		this.bez = "Penny";
 	}
-	
+	/**
+	 * Rueckgabe der festen UrsprungsID {@code 4}.
+	 * @return URSPRUNGSID
+	 */
 	public int getUrsprungsID() {
 		return URSPRUNGSID;
 	}

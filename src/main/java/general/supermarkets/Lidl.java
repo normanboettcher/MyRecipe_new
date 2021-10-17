@@ -2,7 +2,11 @@ package general.supermarkets;
 
 
 import general.Supermarkt;
-
+/**
+ * Klasse Lidl, erbt von Supermarkt.
+ * @author norman
+ *
+ */
 public class Lidl extends Supermarkt {
 	
 	/**
@@ -20,7 +24,10 @@ public class Lidl extends Supermarkt {
 	protected void setBezeichnung() {
 		this.bez = "Lidl";
 	}
-	
+	/**
+	 * Rueckgabe der festen UrpsrungsID {@code 2}.
+	 * @return URSPRUNGSID
+	 */
 	public int getUrsprungsID() {
 		return URSPRUNGSID;
 	}
