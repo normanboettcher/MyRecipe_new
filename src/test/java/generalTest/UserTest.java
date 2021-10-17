@@ -28,6 +28,7 @@ public class UserTest {
 	private Food f_1;
 	private Food f_2;
 	
+	@SuppressWarnings("deprecation")
 	@Before
 	public void setUp() throws Exception {
 		
@@ -117,6 +118,7 @@ public class UserTest {
 	
 	@Test
 	public void getEinkaufsListeByDateTest() {
+		@SuppressWarnings("deprecation")
 		HashMap<Integer, Einkaufsliste> einkaufslisten_an_datum = u_2.getEinkaufslisteByDate(new Date(2002 - 1900, 1, 3));
 		//System.out.println(new Date(2002- 1900, 1, 3));
 		assertTrue(einkaufslisten_an_datum.size() == 2);

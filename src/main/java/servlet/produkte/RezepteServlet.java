@@ -2,7 +2,6 @@ package servlet.produkte;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -25,7 +24,12 @@ public class RezepteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	List<Pair<Instance, Similarity>> result;
 	ArrayList<Rezepte> resultingRezepte; 
-       
+	
+    /**
+     * get Methode.
+     * @param request request.
+     * @param response response.
+     */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// Get parameters from the formular on index.jsp
 		
@@ -37,6 +41,7 @@ public class RezepteServlet extends HttpServlet {
 		String[] inputEigenschaften = request.getParameterValues("eigenschaften");
 		
 		try {
+			@SuppressWarnings("unused")
 			int inputIdParsed = 0;
 			
 			if(inputRezepte_id != null) {
@@ -47,15 +52,15 @@ public class RezepteServlet extends HttpServlet {
 				inputTitel = "";
 			}
 			
-			
 			RezeptAnfrage queryRezepte = new RezeptAnfrage(inputTitel, inputKueche, inputGerichteart, inputEigenschaften); 
 			
 			SenderAgent sender = new SenderAgent();
 			
 			JadeConnector.runAgentsForCBRQuery(sender, queryRezepte);
 			
-			Thread.sleep(7000);
+			Thread.sleep(6000);
 			
+			@SuppressWarnings("unchecked")
 			ArrayList<Rezepte>rezepte = (ArrayList<Rezepte>) sender.getObjectToSend();
 			request.setAttribute("resultingRezepte", rezepte);
 			
@@ -66,7 +71,12 @@ public class RezepteServlet extends HttpServlet {
 			request.getRequestDispatcher("JSP/error.jsp").forward(request, response);
 		}
 	}
-
+	
+	/**
+	 * post- Methode.
+	 * @param request request.
+	 * @param response response.
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

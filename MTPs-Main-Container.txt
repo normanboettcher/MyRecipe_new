@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 http://DESKTOP-KAP9F31:52043/acc
+=======
+http://normanboettcher:42065/acc
+>>>>>>> a8ffe3564361e7b0fd4a6623135288969e76d20e

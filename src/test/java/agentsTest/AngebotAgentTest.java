@@ -1,17 +1,12 @@
 package agentsTest;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import java.util.HashMap;
 
 import org.junit.Before;
-import org.junit.Test;
 
 import agents.AngeboteAgent;
 import general.Einkaufsliste;
 import general.Food;
-import general.supermarkets.Lidl;
 import managers.DatumsManager;
 
 public class AngebotAgentTest {

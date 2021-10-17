@@ -53,7 +53,17 @@ public class RegisterServlet extends HttpServlet {
 		
 		checkEingaben(passwort, passwort2, req, res);	
 	}
-	
+
+	/**
+	 * Methode um die Eingaben mit dem RegEx Manager zu pruefen.
+	 * 
+	 * @param passwort
+	 * @param passwort2
+	 * @param req
+	 * @param res
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void checkEingaben(String passwort, String passwort2, HttpServletRequest req, HttpServletResponse res) 
 			throws ServletException, IOException {
 		boolean fehler_aufgetreten = false;
@@ -127,6 +137,12 @@ public class RegisterServlet extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * Methode, um zu pruefen, ob Email bereits vorhanden ist.
+	 * 
+	 * @param email die zu pruefende Email.
+	 * @return email_vorhanden true or false
+	 */
 	private boolean pruefeObEmailVorhanden(String email) {
 		boolean email_vorhanden = false;
 		Connection con = DBConnection.getConnection();

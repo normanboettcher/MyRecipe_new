@@ -5,22 +5,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map.Entry;
-import java.util.Random;
-
-import database.transfer.LoescheAusDatenbank;
-import database.transfer.SpeicherInDatenbank;
 import databaseConnection.DBConnection;
-import general.Food;
-import general.supermarkets.Lidl;
-import general.supermarkets.Netto;
-import general.supermarkets.Penny;
-import general.supermarkets.Rewe;
-import managers.DoubleManager;
-import managers.RabattManager;
 
+/**
+ * Klasse zum Realisieren der Eigenschaften eines Supermarkts.
+ * @author norman
+ *
+ */
 public abstract class Supermarkt implements Serializable {
 	
 	/**
@@ -39,9 +31,14 @@ public abstract class Supermarkt implements Serializable {
 		this.sortiment = new HashMap<Integer, Food>();
 		this.angebote = new HashMap<Integer, Food>();
 	}
-	
+	/**
+	 * abstract, da jeder Supermarkt eine andere Bezeichnung implementiert.
+	 */
 	protected abstract void setBezeichnung();
 	
+	/**
+	 * Methode, um Sortiment fuer einen Supermarkt zu initialisieren.
+	 */
 	public void initSortiment() {
 		Connection con = DBConnection.getConnection();
 		ResultSet r;
@@ -69,7 +66,9 @@ public abstract class Supermarkt implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
+	/**
+	 * Methode, um Angebote fuer diesen Supermarkt aus der DB zu holen.
+	 */
 	public void holeAngebote() {
 		Connection con = DBConnection.getConnection();
 		
@@ -91,51 +90,91 @@ public abstract class Supermarkt implements Serializable {
 			e.printStackTrace();
 		}
 	}
-	
-	
+
+	/**
+	 * Rueckgabe der Angebote.
+	 * 
+	 * @return angebote
+	 */
 	public HashMap<Integer, Food> getAngebote() {
 		return angebote;
 	}
-	
+
+	/**
+	 * Rueckgabe der Bezeichnung.
+	 * 
+	 * @return bez
+	 */
 	public String getBezeichnung() {
 		return bez;
 	}
-	
+
+	/**
+	 * Rueckgabe eines Angebotes fuer die Artikelnr.
+	 * 
+	 * @param key die artikelnr.
+	 * @return das angebot
+	 */
 	public Food getAngebotByKey(int key) {
 		return angebote.get(key);
 	}
-	
+
+	/**
+	 * Methode, um Anbgebote hinzufuegen zu koennen.
+	 * 
+	 * @param key die Artikelnr.
+	 * @param f   das Produkt.
+	 */
 	public void addAngebot(int key, Food f) {
 		f.setArtikelNr(key);
 		getAngebote().put(key, f);
 	}
-	
+
+	/**
+	 * Methode, um Angebot mit artikenr zu entfernen.
+	 * 
+	 * @param key die artikelnr des Produktes.
+	 */
 	public void removeAngebotByKey(int key) {
 		angebote.remove(key);
 	}
-	
+
+	/**
+	 * Rueckgabe des Sortiments.
+	 * 
+	 * @return sortiment
+	 */
 	public HashMap<Integer, Food> getSortiment() {
 		return sortiment;
 	}
-	
+
+	/**
+	 * Hinzufuegen eines Produktes zum Sortiment.
+	 * 
+	 * @param key die Artikelnr.
+	 * @param f   das Produkt.
+	 */
 	public void addProduktToSortiment(int key, Food f) {
 		f.setArtikelNr(key);
 		this.sortiment.put(key, f);
 	}
-	
+
+	/**
+	 * Rueckgabe des Sortiments durch die Akrtikelnr.
+	 * 
+	 * @param key die artikelnr.
+	 * @return das produkt.
+	 */
 	public Food getSortimentByKey(int key) {
 		return sortiment.get(key);
 	}
-	
+
+	/**
+	 * Methode zum loeschen eines Produkts durch akrtikelnr.
+	 * 
+	 * @param key die artikelnr.
+	 */
 	public void removeSortimentByKey(int key) {
 		sortiment.remove(key);
-	}
-	
-	public void removeAngeboteByKeyFromDB(int key) {
-		LoescheAusDatenbank.loescheAngebotAusDB(getBezeichnung(), key);
-	}
-	
-	public void removeSortimentByKeyFromDB(int key) {
-		LoescheAusDatenbank.loescheSortimentAusDB(getBezeichnung(), key);
 	}
 }

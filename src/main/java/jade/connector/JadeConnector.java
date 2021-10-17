@@ -17,19 +17,27 @@ import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.ControllerException;
 import jade.wrapper.StaleProxyException;
-
+/**
+ * Klasse, um eine Jade Runtime zu realisieren.
+ * @author norman
+ *
+ */
 public class JadeConnector {
-	
+	//Attribute
 	private static jade.core.Runtime rt;
 	private static Profile profile;
 	private static ProfileImpl start_profil;
 	private static AgentContainer agent_container;
+	@SuppressWarnings("unused")
 	private static AgentContainer main_container;
+	@SuppressWarnings("unused")
 	private static AgentController ac;
 	
-	public JadeConnector()  {
-	}
-	
+	/**
+	 * Methode zum Starten einer Runtime mit mehreren Agenten.
+	 * 
+	 * @param agenten Agenten, die uebergeben werden.
+	 */
 	public static void startAgentsZumBerechnen(HashMap<String, Agent> agenten) {
 		
 		EinkaufslistenVergleichsAgent vergleichsagent = (EinkaufslistenVergleichsAgent) agenten.get("Vergleichsagent");
@@ -60,8 +68,6 @@ public class JadeConnector {
 		System.out.println("Launch AgentContainer after " + start_profil);
 		System.out.println("Containers created");
 		
-		System.out.println("Launching Vergleichsagent and AngebotAgent on main container...");
-		
 		try {
 			ac = agent_container.acceptNewAgent("Vergleichsagent", vergleichsagent);
 			ac = agent_container.acceptNewAgent("AngebotAgent", angebote);
@@ -79,14 +85,18 @@ public class JadeConnector {
 			agent_container.getAgent("SendeAgent").start();
 			
 		} catch (StaleProxyException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ControllerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 	}
-	
+
+	/**
+	 * Methode, um Agenten fuer CBR- Prozess zu starten.
+	 * 
+	 * @param s       Ein Sender Agent der mit uebergeben wird.
+	 * @param anfrage Die Anfrage fuer das CBR.
+	 */
 	public static void runAgentsForCBRQuery(SenderAgent s, RezeptAnfrage anfrage) {
 		UeberwachungsAgent ue_agent =new UeberwachungsAgent();
 		RecipeAgent r_agent = new RecipeAgent();
@@ -127,13 +137,10 @@ public class JadeConnector {
 			agent_container.getAgent("SendeAgent").start();
 			
 		} catch (StaleProxyException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ControllerException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		
 	}
 }
 

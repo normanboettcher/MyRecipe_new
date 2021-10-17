@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="normanboettcher" name="managersTest.RabattManagerTest" skipped="0" tests="2" time="0.13" timestamp="2021-10-13T15:30:06">
+<testsuite errors="0" failures="0" hostname="normanboettcher" name="managersTest.RabattManagerTest" skipped="0" tests="2" time="0.136" timestamp="2021-10-17T12:21:17">
   <properties>
     <property name="release.dir" value="release" />
     <property name="ant.library.dir" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.apache.ant_1.10.10.v20210426-1926/lib" />
@@ -18,7 +18,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD" />
     <property name="user.country" value="DE" />
     <property name="sun.boot.library.path" value="/home/norman/Dokumente/Eclipse EE/eclipse/plugins/org.eclipse.justj.openjdk.hotspot.jre.full.linux.x86_64_16.0.1.v20210528-1205/jre/lib" />
-    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.RabattManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher15221376240547857545.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit15069517358388169997.properties" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner managersTest.RabattManagerTest skipNonTests=false filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.SummaryJUnitResultFormatter showoutput=true outputtoformatters=true logfailedtests=true threadid=0 logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.BriefJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.txt formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/home/norman/Schreibtisch/Projekt/MyRecipe/generated-reports/TEST-managersTest.RabattManagerTest.xml crashfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junitvmwatcher3450643143659917241.properties propsfile=/home/norman/Schreibtisch/Projekt/MyRecipe/junit400222438085674630.properties" />
     <property name="jdk.debug" value="release" />
     <property name="sun.cpu.endian" value="little" />
     <property name="user.home" value="/home/norman" />
@@ -70,8 +70,8 @@
     <property name="tests.failed" value="true" />
     <property name="ant.project.default-target" value="release" />
   </properties>
-  <testcase classname="managersTest.RabattManagerTest" name="abzugRabattTest" time="0.003" />
-  <testcase classname="managersTest.RabattManagerTest" name="getRandomRabattTest" time="0.001" />
+  <testcase classname="managersTest.RabattManagerTest" name="abzugRabattTest" time="0.004" />
+  <testcase classname="managersTest.RabattManagerTest" name="getRandomRabattTest" time="0.002" />
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

@@ -1,17 +1,13 @@
 package general.supermarkets;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
-
-import databaseConnection.DBConnection;
-import general.Food;
 import general.Supermarkt;
 
 public class Rewe extends Supermarkt{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6763726670326940696L;
 	private final int URSPRUNGSID = 1;
 	
 	public Rewe() {

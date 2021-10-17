@@ -2,7 +2,6 @@ package agents;
 
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import database.transfer.LoescheAusDatenbank;
@@ -14,7 +13,6 @@ import general.supermarkets.Lidl;
 import general.supermarkets.Netto;
 import general.supermarkets.Penny;
 import general.supermarkets.Rewe;
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.domain.DFService;
@@ -25,8 +23,14 @@ import jade.lang.acl.UnreadableException;
 import managers.DoubleManager;
 import managers.RabattManager;
 
+/**
+ * Ein Agent zur Aktualisierung der Angebote der Supermaerkte.
+ * 
+ * @author norman
+ *
+ */
 public class AktualisiereAngeboteAgent extends Agent {
-
+	//Attribute
 	/**
 	 * 
 	 */
@@ -34,22 +38,45 @@ public class AktualisiereAngeboteAgent extends Agent {
 	private String name;
 	private boolean aktualisiert = false;
 	
+	//Konstruktor
+	/**
+	 * Konstruktor der Klasse AktualisiereAngeboteAgent. Im Konstruktor wird der
+	 * feste Name 'AktualisiereAngeboteAgent' uebergeben.
+	 */
 	public AktualisiereAngeboteAgent() {
 		this.name = "AktualisiereAngeboteAgent";
 	}
 	
+	/**
+	 * Getter fuer den Agentennamen.
+	 * 
+	 * @return name der Name des Agenten. Im Konstruktor festgelegt.
+	 */
 	public String getAgentName() {
 		return name;
 	}
-	
+
+	/**
+	 * private Methode um den status der Aktualisierung zurueckzugeben.
+	 * 
+	 * @return aktualisiert true wenn Angebote aktualisiert. false wenn nicht.
+	 */
 	private boolean getAktualisiert() {
 		return aktualisiert;
 	}
-	
+
+	/**
+	 * private Methode zum aendern des Status der Aktualisierung.
+	 * 
+	 * @param t true oder false, je nachdem, ob aktualisiert wurde.
+	 */
 	private void setAktualisiert(boolean t) {
 		this.aktualisiert = t;
 	}
-	
+
+	/**
+	 * setup Methode des Agenten. Hier wird der Agent registriert.
+	 */
 	protected void setup() {
 		
 		DFAgentDescription desc = new DFAgentDescription();
@@ -67,7 +94,10 @@ public class AktualisiereAngeboteAgent extends Agent {
 		
 		addBehaviour(new AktualisierungsBehavior());
 	}
-	
+
+	/**
+	 * takeDown() Methode des Agenten. hier wird der Agent deregistriert.
+	 */
 	protected void takeDown() {
 		try {
 			DFService.deregister(this);
@@ -76,8 +106,15 @@ public class AktualisiereAngeboteAgent extends Agent {
 		}
 	}
 	
+	/**
+	 * Private Klasse Aktualisierungsbehaviour. Hier wird das Verhalten zur
+	 * Aktualisiserung des Agenten realisiert.
+	 * 
+	 * @author norman
+	 *
+	 */
 	private class AktualisierungsBehavior extends Behaviour {
-
+		//Attribute
 		/**
 		 * 
 		 */
@@ -136,11 +173,20 @@ public class AktualisiereAngeboteAgent extends Agent {
 		public boolean done() {
 			return finished;
 		}
-				
+
+		/**
+		 * private Methode, um den Status und die Objekte zurueck an den Ueber-
+		 * wachungsagenten zu senden.
+		 * 
+		 * @param m            die Message, auf die ein reply erstellt wird.
+		 * @param aktualisiert der Status, ob die Angebote aktualisiert wurden.
+		 * @param objects      die evtl. aktualisierten Einkaufslisten.
+		 */
 		private void sendBackToUeberwachung(jade.lang.acl.ACLMessage m, boolean aktualisiert, Object[] objects) {
 			System.out.println("In sendback von AktualisierungsBeh");
 			jade.lang.acl.ACLMessage msg = m.createReply();
 			try {
+				@SuppressWarnings("unchecked")
 				HashMap<Integer, Einkaufsliste> l = (HashMap<Integer, Einkaufsliste>) objects[3];
 				
 				System.out.println("In try von sendback von AktualisierungsBeh");
@@ -160,7 +206,16 @@ public class AktualisiereAngeboteAgent extends Agent {
 				e.printStackTrace();
 			} 
 		}
-		
+
+		/**
+		 * private Methode, um ausgehend vom Sortiment zufaellige Artikelzu bestimmen,
+		 * die in die Angebote aufgenommen werden sollen.
+		 * 
+		 * @param s         der Supermarkt, fuer den die Angebote erstellt werden.
+		 * @param intervall Die Anzahl der Angebote insgesamt. Wird in
+		 *                  {@code initAngebote()} berechnet.
+		 * @return list die Liste mit zufaelligen Artikelnummern aus dem Sortiment.
+		 */
 		private HashMap<Integer, Integer> randomNumbers(Supermarkt s, int intervall) {
 			HashMap<Integer, Integer> list = new HashMap<Integer, Integer>();
 			int nr = 0;
@@ -173,9 +228,11 @@ public class AktualisiereAngeboteAgent extends Agent {
 		}
 		
 		/**
-		 * Diese Methode initialisiert die Angebote eines Supermarktes.
-		 * Es wird eine zufaellige Anzahl von Produkten zufaellig in das 
-		 * Angebotsortiment aufgenommen.
+		 * Diese Methode initialisiert die Angebote eines Supermarktes. Es wird eine
+		 * zufaellige Anzahl von Produkten zufaellig in das Angebotsortiment
+		 * aufgenommen.
+		 * 
+		 * @param supermarkt Der Supermarkt, fuer den die Angebote erstellt werden.
 		 */
 		public void initAngebote(String supermarkt) {
 			Supermarkt s = null;
@@ -212,6 +269,8 @@ public class AktualisiereAngeboteAgent extends Agent {
 			int[] arr = new int[random_artikelnr.size()];
 			int counter = 0;
 			
+			//Bevor neue Angebote eingefuegt werden, wird der Inhalt der alten
+			//Angebote Tabelle geloescht.
 			LoescheAusDatenbank.loescheTabellenInhalt(s.getBezeichnung().toLowerCase(), "artikelnr");
 			
 			for(int key : random_artikelnr.keySet()) {
@@ -220,10 +279,10 @@ public class AktualisiereAngeboteAgent extends Agent {
 				counter++;
 			}
 			
-			
 			//Anzahl richtet sich nach der Anzahl an angeboten.
 			for(int i = 0; i <= angeboteAnzahl; i++) {
 				
+					//Fuer ein Produkt wird ein zufaelliger Rabatt berechnet.
 					double rabatt = DoubleManager.round(RabattManager.getRandomRabatt(), 2);
 					
 					Food object = s.getSortiment().get(arr[i]);

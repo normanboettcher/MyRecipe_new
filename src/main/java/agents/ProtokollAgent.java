@@ -1,6 +1,6 @@
 package agents;
 
-import java.io.BufferedReader;
+
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.EOFException;
@@ -8,49 +8,72 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
+
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
-import jade.core.behaviours.OneShotBehaviour;
+
 import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
-import jade.lang.acl.ACLMessage;
-import jade.lang.acl.UnreadableException;
-import managers.DatumsManager;
 
+import jade.lang.acl.UnreadableException;
+
+/**
+ * Klasse zur Realisierung eines Protokollagenten. Dieser schreibt jeden
+ * Fortschritt aus der Kommunikation zwischen der Agenten in eine txt Datei im
+ * Ordner Agent_Protokolle.
+ * 
+ * @author norman
+ *
+ */
 public class ProtokollAgent extends Agent {
-	
+	//Attribute
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 8184434646383054043L;
 	
 	private File protokoll;
-	private String ordner;
 	private PrintWriter w;
 	private ArrayList<String> collection;
 	
+	/**
+	 * Konstruktor des ProtokollAgenten. Ein Protokollagent hat eine
+	 * {@code collection} mit allen Fortschritten der Prozesse als String.
+	 */
 	public ProtokollAgent() {
 		this.collection = new ArrayList<String>();
 	}
-	
+
+	/**
+	 * Die Sammlung aller Fortschritte der Agentenkommunikation.
+	 * 
+	 * @return collection
+	 */
 	protected ArrayList<String> getCollection() {
 		return collection;
 	}
-	
+
+	/**
+	 * Methode, um einen aus einer Message erhaltenen Fortschritt als String in der
+	 * Collection abzulegen.
+	 * 
+	 * @param str der Fortschritt als String.
+	 */
 	protected void collect(String str) {
 		getCollection().add(str + "\n");
 	}
-	
+	/**
+	 * Der Agent wird registriert.
+	 */
 	protected void setup() {
 		
 		DFAgentDescription desc = new DFAgentDescription();
@@ -68,7 +91,9 @@ public class ProtokollAgent extends Agent {
 		
 		addBehaviour(new ProtokollAgentBehaviour());
 	}
-	
+	/**
+	 * Der Agent wird deregistriert.
+	 */
 	protected void takeDown() {
 		try {
 			DFService.deregister(this);
@@ -76,7 +101,13 @@ public class ProtokollAgent extends Agent {
 			System.out.println(fe.getMessage());
 		}
 	}
-	
+
+	/**
+	 * Private Klasse zum realisieren des Verhaltens des ProtokollAgenten.
+	 * 
+	 * @author norman
+	 *
+	 */
 	private class ProtokollAgentBehaviour extends CyclicBehaviour {
 	
 		/**
@@ -98,12 +129,9 @@ public class ProtokollAgent extends Agent {
 					strings = (String) objects[0];
 					status = (String) objects[1];
 					
-					//System.out.println(status);
-					
 					writeProtokollToFile(strings, status);
 					
 				} catch (UnreadableException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 			} else {
@@ -111,15 +139,38 @@ public class ProtokollAgent extends Agent {
 			}
 		}
 	}
-	
+
+	/**
+	 * Die Datei, in die das Protokoll geschrieben wird.
+	 * 
+	 * @return protokoll.
+	 */
 	private File getFile() {
 		return protokoll;
 	}
-	
+
+	/**
+	 * Der PrintWriter, der die Fortschritte aus der {@code collection} in die Datei
+	 * schreibt.
+	 * 
+	 * @return
+	 */
 	private PrintWriter getPrintWriter() {
 		return w;
 	}
-	
+
+	/**
+	 * private Methode, um das Protokoll in die Datei zu schreiben.
+	 * 
+	 * @param str    der Fortschritt des Agenten als String.
+	 * @param status der Status, der von den Agenten bei uebergabe der Fortschritte
+	 *               uebergeben wird. {@code status 2} Der Zwischenstand der
+	 *               Kommunikation wird in eine zwischenstand.dat datei geschrieben.
+	 *               {@code status 0} Der Fortschritt als String wird der
+	 *               {@code collection} hinzugefuegt. {@code status 1} Der Prozess
+	 *               ist beendet und das gesamte Protokoll wird in die txt Datei
+	 *               geschrieben.
+	 */
 	private void writeProtokollToFile(String str, String status) {
 		
 		switch(status) {
@@ -129,14 +180,18 @@ public class ProtokollAgent extends Agent {
 				collect(str);
 				break;
 			case "1":
-				
 				schreibeKomplettesProtokollZuDatei(getCollection());
 				break;
 			default:
 					break;
 		}
 	}
-	
+
+	/**
+	 * Methode, um das gesamte Protokoll niederzuschreiben.
+	 * 
+	 * @param str die Liste aller Fortschritte {@code collection}
+	 */
 	private void schreibeKomplettesProtokollZuDatei(ArrayList<String> str) {
 		String project_path = System.getProperty("user.dir");
 		String datum = LocalDateTime.now().toString();
@@ -152,18 +207,22 @@ public class ProtokollAgent extends Agent {
 			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		} catch (@SuppressWarnings("hiding") IOException e) {
 			e.printStackTrace();
 		} finally {
 			getPrintWriter().close();
+			//Nachdem der Zwischenstand geladen und zum Protokoll hinzugefuegt wurde,
+			//Wird die Zwischenstand.dat geloescht. Sie wird nicht mehr benoetigt.
 			File file = new File(System.getProperty("user.dir") + "/Agent_Protokolle/Zwischenstand.dat");
 			file.delete();
 		}
 	}
-	
+
+	/**
+	 * private Methode, um den Zwischenstand des Prozesses in eine zwischenstand.dat
+	 * Datei zu speichern.
+	 */
 	private void schreibeZwischenstandZuDatei() {
 		
 		File file = new File(System.getProperty("user.dir") + "/Agent_Protokolle/Zwischenstand.dat");
@@ -178,24 +237,27 @@ public class ProtokollAgent extends Agent {
 
 		DataOutputStream dous = null;
 	
-	try {
-		dous =  new DataOutputStream(new FileOutputStream(file_new));
-		
-		for(int i = 0; i < getCollection().size(); i++) {
-			dous.writeBytes(getCollection().get(i));
-		}
-		
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} finally {
-		//writer.close();
+		try {
+			dous =  new DataOutputStream(new FileOutputStream(file_new));
+
+			for(int i = 0; i < getCollection().size(); i++) {
+				dous.writeBytes(getCollection().get(i));
+			}
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} 
 	}
-	}
-	
+
+	/**
+	 * private Methode, um den Zwischenstand aus der zwischenstand.dat datei zu
+	 * holen.
+	 * 
+	 * @return str der Zwischenstand.
+	 */
+	@SuppressWarnings("deprecation")
 	private String leseVonProtokollAusZwischenstand() {
 		String str = "==================================LADE PROTOKOLL AUS ZWISCHENSTAND"
 				+ "=====================================" + "\n";
@@ -215,16 +277,11 @@ public class ProtokollAgent extends Agent {
 			e.printStackTrace();
 		} finally {
 			try {
-				//	bfr.close();
 				dis.close();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
 		return str;
 	}
-	
-	
 }

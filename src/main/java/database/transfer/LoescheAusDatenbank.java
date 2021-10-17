@@ -6,8 +6,19 @@ import java.sql.SQLException;
 
 import databaseConnection.DBConnection;
 
+/**
+ * Klasse, um Methoden zu definieren, die Objekte aus der Datenbank loeschen.
+ * 
+ * @author norman
+ *
+ */
 public class LoescheAusDatenbank {
-	
+	/**
+	 * Methode, um Tabelleninhalt zu loeschen
+	 * 
+	 * @param table  die Tabelle, aus der geloescht werden soll.
+	 * @param spalte ID Spalte.
+	 */
 	public static void loescheTabellenInhalt(String table, String spalte) {
 		Connection con = DBConnection.getConnection();
 		
@@ -22,7 +33,13 @@ public class LoescheAusDatenbank {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Methode, um Angebote aus DB zu loeschen.
+	 * 
+	 * @param laden der Laden, dessen Angebote geloescht werden.
+	 * @param key   die ID des zu loeschenden Produktes.
+	 */
 	public static void loescheAngebotAusDB(String laden, int key) {
 		Connection con = DBConnection.getConnection();
 		
@@ -37,7 +54,13 @@ public class LoescheAusDatenbank {
 			e.printStackTrace();
 		}
 	}
-	
+
+	/**
+	 * Methoden zum loeschen des Sortiments aus der DB.
+	 * 
+	 * @param laden der Laden dessen Sortiment geloescht wird.
+	 * @param key   die artikelnr.
+	 */
 	public static void loescheSortimentAusDB(String laden, int key) {
 		Connection con = DBConnection.getConnection();
 		

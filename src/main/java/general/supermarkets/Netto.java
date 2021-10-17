@@ -1,17 +1,17 @@
 package general.supermarkets;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.HashMap;
-
-import databaseConnection.DBConnection;
-import general.Food;
 import general.Supermarkt;
-
+/**
+ * Klasse Netto erbt von Supermarkt.
+ * @author norman
+ *
+ */
 public class Netto extends Supermarkt {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7999530215560135376L;
 	private final int URSPRUNGSID = 3;
 	
 	public Netto() {
@@ -23,7 +23,10 @@ public class Netto extends Supermarkt {
 	protected void setBezeichnung() {
 		this.bez = "Netto";
 	}
-	
+	/**
+	 * Rueckgabe der festen ID {@code 3}.
+	 * @return URSSPRUNGSID
+	 */
 	public int getUrsprungsID() {
 		return URSPRUNGSID;
 	}
