@@ -15,11 +15,11 @@
 	integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We"
 	crossorigin="anonymous">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/CSS/RezepteStyle.css">
+	href="<%=request.getContextPath()%>/CSS/VergleichStyle.css">
 <title>MyRecipe</title>
 </head>
 <header> <!-- Navbar with Logo --> <nav
-class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
+	class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 <div class="container-fluid">
 	<a class="navbar-brand" href="index.jsp"><img
 		src="<%=request.getContextPath()%>/IMG/logo.png" alt="" width="50"
@@ -32,11 +32,9 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 
 	<div class="collapse navbar-collapse" id="navbarNav">
 		<ul class="navbar-nav">
-			<li><a
-				class="nav-link" href="JSP/index.jsp"><i
-					class="fas fa-arrow-left"></i> Zurück zur Startseite
-			</a></li>
-			
+			<li><a class="nav-link" href="JSP/index.jsp"><i
+					class="fas fa-arrow-left"></i> Zurück zur Startseite </a></li>
+
 		</ul>
 	</div>
 </div>
@@ -45,61 +43,64 @@ class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
 	<h1>Preise Ihres Einkaufs</h1>
 </div>
 <div class="main">
-<form>
-	<c:forEach items="${result}" var="result">
-			<h3 style="text-align:center; color:white;">${result.value.getLaden()}</h3>
+	<form>
+		<c:forEach items="${result}" var="result">
+			<h3 style="text-align: center; color: white;">${result.value.getLaden()}</h3>
 			<table class="table">
-			<tr>
-				<th style="text-align:center;">Produkte</th>
-				<th style="text-align:center;">Menge</th>
-				<th style="text-align:center;">Preis/Stk</th>
-				<th style="text-align:center;">Originalpreis/Stk</th>
-				<th style="text-align:center;">Gespart/Stk</th>
-				<th style="text-align:center;">Gespart in Prozent/Stk</th>
-				<th style="text-align:center;">Preis/Gesamt</th>
-				<th style="text-align:center;">Gespart/Gesamt</th>
-				<th style="text-align:center;">Gespart in Prozent/Gesamt</th>
-				
-			</tr>
-			<c:forEach items="${result.value.getProduktliste()}" var="produkte">
 				<tr>
-					<td>${produkte.value.getBezeichnung()}</td>
-					<c:forEach items="${result.value.getProdukteMitMenge()}"
-							var="menge">
-					<c:if test="${produkte.key == menge.key}">
-							<td>${menge.value}</td>
-							<td>${produkte.value.getPreis()}</td>
-						</c:if>
-					</c:forEach>
-					<c:if test="${produkte.value.getImAngebot() == true }">
-						<td>${produkte.value.getOriginPreis()} EUR</td>
-						<td>${produkte.value.getErsparnisFuerFood()}</td>
-						<td>${produkte.value.getErsparnisInProzentFuerFood()} Prozent</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-					</c:if>
-					<c:if test="${produkte.value.getImAngebot() == false }">
-						<td>Originalpreis entspricht Preis</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-						<td>-</td>
-					</c:if>
+					<th style="text-align: center;">Produkte</th>
+					<th style="text-align: center;">Menge</th>
+					<th style="text-align: center;">Preis/Stk</th>
+					<th style="text-align: center;">Originalpreis/Stk</th>
+					<th style="text-align: center;">Gespart/Stk</th>
+					<th style="text-align: center;">Gespart in Prozent/Stk</th>
+					<th style="text-align: center;"></th>
+
 				</tr>
+				<c:forEach items="${result.value.getProduktliste()}" var="produkte">
+					<tr>
+						<td>${produkte.value.getBezeichnung()}</td>
+						<c:forEach items="${result.value.getProdukteMitMenge()}"
+							var="menge">
+							<c:if test="${produkte.key == menge.key}">
+								<td>${menge.value}</td>
+								<td>${produkte.value.getPreis()}&#8364</td>
+							</c:if>
+						</c:forEach>
+						<c:if test="${produkte.value.getImAngebot() == true }">
+							<td>${produkte.value.getOriginPreis()}&#8364</td>
+							<td>${produkte.value.getErsparnisFuerFood()}&#8364</td>
+							<td>${produkte.value.getErsparnisInProzentFuerFood()}&#37</td>
+						</c:if>
+						<c:if test="${produkte.value.getImAngebot() == false }">
+							<td>Originalpreis entspricht Preis</td>
+							<td></td>
+							<td></td>
+						</c:if>
+						<td></td>
+
+					</tr>
 				</c:forEach>
-			<tr>
-				<td colspan="6"></td>
-				<td style="text-align:center; font-weight: bold; width: 33%;">${result.value.getGesamtPreis()} EUR Gesamt</td>
-				<td style="text-align:center; font-weight: bold; width: 33%;">${result.value.getErsparnis()} EUR</td>
-				<td style="text-align:center; font-weight: bold; width: 33%;">${result.value.getErsparnisInProzent()} Prozent</td>
-			</tr>
-		</table>
-		
-	</c:forEach>
+				<tr>
+					<td colspan="6" style="border: none;"></td>
+					<td style="text-align: center; font-weight: bold; width: 33%;">${result.value.getErsparnis()}
+						&#8364 Erspart</td>
+				</tr>
+				<tr>
+					<td colspan="6" style="border: none;"></td>
+					<td style="text-align: center; font-weight: bold; width: 33%;">${result.value.getErsparnisInProzent()}
+						&#37 Erspart</td>
+				</tr>
+				<tr>
+					<td colspan="6" style="border: none;"></td>
+					<td style="text-align: center; font-weight: bold; width: 33%;">${result.value.getGesamtPreis()}
+						&#8364 Gesamt</td>
+				</tr>
+			</table>
+
+		</c:forEach>
 	</form>
-				
+
 </div>
 </body>
 

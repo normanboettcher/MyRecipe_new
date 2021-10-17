@@ -1,14 +1,15 @@
 /* -- @author Thomas Mook -- */
 @charset "UTF-8";
 body {
-	background-image: url("../IMG/rezept.jpg");
+	background-image: url("../IMG/vergleich.jpg");
+	background-size: cover;
 	margin: 0px;
 	padding: 0px;
 	font-family: sans-serif;
 }
 .regform {
 	margin-top:40px;
-	width: 1000px;
+	width: 1200px;
 	background-color: rgb(0,0,0,0.6);
 	margin:auto;
 	color: #FFFFFF;
@@ -18,7 +19,7 @@ body {
 }
 .main {
 	background-color: rgb(0,0,0,0.5);
-	width: 1000px;
+	width: 1200px;
 	margin: auto;
 }
 form {
